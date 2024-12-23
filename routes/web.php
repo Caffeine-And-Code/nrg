@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Client Routes */
+
+Route::get('/', [UserController::class, 'index'])->name('home');
+
+/* Admin Routes */
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.home');
