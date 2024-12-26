@@ -22,7 +22,9 @@ async function translateEverything() {
 }
 
 translateEverything();
-document.getElementById("prova").addEventListener("click", async function () {
+
+//TODO: this is not supposed to be here, it's just for testing purposes 
+document.getElementById("it").addEventListener("click", async function () {
     const csrfToken = document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute("content");
@@ -35,6 +37,25 @@ document.getElementById("prova").addEventListener("click", async function () {
         },
         body: JSON.stringify({
             locale: "it",
+        }),
+    }).then(() => {
+        translateEverything();
+    });
+});
+//TODO: same here as above
+document.getElementById("en").addEventListener("click", async function () {
+    const csrfToken = document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content");
+
+    await fetch("/translations", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": csrfToken,
+        },
+        body: JSON.stringify({
+            locale: "en",
         }),
     }).then(() => {
         translateEverything();

@@ -13,8 +13,16 @@ Route::get('/', [UserController::class, 'index'])->name('home');
 /* Admin Routes */
 
 Route::prefix("admin")->name("admin.")->group(function () {
-    // TODO create a login page
-    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/createDefaultAdmin', [AdminController::class, 'createDefaultAdmin']);
+    Route::get('/login', [AdminController::class, 'login'])->name('login');
+    Route::post('/login', [AdminController::class, 'authenticate'])->name('authenticate');
+    
+    Route::middleware('auth:admin')->group(function () {
+        Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::get("/settings", [AdminController::class, 'settings'])->name('settings');
+        Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+    });
+
 });
 
 /* Translations Route */
