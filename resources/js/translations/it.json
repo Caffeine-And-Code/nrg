@@ -9,5 +9,11 @@
     "Class": "Classe",
     "Total": "Totale",
     "AdminSection": "Sezione Admin",
-    "Login": "Accedi"
+    "Login": "Accedi",
+    "ThemeChanger": "Cambia il tema dell'applicazione",
+    "LIGHT": "Chiaro",
+    "DARK": "Scuro",
+    "Translation": "Scegli la lingua",
+    "English": "Inglese",
+    "Italian": "Italiano"
 }

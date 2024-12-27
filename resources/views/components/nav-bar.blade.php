@@ -1,8 +1,8 @@
 <header class="nav-bar ">
-    <img src="{{ Vite::asset('resources/imgs/logo.png') }}" alt="logo" class="logo">
+    <img src="" alt="logo" class="logo" id="minimalLogo">
     <figure>
         <img src="{{Vite::asset($imagePath)}}" alt="pageImage" />
-        <figcaption translate="{{$title}}"></figcaption>
+        <figcaption translate="{{$title}}" class="title navTitle"></figcaption>
     </figure>
     
 </header>

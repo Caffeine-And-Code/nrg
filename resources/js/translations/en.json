@@ -3,11 +3,17 @@
     "Settings": "Settings",
     "News": "News",
     "Products": "Products",
-    "To_do": "To Do",
+    "To_do": "To do",
     "Done": "Done",
     "Order": "Order",
     "Class": "Class",
     "Total": "Total",
     "AdminSection": "Admin Section",
-    "Login": "Login"
+    "Login": "Login",
+    "ThemeChanger": "Change The Application Theme",
+    "LIGHT": "Light",
+    "DARK": "Dark",
+    "Translation": "Choose Language",
+    "English": "English",
+    "Italian": "Italian"
 }
