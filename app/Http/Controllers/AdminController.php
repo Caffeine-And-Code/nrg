@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-        return view('admin.home');
-    }
 
     public function login()
     {
@@ -39,7 +36,8 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.home');
+        $news = News::all() ?? [];
+        return view('admin/home',['news' => $news]);
     }
 
     public function logout()
@@ -48,22 +46,6 @@ class AdminController extends Controller
             Auth::guard('admin')->logout();
 
         return redirect()->route('admin.login');
-    }
-
-    public function createDefaultAdmin()
-    {
-        try{
-            $admin = new \App\Models\Admin;
-            $admin->email = "admin@admin.it";
-            $admin->password = bcrypt("1234");
-            $admin->save();
-            return "Admin created successfully";
-        }catch(\Exception $e){
-            if($e->errorInfo[1] == 1062){
-                return "Admin already exists";
-            }
-            return $e->getMessage();
-        }
     }
 
     public function settings()

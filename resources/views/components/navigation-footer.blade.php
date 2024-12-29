@@ -1,3 +1,6 @@
+@vite('resources/css/components/footerNavBar.css')
+@vite('resources/js/adminJs/footerNavigationManager.js')
+
 @php
     $previousRouteName = null;
     try {
@@ -7,26 +10,23 @@
     }
 @endphp
 
-@vite('resources/js/adminJs/footerNavigationManager.js')
-
 @if($mode == 'admin')
-<nav class="footerNavigation">
+<nav class="footerNavigation z-1">
     <ul class="footerIconList">
         <li>
             <a href="{{ route('admin.dashboard') }}" class="{{ Route::is('admin.dashboard') ? 'active' : ("admin.dashboard" == $previousRouteName ? 'oldRoute' : '' ) }}">
-                <img src="{{ Vite::asset('resources/imgs/Take_away.png') }}" alt="Dashboard">
+                <img src="{{ Vite::asset('resources/imgs/Take_away.png') }}" alt="Dashboard" class="z-3">
             </a>
         </li>
         <li>
             <a href="{{ route('admin.settings') }}" class="{{ Route::is('admin.settings') ? 'active' : ("admin.settings" == $previousRouteName ? 'oldRoute' : '' ) }}">
-                <img src="{{ Vite::asset('resources/imgs/Settings.png') }}" alt="Settings">
+                <img src="{{ Vite::asset('resources/imgs/Settings.png') }}" alt="Settings" class="z-3">
             </a>
         </li>            
     </ul>
+    <!-- Pallino -->
+    <div id="dot" class="z-2"></div>
 </nav>
 @elseif($mode == 'client')
 {{-- Code for client mode --}}
 @endif
-
-<!-- Pallino -->
-<div id="dot"></div>

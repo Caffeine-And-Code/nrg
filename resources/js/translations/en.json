@@ -15,5 +15,9 @@
     "DARK": "Dark",
     "Translation": "Choose Language",
     "English": "English",
-    "Italian": "Italian"
+    "Italian": "Italian",
+    "CreateNews": "Create a News",
+    "Create" : "Create",
+    "Close" : "Close",
+    "ImportPhoto" : "Import a Photo for the News"
 }

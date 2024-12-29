@@ -34,13 +34,13 @@ function moveDot() {
     dot.style.top = `${startY - dot.offsetHeight / 2}px`;
     dot.style.left = `${startX - dot.offsetWidth / 2}px`;
     dot.style.display = "block";
-
+    
     // Imposta le variabili CSS per l'animazione
     dot.style.setProperty("--start-top", `${startY - dot.offsetHeight / 2}px`);
     dot.style.setProperty("--start-left", `${startX - dot.offsetWidth / 2}px`);
     dot.style.setProperty("--end-top", `${endY - dot.offsetHeight / 2}px`);
     dot.style.setProperty("--end-left", `${endX - dot.offsetWidth / 2}px`);
-
+    
     // Attiva l'animazione
     dot.classList.remove("moving"); // Resetta l'animazione precedente
     void dot.offsetWidth; // Forza il reflow per riapplicare l'animazione

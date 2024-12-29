@@ -17,6 +17,8 @@ document.getElementById("IT").addEventListener("click", async function () {
         }),
     }).then(() => {
         translateEverything();
+        document.getElementById("IT").classList.add('selected');
+        document.getElementById("EN").classList.remove('selected');
     });
 });
 
@@ -37,5 +39,7 @@ document.getElementById("EN").addEventListener("click", async function () {
         }),
     }).then(() => {
         translateEverything();
+        document.getElementById("EN").classList.add('selected');
+        document.getElementById("IT").classList.remove('selected');
     });
 });
