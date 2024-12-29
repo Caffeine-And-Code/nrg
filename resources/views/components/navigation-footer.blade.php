@@ -11,7 +11,7 @@
 @endphp
 
 @if($mode == 'admin')
-<nav class="footerNavigation z-1">
+<nav class="footerNavigation">
     <ul class="footerIconList">
         <li>
             <a href="{{ route('admin.dashboard') }}" class="{{ Route::is('admin.dashboard') ? 'active' : ("admin.dashboard" == $previousRouteName ? 'oldRoute' : '' ) }}">

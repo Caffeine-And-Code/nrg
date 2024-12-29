@@ -1,6 +1,7 @@
 .footerNavigation {
     background-color: var(--bg);
     position: sticky;
+    z-index: 99;
     bottom: 0;
     width: 100%;
     height: 100px;

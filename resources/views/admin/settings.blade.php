@@ -11,6 +11,7 @@
     @vite('/resources/css/app.css')
     @vite('/resources/js/changeTheme.js')
     @vite('/resources/js/changeLanguage.js')
+    @vite('/resources/css/responsive.css')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>

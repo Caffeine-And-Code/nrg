@@ -12,6 +12,7 @@
     @vite('/resources/css/app.css')
     @vite('/resources/js/adminJs/passwordBtnHandler.js')
     @vite('/resources/js/translations/translation.js')
+    @vite('/resources/css/responsive.css')
 </head>
 <body>
     <main class="container">

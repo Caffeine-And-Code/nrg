@@ -44,4 +44,6 @@
 .deleteNewsIcon{
     font-size: 64px;
     color: var(--bg);
+    z-index: 0;
+    position: relative;
 }
