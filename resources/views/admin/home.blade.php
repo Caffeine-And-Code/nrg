@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Admin</title>
+    <title translate="Admin - Home"></title>
     @vite('/resources/js/themeManager.js')
     @vite('/resources/js/translations/translation.js')
     @vite('/resources/css/app.css')
@@ -17,7 +17,7 @@
   <body>
     <x-nav-bar title="Orders" />
     <main class="container mt-5 main">
-      <section> 
+      <section class="mb-5"> 
         <h1 class="title textShadow" translate="News"></h1>
         <div class="newsContainer">
           @foreach($news as $newsItem)
@@ -49,6 +49,10 @@
             </div>
           </div>
         </div>
+      </section>
+      <section>
+        <h1 class="title textShadow" translate="Products"></h1>
+        <x-generic-search-bar searchRoute="" buttonRoute="" mode="admin"  />
       </section>
     </main>
     

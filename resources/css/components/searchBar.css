@@ -1,0 +1,39 @@
+.searchBar{
+    border-radius: 0px 30px 30px 0px !important;
+    padding: 15px !important;
+    padding-left: 0px !important;
+    border-left: none !important;
+    color: var(--dark-text) !important;
+}
+
+.searchBarContainer > button > i {
+    color: var(--light-text);
+    font-size: 32px;
+}
+
+.searchBarContainer > button {
+    padding-left: 5px !important;
+    border-radius: 0px 30px 30px 0px !important;
+    background-color: var(--bg);
+    transform: scale(-1, 1);
+}
+
+.iconButton{
+    background-color: var(--dark-text);
+    border: none;
+    color: var(--bg);
+    border-radius: 30px !important;
+    font-size: 42px;
+    font-weight: bold;
+    display: flex;
+    align-content: center;
+    height: 100%;
+    width: 56px;
+    align-items: center;
+    justify-content: center;
+}
+
+.formIconContainer{
+    height: 56px;
+    margin-left: 10px;
+}

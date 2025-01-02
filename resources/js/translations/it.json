@@ -19,5 +19,8 @@
     "CreateNews": "Crea una nuova Novità",
     "Create": "Crea",
     "Close": "Chiudi",
-    "ImportPhoto": "Importa la foto della Novità"
+    "ImportPhoto": "Importa la foto della Novità",
+    "Admin - Settings": "Admin - Impostazioni",
+    "Admin - Login": "Admin - Accedi",
+    "Admin - Home" : "Admin - Home"
 }

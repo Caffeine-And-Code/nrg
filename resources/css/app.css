@@ -50,13 +50,13 @@ body {
 
 .customInput {
     border-radius: 30px;
-    box-shadow: 0px 5px 10px var(--light-text);
+    box-shadow: 0px 5px 10px var(--light-text) !important;
     padding: 15px;
-    z-index: 999;
-    background-color: var(--bg);
-    color: var(--light-text);
-    font-family: "Mazzard Soft H Regular";
-    border: 1px solid var(--stroke);
+    z-index: 10;
+    background-color: var(--bg) !important;
+    color: var(--light-text) !important;
+    font-family: "Mazzard Soft H Regular" !important;
+    border: 1px solid var(--stroke) !important;
 }
 
 .customInput:focus {
@@ -82,7 +82,7 @@ body {
 .customButton {
     border-radius: 30px !important;
     padding: 15px !important;
-    background-color: var(--light-text) !important;
+    background-color: var(--dark-text) !important;
     color: var(--bg) !important;
     font-size: 2rem !important;
     font-family: "Mazzard Soft H Regular" !important;
@@ -261,4 +261,8 @@ body {
 .cancelButton:hover, .createButton:hover {
     background-color: var(--dark) !important;
     color: var(--bg) !important;
+}
+
+.fullWidth{
+    width: 100% !important;
 }
