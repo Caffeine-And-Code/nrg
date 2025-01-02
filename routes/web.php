@@ -5,6 +5,7 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /* Client Routes */
@@ -31,3 +32,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
 
 Route::get('/translations', [LangController::class, 'getTranslations'])->name('translations');
 Route::post('/translations', [LangController::class, 'setLocale'])->name('setLocale');
+
+Route::get('/send-mail', function () {
+    Mail::raw('hello world', function ($message) {
+        $message->to('recipient@example.com')
+                ->subject('hi');
+    });
+
+    return 'Email sent successfully.';
+});

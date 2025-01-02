@@ -20,3 +20,25 @@ npm install # only the first time or when is added a new package to the package.
 ./vendor/bin/sail artisan migrate
 npm run dev
 ```
+
+## If you have not php installed or updated
+```bash
+# go to project folder
+cd path/to/project
+
+# run composer up in order to build container
+docker compose up -d
+
+# open laravel container bash
+docker exec -it nrg-laravel.test-1 bash
+
+# install composer dependency directly inside docker container
+composer install
+
+php artisan 
+
+# exit container bash
+exit
+
+```
+Now if you are on linux/WSL/MacOs you can use the sail command to interact with container.  

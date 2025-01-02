@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function commands()
+    {
+        return $this->hasMany(Command::class, 'user_username', 'username');
+    }
 }
