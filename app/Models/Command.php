@@ -7,21 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Command extends Model
 {
+    /** @use HasFactory<\Database\Factories\CommandFactory> */
     use HasFactory;
 
-    protected $fillable = ['status', 'total', 'user_id', 'discount_id'];
+    protected $fillable = ['status', 'total', 'discountAmount', 'user_id'];
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
-    public function discount()
+    public function products()
     {
-        return $this->belongsTo(Discount::class);
+        return $this->belongsToMany(Product::class);
     }
 
-    public function deliveries()
+    public function delivery()
     {
         return $this->hasOne(Delivery::class);
     }

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Delivery extends Model
 {
+    /** @use HasFactory<\Database\Factories\DeliveryFactory> */
     use HasFactory;
 
-    protected $fillable = ['command_id'];
+    protected $fillable = ['class_number', 'command_id'];
 
     public function command()
     {
