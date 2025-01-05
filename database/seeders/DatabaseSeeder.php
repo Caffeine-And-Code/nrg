@@ -4,13 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\ClassModel;
 use App\Models\Category;
-use App\Models\Product;
-use App\Models\Bundle;
-use App\Models\Discount;
 use App\Models\Command;
 use App\Models\Delivery;
+use App\Models\News;
+use App\Models\Notification;
+use App\Models\Product;
+use App\Models\Review;
+use App\Models\Seller;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,98 +23,101 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            AdminSeeder::class,
+        // Create a Seller
+        $seller = Seller::create([
+            'email' => 'barowner@example.com',
+            'password' => Hash::make('password123'),
+            'fidelity_target' => 100.0,
+            'fidelity_price' => 10.0,
         ]);
 
-        // Create Users
+        // Create a User
         $user = User::create([
-            'name' => 'bartender123',
-            'email' => 'bartender@example.com',
-            'password' => bcrypt('password123')
+            'email' => 'customer@example.com',
+            'username' => 'john_doe',
+            'number' => '1234567890',
+            'password' => Hash::make('password123'),
+            'discount_portfolio' => 15,
         ]);
 
-        // Create Classes (e.g., Drink Types)
-        $alcoholic = ClassModel::create(['name' => 'Alcoholic']);
-        $nonAlcoholic = ClassModel::create(['name' => 'Non-Alcoholic']);
-
-        // Create Categories (e.g., Drink Categories)
-        $cocktails = Category::create(['name' => 'Cocktails']);
-        $softDrinks = Category::create(['name' => 'Soft Drinks']);
-        $beers = Category::create(['name' => 'Beers']);
+        // Create a Category
+        $category = Category::create([
+            'name' => 'Drinks',
+            'seller_id' => $seller->id,
+        ]);
 
         // Create Products
-        $margarita = Product::create([
-            'name' => 'Margarita',
-            'description' => 'A classic cocktail with tequila, lime, and triple sec.',
-            'price' => 12.50,
-            'available_on' => 1,
-            'image_path' => 'images/margarita.jpg',
-            'category_id' => $cocktails->id
-        ]);
-
-        $mojito = Product::create([
-            'name' => 'Mojito',
-            'description' => 'A refreshing cocktail with rum, mint, and lime.',
-            'price' => 10.00,
-            'available_on' => 1,
-            'image_path' => 'images/mojito.jpg',
-            'category_id' => $cocktails->id
-        ]);
-
-        $coke = Product::create([
-            'name' => 'Coca-Cola',
-            'description' => 'Classic soft drink.',
-            'price' => 2.50,
-            'available_on' => 1,
-            'image_path' => 'images/coke.jpg',
-            'category_id' => $softDrinks->id
-        ]);
-
-        $beer = Product::create([
-            'name' => 'Lager Beer',
-            'description' => 'A crisp and refreshing lager.',
-            'price' => 5.00,
-            'available_on' => 1,
+        $product1 = Product::create([
+            'name' => 'Beer',
+            'description' => 'A refreshing lager beer.',
             'image_path' => 'images/beer.jpg',
-            'category_id' => $beers->id
+            'price' => 3.5,
+            'discount' => 0.5,
+            'available' => 50,
+            'category_id' => $category->id,
         ]);
 
-        // Assign Classes to Products
-        $alcoholic->products()->attach([$margarita->id, $mojito->id, $beer->id]);
-        $nonAlcoholic->products()->attach($coke->id);
-
-        // Create Bundles
-        $partyPack = Bundle::create([
-            'name' => 'Party Pack',
-            'description' => 'Includes Margarita, Mojito, and a Beer.',
-            'price' => 25.00,
-            'image_path' => 'images/party_pack.jpg'
+        $product2 = Product::create([
+            'name' => 'Cocktail',
+            'description' => 'A classic mojito.',
+            'image_path' => 'images/cocktail.jpg',
+            'price' => 7.5,
+            'discount' => 1.0,
+            'available' => 30,
+            'category_id' => $category->id,
         ]);
 
-        $partyPack->products()->attach([$margarita->id, $mojito->id, $beer->id]);
-
-        // Create Discounts
-        $discount = Discount::create([
-            'enabled' => true,
-            'reusable' => true,
-            'used' => false,
-            'valid_since' => now(),
-            'percentage_amount' => 10.00,
-            'cumulative' => false
-        ]);
-
-        // Create Commands
+        // Create a Command
         $command = Command::create([
-            'status' => 1,
-            'total' => 25.00,
+            'status' => 1, // e.g., 1 for completed
+            'total' => 10,
+            'discount_amount' => 1.5,
             'user_id' => $user->id,
-            'discount_id' => $discount->id
         ]);
 
-        // Create Delivery
+        // Attach products to the command
+        $command->products()->attach([$product1->id, $product2->id]);
+
+        // Create a Delivery
         Delivery::create([
-            'command_id' => $command->id
+            'class_number' => 1,
+            'command_id' => $command->id,
+        ]);
+
+        // Create Reviews
+        Review::create([
+            'star' => 5,
+            'product_id' => $product1->id,
+            'user_id' => $user->id,
+        ]);
+
+        Review::create([
+            'star' => 4,
+            'product_id' => $product2->id,
+            'user_id' => $user->id,
+        ]);
+
+        // Create Notifications
+        Notification::create([
+            'send_date' => now(),
+            'title' => 'Order Confirmation',
+            'description' => 'Your order has been confirmed.',
+            'user_id' => $user->id,
+            'admin_id' => $seller->id,
+        ]);
+
+        Notification::create([
+            'send_date' => now(),
+            'title' => 'Discount Alert',
+            'description' => 'You have earned a discount on your next purchase!',
+            'user_id' => $user->id,
+            'admin_id' => $seller->id,
+        ]);
+
+        // Create News
+        News::create([
+            'seller_id' => $seller->id,
+            'path' => 'news/bar_promotions.pdf',
         ]);
     }
 }

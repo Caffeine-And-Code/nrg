@@ -10,16 +10,16 @@
     }
 @endphp
 
-@if($mode == 'admin')
+@if($mode == 'seller')
 <nav class="footerNavigation">
     <ul class="footerIconList">
         <li>
-            <a href="{{ route('admin.dashboard') }}" class="{{ Route::is('admin.dashboard') ? 'active' : ("admin.dashboard" == $previousRouteName ? 'oldRoute' : '' ) }}">
+            <a href="{{ route('seller.dashboard') }}" class="{{ Route::is('seller.dashboard') ? 'active' : ("seller.dashboard" == $previousRouteName ? 'oldRoute' : '' ) }}">
                 <img src="{{ Vite::asset('resources/imgs/Take_away.png') }}" alt="Dashboard" class="z-3">
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.settings') }}" class="{{ Route::is('admin.settings') ? 'active' : ("admin.settings" == $previousRouteName ? 'oldRoute' : '' ) }}">
+            <a href="{{ route('seller.settings') }}" class="{{ Route::is('seller.settings') ? 'active' : ("seller.settings" == $previousRouteName ? 'oldRoute' : '' ) }}">
                 <img src="{{ Vite::asset('resources/imgs/Settings.png') }}" alt="Settings" class="z-3">
             </a>
         </li>            

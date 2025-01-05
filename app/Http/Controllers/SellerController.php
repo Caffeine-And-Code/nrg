@@ -6,14 +6,14 @@ use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class SellerController extends Controller
 {
 
     public function login()
     {
-        if (Auth::guard('admin')->check())
-            return redirect()->route('admin.dashboard');
-        return view('admin.login');
+        if (Auth::guard('seller')->check())
+            return redirect()->route('seller.dashboard');
+        return view('seller.login');
     }
 
     public function authenticate(Request $request)
@@ -23,10 +23,10 @@ class AdminController extends Controller
             'password' => 'required|string',
         ]);
         
-        if (Auth::guard("admin")->attempt($credentials)) {
+        if (Auth::guard("seller")->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('seller.dashboard');
         }
 
         return back()->withErrors([
@@ -37,19 +37,23 @@ class AdminController extends Controller
     public function dashboard()
     {
         $news = News::all() ?? [];
-        return view('admin/home',['news' => $news]);
+        return view('seller/home',['news' => $news]);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        if(Auth::guard('admin')->check())
-            Auth::guard('admin')->logout();
+        if(Auth::guard('seller')->check())
+        {
+            Auth::guard('seller')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
 
-        return redirect()->route('admin.login');
+        return redirect()->route('seller.login');
     }
 
     public function settings()
     {
-        return view('admin.settings');
+        return view('seller.settings');
     }
 }

@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title translate="Admin - Settings"></title>
+    <title translate="seller - Settings"></title>
     @vite('/resources/js/themeManager.js')
     @vite('/resources/js/translations/translation.js')
     @vite('/resources/css/app.css')
@@ -56,6 +56,6 @@
             </ul>
         </section>
     </main>
-    <x-navigation-footer mode="admin"/> 
+    <x-navigation-footer mode="seller"/> 
 </body>
 </html>

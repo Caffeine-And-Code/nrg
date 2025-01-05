@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title translate="Admin - Login"></title>
+    <title translate="Seller - Login"></title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     @vite('/resources/js/themeManager.js')
@@ -20,7 +20,7 @@
             <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="col-sm-8 col-md-6 col-12" alt="bigLogo" id = "bigLogo" />
             <figcaption translate="AdminSection" class="title"></figcaption>
         </figure>
-        <form class="form-floating centerCol" action="{{ route('admin.authenticate') }}" method="post">
+        <form class="form-floating centerCol" action="{{ route('seller.authenticate') }}" method="post">
             @csrf
             <div class=" mb-4 centerCol ">
                 <input type="email" class="form-control customInput" name="email" id="email" placeholder="Email">

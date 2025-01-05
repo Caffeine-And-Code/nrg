@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title translate="Admin - Home"></title>
+    <title translate="seller - Home"></title>
     @vite('/resources/js/themeManager.js')
     @vite('/resources/js/translations/translation.js')
     @vite('/resources/css/app.css')
@@ -35,7 +35,7 @@
                   <h1 class="modal-title fs-5" id="staticBackdropLabel" translate="CreateNews"></h1>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="modal-footer modal-dialog-scrollable p-3 dialog" action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
+                <form class="modal-footer modal-dialog-scrollable p-3 dialog" action="{{ route('seller.news.store') }}" method="post" enctype="multipart/form-data">
                   @csrf
                   <h1 class="smallTitle mb-4" translate="ImportPhoto"></h1>
                   <div class="input-group mb-3">
@@ -52,10 +52,10 @@
       </section>
       <section>
         <h1 class="title textShadow" translate="Products"></h1>
-        <x-generic-search-bar searchRoute="" buttonRoute="" mode="admin"  />
+        <x-generic-search-bar searchRoute="" buttonRoute="" mode="seller"  />
       </section>
     </main>
     
-    <x-navigation-footer mode="admin" /> 
+    <x-navigation-footer mode="seller" /> 
   </body>
 </html>

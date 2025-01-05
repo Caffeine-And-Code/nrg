@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SellerController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\UserController;
@@ -12,16 +12,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'index'])->name('home');
 
-/* Admin Routes */
+/* Seller Routes */
 
-Route::prefix("admin")->name("admin.")->group(function () {
-    Route::get('/login', [AdminController::class, 'login'])->name('login');
-    Route::post('/login', [AdminController::class, 'authenticate'])->name('authenticate');
+Route::prefix("seller")->name("seller.")->group(function () {
+    Route::get('/login', [SellerController::class, 'login'])->name('login');
+    Route::post('/login', [SellerController::class, 'authenticate'])->name('authenticate');
     
-    Route::middleware('auth:admin')->group(function () {
-        Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
-        Route::get("/settings", [AdminController::class, 'settings'])->name('settings');
-        Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+    Route::middleware('auth:seller')->group(function () {
+        Route::get('/', [SellerController::class, 'dashboard'])->name('dashboard');
+        Route::get("/settings", [SellerController::class, 'settings'])->name('settings');
+        Route::get('/logout', [SellerController::class, 'logout'])->name('logout');
         Route::post('/news', [NewsController::class, 'store'])->name('news.store');
         Route::post('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
     });
@@ -29,7 +29,6 @@ Route::prefix("admin")->name("admin.")->group(function () {
 });
 
 /* Translations Route */
-
 Route::get('/translations', [LangController::class, 'getTranslations'])->name('translations');
 Route::post('/translations', [LangController::class, 'setLocale'])->name('setLocale');
 
