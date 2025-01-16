@@ -2,28 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProductFactory> */
-    use HasFactory;
+    protected $fillable = ['image', 'name', 'description', 'price', 'perc_discount', 'product_type_id'];
 
-    protected $fillable = ['name', 'description', 'image_path', 'price', 'discount', 'available', 'category_id'];
-
-    public function category()
+    public function productType()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(ProductType::class);
     }
 
-    public function reviews()
+    public function carts()
     {
-        return $this->hasMany(Review::class);
+        return $this->belongsToMany(User::class, 'products_in_carts')
+            ->withPivot('quantity')
+            ->withTimestamps();
     }
 
-    public function commands()
+    public function orders()
     {
-        return $this->belongsToMany(Command::class);
+        return $this->belongsToMany(Order::class, 'products_in_order')
+            ->withPivot('bought_price', 'bought_perc_discount', 'quantity')
+            ->withTimestamps();
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
     }
 }

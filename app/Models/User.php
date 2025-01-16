@@ -12,16 +12,17 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
 
-    protected $fillable = ['email', 'username', 'number', 'password', 'discountPortfolio'];
+    protected $fillable = ['email'
+        ,'username'
+        ,'password'
+        ,'last_access'
+        ,'total_spent'
+        ,'discount_portfolio'
+        ,'last_meter'
+    ];
 
-    public function commands()
-    {
-        return $this->hasMany(Command::class);
-    }
-
-    public function reviews()
-    {
-        return $this->hasMany(Review::class);
+    public function ratings(){
+        return $this->hasMany(Rating::class);
     }
 
     public function notifications()

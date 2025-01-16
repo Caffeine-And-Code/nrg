@@ -8,93 +8,140 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('sellers', function (Blueprint $table) {
+        // Create ADMINS table
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('email')->unique();
+            $table->string('username');
             $table->string('password');
-            $table->float('fidelity_target');
-            $table->float('fidelity_price');
+            $table->decimal('fm_prize', 10, 2)->default(0);
+            $table->decimal('fm_target', 10, 2)->default(0);
+            $table->decimal('delivery_cost', 10, 2)->default(0);
             $table->timestamps();
         });
 
-        Schema::create('categories', function (Blueprint $table) {
+        // Create CLASSROOMS table
+        Schema::create('classrooms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('seller_id')->constrained('sellers')->onDelete('cascade');
             $table->timestamps();
         });
 
+        // Create ORDER_STATUSES table
+        Schema::create('order_statuses', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        // Create ORDERS table
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->integer('number')->unique();
+            $table->timestamp('delivery_time')->nullable();
+            $table->decimal('used_portfolio', 10, 2)->default(0);
+            $table->decimal('delivery_cost', 10, 2)->default(0);
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('order_status_id')->constrained('order_statuses');
+            $table->foreignId('classroom_id')->nullable()->constrained('classrooms');
+            $table->timestamps();
+        });
+
+        // Create PRODUCT_TYPES table
+        Schema::create('product_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        // Create PRODUCTS table
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->nullable();
             $table->string('name');
-            $table->string('description');
-            $table->string('image_path');
-            $table->float('price');
-            $table->float('discount');
-            $table->integer('available');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->text('description');
+            $table->decimal('price', 10, 2);
+            $table->decimal('perc_discount', 5, 2)->nullable();
+            $table->foreignId('product_type_id')->constrained('product_types');
             $table->timestamps();
         });
 
-        Schema::create('commands', function (Blueprint $table) {
+        // Create CARTS table
+        Schema::create('products_in_carts', function (Blueprint $table) {
             $table->id();
-            $table->integer('status');
-            $table->integer('total');
-            $table->float('discount_amount');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('product_id')->constrained('products');
+            $table->integer('quantity');
             $table->timestamps();
         });
 
-        Schema::create('deliveries', function (Blueprint $table) {
+        // Create PRODUCT_IN_ORDER table
+        Schema::create('products_in_order', function (Blueprint $table) {
             $table->id();
-            $table->integer('class_number');
-            $table->foreignId('command_id')->constrained('commands')->onDelete('cascade');
+            $table->foreignId('order_id')->constrained('orders');
+            $table->foreignId('product_id')->constrained('products');
+            $table->decimal('bought_price', 10, 2);
+            $table->decimal('bought_perc_discount', 5, 2)->nullable();
+            $table->integer('quantity');
             $table->timestamps();
         });
 
-        Schema::create('reviews', function (Blueprint $table) {
+        // Create RATINGS table
+        Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->integer('star');
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('product_id')->constrained('products');
+            $table->integer('rating');
             $table->timestamps();
         });
 
+        // Create NOTIFICATIONS table
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('send_date');
             $table->string('title');
-            $table->string('description');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('admin_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->text('description');
+            $table->timestamp('datetime');
+            $table->foreignId('user_id')->nullable()->constrained('users');
+            $table->foreignId('admin_id')->nullable()->constrained('admins');
             $table->timestamps();
         });
 
+        // Create NEWS table
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('seller_id')->constrained('sellers')->onDelete('cascade');
-            $table->string('path');
+            $table->string('image')->nullable();
+            $table->foreignId("admin_id")->constrained('admins');
             $table->timestamps();
         });
 
-        Schema::create('command_product', function (Blueprint $table) {
+        // Create SPIN_WHEEL_ENTRIES table
+        Schema::create('spin_wheel_entries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('command_id')->constrained('commands')->onDelete('cascade');
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('text');
+            $table->decimal('prize', 10, 2);
+            $table->foreignId('admin_id')->constrained('admins');
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
-        Schema::dropIfExists('command_product');
-        Schema::dropIfExists('news');
-        Schema::dropIfExists('notifications');
-        Schema::dropIfExists('reviews');
-        Schema::dropIfExists('deliveries');
-        Schema::dropIfExists('commands');
+        Schema::dropIfExists('admins');
+        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('order_statuses');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('product_types');
         Schema::dropIfExists('products');
-        Schema::dropIfExists('categories');
-        Schema::dropIfExists('sellers');
+        Schema::dropIfExists('products_in_carts');
+        Schema::dropIfExists('products_in_order');
+        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('news');
+        Schema::dropIfExists('spin_wheel_entries');
     }
 };

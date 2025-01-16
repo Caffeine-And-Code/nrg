@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('username');
-            $table->string('number');
-            $table->integer('discount_portfolio');
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->timestamp('last_access')->nullable();
+            $table->decimal('total_spent', 10, 2)->default(0);
+            $table->decimal('discount_portfolio', 10, 2)->default(0);
+            $table->integer('last_meter')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class SpinWheelEntry extends Model
 {
-    protected $fillable = ['image', 'admin_id'];
+    protected $fillable = ['text', 'prize', 'admin_id'];
 
     public function admin()
     {
