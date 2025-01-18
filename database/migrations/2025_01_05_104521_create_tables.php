@@ -131,17 +131,17 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
-        Schema::dropIfExists('classrooms');
-        Schema::dropIfExists('order_statuses');
-        Schema::dropIfExists('orders');
-        Schema::dropIfExists('product_types');
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('news');
         Schema::dropIfExists('products_in_carts');
         Schema::dropIfExists('products_in_order');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('order_statuses');
         Schema::dropIfExists('ratings');
+        Schema::dropIfExists('products');
+        Schema::dropIfExists('product_types');
         Schema::dropIfExists('notifications');
-        Schema::dropIfExists('news');
         Schema::dropIfExists('spin_wheel_entries');
+        Schema::dropIfExists('admins');
     }
 };

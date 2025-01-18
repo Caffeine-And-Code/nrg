@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title translate="seller - Settings"></title>
+    <title translate="admin - Settings"></title>
     @vite('/resources/js/themeManager.js')
     @vite('/resources/js/translations/translation.js')
     @vite('/resources/css/app.css')
@@ -15,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <x-nav-bar title="Settings" />
     <main class="container mt-5 main">
@@ -37,15 +39,15 @@
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1 smallTitle" translate="Translation"></h5>
                         <div class="btn-group radioGroup" role="group" aria-label="Language changer">
-                            <input type="radio" class="btn-check" name="btnradio"  autocomplete="off">
-                            @if (session('locale') == "it")
+                            <input type="radio" class="btn-check" name="btnradio" autocomplete="off">
+                            @if (session('locale') == 'it')
                                 <label class="btn selected" for="IT" translate="Italian" id="IT"></label>
                             @else
                                 <label class="btn" for="IT" translate="Italian" id="IT"></label>
                             @endif
 
-                            <input type="radio" class="btn-check" name="btnradio"  autocomplete="off">
-                            @if (session('locale') == "en")
+                            <input type="radio" class="btn-check" name="btnradio" autocomplete="off">
+                            @if (session('locale') == 'en')
                                 <label class="btn selected" for="EN" translate="English" id="EN"></label>
                             @else
                                 <label class="btn" for="EN" translate="English" id="EN"></label>
@@ -56,6 +58,7 @@
             </ul>
         </section>
     </main>
-    <x-navigation-footer mode="seller"/> 
+    <x-navigation-footer mode="admin" />
 </body>
+
 </html>
