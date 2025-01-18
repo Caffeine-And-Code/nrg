@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class User
@@ -21,11 +22,34 @@ class User extends Authenticatable
 {
     use HasFactory;
 
+//    public static function boot(): void
+//    {
+//        self::creating(function (User $user){
+//            $user->setPassword(Hash::make($user->getPassword()));
+//        });
+//    }
+
+    protected $fillable = [
+        'email',
+        'username',
+        'password',
+        'last_access',
+        'total_spent',
+        'discount_portfolio',
+        'last_meter',
+    ];
+
     protected $casts = [
         'last_access' => 'datetime',
         'total_spent' => 'float',
         'discount_portfolio' => 'float',
         'last_meter' => 'integer',
+    ];
+
+    protected $attributes = [
+        'total_spent' => 0,
+        'discount_portfolio' => 0,
+        'last_meter' => 0
     ];
 
     public function orders()
