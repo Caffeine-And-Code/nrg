@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -28,7 +28,7 @@ class NewsController extends Controller
             ->with('success','News created successfully.');
     }
 
-    public function destroy($id)
+    public function destroy($id): \Illuminate\Http\RedirectResponse
     {
         $news = News::find($id);
         // Delete the image from the public folder
@@ -36,7 +36,7 @@ class NewsController extends Controller
         if (file_exists($image_path)) {
             unlink($image_path);
         }
-        
+
         $news->delete();
 
         return back()

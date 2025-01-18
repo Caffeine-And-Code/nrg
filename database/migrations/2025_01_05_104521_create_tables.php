@@ -109,7 +109,7 @@ return new class extends Migration
         // Create NEWS table
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
+            $table->string('image_path');
             $table->foreignId("admin_id")->constrained('admins');
             $table->timestamps();
         });

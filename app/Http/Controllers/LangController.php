@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class LangController extends Controller
 {
-    public function getTranslations()
+    public function getTranslations(): \Illuminate\Http\JsonResponse
     {
         $locale = session('locale', App::getLocale()); // Get the current locale
         $path = resource_path("js/translations/{$locale}.json");
@@ -20,13 +20,13 @@ class LangController extends Controller
         return response()->json([]);
     }
 
-    public function setLocale(Request $request)
+    public function setLocale(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'locale' => 'required|string|in:en,it'
         ]);
-        App::setLocale($request->locale);
-        session(['locale' => $request->locale]);  // Salva il locale nella sessione
+        App::setLocale($request->getLocale());
+        session(['locale' => $request->getLocale()]);  // Save locale in session
         return redirect()->back();
     }
 }
