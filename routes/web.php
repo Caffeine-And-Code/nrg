@@ -10,8 +10,19 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /* Client Routes */
-
-Route::get('/', [UserController::class, 'index'])->name('home');
+Route::name("user.")->group(function () {
+    Route::middleware("guest")->group(function () {
+        Route::get("login", [\App\Http\Controllers\LoginController::class, "loginPage"])->name('login');
+        Route::post("login", [\App\Http\Controllers\LoginController::class, "authenticate"])->name('authenticate');
+        Route::get("register", [\App\Http\Controllers\LoginController::class, "registerPage"])->name('register');
+        Route::post("register", [\App\Http\Controllers\LoginController::class, "register"])->name('create_user');
+    });
+    Route::middleware(['auth:user'])->group(function () {
+        //ADD HERE LOGGED PROTECTED ROUTES
+        Route::post("logout", [\App\Http\Controllers\LoginController::class, "logout"])->name('logout');
+        Route::get('/', [UserController::class, 'index'])->name('home');
+    });
+});
 
 /* Admin Routes */
 
@@ -34,12 +45,3 @@ Route::prefix("admin")->name("admin.")->group(function () {
 /* Translations Route */
 Route::get('/translations', [LangController::class, 'getTranslations'])->name('translations');
 Route::post('/translations', [LangController::class, 'setLocale'])->name('setLocale');
-
-Route::get('/send-mail', function () {
-    Mail::raw('hello world', function ($message) {
-        $message->to('recipient@example.com')
-            ->subject('hi');
-    });
-
-    return 'Email sent successfully.';
-});
