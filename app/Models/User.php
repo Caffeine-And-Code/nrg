@@ -164,17 +164,18 @@ class User extends Authenticatable
         return $this;
     }
 
-    public function toSearchableArray(): array
-    {
-        return [
-            'id' => $this->getId(),
-            'email' => $this->getEmail(),
-            'username' => $this->getUsername(),
-            'total_spent' => $this->getTotalSpent(),
-            'discount_portfolio' => $this->getDiscountPortfolio(),
-            'last_meter' => $this->getLastMeter(),
-        ];
-    }
+    // uncomment this function to enable search functionality with MeiliSearch
+    // public function toSearchableArray(): array
+    // {
+    //     return [
+    //         'id' => $this->getId(),
+    //         'email' => $this->getEmail(),
+    //         'username' => $this->getUsername(),
+    //         'total_spent' => $this->getTotalSpent(),
+    //         'discount_portfolio' => $this->getDiscountPortfolio(),
+    //         'last_meter' => $this->getLastMeter(),
+    //     ];
+    // }
 
 
 }
