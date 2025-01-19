@@ -13,3 +13,15 @@
 .noMarginLeftInput{
     padding-left: 0px !important;
 }
+
+select > * {
+    color: var(--dark-text);
+    background-color: var(--bg);
+    font-family: 'Mazzard Soft H Regular';
+}
+
+select > *:hover, select > *:focus {
+    color: var(--bg);
+    background-color: var(--dark-text);
+    font-family: 'Mazzard Soft H Regular';
+}

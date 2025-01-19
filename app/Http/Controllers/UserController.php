@@ -26,6 +26,25 @@ class UserController extends Controller
     }
 
     public function search(Request $request){
+        $query = $request->get('query');
+        $users = User::search($query)->get();
+        return view('admin.settings', compact('users'));
+    }
 
+    public function edit(Request $request){
+        $request->validate([
+            'id' => 'required|exists:users,id'
+        ]);
+        $user = User::query()->find($request->get('id'));
+        return view("admin.editUsersMobile", compact('user'));
+    }
+
+    public function delete(Request $request){
+        $request->validate([
+            'id' => 'required|exists:users,id'
+        ]);
+        $user = User::query()->find($request->get('id'));
+        $user->delete();
+        return redirect()->back();
     }
 }

@@ -48,7 +48,7 @@ class NewsController extends Controller
 
     public function edit(): \Illuminate\Contracts\View\View
     {
-        $news = News::all();
+        $news = News::all()->where('admin_id', auth()->guard('admin')->user()->id);
         return view('admin.editNewsMobile', compact('news'));
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
 
 /**
  * Class Product
@@ -19,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+    use Searchable;
 
     protected $fillable = [
         'image',
@@ -27,6 +30,7 @@ class Product extends Model
         'price',
         'perc_discount',
         'product_type_id',
+        'isVisible',
     ];
 
     protected $casts = [
@@ -36,6 +40,7 @@ class Product extends Model
         'price' => 'float',
         'perc_discount' => 'float',
         'product_type_id' => 'integer',
+        'isVisible' => 'boolean',
     ];
 
     public function productType()
@@ -139,5 +144,15 @@ class Product extends Model
         return $this;
     }
 
-
+    // configuration for meilisearch
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'perc_discount' => $this->perc_discount,
+        ];
+    }
 }

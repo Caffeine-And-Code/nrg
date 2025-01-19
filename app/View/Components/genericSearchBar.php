@@ -16,10 +16,10 @@ class genericSearchBar extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($searchRoute, $buttonRoute , $mode)
+    public function __construct($searchRoute , $mode,$buttonRoute=null)
     {
         $this->searchRoute = $searchRoute;
-
+        $this->buttonRoute = $buttonRoute;
         if ($mode === 'admin' || $mode === 'client') {
             $this->mode = $mode;
         } else {

@@ -31,14 +31,26 @@ Route::prefix("admin")->name("admin.")->group(function () {
     Route::post('/login', [AdminController::class, 'authenticate'])->name('authenticate');
 
     Route::middleware('auth:admin')->group(function () {
+        Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+        Route::post('/destroyMe', [AdminController::class, 'destroy'])->name('destroyMe');
+        //views
         Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get("/settings", [AdminController::class, 'settings'])->name('settings');
-        Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+        //news
         Route::post('/news', [NewsController::class, 'store'])->name('news.store');
         Route::post('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
         Route::get("/editNews",[NewsController::class, 'edit'])->name('news.edit');
+        //products
         Route::get("/product/add",[ProductController::class, 'addProductView'])->name('product.add');
         Route::post("/product/add",[ProductController::class, 'addProduct'])->name('product.add');
+        Route::post("/product/delete",[ProductController::class, 'destroy'])->name('product.delete');
+        Route::post("/product/toggleVisibility",[ProductController::class, 'toggleVisibility'])->name('product.toggleVisibility');
+        Route::post("/product/edit",[ProductController::class, 'editProduct'])->name('product.edit');
+        Route::get("/product/search",[ProductController::class, 'search'])->name('product.search');
+        //users
+        Route::get("/users/search",[UserController::class, 'search'])->name('users.search');
+        Route::get("/user/edit",[UserController::class, 'edit'])->name('user.edit');
+        Route::get("/user/delete",[UserController::class, 'delete'])->name('user.delete');
     });
 });
 

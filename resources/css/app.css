@@ -351,3 +351,23 @@ html {
 textarea{
     resize: none;
 }
+
+.normalTextBold{
+    font-family: 'Mazzard Soft H Bold';
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.normalTextRegular{
+    font-family: 'Mazzard Soft H Regular';
+    font-size: 18px;
+    color: var(--dark);
+}
+
+.btn:active,.btn:focus{
+    border-color: transparent !important;
+    color: var(--bg) !important;
+    background-color: var(--dark-text) !important;
+}
+

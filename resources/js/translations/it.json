@@ -10,7 +10,7 @@
     "Total": "Totale",
     "AdminSection": "Sezione Admin",
     "Login": "Accedi",
-    "ThemeChanger": "Cambia il tema dell'applicazione",
+    "ThemeChanger": "Cambia il tema del sito",
     "LIGHT": "Chiaro",
     "DARK": "Scuro",
     "Translation": "Scegli la lingua",
@@ -30,5 +30,11 @@
     "Confirm": "Conferma",
     "Admin - Create a Product": "Admin - Crea un Prodotto",
     "Add/Edit a Product": "Aggiungi/Modifica un Prodotto",
-    "Choose a Type": "Scegli un Tipo"
+    "Choose a Type": "Scegli un Tipo",
+    "noTextForProducts": "Non ci sono prodotti da mostrare con il nome appena fornito",
+    "Exit": "Esci",
+    "RemoveAdmin":"Elimina Account Admin",
+    "Delete": "Elimina",
+    "admin - Settings": "Admin - Impostazioni",
+    "Admin - Edit User": "Admin - Modifica Utente"
 }

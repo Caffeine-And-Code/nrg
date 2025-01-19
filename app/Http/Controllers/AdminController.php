@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,8 +39,7 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $news = News::all() ?? [];
-        return view('admin/home', ['news' => $news]);
+        return view('admin/home');
     }
 
     public function logout(Request $request)
@@ -56,6 +56,21 @@ class AdminController extends Controller
     public function settings()
     {
         $products = Product::all();
-        return view('admin.settings',['products' => $products]);
+        $users = User::all();
+        return view('admin.settings',['products' => $products, 'users' => $users]);
+    }
+
+    public function destroy(Request $request)
+    {
+        // destroy this admin account and all its data, then logout
+        Auth::guard('admin')->user()->news()->delete();
+        Auth::guard('admin')->user()->notifications()->delete();
+        Auth::guard('admin')->user()->spinWheelEntries()->delete();
+        
+        Auth::guard('admin')->user()->delete();
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.login');
     }
 }

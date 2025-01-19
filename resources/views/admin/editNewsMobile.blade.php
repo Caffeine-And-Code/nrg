@@ -20,10 +20,10 @@
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
         />
     </head>
-    <body class="fullHeight">
+    <body>
         <x-nav-bar title="Settings" />
 
-        <main class="container mt-5 main mb-5">
+        <main class="fullHeight container mt-5 main mb-5">
             <x-news-displayer :news="$news" />
         </main>
 

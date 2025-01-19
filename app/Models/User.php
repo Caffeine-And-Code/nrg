@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Scout\Searchable;
 
 /**
  * Class User
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Hash;
 class User extends Authenticatable
 {
     use HasFactory;
+    use Searchable;
 
 //    public static function boot(): void
 //    {
@@ -160,6 +162,18 @@ class User extends Authenticatable
     {
         $this->last_meter = $last_meter;
         return $this;
+    }
+
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'email' => $this->getEmail(),
+            'username' => $this->getUsername(),
+            'total_spent' => $this->getTotalSpent(),
+            'discount_portfolio' => $this->getDiscountPortfolio(),
+            'last_meter' => $this->getLastMeter(),
+        ];
     }
 
 

@@ -37,5 +37,23 @@
                 </div>
             </div>
         </li>
+        <li class="list-group-item pb-4 pt-4">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 smallTitle" translate="Logout"></h5>
+                <form action="{{ route('admin.logout') }}" method="get">
+                    @csrf
+                    <button type="submit" class="btn btn-danger" translate="Exit"></button>
+                </form>
+            </div>
+        </li>
+        <li class="list-group-item pb-4 pt-4">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 smallTitle" translate="RemoveAdmin"></h5>
+                <form action="{{ route('admin.destroyMe') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-danger" translate="Delete"></button>
+                </form>
+            </div>
+        </li>
     </ul>
 </section>

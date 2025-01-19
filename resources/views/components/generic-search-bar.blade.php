@@ -4,11 +4,12 @@
     rel="stylesheet"
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
 />
-<div class="centerRow fullWidth mb-4">
+<div class="centerRow container mb-4 ">
     <form
         class="form-floating fullWidth"
-        action="{{ $searchRoute }}"
+        action="{{ route($searchRoute) }}"
         method="get"
+        class="col-10"
     >
         @csrf
         <div class="input-group searchBarContainer inputContainerShadow">
@@ -23,14 +24,16 @@
             />
         </div>
     </form>
-    <form
+    @if ($mode == 'admin' && $buttonRoute != null)
+        <form
         action="{{ $buttonRoute }}"
         method="get"
-        class="formIconContainer col-1"
-    >
+        class="formIconContainer col-1 centerRow"
+        >
         @csrf
         <button type="submit" class="iconButton">
             <i class="la la-plus"></i>
         </button>
     </form>
+    @endif
 </div>
