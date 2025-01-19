@@ -16,6 +16,12 @@ class News extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'image_path',
+        'admin_id',
+        ""
+    ];
+
     protected $casts = [
         'image_path' => 'string',
         'admin_id' => 'integer',

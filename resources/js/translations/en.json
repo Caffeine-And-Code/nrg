@@ -19,5 +19,11 @@
     "CreateNews": "Create a News",
     "Create" : "Create",
     "Close" : "Close",
-    "ImportPhoto" : "Import a Photo for the News"
+    "ImportPhoto" : "Import one or more Photos, each photo will be turned into a News",
+    "News_Editor" : "News Editor",
+    "edit_voices" : "Edit Voices",
+    "Admin_EditNews" : "Admin - Edit News",
+    "Back" : "Back",
+    "Confirm" : "Confirm",
+    "Admin - Create a Product" : "Admin - Create a Product"
 }

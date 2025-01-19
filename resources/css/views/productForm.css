@@ -1,0 +1,23 @@
+.ImagePreview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 30px;
+    display: flex;
+}
+
+.cover{
+    background-color: var(--dark-text);
+}
+
+.slideToLeft{
+    margin-left: -5px;
+    padding-right: 10px;
+    width: 45px;
+    height: 30px;
+    padding-left: 10px;
+}
+
+.noMarginLeftInput{
+    padding-left: 0px !important;
+}

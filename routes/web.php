@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
@@ -24,6 +25,9 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::post('/news', [NewsController::class, 'store'])->name('news.store');
         Route::post('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+        Route::get("/editNews",[NewsController::class, 'edit'])->name('news.edit');
+        Route::get("/product/add",[ProductController::class, 'addProductView'])->name('product.add');
+        Route::post("/product/add",[ProductController::class, 'addProduct'])->name('product.add');
     });
 });
 

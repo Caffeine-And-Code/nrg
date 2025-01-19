@@ -19,8 +19,16 @@
     "CreateNews": "Crea una nuova Novità",
     "Create": "Crea",
     "Close": "Chiudi",
-    "ImportPhoto": "Importa la foto della Novità",
+    "ImportPhoto": "Importa una o più foto, ogni foto verrà trasformata in una Novità",
     "Admin - Settings": "Admin - Impostazioni",
     "Admin - Login": "Admin - Accedi",
-    "Admin - Home" : "Admin - Home"
+    "Admin - Home" : "Admin - Home",
+    "News_Editor": "Editor delle Novità",
+    "edit_voices": "Modifica Voci",
+    "Admin_EditNews": "Admin - Modifica Novità",
+    "Back": "Indietro",
+    "Confirm": "Conferma",
+    "Admin - Create a Product": "Admin - Crea un Prodotto",
+    "Add/Edit a Product": "Aggiungi/Modifica un Prodotto",
+    "Choose a Type": "Scegli un Tipo"
 }

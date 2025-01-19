@@ -14,6 +14,7 @@
     @vite('/resources/js/adminJs/passwordBtnHandler.js')
     @vite('/resources/js/translations/translation.js')
     @vite('/resources/css/responsive.css')
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
 </head>
 
 <body>
@@ -25,14 +26,19 @@
         </figure>
         <form class="form-floating centerCol" action="{{ route('admin.authenticate') }}" method="post">
             @csrf
-            <div class=" mb-4 centerCol ">
-                <input type="email" class="form-control customInput" name="email" id="email"
-                    placeholder="Email">
+            <div class="input-group mb-4 inputContainerShadow align-items-center">
+                <span class="btn col-md-1 col-sm-2 col-2 ">
+                    <i class="las la-user-circle icon"></i>
+                </span>
+                <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="email" name="email" placeholder="Email" >
             </div>
-            <div class="input-group mb-5 ">
+            <div class="input-group mb-5 inputContainerShadow align-items-center">
+                <span class="btn col-md-1 col-sm-2 col-2 ">
+                    <i class="las la-lock icon"></i>
+                </span>
                 <input class="form-control col-sm-10 col-md-11 col-10 customInput" type="password" name="password"
                     id="password" placeholder="Password">
-                <button type="button" class="btn iconContainer col-md-1 col-sm-2 col-2" id="togglePassword">
+                <button type="button" class="btn iconContainer col-md-1 col-sm-2 col-2 passToggle" id="togglePassword">
                     <svg class="eye" id="eye" xmlns="http://www.w3.org/2000/svg" height="1em"
                         viewBox="0 0 576 512">
                         <path

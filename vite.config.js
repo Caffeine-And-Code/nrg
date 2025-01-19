@@ -12,6 +12,7 @@ export default defineConfig({
                 "resources/js/adminJs/footerNavigationManager.js",
                 "resources/js/adminJs/passwordBtnHandler.js",
                 "resources/js/themeManager.js",
+                "resources/js/adminJs/newsCreateHandler.js",
             ],
             refresh: true,
         }),

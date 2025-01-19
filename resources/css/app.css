@@ -25,6 +25,19 @@
 
 body {
     background-color: var(--bg) !important;
+    margin: 0;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+html {
+    height: 100%;
+}
+
+/* for the main element  */
+.fullHeight {
+    height: calc(100vh - 250px);
+    overflow-y: scroll;
 }
 
 .title {
@@ -48,9 +61,14 @@ body {
     width: 100%;
 }
 
-.customInput {
+.inputContainerShadow{
     border-radius: 30px;
     box-shadow: 0px 5px 10px var(--light-text) !important;
+}
+
+.customInput {
+    border-radius: 30px;
+    border-color: transparent !important;
     padding: 15px;
     z-index: 10;
     background-color: var(--bg) !important;
@@ -109,6 +127,11 @@ body {
     border-bottom-right-radius: 30px !important;
     border: none;
     box-shadow: 0px 5px 10px var(--light-text);
+}
+
+.icon{
+    color: var(--stroke);
+    font-size: 30px;
 }
 
 .eye {
@@ -258,11 +281,57 @@ body {
     color: var(--bg) !important;
 }
 
-.cancelButton:hover, .createButton:hover {
+.neutralButton {
+    background-color: var(--bg) !important;
+    border: 2px solid var(--dark) !important;
+    color: var(--dark-text) !important;
+}
+
+.cancelButton:hover, .createButton:hover , .neutralButton:hover {
     background-color: var(--dark) !important;
     color: var(--bg) !important;
 }
 
 .fullWidth{
     width: 100% !important;
+}
+
+.input-group>.form-control, .input-group>.form-floating, .input-group>.form-select{
+    border-color: transparent !important;
+}
+
+.input-group>.form-control:focus, .input-group>.form-floating:focus, .input-group>.form-select:focus{
+    border-color: transparent !important;
+
+}
+
+.input-group-text{
+    border-color: transparent !important;
+}
+
+.passToggle{
+    height: 56px;
+}
+
+.Active{
+    font-size: 40px;
+    color: var(--dark) !important;
+}
+
+.Bad{
+    font-size: 40px;
+    color: red !important;
+}
+
+.tallInput{
+    height: 112px;
+}
+
+.input-group{
+    position: relative;
+    display: flex
+;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
 }

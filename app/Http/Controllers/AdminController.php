@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,6 +55,7 @@ class AdminController extends Controller
 
     public function settings()
     {
-        return view('admin.settings');
+        $products = Product::all();
+        return view('admin.settings',['products' => $products]);
     }
 }
