@@ -19,15 +19,22 @@
     <p>Your last orders</p>
     <ul>
     @foreach($orders as $order)
-        <li>{{$order->getNumber()}} | {{$order->getTotal()}}</li>
+        <li>{{$order->getNumber()}} | € {{$order->getTotal()}} | <a href="{{route('user.order_details', ['order_id' => $order->getId()])}}">View</a>
+        </li>
     @endforeach
     </ul>
 
+    <p>Fidelity Meter</p>
+    <p>Actual Spent: {{$actualSpent}}</p>
+    <p>Fidelity Meter target: {{$fmTarget}}</p>
+
     <p>Your profile</p>
-    <form action="{{route('user.logout')}}" method="post">
+    <form action="{{route('user.profile_edit')}}" method="post">
         @csrf
         <input type="text" value="{{$user->getUsername()}}" name="username" placeholder="username">
         <input type="email" value="{{$user->getEmail()}}" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <input type="password" name="password_confirmation" placeholder="password confirmation">
         <button>Edit</button>
     </form>
 

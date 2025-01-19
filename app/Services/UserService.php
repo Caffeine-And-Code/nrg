@@ -12,15 +12,22 @@ use Illuminate\Support\Facades\DB;
 
 class UserService
 {
-    public function addProductToCart(User $user, Product $product){
+    public function addProductToCart(User $user, Product $product, int $quantity = 0): void
+    {
         $productInCartQuery = $user->cartProducts()->where("product_id", $product->id);
         if($productInCartQuery->count() > 0){
-            $quantity = $productInCartQuery->get(["quantity"]);
-            $productInCartQuery->update(["quantity" => $quantity[0]->quantity + 1]);
+            $quantity = $quantity <= 0 ? $productInCartQuery->get(["quantity"])[0]->quantity  + 1 : $quantity;
+            $productInCartQuery->update(["quantity" => $quantity]);
         }
         else {
-            $user->cartProducts()->attach($product->id, ["quantity" => 1]);
+            $quantity = $quantity <= 0 ? 1 : $quantity;
+            $user->cartProducts()->attach($product->id, ["quantity" => $quantity]);
         }
+    }
+
+    public function removeProductFromCart(User $user, Product $product): void
+    {
+        $user->cartProducts()->detach($product->id);
     }
 
     public function canCreateOrder(User $user): bool{

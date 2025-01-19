@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -20,12 +20,16 @@ Route::name("user.")->group(function () {
     Route::middleware(['auth:user'])->group(function () {
         //ADD HERE LOGGED PROTECTED ROUTES
         Route::post("logout", [\App\Http\Controllers\LoginController::class, "logout"])->name('logout');
-        Route::get('/', [UserController::class, 'index'])->name('home');
-        Route::get("search", [\App\Http\Controllers\UserController::class, "search"])->name('search');
-        Route::post("checkout/products/add", [\App\Http\Controllers\CheckoutController::class, "addProductToCart"])->name('add_product_to_cart');
+        Route::get('/', [DashboardController::class, 'index'])->name('home');
+        Route::get("search", [\App\Http\Controllers\DashboardController::class, "search"])->name('search');
+        Route::post("checkout/products/add", [\App\Http\Controllers\CheckoutController::class, "editProductCart"])->name('add_product_to_cart');
         Route::get("checkout", [\App\Http\Controllers\CheckoutController::class, "index"])->name('checkout');
         Route::post("checkout", [\App\Http\Controllers\CheckoutController::class, "checkout"])->name('post_checkout');
         Route::get("profile", [\App\Http\Controllers\ProfileController::class, "index"])->name('profile');
+        Route::post("profile/edit", [\App\Http\Controllers\ProfileController::class, "editUser"])->name('profile_edit');
+        Route::get("profile", [\App\Http\Controllers\ProfileController::class, "index"])->name('profile');
+        Route::get("profile/order", [\App\Http\Controllers\OrderController::class, "show"])->name('order_details');
+        Route::get("notification", [\App\Http\Controllers\NotificationController::class, "show"])->name('notification');
     });
 });
 

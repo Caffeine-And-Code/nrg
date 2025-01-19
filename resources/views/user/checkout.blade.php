@@ -12,8 +12,17 @@
             <div>{{ $error }}</div>
         @endforeach
     @endif
+    @if(isset($success))
+        <div>{{$success}}</div>
+    @endif
     @foreach($products as $product)
         <li>{{$product->getName()}} | {{$product->getCartUsers()->first()->quantity}}
+            <form action="{{route("user.add_product_to_cart")}}" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{$product->getId()}}">
+                <input type="hidden" name="quantity" value="0">
+                <button>Remove</button>
+            </form>
         </li>
     @endforeach
     <div>Shipping: €{{$shippingCost}}</div>

@@ -19,16 +19,23 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
-    public function addProductToCart(Request $request, UserService $userService){
+    public function editProductCart(Request $request, UserService $userService){
         $formData = $request->validate([
-            "product_id" => "required"
+            "product_id" => "required",
+            "quantity" => "numeric|min:0"
         ]);
 
         $product = Product::query()->find($formData['product_id']);
+        $quantity = intval($formData['quantity']) ?? -1;
         /** @var User $user */
         $user = auth()->user();
-        $userService->addProductToCart($user, $product);
-        //return response()->json(["status" => "ok"]);
+        if($quantity === 0){
+            $userService->removeProductFromCart($user, $product);
+        }
+        else{
+            $userService->addProductToCart($user, $product, $quantity);
+        }
+
         return redirect()->back()->with('success', 'Product added to cart');
     }
     public function index(ProductService $productService, AdminService $adminService)
@@ -39,7 +46,8 @@ class CheckoutController extends Controller
         $shippingCost = $adminService->getDeliveryCost();
         $total = $productService->getCheckoutTotalPrice($user);
         $classrooms = Classroom::query()->get();
-        return view('user.checkout', compact('products', 'shippingCost', 'total', 'classrooms'));
+        $success = session()->get('success');
+        return view('user.checkout', compact('products', 'shippingCost', 'total', 'classrooms', 'success'));
     }
 
     public function checkout(Request $request, OrderService $orderService, AdminService $adminService, UserService $userService){

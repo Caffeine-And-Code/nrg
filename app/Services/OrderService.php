@@ -13,9 +13,9 @@ class OrderService
         return Order::query()->max("number") + 1;
     }
 
-    public function getLastOrders(User $user, int $number = 3): \Illuminate\Database\Eloquent\Collection
+    public function getOrders(User $user): \Illuminate\Database\Eloquent\Collection
     {
-        return Order::query()->orderBy('id', 'desc')->where("user_id", $user->getId())->take($number)->get();
+        return Order::query()->orderBy('id', 'desc')->where("user_id", $user->getId())->get();
     }
 
 }

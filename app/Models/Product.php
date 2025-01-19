@@ -5,6 +5,7 @@ namespace App\Models;
 use App\QueryBuilder\ProductQueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class Product
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $price
  * @property float|null $perc_discount
  * @property int $product_type_id
+ * @property Collection|null cartUsers
+ * @property Collection|null ratings
  *
  * @method static ProductQueryBuilder query()
  */
@@ -138,8 +141,14 @@ class Product extends Model
         return $this;
     }
 
-    public function getCartUsers(){
+    public function getCartUsers(): ?Collection
+    {
         return $this->cartUsers;
+    }
+
+    public function getRatings(): ?Collection
+    {
+        return $this->ratings;
     }
 
 

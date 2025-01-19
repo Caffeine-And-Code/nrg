@@ -10,7 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class DashboardController extends Controller
 {
     public function index()
     {
@@ -28,13 +28,22 @@ class UserController extends Controller
 
     public function search(Request $request){
         $formData = $request->validate([
-            'search' => ['required', 'string', 'min:2']
+            'search' => ['required', 'string', 'min:2'],
+            'product_type' => 'nullable|exists:product_types,id'
         ]);
 
+        /** @var User $user */
+        $user = auth()->user();
+        $productType = $formData['product_type'] ?? null;
         $search = $formData['search'];
-        $products = Product::query()->search($search)->get();
+        $products = Product::query()->search($search, $productType)->withCartQuantity($user)->withRating()->get();
         $productTypes = ProductType::query()->get();
+        $success = session()->get('success');
+        $products->map(function(Product $product){
+            $product->rating = $product->getRatings()->avg('rating');
+            return $product;
+        });
 
-        return view('user.search', compact('products', 'productTypes', 'search'));
+        return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'success'));
     }
 }

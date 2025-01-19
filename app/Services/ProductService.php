@@ -9,14 +9,7 @@ class ProductService
 {
     public function getProductsInChart(User $user): \Illuminate\Database\Eloquent\Collection
     {
-        return Product::query()->whereHas('cartUsers', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        })
-            ->with([
-                'cartUsers' => function ($query) use ($user) {
-                    $query->where('user_id', $user->id)->select('quantity');
-                }
-            ])->get();
+        return Product::query()->withCartQuantity($user)->inCart($user)->get();
     }
 
     public function getCheckoutTotalPrice(User $user): float{
