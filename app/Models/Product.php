@@ -20,6 +20,15 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'image',
+        'name',
+        'description',
+        'price',
+        'perc_discount',
+        'product_type_id',
+    ];
+
     protected $casts = [
         'image' => 'string',
         'name' => 'string',

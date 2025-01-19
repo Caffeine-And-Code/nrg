@@ -1,6 +1,6 @@
 document.getElementById('goBack').addEventListener('click', function(event) {
     event.preventDefault();  // Annulla l'azione di submit del form
-    window.history.back();   // Torna alla pagina precedente
+    window.location.href = '/admin/settings';  // Reindirizza alla pagina dei prodotti
 });
 
 // Ottieni gli elementi HTML
@@ -28,7 +28,12 @@ imageInput.addEventListener('change', function() {
         
         // Leggi il file come URL
         reader.readAsDataURL(file);
-    } else {
-        imagePreview.style.display = 'none';  // Se non è stato selezionato un file, nascondi l'anteprima
-    }
+    } 
 });
+
+
+document.getElementById("removeImage").addEventListener("click", function() {
+    imageInput.value = "";  // Cancella il file selezionato
+    imagePreview.src = "";  // Cancella l'anteprima
+});
+

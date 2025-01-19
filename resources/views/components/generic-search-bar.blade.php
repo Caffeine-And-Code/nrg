@@ -16,10 +16,9 @@
                 <i class="las la-search"></i>
             </button>
             <input
-                type="email"
+                type="text"
                 class="form-control searchBar"
-                name="email"
-                id="email"
+                name="searchInput"
                 translate="Search"
             />
         </div>

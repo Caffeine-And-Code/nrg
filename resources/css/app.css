@@ -10,15 +10,15 @@
 }
 
 @font-face {
-    font-family: "Mazzard Soft H Regular";
-    src: url("fonts/MazzardSoftH-Regular.otf") format("truetype");
+    font-family: 'Mazzard Soft H Regular';
+    src: url('fonts/MazzardSoftH-Regular.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Mazzard Soft H Bold";
-    src: url("fonts/MazzardSoftH-ExtraBold.otf") format("truetype");
+    font-family: 'Mazzard Soft H Bold';
+    src: url('fonts/MazzardSoftH-ExtraBold.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -41,7 +41,7 @@ html {
 }
 
 .title {
-    font-family: "Mazzard Soft H Bold";
+    font-family: 'Mazzard Soft H Bold';
     font-size: 64px;
     color: var(--dark-text);
 }
@@ -61,7 +61,7 @@ html {
     width: 100%;
 }
 
-.inputContainerShadow{
+.inputContainerShadow {
     border-radius: 30px;
     box-shadow: 0px 5px 10px var(--light-text) !important;
 }
@@ -73,7 +73,7 @@ html {
     z-index: 10;
     background-color: var(--bg) !important;
     color: var(--light-text) !important;
-    font-family: "Mazzard Soft H Regular" !important;
+    font-family: 'Mazzard Soft H Regular' !important;
     border: 1px solid var(--stroke) !important;
 }
 
@@ -103,7 +103,7 @@ html {
     background-color: var(--dark-text) !important;
     color: var(--bg) !important;
     font-size: 2rem !important;
-    font-family: "Mazzard Soft H Regular" !important;
+    font-family: 'Mazzard Soft H Regular' !important;
 }
 
 .customButton:hover {
@@ -129,7 +129,7 @@ html {
     box-shadow: 0px 5px 10px var(--light-text);
 }
 
-.icon{
+.icon {
     color: var(--stroke);
     font-size: 30px;
 }
@@ -190,7 +190,7 @@ html {
 }
 
 .smallTitle {
-    font-family: "Mazzard Soft H Regular";
+    font-family: 'Mazzard Soft H Regular';
     font-size: 32px;
     color: var(--dark-text);
 }
@@ -199,7 +199,7 @@ html {
     border: 1px solid var(--stroke);
     background-color: var(--bg);
     color: var(--dark-text);
-    font-family: "Mazzard Soft H Regular";
+    font-family: 'Mazzard Soft H Regular';
 }
 
 .radioGroup > label:hover {
@@ -219,7 +219,7 @@ html {
 }
 
 .customFileInput {
-    font-family: "Mazzard Soft H Regular";
+    font-family: 'Mazzard Soft H Regular';
     font-weight: 100;
     border: 1px solid var(--stroke);
     border-radius: 15px;
@@ -254,7 +254,7 @@ html {
     background-color: var(--light-text) !important;
     color: var(--bg) !important;
     font-size: 1rem !important;
-    font-family: "Mazzard Soft H Regular" !important;
+    font-family: 'Mazzard Soft H Regular' !important;
     width: 6rem;
 }
 
@@ -287,51 +287,67 @@ html {
     color: var(--dark-text) !important;
 }
 
-.cancelButton:hover, .createButton:hover , .neutralButton:hover {
+.cancelButton:hover,
+.createButton:hover,
+.neutralButton:hover {
     background-color: var(--dark) !important;
     color: var(--bg) !important;
 }
 
-.fullWidth{
+.fullWidth {
     width: 100% !important;
 }
 
-.input-group>.form-control, .input-group>.form-floating, .input-group>.form-select{
+.input-group > .form-control,
+.input-group > .form-floating,
+.input-group > .form-select {
     border-color: transparent !important;
 }
 
-.input-group>.form-control:focus, .input-group>.form-floating:focus, .input-group>.form-select:focus{
-    border-color: transparent !important;
-
-}
-
-.input-group-text{
+.input-group > .form-control:focus,
+.input-group > .form-floating:focus,
+.input-group > .form-select:focus {
     border-color: transparent !important;
 }
 
-.passToggle{
+.input-group-text {
+    border-color: transparent !important;
+}
+
+.passToggle {
     height: 56px;
 }
 
-.Active{
+.Active {
     font-size: 40px;
     color: var(--dark) !important;
 }
 
-.Bad{
+.Bad {
     font-size: 40px;
     color: red !important;
 }
 
-.tallInput{
+.tallInput {
     height: 112px;
 }
 
-.input-group{
+.input-group {
     position: relative;
-    display: flex
-;
+    display: flex;
     flex-wrap: wrap;
-    width: 100%;
     align-items: center;
+    width: 100%;
+}
+
+.slideToLeft{
+    margin-left: -5px;
+    padding-right: 10px;
+    width: 45px;
+    height: 30px;
+    padding-left: 10px;
+}
+
+textarea{
+    resize: none;
 }

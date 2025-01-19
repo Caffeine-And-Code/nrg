@@ -17,9 +17,9 @@ class NewsController extends Controller
 
         foreach ($request->file("images") as $key => $image) {
             $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/images');
+            $destinationPath = public_path('/images/news');
             $image->move($destinationPath, $name);
-            $currentImagePath = '/images' . '/' . $name;
+            $currentImagePath = '/images/news/' . $name;
 
             News::create([
                 'image_path' => $currentImagePath,
@@ -35,7 +35,7 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         // Delete the image from the public folder
-        $image_path = public_path() ."/images/" . $news->image_path;
+        $image_path =  $news->image_path;
         if (file_exists($image_path)) {
             unlink($image_path);
         }

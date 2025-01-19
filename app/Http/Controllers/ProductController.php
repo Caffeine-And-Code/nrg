@@ -19,21 +19,37 @@ class ProductController extends Controller
 
     public function addProduct(Request $request)
     {
-        return $request->all();
         $request->validate([
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            "perc_discount" => 'required',
-            "type" => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            "perc_discount" => 'numeric',
+            "type" => 'required|integer',
         ]);
 
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $imageName);
+        //check if type exists
+        if(!ProductType::find($request->type)){
+            return back()->with('error', 'Product type does not exist.');
+        }
 
-        return back()
-            ->with('success', 'You have successfully added a new product.')
-            ->with('image', $imageName);
+        $path = null;
+
+        if($request->hasFile('image')){
+            $imageName = time().'.'.$request->image->extension();
+            $path = $request->image->move(public_path('images/products'), $imageName);
+        }
+
+        Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'image' => $path,
+            'perc_discount' => $request->perc_discount ? $request->perc_discount : 0,
+            'product_type_id' => $request->type,
+        ]);
+
+
+        return redirect()->route("admin.settings")->with('success', 'Product added successfully.');
     }
 }
