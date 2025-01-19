@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\QueryBuilder\ProductQueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $price
  * @property float|null $perc_discount
  * @property int $product_type_id
+ *
+ * @method static ProductQueryBuilder query()
  */
 class Product extends Model
 {
@@ -28,6 +31,11 @@ class Product extends Model
         'perc_discount' => 'float',
         'product_type_id' => 'integer',
     ];
+
+    public function newEloquentBuilder($query): ProductQueryBuilder
+    {
+        return new ProductQueryBuilder($query);
+    }
 
     public function productType()
     {
@@ -128,6 +136,10 @@ class Product extends Model
     {
         $this->product_type_id = $product_type_id;
         return $this;
+    }
+
+    public function getCartUsers(){
+        return $this->cartUsers;
     }
 
 

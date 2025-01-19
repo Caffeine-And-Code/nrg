@@ -76,6 +76,4 @@ class Rating extends Model
         $this->rating = $rating;
         return $this;
     }
-
-
 }

@@ -14,12 +14,26 @@ use Illuminate\Database\Eloquent\Model;
  * @property float $used_portfolio
  * @property float $delivery_cost
  * @property int $user_id
- * @property int $order_status_id
+ * @property int $status
+ * @property int $total
  * @property int|null $classroom_id
  */
 class Order extends Model
 {
+    const STATUS_CREATED = 0;
+
     use HasFactory;
+
+    protected $fillable = [
+        'number',
+        'delivery_time',
+        'used_portfolio',
+        'delivery_cost',
+        'user_id',
+        'status',
+        'classroom_id',
+        'total'
+    ];
 
     protected $casts = [
         'number' => 'integer',
@@ -27,18 +41,14 @@ class Order extends Model
         'used_portfolio' => 'float',
         'delivery_cost' => 'float',
         'user_id' => 'integer',
-        'order_status_id' => 'integer',
+        'status' => 'integer',
         'classroom_id' => 'integer',
+        'total' => 'float',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function orderStatus()
-    {
-        return $this->belongsTo(OrderStatus::class);
     }
 
     public function classroom()
@@ -119,14 +129,14 @@ class Order extends Model
         return $this;
     }
 
-    public function getOrderStatusId(): int
+    public function getStatus(): int
     {
-        return $this->order_status_id;
+        return $this->status;
     }
 
-    public function setOrderStatusId(int $order_status_id): Order
+    public function setStatus(int $status): Order
     {
-        $this->order_status_id = $order_status_id;
+        $this->status = $status;
         return $this;
     }
 
@@ -138,6 +148,17 @@ class Order extends Model
     public function setClassroomId(?int $classroom_id): Order
     {
         $this->classroom_id = $classroom_id;
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(?int $total): Order
+    {
+        $this->total = $total;
         return $this;
     }
 

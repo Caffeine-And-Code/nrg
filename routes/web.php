@@ -21,6 +21,11 @@ Route::name("user.")->group(function () {
         //ADD HERE LOGGED PROTECTED ROUTES
         Route::post("logout", [\App\Http\Controllers\LoginController::class, "logout"])->name('logout');
         Route::get('/', [UserController::class, 'index'])->name('home');
+        Route::get("search", [\App\Http\Controllers\UserController::class, "search"])->name('search');
+        Route::post("checkout/products/add", [\App\Http\Controllers\CheckoutController::class, "addProductToCart"])->name('add_product_to_cart');
+        Route::get("checkout", [\App\Http\Controllers\CheckoutController::class, "index"])->name('checkout');
+        Route::post("checkout", [\App\Http\Controllers\CheckoutController::class, "checkout"])->name('post_checkout');
+        Route::get("profile", [\App\Http\Controllers\ProfileController::class, "index"])->name('profile');
     });
 });
 
