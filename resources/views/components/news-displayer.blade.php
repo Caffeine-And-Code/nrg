@@ -1,5 +1,6 @@
 @vite('/resources/js/adminJs/newsCreateHandler.js')
 @vite(['resources/js/app.js'])
+@vite('resources/css/components/adminSingleNews.css')
 
 <h1 class="title textShadow" translate="News_Editor"></h1>
 <div class="newsContainer" id="newsContainer">

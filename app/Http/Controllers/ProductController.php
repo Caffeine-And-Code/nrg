@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
+
+use function Laravel\Prompts\search;
 
 class ProductController extends Controller
 {
@@ -138,4 +141,15 @@ class ProductController extends Controller
     
     //     return view("admin.settings", ["products" => $products]);
     // }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('searchInput');
+
+        $products = Product::query()->search($query)->get();
+        
+        $users = User::all();
+
+        return view("admin.settings", ["products" => $products,"users" => $users]);
+    }
 }

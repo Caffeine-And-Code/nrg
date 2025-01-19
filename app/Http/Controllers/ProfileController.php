@@ -62,4 +62,10 @@ class ProfileController extends Controller
     //     $users = User::search($query)->get();
     //     return view('admin.settings', compact('users'));
     // }
+
+    public function search(Request $request){
+        $query = $request->get('query');
+        $users = User::query()->where('username', 'like', "%$query%")->get();
+        return view('admin.settings', compact('users'));
+    }
 }

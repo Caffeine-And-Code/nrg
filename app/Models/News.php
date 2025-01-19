@@ -19,7 +19,6 @@ class News extends Model
     protected $fillable = [
         'image_path',
         'admin_id',
-        ""
     ];
 
     protected $casts = [
