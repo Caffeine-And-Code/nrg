@@ -10,8 +10,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "http-interop/http-factory-guzzle": "^1.2",
         "laravel/framework": "^11.31",
+        "laravel/scout": "^10.12",
         "laravel/tinker": "^2.9",
+        "meilisearch/meilisearch-php": "^1.12",
         "riverskies/laravel-mobile-detect": "^1.3"
     },
     "require-dev": {

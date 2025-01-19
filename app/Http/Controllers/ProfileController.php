@@ -36,4 +36,30 @@ class ProfileController extends Controller
         $user->save();
         return redirect()->route('user.profile')->with('success', 'Profile updated');
     }
+
+    
+
+    public function edit(Request $request){
+        $request->validate([
+            'id' => 'required|exists:users,id'
+        ]);
+        $user = User::query()->find($request->get('id'));
+        return view("admin.editUsersMobile", compact('user'));
+    }
+
+    public function delete(Request $request){
+        $request->validate([
+            'id' => 'required|exists:users,id'
+        ]);
+        $user = User::query()->find($request->get('id'));
+        $user->delete();
+        return redirect()->back();
+    }
+
+    // uncomment this function to enable search functionality with MeiliSearch
+    // public function search(Request $request){
+    //     $query = $request->get('query');
+    //     $users = User::search($query)->get();
+    //     return view('admin.settings', compact('users'));
+    // }
 }

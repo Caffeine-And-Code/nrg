@@ -6,6 +6,8 @@ use App\QueryBuilder\ProductQueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Laravel\Scout\Searchable;
+
 
 /**
  * Class Product
@@ -25,6 +27,17 @@ use Illuminate\Support\Collection;
 class Product extends Model
 {
     use HasFactory;
+    use Searchable;
+
+    protected $fillable = [
+        'image',
+        'name',
+        'description',
+        'price',
+        'perc_discount',
+        'product_type_id',
+        'isVisible',
+    ];
 
     protected $casts = [
         'image' => 'string',
@@ -33,6 +46,7 @@ class Product extends Model
         'price' => 'float',
         'perc_discount' => 'float',
         'product_type_id' => 'integer',
+        'isVisible' => 'boolean',
     ];
 
     public function newEloquentBuilder($query): ProductQueryBuilder
@@ -151,5 +165,16 @@ class Product extends Model
         return $this->ratings;
     }
 
-
+    // uncomment this function to enable the search with meilisearch
+    // configuration for meilisearch
+    // public function toSearchableArray()
+    // {
+    //     return [
+    //         'id' => $this->id,
+    //         'name' => $this->name,
+    //         'description' => $this->description,
+    //         'price' => $this->price,
+    //         'perc_discount' => $this->perc_discount,
+    //     ];
+    // }
 }

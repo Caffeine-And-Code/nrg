@@ -27,13 +27,13 @@
         <form class="form-floating centerCol" action="{{ route('admin.authenticate') }}" method="post">
             @csrf
             <div class="input-group mb-4 inputContainerShadow align-items-center">
-                <span class="btn col-md-1 col-sm-2 col-2 ">
+                <span class=" slideToLeft">
                     <i class="las la-user-circle icon"></i>
                 </span>
                 <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="email" name="email" placeholder="Email" >
             </div>
             <div class="input-group mb-5 inputContainerShadow align-items-center">
-                <span class="btn col-md-1 col-sm-2 col-2 ">
+                <span class=" slideToLeft">
                     <i class="las la-lock icon"></i>
                 </span>
                 <input class="form-control col-sm-10 col-md-11 col-10 customInput" type="password" name="password"

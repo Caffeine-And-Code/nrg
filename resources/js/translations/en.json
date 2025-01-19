@@ -10,7 +10,7 @@
     "Total": "Total",
     "AdminSection": "Admin Section",
     "Login": "Login",
-    "ThemeChanger": "Change The Application Theme",
+    "ThemeChanger": "Change The Site Theme",
     "LIGHT": "Light",
     "DARK": "Dark",
     "Translation": "Choose Language",
@@ -25,5 +25,11 @@
     "Admin_EditNews" : "Admin - Edit News",
     "Back" : "Back",
     "Confirm" : "Confirm",
-    "Admin - Create a Product" : "Admin - Create a Product"
+    "Admin - Create a Product" : "Admin - Create a Product",
+    "noTextForProducts": "There are no products to show with the name just provided",
+    "Exit": "Exit",
+    "RemoveAdmin":"Remove Admin Account",
+    "Delete": "Delete",
+    "admin - Settings": "Admin - Settings",
+    "Admin - Edit User": "Admin - Edit User"
 }

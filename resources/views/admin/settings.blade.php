@@ -41,7 +41,12 @@
             <section class="mb-5">
                 <x-products-displayer :products="$products" />
             </section>
-            @endmobile @handheld @endhandheld
+            <section class="mb-5">
+                <x-user-displayer :users="$users" />
+            </section>
+            @elsemobile
+            desktopView
+            @endmobile
             <x-site-setting />
         </main>
         <x-navigation-footer mode="admin" />

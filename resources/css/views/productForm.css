@@ -1,6 +1,6 @@
 .ImagePreview {
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
     border-radius: 30px;
     display: flex;
@@ -10,14 +10,18 @@
     background-color: var(--dark-text);
 }
 
-.slideToLeft{
-    margin-left: -5px;
-    padding-right: 10px;
-    width: 45px;
-    height: 30px;
-    padding-left: 10px;
-}
-
 .noMarginLeftInput{
     padding-left: 0px !important;
+}
+
+select > * {
+    color: var(--dark-text);
+    background-color: var(--bg);
+    font-family: 'Mazzard Soft H Regular';
+}
+
+select > *:hover, select > *:focus {
+    color: var(--bg);
+    background-color: var(--dark-text);
+    font-family: 'Mazzard Soft H Regular';
 }
