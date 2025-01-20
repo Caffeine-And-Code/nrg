@@ -36,5 +36,12 @@
     "RemoveAdmin":"Elimina Account Admin",
     "Delete": "Elimina",
     "admin - Settings": "Admin - Impostazioni",
-    "Admin - Edit User": "Admin - Modifica Utente"
+    "Admin - Edit User": "Admin - Modifica Utente",
+    "noTextForUsers": "Non ci sono utenti da mostrare con il username appena fornito",
+    "DailySpin": "Giro Giornaliero",
+    "SpinOptions": "Valori degli spicchi",
+    "Add": "Aggiungi",
+    "DeliveryCost": "Costo di Consegna",
+    "FidelityMeter": "Carta Fedeltà",
+    "Classrooms": "Classi"
 }

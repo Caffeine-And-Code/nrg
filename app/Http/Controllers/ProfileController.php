@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use App\Services\AdminService;
 use App\Services\OrderService;
@@ -56,6 +57,17 @@ class ProfileController extends Controller
         return redirect()->back();
     }
 
+    public function addDiscount(Request $request){
+        $request->validate([
+            'id' => 'required|exists:users,id',
+            'discount' => 'required|numeric|min:0|max:200'
+        ]);
+        $user = User::query()->find($request->get('id'));
+        $user->setDiscountPortfolio($user->getDiscountPortfolio() + $request->get('discount'));
+        $user->save();
+        return redirect()->back();
+    }
+
     // uncomment this function to enable search functionality with MeiliSearch
     // public function search(Request $request){
     //     $query = $request->get('query');
@@ -64,8 +76,9 @@ class ProfileController extends Controller
     // }
 
     public function search(Request $request){
-        $query = $request->get('query');
+        $query = $request->get('searchInput');
         $users = User::query()->where('username', 'like', "%$query%")->get();
-        return view('admin.settings', compact('users'));
+        $products = Product::all();
+        return view('admin.settings', compact('users', 'products'));
     }
 }
