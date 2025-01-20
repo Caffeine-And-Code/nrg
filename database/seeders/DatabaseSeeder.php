@@ -27,6 +27,18 @@ class DatabaseSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+        DB::table('users')->insertGetId([
+            'email' => 'rossino.pierino@example.com',
+            'username' => 'manuelito',
+            'password' => Hash::make('password123'),
+            'last_access' => now(),
+            'total_spent' => 150.75,
+            'discount_portfolio' => 10.50,
+            'last_meter' => 10,
+            'remember_token' => str()->random(10),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
 
         // Seed Admins
         $adminId = DB::table('admins')->insertGetId([

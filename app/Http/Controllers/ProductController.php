@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
 
 use function Laravel\Prompts\search;
@@ -150,6 +152,14 @@ class ProductController extends Controller
         
         $users = User::all();
 
-        return view("admin.settings", ["products" => $products,"users" => $users]);
+        $admin = Auth::guard('admin')->user();
+
+        $news = $admin->news()->get();
+
+        $entries = $admin->spinWheelEntries()->get();
+
+        $classes = Classroom::all();
+
+        return view("admin.settings", ["classes" => $classes,"entries" => $entries ,"news"=>$news,"products" => $products,"users" => $users,"fm_prize"=> $admin->fm_prize,"fm_target"=> $admin->fm_target,"delivery_cost"=> $admin->delivery_cost]);
     }
 }

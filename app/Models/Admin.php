@@ -22,6 +22,15 @@ class Admin extends Authenticatable
     use HasFactory;
     use Notifiable;
 
+    protected $fillable = [
+        'email',
+        'username',
+        'password',
+        'fm_prize',
+        'fm_target',
+        'delivery_cost',
+    ];
+
     protected $casts = [
         'fm_prize' => 'float',
         'fm_target' => 'float',

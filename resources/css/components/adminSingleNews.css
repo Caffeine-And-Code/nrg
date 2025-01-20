@@ -7,7 +7,7 @@
     display: flex;
     font-size: 30px;
     border-radius: 15px;
-    height: 300px;
+    height: 150px;
     width: auto;
     justify-content: center;
     overflow: hidden; /* Nasconde i contenuti che superano i bordi */
@@ -46,4 +46,34 @@
     color: var(--bg);
     z-index: 0;
     position: relative;
+}
+
+.plusIcon {
+    background-color: var(--light-text);
+    font-size: 50px;
+    cursor: pointer;
+    align-items: center;
+    padding: 20px 0;
+    display: flex;
+    font-size: 30px;
+    border-radius: 15px;
+    height: 150px;
+    width: auto;
+    justify-content: center;
+    align-content: center;
+}
+
+.plusIcon > i {
+    color: var(--bg);
+}
+
+.plusIcon:hover > i {
+    color: var(--dark);
+}
+
+.newsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    background-color: var(--bg);
 }
