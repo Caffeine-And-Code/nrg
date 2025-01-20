@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Product;
 use App\Models\User;
 use App\Services\AdminService;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -79,6 +81,12 @@ class ProfileController extends Controller
         $query = $request->get('searchInput');
         $users = User::query()->where('username', 'like', "%$query%")->get();
         $products = Product::all();
-        return view('admin.settings', compact('users', 'products'));
+        $delivery_cost = Auth::guard('admin')->user()->delivery_cost;
+        $fm_prize = Auth::guard('admin')->user()->fm_prize;
+        $fm_target = Auth::guard('admin')->user()->fm_target;
+        $news = News::all();
+        $entries = Auth::guard('admin')->user()->spinWheelEntries()->get();
+        $classes = Classroom::all();
+        return view('admin.settings', compact('classes', 'entries', 'news', 'products', 'users', 'delivery_cost', 'fm_prize', 'fm_target'));
     }
 }

@@ -1,8 +1,8 @@
 @vite('/resources/css/components/dailySpinDisplayer.css')
 @mobile
-@vite('/resources/js/adminJs/dailySpinDisplayerHandler.js')
-@elsemobile
 @vite('/resources/js/adminJs/mobileAdjustmentsSpinDisplayer.js')
+@elsemobile
+@vite('/resources/js/adminJs/dailySpinDisplayerHandler.js')
 @endmobile
 
 @vite(['resources/js/app.js'])

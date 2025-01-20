@@ -17,7 +17,15 @@ function createTableEntry(data){
     icon.classList.add("Bad");
     btn.appendChild(icon);
     cell3.appendChild(btn);
+    cell3.classList.add("d-flex");
+    cell3.classList.add("justify-content-end");
+    cell3.classList.add("btnNewSpin");
     //cell3.innerHTML = <button class="btn"><i class="las la-trash icon Bad"></i></button>;
+
+    btn.addEventListener("click", function(){
+        row.remove();
+        newEntries = newEntries.filter((entry) => entry.id !== data.id);
+    });
 }
 
 let newEntries = []
@@ -53,8 +61,8 @@ document.getElementById("confirmSpinOptions").addEventListener("click", function
     window.axios.post("/admin/dailySpin/add", {
         entries: newEntries
     }).then(function(response){
-        console.log(response);
-        //window.location.reload();
+        
+        window.location.href = "/admin/settings";
     })
 
 });

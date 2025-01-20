@@ -1,4 +1,81 @@
+@media only screen and (min-width: 1260px){
+    .offcanvas{
+        width: 40% !important;
+    }
+}
+
+@media only screen and (max-width: 1260px) and (min-width: 768px) {
+    /* .actions > form > button > i , .actions > form > button > svg{
+        font-size: 20px !important;
+    } */
+
+    .offcanvas{
+        width: 52% !important;
+    }
+
+    .singleProduct{
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        height: fit-content !important;
+    }
+
+    .form-control{
+        padding: 0px !important;
+        padding-top: 12px !important;
+        padding-bottom: 8px !important;
+        font-size: 18px !important;
+    }
+
+    .iconButton{
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 32px !important;
+    }
+
+    .searchBarContainer{
+        width: 90% !important;
+    }
+
+    .searchBar{
+        padding: 0px !important;
+    }
+
+    .actions{
+        padding: 0px !important;
+    }
+
+    .ImagePreview {
+        width: 250px !important;
+        height: 250px !important;
+    }
+}
+
+@media only screen and (min-width: 571px) and (max-width: 767px) {
+    .offcanvas{
+        width: 70% !important;
+    }
+
+    .ImagePreview {
+        width: 250px !important;
+        height: 250px !important;
+    }
+}
+
+@media only screen and (max-width: 571px) {
+    .listItemDesktop{
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        height: fit-content !important;
+    }
+}
+
 @media only screen and (max-width: 570px) {
+    .iconButton{
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 32px !important;
+    }
     .title{
         font-size: 48px;
     }
@@ -32,8 +109,8 @@
     }
 
     .ImagePreview {
-        width: 250px !important;
-        height: 250px !important;
+        width: 200px !important;
+        height: 200px !important;
     }
 
     
@@ -54,6 +131,11 @@
 }
 
 @media only screen and (max-width: 470px) {
+    .iconButton{
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 32px !important;
+    }
     .input-group, .inputgroup{
         height: 50px !important;
     }
@@ -69,6 +151,11 @@
 }
 
 @media only screen and (max-width: 380px) {
+    .iconButton{
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 32px !important;
+    }
     .input-group, .inputgroup{
         height: 50px !important;
     }

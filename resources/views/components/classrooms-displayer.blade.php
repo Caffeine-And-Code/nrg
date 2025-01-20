@@ -4,7 +4,7 @@
 @vite(['resources/js/app.js'])
 <h1 class="title textShadow " translate="Classrooms"></h1>
 <hr />
-<section class="entriesTable"> 
+<section class="entriesTable mb-5"> 
     <ul class="list" id="classList">
         @foreach ($classes as $class)
             <x-single-class-row :class="$class" />

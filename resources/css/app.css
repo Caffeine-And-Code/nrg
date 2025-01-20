@@ -23,15 +23,8 @@
     font-style: normal;
 }
 
-body {
-    background-color: var(--bg) !important;
-    margin: 0;
-    height: 100%;
-    overflow-y: scroll;
-}
-
-html {
-    height: 100%;
+.desktopContainer{
+    padding: 30px;
 }
 
 /* for the main element  */
@@ -100,6 +93,22 @@ html {
     color: var(--light-text);
 }
 
+h1 {
+    word-wrap: break-word; /* Per compatibilità storica */
+    overflow-wrap:break-word; /* Per supporto moderno */
+    white-space: normal;
+
+}
+
+.offcanvas {
+    /* thanks boostrap to be the most beautiful and functional css wrapper  */
+    z-index: 9999999 !important;
+}
+
+.dialog {
+    z-index: 1055 !important;
+}
+
 .centerCol {
     display: flex;
     justify-content: center;
@@ -110,10 +119,10 @@ html {
 
 .customButton {
     border-radius: 30px !important;
-    padding: 15px !important;
+    padding: 10px !important;
     background-color: var(--dark-text) !important;
     color: var(--bg) !important;
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
     font-family: 'Mazzard Soft H Regular' !important;
 }
 
@@ -387,7 +396,7 @@ select:focus {
 }
 
 textarea {
-    resize: none;
+    resize: none !important;
 }
 
 .normalTextBold {
@@ -407,7 +416,6 @@ textarea {
 .btn:focus {
     border-color: transparent !important;
     color: var(--bg) !important;
-    background-color: var(--dark-text) !important;
 }
 
 

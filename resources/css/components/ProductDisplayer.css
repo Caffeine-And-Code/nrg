@@ -2,6 +2,7 @@
     padding-left: 10px;
     padding-right: 10px;
     list-style: none;
+    min-height: 400px;
     max-height: 500px;
     overflow-y: scroll;
 }
@@ -24,7 +25,7 @@
     height: 75px;
     border: 1.5px solid var(--stroke);
     border-radius: 25px;
-    object-fit: contain;
+    object-fit: cover;
     padding: 0px !important;
     margin-right: 25px;
 }

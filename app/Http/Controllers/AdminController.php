@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductType;
@@ -60,7 +61,10 @@ class AdminController extends Controller
         $delivery_cost = Auth::guard('admin')->user()->delivery_cost;
         $fm_prize = Auth::guard('admin')->user()->fm_prize;
         $fm_target = Auth::guard('admin')->user()->fm_target;
-        return view('admin.settings',['products' => $products, 'users' => $users, 'delivery_cost' => $delivery_cost, 'fm_prize' => $fm_prize, 'fm_target' => $fm_target]);
+        $news = News::all();
+        $entries = Auth::guard('admin')->user()->spinWheelEntries()->get();
+        $classes = Classroom::all();
+        return view('admin.settings',["classes" => $classes ,"entries" => $entries ,"news" => $news,'products' => $products, 'users' => $users, 'delivery_cost' => $delivery_cost, 'fm_prize' => $fm_prize, 'fm_target' => $fm_target]);
     }
 
     public function destroy(Request $request)

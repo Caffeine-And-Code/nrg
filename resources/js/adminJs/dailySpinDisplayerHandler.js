@@ -20,7 +20,7 @@ function createTableEntry(data){
     cell3.classList.add("d-flex");
     cell3.classList.add("justify-content-end");
     cell3.classList.add("btnNewSpin");
-    
+    console.log(cell3)
     //cell3.innerHTML = <button class="btn"><i class="las la-trash icon Bad"></i></button>;
 
     btn.addEventListener("click", function(){
@@ -55,8 +55,10 @@ document.getElementById("confirmSpinOptions").addEventListener("click", function
     window.axios.post("/admin/dailySpin/add", {
         entries: newEntries
     }).then(function(response){
-        console.log(response);
-        window.location.reload();
+        
+        // Redirect to the settings page
+        window.location.href = "/admin/settings";
+    
     })
 
 });
