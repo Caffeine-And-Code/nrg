@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\SpinWheelEntry;
 use App\Models\User;
+use App\Services\AdminService;
+use App\Services\CheckoutService;
+use App\Services\ProductService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -23,7 +27,8 @@ class DashboardController extends Controller
         $user = auth()->user();
         $spinWheel = $user->getLastAccess() < Carbon::now()->setTime(0,0,0);
         $spinValue = $spinWheel ? SpinWheelEntry::query()->inRandomOrder()->first() : null;
-        return view('user.dashboard', compact('news', 'products', 'spinValue', 'spinWheel'));
+        $checkout = (new CheckoutService())->getCheckoutData($user);
+        return view('user.dashboard', compact('news', 'products', 'spinValue', 'spinWheel', 'checkout'));
     }
 
     public function search(Request $request){
@@ -43,7 +48,8 @@ class DashboardController extends Controller
             $product->rating = $product->getRatings()->avg('rating');
             return $product;
         });
+        $checkout = (new CheckoutService())->getCheckoutData($user);
 
-        return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'success'));
+        return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success'));
     }
 }

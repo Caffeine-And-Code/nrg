@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\AdminService;
+use App\Services\NotificationService;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,8 +17,9 @@ class ProfileController extends Controller
         $orders = $orderService->getOrders($user);
         $fmTarget = $adminService->getFidelityMeterTarget();
         $actualSpent = $user->getTotalSpent();
+        $notifications = (new NotificationService())->getNotifications($user);
         $success = session()->get('success');
-        return view('user.profile', compact('orders', 'user', 'success', 'fmTarget', 'actualSpent'));
+        return view('user.profile', compact('orders', 'user', 'success', 'fmTarget', 'actualSpent', 'notifications'));
     }
 
     public function editUser(Request $request){
@@ -37,7 +39,6 @@ class ProfileController extends Controller
         return redirect()->route('user.profile')->with('success', 'Profile updated');
     }
 
-    
 
     public function edit(Request $request){
         $request->validate([

@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
+
     public function editProductCart(Request $request, UserService $userService){
         $formData = $request->validate([
             "product_id" => "required",

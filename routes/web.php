@@ -30,6 +30,7 @@ Route::name("user.")->group(function () {
         Route::post("profile/edit", [\App\Http\Controllers\ProfileController::class, "editUser"])->name('profile_edit');
         Route::get("profile", [\App\Http\Controllers\ProfileController::class, "index"])->name('profile');
         Route::get("profile/order", [\App\Http\Controllers\OrderController::class, "show"])->name('order_details');
+        Route::get("profile/order/json", [\App\Http\Controllers\OrderController::class, "showJson"])->name('order_details_json');
         Route::get("notification", [\App\Http\Controllers\NotificationController::class, "show"])->name('notification');
     });
 });
