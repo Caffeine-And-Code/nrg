@@ -49,6 +49,51 @@
     }
 }
 
+@media only screen and (max-width: 470px) {
+    .input-group, .inputgroup{
+        height: 50px !important;
+    }
+
+    .form-control{
+        height: 50px !important;
+    }
+
+    .customInput{
+        padding: 10px !important;
+        font-size: 18px !important;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .input-group, .inputgroup{
+        height: 50px !important;
+    }
+
+    .form-control{
+        height: 50px !important;
+    }
+
+    .customInput{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        padding-left: 0px !important;
+        padding-right: 5px !important;
+        font-size: 15px !important;
+    }
+
+    .maxLenght{
+        max-width: 100px !important;
+    }
+
+    .productImage{
+        margin-right: 10px !important;
+    }
+
+    .actions{
+        padding: 0px !important;
+    }
+}
+
 
 @media only screen and (max-width: 350px) {
     .title{

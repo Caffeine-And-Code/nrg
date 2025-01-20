@@ -65,10 +65,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
         //users
         Route::get("/users/search",[ProfileController::class, 'search'])->name('users.search');
         Route::get("/user/edit",[ProfileController::class, 'edit'])->name('user.edit');
-        Route::get("/user/delete",[ProfileController::class, 'delete'])->name('user.delete');
+        Route::post("/user/delete",[ProfileController::class, 'delete'])->name('user.delete');
         Route::post("/user/addDiscount",[ProfileController::class, 'addDiscount'])->name('user.addDiscount');
         //daily spin
         Route::get("/dailySpin/edit",[DailySpinController::class, 'editView'])->name('dailySpin.edit');
+        Route::post("/dailySpin/add",[DailySpinController::class, 'add'])->name('dailySpin.add');
+        Route::post("/dailySpin/delete",[DailySpinController::class, 'destroy'])->name('dailySpin.delete');
         //Classrooms
         Route::get("/classrooms/edit",[ClassroomController::class, 'editView'])->name('classrooms.edit');
     });

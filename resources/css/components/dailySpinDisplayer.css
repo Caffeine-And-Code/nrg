@@ -1,0 +1,23 @@
+.entriesTable{
+    max-height: 200px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.actionInTable{
+    font-size: 26px !important;
+    color: var(--dark);
+}
+
+.actionButton{
+    cursor: pointer;
+    padding: 0px;
+    border: none;
+    background-color: var(--bg);
+}
+
+
+.entryRow{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

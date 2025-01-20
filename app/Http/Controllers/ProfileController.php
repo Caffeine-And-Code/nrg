@@ -54,7 +54,7 @@ class ProfileController extends Controller
         ]);
         $user = User::query()->find($request->get('id'));
         $user->delete();
-        return redirect()->back();
+        return route('admin.settings');
     }
 
     public function addDiscount(Request $request){
