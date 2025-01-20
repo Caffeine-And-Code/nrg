@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\User;
