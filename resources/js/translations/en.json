@@ -31,5 +31,12 @@
     "RemoveAdmin":"Remove Admin Account",
     "Delete": "Delete",
     "admin - Settings": "Admin - Settings",
-    "Admin - Edit User": "Admin - Edit User"
+    "Admin - Edit User": "Admin - Edit User",
+    "noTextForUsers": "There are no users to show with the username just provided",
+    "DailySpin": "Daily Spin",
+    "SpinOptions": "Spin Options",
+    "Add": "Add",
+    "DeliveryCost": "Delivery Cost",
+    "FidelityMeter": "Fidelity Meter",
+    "Classrooms": "Classrooms"
 }

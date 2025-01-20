@@ -30,13 +30,13 @@
                 <span class=" slideToLeft">
                     <i class="las la-user-circle icon"></i>
                 </span>
-                <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="email" name="email" placeholder="Email" >
+                <input class="form-control col-sm-10 col-md-11 col-10  loginCustomInput" type="email" name="email" placeholder="Email" >
             </div>
             <div class="input-group mb-5 inputContainerShadow align-items-center">
                 <span class=" slideToLeft">
                     <i class="las la-lock icon"></i>
                 </span>
-                <input class="form-control col-sm-10 col-md-11 col-10 customInput" type="password" name="password"
+                <input class="form-control col-sm-10 col-md-11 col-10 loginCustomInput" type="password" name="password"
                     id="password" placeholder="Password">
                 <button type="button" class="btn iconContainer col-md-1 col-sm-2 col-2 passToggle" id="togglePassword">
                     <svg class="eye" id="eye" xmlns="http://www.w3.org/2000/svg" height="1em"

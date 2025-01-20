@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
 use App\Models\News;
 use App\Models\Product;
 use App\Models\ProductType;
@@ -57,7 +58,13 @@ class AdminController extends Controller
     {
         $products = Product::all();
         $users = User::all();
-        return view('admin.settings',['products' => $products, 'users' => $users]);
+        $delivery_cost = Auth::guard('admin')->user()->delivery_cost;
+        $fm_prize = Auth::guard('admin')->user()->fm_prize;
+        $fm_target = Auth::guard('admin')->user()->fm_target;
+        $news = News::all();
+        $entries = Auth::guard('admin')->user()->spinWheelEntries()->get();
+        $classes = Classroom::all();
+        return view('admin.settings',["classes" => $classes ,"entries" => $entries ,"news" => $news,'products' => $products, 'users' => $users, 'delivery_cost' => $delivery_cost, 'fm_prize' => $fm_prize, 'fm_target' => $fm_target]);
     }
 
     public function destroy(Request $request)
@@ -72,5 +79,32 @@ class AdminController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('admin.login');
+    }
+
+    public function updateDeliveryCost(Request $request)
+    {
+        $request->validate([
+            'cost' => 'required|numeric|min:0',
+        ]);
+
+        $delivery_cost = $request->cost;
+        Auth::guard('admin')->user()->update(['delivery_cost' => $delivery_cost]);
+
+
+        return redirect()->route('admin.settings');
+    }
+
+    public function updateFidelity(Request $request)
+    {
+        $request->validate([
+            'price' => 'required|numeric|min:0',
+            'target' => 'required|numeric|min:0',
+        ]);
+
+        $fm_prize = $request->price;
+        $fm_target = $request->target;
+        Auth::guard('admin')->user()->update(['fm_prize' => $fm_prize, 'fm_target' => $fm_target]);
+
+        return redirect()->route('admin.settings');
     }
 }

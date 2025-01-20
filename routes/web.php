@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\DailySpinController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
@@ -42,8 +44,11 @@ Route::prefix("admin")->name("admin.")->group(function () {
     Route::post('/login', [AdminController::class, 'authenticate'])->name('authenticate');
 
     Route::middleware('auth:admin')->group(function () {
+        //admin
         Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::post('/destroyMe', [AdminController::class, 'destroy'])->name('destroyMe');
+        Route::post("/deliveryCostUpdate", [AdminController::class, 'updateDeliveryCost'])->name('deliveryCostUpdate');
+        Route::post("/updateFidelity", [AdminController::class, 'updateFidelity'])->name('updateFidelity');
         //views
         Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get("/settings", [AdminController::class, 'settings'])->name('settings');
@@ -61,7 +66,16 @@ Route::prefix("admin")->name("admin.")->group(function () {
         //users
         Route::get("/users/search",[ProfileController::class, 'search'])->name('users.search');
         Route::get("/user/edit",[ProfileController::class, 'edit'])->name('user.edit');
-        Route::get("/user/delete",[ProfileController::class, 'delete'])->name('user.delete');
+        Route::post("/user/delete",[ProfileController::class, 'delete'])->name('user.delete');
+        Route::post("/user/addDiscount",[ProfileController::class, 'addDiscount'])->name('user.addDiscount');
+        //daily spin
+        Route::get("/dailySpin/edit",[DailySpinController::class, 'editView'])->name('dailySpin.edit');
+        Route::post("/dailySpin/add",[DailySpinController::class, 'add'])->name('dailySpin.add');
+        Route::post("/dailySpin/delete",[DailySpinController::class, 'destroy'])->name('dailySpin.delete');
+        //Classrooms
+        Route::get("/classrooms/edit",[ClassroomController::class, 'editView'])->name('classrooms.edit');
+        Route::post("/classrooms/add",[ClassroomController::class, 'add'])->name('classrooms.add');
+        Route::post("/classrooms/delete",[ClassroomController::class, 'destroy'])->name('classrooms.delete');
     });
 });
 

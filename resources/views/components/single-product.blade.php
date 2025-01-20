@@ -1,10 +1,14 @@
-<li class="d-flex justify-content-flex-start align-items-center">
+@mobile
+<li class="d-flex justify-content-flex-start align-items-center singleProduct">
+@elsemobile
+<li class="d-flex justify-content-flex-start align-items-center singleProduct listItemDesktop">
+@endmobile
     <figure class="d-flex">
         <img class="productImage" src="{{ asset('images/products/' . basename($product->image)) }}" alt="Product Image" />
         <figcaption class="normalTextBold maxLenght">{{ $product->name }}</figcaption>
     </figure>
+    @mobile
     <aside class="actions">
-        @mobile
             <div class="btn-group dropup" role="group">
                 <button type="button" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="las la-ellipsis-v icon"></i>
@@ -49,7 +53,9 @@
                     </li>
                 </ul>
             </div>
+        </aside>
         @elsemobile
+        <aside class="actionsDesktop actions">
             <form action="{{ route('admin.product.toggleVisibility', ['id' => $product->id]) }}" method="post"
                 class="col-1">
                 @csrf
@@ -69,16 +75,23 @@
                     @endif
                 </button>
             </form>
-            <form action="{{ route('admin.product.add') }}" method="get" class="col-1">
                 <input type="hidden" name="id" value="{{ $product->id }}">
-                @csrf
-                <button type="submit" class="btn"><i class="las la-pen icon Active"></i></button>
-            </form>
+
+                <button type="button" class="col-1 btn" data-bs-toggle="offcanvas" data-bs-target={{ "#products".$product->id }}><i class="las la-pen icon Active"></i></button>
             <form action="{{ route('admin.product.delete', ['id' => $product->id]) }}" method="post" class="col-1">
                 @csrf
                 <button type="submit" class="btn "><i class="las la-trash icon Bad"></i></button>
             </form>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="productsLabel">
+                <div class="offcanvas-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body container pt-5 main mb-5 overflow-auto">
+                    <x-add-and-edit-product-form :product="$product"/>
+                </div>
+            </div>
+</aside>
         @endmobile
-    </aside>
 </li>
 <hr />
