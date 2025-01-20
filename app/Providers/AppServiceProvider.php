@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\Events\OrderUpdate;
+use App\Listeners\SendOrderNotification;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,8 +23,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Cashier::calculateTaxes();
+
         if(!session()->has('locale')) {
             session(['locale' => 'en']);
         }
+
+        Event::listen(
+            OrderUpdate::class,
+            SendOrderNotification::class
+        );
     }
 }

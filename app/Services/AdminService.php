@@ -23,5 +23,10 @@ class AdminService
         return Admin::query()->first()->getFmPrize();
     }
 
+    public function getAdminInstance(): Admin
+    {
+        return Admin::query()->first();
+    }
+
 
 }

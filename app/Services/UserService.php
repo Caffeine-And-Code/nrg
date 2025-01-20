@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Events\OrderUpdate;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Models\Product;
 use App\Models\User;
+use App\Notifications\UserUnlockFidelity;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -34,7 +36,7 @@ class UserService
         return $user->cartProducts()->count() > 0;
     }
 
-    public function createOrder(User $user, Carbon $deliveryTime, int $classroomId): Order{
+    public function createOrder(User $user, Carbon $deliveryTime, int $classroomId): string{
         $total = (new ProductService())->getCheckoutTotalPrice($user);
         $discountUsable = $this->getUsableCredit($user, $total);
         /** @var Order $order */
@@ -59,14 +61,38 @@ class UserService
                 "bought_perc_discount" => $productInCart->getPercDiscount()]);
         }
         $user->cartProducts()->detach();
-        //TODO: Check fidelty meter
+        event(new OrderUpdate($order));
+        $checkout_url = $user->checkoutCharge(
+            $order->getTotal()*100,
+            "Order n.{$order->id}",
+            1,
+            [
+                "success_url" => route("user.checkout_success").'?session_id={CHECKOUT_SESSION_ID}',
+                "cancel_url" => route("user.checkout_error").'?session_id={CHECKOUT_SESSION_ID}',
+                "metadata" => ["order_id" => $order->getId()]
+            ])
+            ->asStripeCheckoutSession()
+            ->url;
         DB::commit();
-        return $order;
+        return $checkout_url;
     }
 
     public function getUsableCredit(User $user, float $total): float
     {
         $discount = $user->getDiscountPortfolio();
         return min($discount, $total);
+    }
+
+    public function updateFidelity(User $user, Order $order): bool
+    {
+        $user->setTotalSpent($user->getTotalSpent() + $order->getTotal());
+        if($user->getTotalSpent() > (new AdminService())->getFidelityMeterTarget()){
+            $user->notify(new UserUnlockFidelity(
+                (new AdminService())->getFidelityMeterTarget(),
+                (new AdminService())->getFidelityMeterPrice())
+            );
+            return true;
+        }
+        return false;
     }
 }
