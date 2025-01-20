@@ -47,6 +47,10 @@
         height: 48px !important;
         margin-left: 5px !important;
     }
+
+    .fullHeight{
+        height: calc(100vh - 200px) !important;
+    }
 }
 
 @media only screen and (max-width: 470px) {

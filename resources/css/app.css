@@ -409,3 +409,10 @@ textarea {
     color: var(--bg) !important;
     background-color: var(--dark-text) !important;
 }
+
+
+.entriesTable{
+    max-height: 200px;
+    height: 200px;
+    overflow-y: scroll;
+}

@@ -25,7 +25,7 @@
                     @elsemobile
                     <th scope="row">{{ $entry->text }}</th>
                     @endmobile
-                    <td>{{ $entry->prize }}</td>
+                    <td>€{{ $entry->prize }}</td>
                     <td>
                         <form action="{{ route('admin.dailySpin.delete', ['id' => $entry->id]) }}" method="post" class="d-flex justify-content-end">
                             @csrf
@@ -69,7 +69,6 @@
 
 <section 
 class="col-12 mb-5">
-        @csrf
         <hr />
         <div class="row justify-content-around">
             <a

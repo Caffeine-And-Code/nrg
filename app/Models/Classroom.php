@@ -15,6 +15,10 @@ class Classroom extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     protected $casts = [
         'name' => 'string',
     ];

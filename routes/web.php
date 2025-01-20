@@ -73,6 +73,8 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::post("/dailySpin/delete",[DailySpinController::class, 'destroy'])->name('dailySpin.delete');
         //Classrooms
         Route::get("/classrooms/edit",[ClassroomController::class, 'editView'])->name('classrooms.edit');
+        Route::post("/classrooms/add",[ClassroomController::class, 'add'])->name('classrooms.add');
+        Route::post("/classrooms/delete",[ClassroomController::class, 'destroy'])->name('classrooms.delete');
     });
 });
 

@@ -5,11 +5,6 @@ function createTableEntry(data){
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
-    let plus = document.createElement("i");
-    plus.classList.add("las");
-    plus.classList.add("la-plus");
-    plus.classList.add("actionInTable");
-    cell1.appendChild(plus);
     cell1.appendChild(document.createTextNode(data.text));
     cell2.innerHTML = data.prize;
     let btn = document.createElement("button");
@@ -22,7 +17,16 @@ function createTableEntry(data){
     icon.classList.add("Bad");
     btn.appendChild(icon);
     cell3.appendChild(btn);
+    cell3.classList.add("d-flex");
+    cell3.classList.add("justify-content-end");
+    cell3.classList.add("btnNewSpin");
+    
     //cell3.innerHTML = <button class="btn"><i class="las la-trash icon Bad"></i></button>;
+
+    btn.addEventListener("click", function(){
+        row.remove();
+        newEntries = newEntries.filter((entry) => entry.id !== data.id);
+    });
 }
 
 let newEntries = []
@@ -52,7 +56,7 @@ document.getElementById("confirmSpinOptions").addEventListener("click", function
         entries: newEntries
     }).then(function(response){
         console.log(response);
-        //window.location.reload();
+        window.location.reload();
     })
 
 });

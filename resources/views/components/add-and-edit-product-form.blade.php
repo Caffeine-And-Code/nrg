@@ -5,7 +5,7 @@
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
 />
 <form action="{{ $product ? route('admin.product.edit', ["id" => $product->id]) : route('admin.product.add') }}" method="post" class="col-12 mb-5" enctype="multipart/form-data">
-    <h1 class="title text mb-5" translate="Add/Edit a Product"></h1>
+    <h1 class="title textShadow text mb-5" translate="Add/Edit a Product"></h1>
     @csrf
     <section class="mb-4 centerRow justify-content-start">
         <input type="file" id="imageInput" class="d-none" accept="image/*" name="image" />

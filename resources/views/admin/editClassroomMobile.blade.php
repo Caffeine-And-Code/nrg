@@ -23,8 +23,8 @@
     <body>
         <x-nav-bar title="Settings" />
 
-        <main class="fullHeight container mt-5 main mb-5">
-            <x-classrooms-displayer :news="$classes" />
+        <main class="fullHeight container pt-5 main ">
+            <x-classrooms-displayer :classes="$classes" />
         </main>
 
         <x-navigation-footer mode="admin" />
