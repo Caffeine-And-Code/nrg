@@ -18,6 +18,7 @@ use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Laravel\Cashier\Cashier;
 use Stripe\Exception\ApiErrorException;
 use Symfony\Component\CssSelector\Exception\InternalErrorException;
@@ -51,9 +52,10 @@ class CheckoutController extends Controller
         $products = $productService->getProductsInChart($user);
         $shippingCost = $adminService->getDeliveryCost();
         $total = $productService->getCheckoutTotalPrice($user);
+        $discount = (new UserService())->getUsableCredit($user, $total);
         $classrooms = Classroom::query()->get();
         $success = session()->get('success');
-        return view('user.checkout', compact('products', 'shippingCost', 'total', 'classrooms', 'success'));
+        return view('user.checkout', compact('products', 'shippingCost', 'total', 'classrooms', 'success', 'discount'));
     }
 
     public function checkout(Request $request, OrderService $orderService, AdminService $adminService, UserService $userService){
@@ -86,7 +88,7 @@ class CheckoutController extends Controller
      * @throws InternalErrorException
      * @throws ApiErrorException
      */
-    public function checkoutSession(Request $request){
+    public function checkoutSuccess(Request $request){
         /** @var User $user */
         $user = auth()->user();
         $session = $this->getStripeOrderFromSession($request);
@@ -96,15 +98,24 @@ class CheckoutController extends Controller
 
         $orderId = $session['metadata']['order_id'] ?? null;
         $order = Order::query()->findOrFail($orderId);
-        DB::beginTransaction();
-        $order->setStatus(Order::STATUS_PAID)
-            ->save();
-        $fidelityUnlocked = (new UserService())->updateFidelity($user, $order);
-        DB::commit();
+        switch ($order->getStatus()){
+            case Order::STATUS_CREATED:
+                DB::beginTransaction();
+                $order->setStatus(Order::STATUS_PAID)
+                    ->save();
+                $fidelityUnlocked = (new UserService())->updateFidelity($user, $order);
+                DB::commit();
+                Event::dispatch(new OrderUpdate($order));
 
-        event(new OrderUpdate($order));
+                return view('user.checkout-success', compact('order', 'fidelityUnlocked'));
+            case Order::STATUS_PAID:
+                return view('user.checkout-success', compact('order'));
+            case Order::STATUS_CANCELED:
+            default:
+                throw new InternalErrorException("Order was cancelled");
 
-        return view('user.checkout-success', compact('order', 'fidelityUnlocked'));
+        }
+
     }
 
     /**
@@ -121,15 +132,20 @@ class CheckoutController extends Controller
         $order = Order::query()->findOrFail($orderId);
         /** @var User $user */
         $user = auth()->user();
-        DB::beginTransaction();
-        $order->setStatus(Order::STATUS_CANCELED)
-            ->save();
-        $fidelityUnlocked = (new UserService())->updateFidelity($user, $order);
-        DB::commit();
+        if($order->getStatus() !== Order::STATUS_PAID){
+            DB::beginTransaction();
+            $order->setStatus(Order::STATUS_CANCELED)
+                ->save();
+            $user->setDiscountPortfolio($user->getDiscountPortfolio() + $order->getUsedPortfolio())->save();
+            (new OrderService())->restoreCartFromOrder($order, $user);
+            DB::commit();
 
-        event(new OrderUpdate($order));
-
-        return view('user.checkout-error', compact('order', 'fidelityUnlocked'));
+            Event::dispatch(new OrderUpdate($order));
+            return view('user.checkout-error', compact('order'));
+        }
+        else{
+            throw new InternalErrorException("Order was already paid");
+        }
     }
 
     /**

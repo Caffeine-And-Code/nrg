@@ -52,11 +52,11 @@ class User extends Authenticatable
         'last_meter' => 'integer',
     ];
 
-    protected $attributes = [
-        'total_spent' => 0,
-        'discount_portfolio' => 0,
-        'last_meter' => 0
-    ];
+//    protected $attributes = [
+//        'total_spent' => 0,
+//        'discount_portfolio' => 0,
+//        'last_meter' => 0
+//    ];
 
     public function orders()
     {
@@ -73,11 +73,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class, 'products_in_carts')
             ->withPivot('quantity')
             ->withTimestamps();
-    }
-
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
     }
 
     public function getId(): int

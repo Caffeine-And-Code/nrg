@@ -2,17 +2,17 @@
 
 namespace App\Notifications;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserUnlockFidelity extends Notification
+class OrderPaidAdminNofication extends Notification
 {
     use Queueable;
-
-    public float $target;
-    public float $price;
+    private Order $order;
+    private bool $forUser = false;
 
     /**
      * Get the notification's database type.
@@ -22,16 +22,16 @@ class UserUnlockFidelity extends Notification
      */
     public function databaseType(object $notifiable): string
     {
-        return 'unlock-fidelity-user';
+        return 'order-paid-admin';
     }
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(float $target, float $price)
+    public function __construct(Order $order, bool $forUser = false)
     {
-        $this->target = $target;
-        $this->price = $price;
+        $this->order = $order;
+        $this->forUser = $forUser;
     }
 
     /**
@@ -44,23 +44,23 @@ class UserUnlockFidelity extends Notification
         return ['mail', 'database'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     */
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject($this->getTitle())
-                    ->line($this->getMessage())
-                    ->action("See now our products", route("user.home"));
+            ->subject($this->getTitle())
+            ->line($this->getMessage());
     }
 
     public function getTitle(): string{
-    return "Congratulation! you have unlocked your fidelity discount";
-}
+        return "New Order number {$this->order->getNumber()} confirmed";
+    }
 
     public function getMessage(): string{
-        return "Spending € {$this->target} in our store you won our prize of €{$this->price}";
+        $message = "The order have to be delivered on {$this->order->getDeliveryTime()->toDateTimeLocalString()}";
+        if($this->order->getClassroomId() !== null){
+            $message .= " in class: {$this->order->classroom()->first()->getName()}";
+        }
+        return $message;
     }
 
     /**

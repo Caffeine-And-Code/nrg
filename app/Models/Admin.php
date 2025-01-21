@@ -37,10 +37,6 @@ class Admin extends Authenticatable
         'delivery_cost' => 'float',
     ];
 
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
-    }
 
     public function news()
     {

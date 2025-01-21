@@ -4,7 +4,11 @@ namespace App\Listeners;
 
 use App\Events\OrderUpdate;
 use App\Models\Order;
-use App\Notifications\OrderNotification;
+use App\Models\User;
+use App\Notifications\OrderCancelledUserNofication;
+use App\Notifications\OrderCreatedUserNofication;
+use App\Notifications\OrderPaidAdminNofication;
+use App\Notifications\OrderPaidUserNofication;
 use App\Services\AdminService;
 
 class SendOrderNotification
@@ -22,10 +26,20 @@ class SendOrderNotification
      */
     public function handle(OrderUpdate $event): void
     {
+        logger()->info("sending email " . $event->order->getId());
+        /** @var User $user */
         $user = $event->order->user()->first();
-        $user->notify(new OrderNotification($event->order, true));
-        if($event->order->getStatus() === Order::STATUS_PAID){
-            (new AdminService())->getAdminInstance()->notify(new OrderNotification($event->order, false));
+        switch ($event->order->getStatus()){
+            case Order::STATUS_PAID:
+                $user->notify(new OrderPaidUserNofication($event->order));
+                (new AdminService())->getAdminInstance()->notify(new OrderPaidAdminNofication($event->order, false));
+                break;
+            case Order::STATUS_CREATED:
+                $user->notify(new OrderCreatedUserNofication($event->order));
+                break;
+            case Order::STATUS_CANCELED:
+                $user->notify(new OrderCancelledUserNofication($event->order));
+
         }
     }
 }

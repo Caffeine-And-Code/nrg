@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use App\Events\OrderUpdate;
-use App\Listeners\SendOrderNotification;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
 
@@ -28,10 +25,5 @@ class AppServiceProvider extends ServiceProvider
         if(!session()->has('locale')) {
             session(['locale' => 'en']);
         }
-
-        Event::listen(
-            OrderUpdate::class,
-            SendOrderNotification::class
-        );
     }
 }

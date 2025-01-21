@@ -11,6 +11,7 @@ use App\Notifications\UserUnlockFidelity;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 
 class UserService
 {
@@ -39,6 +40,7 @@ class UserService
     public function createOrder(User $user, Carbon $deliveryTime, int $classroomId): string{
         $total = (new ProductService())->getCheckoutTotalPrice($user);
         $discountUsable = $this->getUsableCredit($user, $total);
+        $total -= $discountUsable;
         /** @var Order $order */
         DB::beginTransaction();
         $order = $user->orders()->create([
@@ -61,7 +63,7 @@ class UserService
                 "bought_perc_discount" => $productInCart->getPercDiscount()]);
         }
         $user->cartProducts()->detach();
-        event(new OrderUpdate($order));
+        Event::dispatch(new OrderUpdate($order));
         $checkout_url = $user->checkoutCharge(
             $order->getTotal()*100,
             "Order n.{$order->id}",
@@ -80,17 +82,21 @@ class UserService
     public function getUsableCredit(User $user, float $total): float
     {
         $discount = $user->getDiscountPortfolio();
-        return min($discount, $total);
+        return min($discount, $total/2);
     }
 
     public function updateFidelity(User $user, Order $order): bool
     {
-        $user->setTotalSpent($user->getTotalSpent() + $order->getTotal());
-        if($user->getTotalSpent() > (new AdminService())->getFidelityMeterTarget()){
+        $user->setTotalSpent($user->getTotalSpent() + $order->getTotal())->save();
+        if($user->getTotalSpent() >= (new AdminService())->getFidelityMeterTarget()){
             $user->notify(new UserUnlockFidelity(
                 (new AdminService())->getFidelityMeterTarget(),
                 (new AdminService())->getFidelityMeterPrice())
             );
+            $user->setDiscountPortfolio($user->getDiscountPortfolio() + (new AdminService())->getFidelityMeterPrice())
+                ->save();
+            $rest = $user->getTotalSpent() - (new AdminService())->getFidelityMeterTarget();
+            $user->setTotalSpent($rest)->save();
             return true;
         }
         return false;

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -59,13 +60,6 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        // Seed Order Statuses
-        $orderStatusId = DB::table('order_statuses')->insertGetId([
-            'name' => 'Pending',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
         // Seed Orders
         $orderId = DB::table('orders')->insertGetId([
             'number' => 1001,
@@ -73,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'used_portfolio' => 5.00,
             'delivery_cost' => 2.50,
             'user_id' => $userId,
-            'order_status_id' => $orderStatusId,
+            'order_status_id' => Order::STATUS_PAID,
             'classroom_id' => $classroomId,
             'created_at' => now(),
             'updated_at' => now(),
