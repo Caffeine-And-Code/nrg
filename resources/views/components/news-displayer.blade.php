@@ -47,6 +47,6 @@
             @csrf
             <button class="customButton btn mb-2 neutralButton fullWidth" translate="Back"></button>
         </form>
-        <button class="customButton btn mb-2 createButton col-5" id="confirmNews" translate="Confirm"></button>
+        <button  type="button" class="customButton btn mb-2 createButton col-5 confirmNews" id="confirmNews" translate="Confirm"></button>
         
 </section>
