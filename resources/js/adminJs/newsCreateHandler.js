@@ -14,30 +14,34 @@ document.getElementById("newsCreate").addEventListener("click", function () {
 
 
 
-document.getElementById("confirmNews").addEventListener("click", function () {
-    const images = document.getElementById('newImage').files;
-    console.log(images)
-    // Crea un FormData per inviare i file
-    const formData = new FormData();
-
-    // Aggiungi le immagini al FormData
-    for (let i = 0; i < images.length; i++) {
-        formData.append("images[]", images[i]);
-    }
-    window.axios
-        .post("/admin/news", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        })
-        .then(function (response) {
-            console.log(response);
-            // Aggiungi qui il codice per gestire la risposta del server
-            window.location.reload();
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    
+    document.getElementById("confirmNews").addEventListener("click", function () {
+        const images = document.getElementById('newImage').files;
+        console.log(images)
+        console.log("mannala ")
+        // Crea un FormData per inviare i file
+        const formData = new FormData();
+    
+        // Aggiungi le immagini al FormData
+        for (let i = 0; i < images.length; i++) {
+            formData.append("images[]", images[i]);
+        }
+        window.axios
+            .post("/admin/news", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            })
+            .then(function (response) {
+                console.log(response);
+                // Aggiungi qui il codice per gestire la risposta del server
+                window.location.reload();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    });
 });
 
 function createNewsComponent(newsItem, inputElement) {
