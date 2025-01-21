@@ -52,7 +52,6 @@
             ></a>
             <button
                 class="customButton btn mb-2 createButton col-5"
-                id="confirmNews"
                 translate="Add"
             ></button>
         </section>
