@@ -2,7 +2,15 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
+use App\Models\Classroom;
+use App\Models\News;
 use App\Models\Order;
+use App\Models\Product;
+use App\Models\ProductType;
+use App\Models\SpinWheelEntry;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,140 +21,113 @@ class DatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        // Seed Users
-        $userId = DB::table('users')->insertGetId([
-            'email' => 'john.doe@example.com',
-            'username' => 'JohnDoe',
-            'password' => Hash::make('password123'),
-            'last_access' => now(),
-            'total_spent' => 150.75,
-            'discount_portfolio' => 10.50,
-            'last_meter' => 10,
-            'remember_token' => str()->random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-        DB::table('users')->insertGetId([
-            'email' => 'rossino.pierino@example.com',
-            'username' => 'manuelito',
-            'password' => Hash::make('password123'),
-            'last_access' => now(),
-            'total_spent' => 150.75,
-            'discount_portfolio' => 10.50,
-            'last_meter' => 10,
-            'remember_token' => str()->random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed Admins
-        $adminId = DB::table('admins')->insertGetId([
+        // Create Admin
+        $admin = Admin::create([
             'email' => 'admin@example.com',
-            'username' => 'AdminBoss',
-            'password' => Hash::make('adminpassword'),
-            'fm_prize' => 500.00,
-            'fm_target' => 1000.00,
-            'delivery_cost' => 5.00,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'username' => 'admin',
+            'password' => Hash::make('password'),
+            'fm_prize' => 100.50,
+            'fm_target' => 500.00,
+            'delivery_cost' => 10.00,
         ]);
 
-        // Seed Classrooms
-        $classroomId = DB::table('classrooms')->insertGetId([
-            'name' => 'Private Lounge',
-            'created_at' => now(),
-            'updated_at' => now(),
+        // Create Product Types
+        $productType1 = ProductType::query()->create(['name' => 'Electronics']);
+        $productType2 = ProductType::query()->create(['name' => 'Books']);
+
+        // Create Products
+        $products = [
+            Product::query()->create([
+                'image' => 'product1.jpg',
+                'name' => 'Smartphone',
+                'description' => 'Latest model smartphone with high performance.',
+                'price' => 699.99,
+                'perc_discount' => 10,
+                'product_type_id' => $productType1->id,
+                'isVisible' => true,
+            ]),
+            Product::query()->create([
+                'image' => 'product2.jpg',
+                'name' => 'Laptop',
+                'description' => 'Lightweight and powerful laptop.',
+                'price' => 999.99,
+                'perc_discount' => 15,
+                'product_type_id' => $productType1->id,
+                'isVisible' => true,
+            ]),
+            Product::query()->create([
+                'image' => 'product3.jpg',
+                'name' => 'Programming Book',
+                'description' => 'Learn Laravel with this comprehensive guide.',
+                'price' => 49.99,
+                'perc_discount' => 5,
+                'product_type_id' => $productType2->id,
+                'isVisible' => true,
+            ]),
+        ];
+
+        // Create Classrooms
+        $classroom1 = Classroom::query()->create(['name' => 'Classroom A']);
+        $classroom2 = Classroom::query()->create(['name' => 'Classroom B']);
+
+        // Create Users
+        $users = [
+            User::query()->create([
+                'email' => 'user1@example.com',
+                'username' => 'user1',
+                'password' => Hash::make('password'),
+                'last_access' => Carbon::now(),
+                'total_spent' => 150.50,
+                'discount_portfolio' => 10.00,
+                'last_meter' => 5,
+            ]),
+            User::query()->create([
+                'email' => 'user2@example.com',
+                'username' => 'user2',
+                'password' => Hash::make('password'),
+                'last_access' => Carbon::now(),
+                'total_spent' => 200.00,
+                'discount_portfolio' => 20.00,
+                'last_meter' => 3,
+            ]),
+        ];
+
+        // Create Orders
+        foreach ($users as $user) {
+            Order::query()->create([
+                'number' => rand(1000, 9999),
+                'delivery_time' => Carbon::now()->addDays(rand(1, 5)),
+                'used_portfolio' => rand(5, 20),
+                'delivery_cost' => 10.00,
+                'user_id' => $user->id,
+                'status' => Order::STATUS_CREATED,
+                'classroom_id' => $classroom1->id,
+                'total' => rand(100, 300),
+            ])->products()->attach($products[0], ['bought_price'=>$products[0]->price, 'bought_perc_discount'=>0, 'quantity'=>3]);
+        }
+
+        // Create News
+        News::query()->create([
+            'image_path' => 'news1.jpg',
+            'admin_id' => $admin->id,
+        ]);
+        News::query()->create([
+            'image_path' => 'news2.jpg',
+            'admin_id' => $admin->id,
         ]);
 
-        // Seed Orders
-        $orderId = DB::table('orders')->insertGetId([
-            'number' => 1001,
-            'delivery_time' => now()->addHours(2),
-            'used_portfolio' => 5.00,
-            'delivery_cost' => 2.50,
-            'user_id' => $userId,
-            'order_status_id' => Order::STATUS_PAID,
-            'classroom_id' => $classroomId,
-            'created_at' => now(),
-            'updated_at' => now(),
+        // Create Spin Wheel Entries
+        SpinWheelEntry::query()->create([
+            'text' => 'Win a 10% discount!',
+            'prize' => 10.00,
+            'admin_id' => $admin->id,
         ]);
-
-        // Seed Product Types
-        $productTypeId = DB::table('product_types')->insertGetId([
-            'name' => 'Beverages',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed Products
-        $productId = DB::table('products')->insertGetId([
-            'image' => 'beer.png',
-            'name' => 'Craft Beer',
-            'description' => 'A refreshing locally brewed craft beer.',
-            'price' => 7.50,
-            'perc_discount' => 10.00,
-            'product_type_id' => $productTypeId,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed Products in Cart
-        DB::table('products_in_carts')->insert([
-            'user_id' => $userId,
-            'product_id' => $productId,
-            'quantity' => 2,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed Products in Order
-        DB::table('products_in_order')->insert([
-            'order_id' => $orderId,
-            'product_id' => $productId,
-            'bought_price' => 7.50,
-            'bought_perc_discount' => 10.00,
-            'quantity' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed Ratings
-        DB::table('ratings')->insert([
-            'user_id' => $userId,
-            'product_id' => $productId,
-            'rating' => 5,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed Notifications
-        DB::table('notifications')->insert([
-            'title' => 'Order Update',
-            'description' => 'Your order #1001 is being prepared.',
-            'datetime' => now(),
-            'user_id' => $userId,
-            'admin_id' => null,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed News
-        DB::table('news')->insert([
-            'image_path' => 'promo.jpg',
-            'admin_id' => $adminId,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // Seed Spin Wheel Entries
-        DB::table('spin_wheel_entries')->insert([
-            'text' => 'Free Beer',
-            'prize' => 7.50,
-            'admin_id' => $adminId,
-            'created_at' => now(),
-            'updated_at' => now(),
+        SpinWheelEntry::query()->create([
+            'text' => 'Free Shipping!',
+            'prize' => 0.00,
+            'admin_id' => $admin->id,
         ]);
     }
 }
