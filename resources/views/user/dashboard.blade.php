@@ -13,6 +13,7 @@
     />
     @vite('/resources/css/colors.css')
     @vite('/resources/css/main.css')
+    @vite('/resources/js/themeManager.js')
 </head>
 <body class="light">
     <x-user-nav-bar currentPage="{{$currentPage}}"></x-user-nav-bar>
