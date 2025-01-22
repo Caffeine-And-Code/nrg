@@ -1,44 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{__("main.dashboard")}}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
+    @vite('/resources/css/main.css')
 </head>
 <body>
-    <h1>Your dashboard</h1>
-    @if(!$errors->isEmpty())
-        @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-        @endforeach
-    @endif
-    <form action="{{ route("user.search") }}" method="get">
-        <input type="text" name="search" placeholder="Search">
-        <button>Search</button>
-    </form>
-    <h2>Latest News</h2>
-    <ul>
-        @foreach($news as $new)
-            <li>{{$new->getImagePath()}}</li>
-        @endforeach
-    </ul>
+    <x-user-nav-bar currentPage="{{$currentPage}}"></x-user-nav-bar>
+    <main>
 
-    <h2>Best buy products</h2>
-    <ul>
-    @foreach($products as $product)
-        <li>{{ $product->getName() }} | € {{$product->getPrice()}}</li>
-    @endforeach
-    </ul>
-
-    <h2>Bottom bar</h2>
-    <ul>
-        <li><a href="{{route("user.checkout")}}">checkout</a><br></li>
-        <li><a href="{{route("user.profile")}}">profile</a></li>
-        <li><a href="{{route("user.notification")}}">notification</a></li>
-    </ul>
-    <form action="{{ route("user.logout") }}" method="post">
-        @csrf
-        <button>Logout</button>
-    </form>
+    </main>
 </body>
 </html>

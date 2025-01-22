@@ -28,7 +28,8 @@ class DashboardController extends Controller
         $spinWheel = $user->getLastAccess() < Carbon::now()->setTime(0,0,0);
         $spinValue = $spinWheel ? SpinWheelEntry::query()->inRandomOrder()->first() : null;
         $checkout = (new CheckoutService())->getCheckoutData($user);
-        return view('user.dashboard', compact('news', 'products', 'spinValue', 'spinWheel', 'checkout'));
+        $currentPage = 'main.products';
+        return view('user.dashboard', compact('news', 'products', 'spinValue', 'spinWheel', 'checkout', 'currentPage'));
     }
 
     public function search(Request $request){
@@ -49,7 +50,7 @@ class DashboardController extends Controller
             return $product;
         });
         $checkout = (new CheckoutService())->getCheckoutData($user);
-
-        return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success'));
+        $currentPage = 'main.products';
+        return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success', 'currentPage'));
     }
 }
