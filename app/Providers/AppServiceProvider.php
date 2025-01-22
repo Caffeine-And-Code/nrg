@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
 
@@ -25,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
         if(!session()->has('locale')) {
             session(['locale' => 'en']);
         }
+        App::setLocale("it");
     }
 }
