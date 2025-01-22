@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.loginContainer {
+    padding-top: 5vh;
+    padding-bottom: 10vh;
+    text-align: center;
+    align-content: center;
+    max-width: 70vw;
+}
+
+.customButton {
+    margin: 0;
+}
+
+div {
+    height: 6vh;
+}
+
+input{
+    min-height: 100%;
+    max-height: 100%;
+}
+
+.passToggle {
+    flex: none;
+    height: 100%;
+    padding: 0 20px;
+    box-shadow: none;
+}
+
+.iconInButton {
+    height: 40%;
+}
+
+.errorBox {
+    margin-bottom: 1vh;
+}
+
+.loginContainer img {
+    width: auto; 
+    height: 30vh; 
+    object-fit: contain;
+    margin-bottom: 4vh;
+}
+
+.loginContainer form{
+    align-content: center;
+}

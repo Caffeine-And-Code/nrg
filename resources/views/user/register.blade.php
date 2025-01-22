@@ -17,8 +17,10 @@
     <input type="text" name="username" placeholder="username" required />
     <input type="password" name="password" placeholder="password" required />
     <input type="password" name="password_confirmation" placeholder="password confirmation" required />
-    <button>send</button>
+    <button>Send</button>
 </form>
-    <a href="{{route('user.login')}}">login</a>
+    <a href="{{route('user.login')}}">
+        <button type="button">Login</button>
+    </a>
 </body>
 </html>

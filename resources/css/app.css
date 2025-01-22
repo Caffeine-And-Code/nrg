@@ -23,6 +23,17 @@
     font-style: normal;
 }
 
+hr {
+    border: 1px solid var(--dark-text);
+    width: 100%; 
+    margin: 10px auto;
+}
+
+p {
+    color: var(--dark-text);
+    font-family: 'Mazzard Soft H Regular'
+}
+
 body {
     background-color: var(--bg) !important;
     margin: 0;
@@ -99,7 +110,7 @@ html {
 
 .customButton {
     border-radius: 30px !important;
-    padding: 15px !important;
+    padding: 1.5vh !important;
     background-color: var(--dark-text) !important;
     color: var(--bg) !important;
     font-size: 2rem !important;
@@ -113,7 +124,7 @@ html {
 
 /*------ Settings ------*/
 .iconContainer {
-    --color: var(--dark-text);
+    --color: var(--light-text);
     --size: 25px;
     display: flex;
     justify-content: center;
