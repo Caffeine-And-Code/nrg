@@ -21,6 +21,19 @@
     font-style: normal;
 }
 
+body{
+    background-color: var(--light-bg);
+    height: 100vh;
+}
+
+body.dark{
+    background-color: var(--dark-bg);
+}
+
+main{
+
+}
+
 nav{
     height: 50px;
     border-bottom: 1px solid var(--light-txt);
