@@ -7,6 +7,7 @@
     --stroke: #00fa0000;
     --darker-bg: #482d2d00;
     --bg: #9900ff00;
+    --shadows: #00000025;
 }
 
 @font-face {
@@ -21,6 +22,14 @@
     src: url('fonts/MazzardSoftH-ExtraBold.otf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+body{
+    background-color: var(--bg) !important;
+}
+
+main{
+    background-color: var(--bg);
 }
 
 .desktopContainer{
@@ -40,7 +49,7 @@
 }
 
 .textShadow {
-    text-shadow: 0px 5px 7px var(--light-text);
+    text-shadow: 0px 5px 7px var(--shadows);
 }
 
 .passwordLabel {
@@ -56,7 +65,7 @@
 
 .inputContainerShadow {
     border-radius: 30px;
-    box-shadow: 0px 5px 10px var(--light-text) !important;
+    box-shadow: 0px 5px 10px var(--shadows) !important;
 }
 
 .customInput {
@@ -146,7 +155,7 @@ h1 {
     border-top-right-radius: 30px !important;
     border-bottom-right-radius: 30px !important;
     border: none;
-    box-shadow: 0px 5px 10px var(--light-text);
+    box-shadow: 0px 5px 10px var(--shadows);
 }
 
 .icon {
@@ -223,9 +232,20 @@ h1 {
     font-family: 'Mazzard Soft H Regular';
 }
 
+.normalButton{
+    background-color: var(--dark-text) !important;
+    color: var(--bg) !important;
+    font-family: 'Mazzard Soft H Regular';
+}
+
+.normalButton:hover{
+    background-color: var(--bg) !important;
+    color: var(--dark-text) !important;
+}
+
 .radioGroup > label:hover {
     border: 1px solid var(--stroke);
-    background-color: var(--dark) !important;
+    background-color: var(--dark-text) !important;
     color: var(--bg) !important;
 }
 
@@ -235,7 +255,7 @@ h1 {
 }
 
 .selected {
-    background-color: var(--dark) !important;
+    background-color: var(--dark-text) !important;
     color: var(--bg) !important;
 }
 
@@ -289,7 +309,8 @@ h1 {
 }
 
 .main {
-    margin-bottom: 100px;
+    padding-bottom: 100px;
+    padding-top: 3rem;
 }
 
 .cancelButton {
@@ -358,12 +379,14 @@ h1 {
     display: flex !important;
     flex-wrap: wrap !important;
     align-items: center !important;
+    border:1px solid white;
 }
 
 .inputgroup {
     position: relative !important;
     display: flex !important;
     flex-wrap: wrap !important;
+    border:1px solid white;
 }
 
 .inputgroup > .form-control {
@@ -372,7 +395,15 @@ h1 {
     width: 1%;
     min-width: 0;
     border-color: transparent !important;
+    color: var(--dark-text) !important;
 }
+
+.inputgroup > .form-control::placeholder,.form-control::placeholder {
+    color: var(--dark-text) !important;
+}
+
+
+
 input,
 textarea,
 select {
@@ -423,4 +454,14 @@ textarea {
     max-height: 200px;
     height: 200px;
     overflow-y: scroll;
+}
+
+.offcanvas{
+    background-color: var(--bg) !important;
+    color: var(--dark-text) !important;
+}
+
+table,td,th{
+    background-color: var(--bg) !important;
+    color: var(--light-text) !important;
 }

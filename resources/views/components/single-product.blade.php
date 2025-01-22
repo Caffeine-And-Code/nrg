@@ -87,7 +87,7 @@
                 <div class="offcanvas-header">
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body container pt-5 main mb-5 overflow-auto">
+                <div class="offcanvas-body container main overflow-auto">
                     <x-add-and-edit-product-form :product="$product"/>
                 </div>
             </div>

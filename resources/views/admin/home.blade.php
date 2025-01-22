@@ -18,7 +18,7 @@
 
     <body class="fullHeight">
         <x-nav-bar title="Orders" />
-        <main class="container mt-5 main"></main>
+        <main class="container main"></main>
 
         <x-navigation-footer mode="admin" />
     </body>

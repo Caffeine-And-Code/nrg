@@ -42,7 +42,7 @@
                 <h5 class="mb-1 smallTitle" translate="Logout"></h5>
                 <form action="{{ route('admin.logout') }}" method="get">
                     @csrf
-                    <button type="submit" class="btn btn-danger" translate="Exit"></button>
+                    <button type="submit" class="btn normalButton" translate="Exit"></button>
                 </form>
             </div>
         </li>
@@ -51,7 +51,7 @@
                 <h5 class="mb-1 smallTitle" translate="RemoveAdmin"></h5>
                 <form action="{{ route('admin.destroyMe') }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-danger" translate="Delete"></button>
+                    <button type="submit" class="btn normalButton" translate="Delete"></button>
                 </form>
             </div>
         </li>
