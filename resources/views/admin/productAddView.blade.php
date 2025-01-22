@@ -18,7 +18,7 @@
     </head>
     <body class="fullHeight">
         <x-nav-bar title="Settings" />
-        <main class="container mt-5 main">
+        <main class="container main">
             <x-add-and-edit-product-form :product="$product"/>
         </main>
         <x-navigation-footer mode="admin" />

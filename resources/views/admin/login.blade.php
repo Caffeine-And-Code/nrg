@@ -30,7 +30,7 @@
                 <span class=" slideToLeft">
                     <i class="las la-user-circle icon"></i>
                 </span>
-                <input class="form-control col-sm-10 col-md-11 col-10  loginCustomInput" type="email" name="email" placeholder="Email" >
+                <input class="form-control col-sm-10 col-md-11 col-10 loginCustomInput" type="email" name="email" placeholder="Email" >
             </div>
             <div class="input-group mb-5 inputContainerShadow align-items-center">
                 <span class=" slideToLeft">

@@ -19,7 +19,7 @@
         <div class="offcanvas-header">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="overflow-auto container mt-5 main mb-5 ">
+        <div class="overflow-auto container main ">
             <x-discount-and-delete-user-panel :user="$user" />
         </div>
     </div>

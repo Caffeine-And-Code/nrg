@@ -15,12 +15,12 @@ const Themes = Object.freeze({
     },
     DARK : {
         "dark": "#ffffff",
-        "dark-text": "#E3E3E3",
+        "dark-text": "#ffffff",
         "light-text": "#CFCFCF",
         "stroke": "#939393",
         "darker-bg": "#494949",
-        "bg": "#000000",
-    }
+        "bg": "#2B2B2B",
+    } 
 });
 
 function changeTheme(theme) {
@@ -35,7 +35,7 @@ function changeTheme(theme) {
 }
 
 function handleImgs(theme){
-    // in here you can change the images based on the theme just call the replaceSingleImg function
+    // in here you can change the images based on the theme just call the replaceSingleImg function 
     // with the id of the image, the current theme, and the path of the image for each theme (imported from the top)
     // big logo
     replaceSingleImg('bigLogo', theme, bigLogoLight, bigLogoDark);
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for(let key in theme) {
         document.documentElement.style.setProperty(`--${key}`, theme[key]);
     }
+
     handleImgs(currentVal);
 });
 

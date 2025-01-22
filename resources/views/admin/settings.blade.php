@@ -19,7 +19,7 @@
     <body>
         <x-nav-bar title="Settings" />
         @mobile
-        <main class="container mt-5 main">
+        <main class="container main">
             <section class="mb-5 centerCol">
                 <form
                     action="{{ route('admin.news.edit') }}"
@@ -224,7 +224,7 @@
                 <div class="offcanvas-header">
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="overflow-auto container mt-5 main mb-5 ">
+                <div class="overflow-auto container main  ">
                     <x-news-displayer :news="$news" />
                 </div>
             </div>
@@ -233,7 +233,7 @@
                 <div class="offcanvas-header">
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="overflow-auto container mt-5 main mb-5 ">
+                <div class="overflow-auto container main">
                     <x-daily-spin-displayer :entries="$entries" />
                 </div>
             </div>
@@ -242,7 +242,7 @@
                 <div class="offcanvas-header">
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="overflow-auto container mt-5 main mb-5 ">
+                <div class="overflow-auto container main ">
                     <x-classrooms-displayer :classes="$classes" />
                 </div>
             </div>
