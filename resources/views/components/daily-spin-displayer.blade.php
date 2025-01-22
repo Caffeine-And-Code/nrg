@@ -1,9 +1,7 @@
 @vite('/resources/css/components/dailySpinDisplayer.css')
-@mobile
-@vite('/resources/js/adminJs/mobileAdjustmentsSpinDisplayer.js')
-@elsemobile
+
 @vite('/resources/js/adminJs/dailySpinDisplayerHandler.js')
-@endmobile
+
 
 @vite(['resources/js/app.js'])
 <h1 class="title textShadow" translate="SpinOptions"></h1>
