@@ -1,6 +1,7 @@
 .nav-bar {
-    position: sticky;
-    display: flex;
+    position: relative;
+    top: 0px;
+    display: flex !important;
     justify-content: space-between;
     align-items: center;
     height: 140px;
@@ -35,4 +36,19 @@
     height: calc(100% - 10px);
     display: flex;
     margin-top: 27px;
+}
+
+.navigationDesktop{
+    display: flex;
+    width: 60%;
+}
+
+.navigationDesktop > ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.dot1{
+    display: none;
 }

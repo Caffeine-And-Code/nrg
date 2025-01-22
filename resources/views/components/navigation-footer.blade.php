@@ -13,12 +13,12 @@
 @endphp
 
 @if ($mode == 'admin')
-<nav class="footerNavigation">
+<nav class="footerNavigation mobile">
     <ul class="footerIconList">
         <li>
             <a
                 href="{{ route('admin.dashboard') }}"
-                class="{{ Route::is('admin.dashboard') ? 'active' : ('admin.dashboard' == $previousRouteName ? 'oldRoute' : '') }}"
+                class="{{ Route::is('admin.dashboard') ? 'active1' : ('admin.dashboard' == $previousRouteName ? 'oldRoute1' : '') }}"
             >
                 <img
                     src="{{ Vite::asset('resources/imgs/Take_away.png') }}"
@@ -30,7 +30,7 @@
         <li>
             <a
                 href="{{ route('admin.settings') }}"
-                class="{{ Route::is('admin.settings') ? 'active' : ('admin.settings' == $previousRouteName ? 'oldRoute' : '') }}"
+                class="{{ Route::is('admin.settings') ? 'active1' : ('admin.settings' == $previousRouteName ? 'oldRoute1' : '') }}"
             >
                 <img
                     src="{{ Vite::asset('resources/imgs/Settings.png') }}"
@@ -41,7 +41,7 @@
         </li>
     </ul>
     <!-- Pallino -->
-    <div id="dot" class="z-2"></div>
+    <div id="dot1" class="z-2 dot dot1"></div>
 </nav>
 @elseif($mode == 'client') 
 {{-- Code for client mode --}} 

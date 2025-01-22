@@ -476,3 +476,27 @@ table,td,th{
     background-color: var(--bg) !important;
     color: var(--light-text) !important;
 }
+ 
+
+.mobile{
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden;
+}
+
+.container.main.mobile{
+    margin: 0px;
+    padding: 0px;
+}
+
+.dot2{
+    position: absolute !important;
+}
+
+.navTitleContainer{
+    width: 400px;
+}
+
+.navTitleContainer > h1{
+    text-align: end;
+}

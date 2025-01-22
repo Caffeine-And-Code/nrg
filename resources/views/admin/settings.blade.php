@@ -18,8 +18,7 @@
 
     <body>
         <x-nav-bar title="Settings" />
-        @mobile
-        <main class="container main">
+        <main class="container main mobile">
             <section class="mb-5 centerCol">
                 <form
                     action="{{ route('admin.news.edit') }}"
@@ -127,8 +126,7 @@
             </section>
             <x-site-setting />
         </main>
-            @elsemobile
-            <main class="main desktopContainer ">
+            <main class="main desktopContainer desktop">
                 <section class="row justify-content-between mb-5">
                     <section class="col-12 col-sm-12 col-md-5">
                         <x-products-displayer :products="$products" />
@@ -247,7 +245,6 @@
                 </div>
             </div>
             
-            @endmobile
         <x-navigation-footer mode="admin" />
     </body>
 </html>
