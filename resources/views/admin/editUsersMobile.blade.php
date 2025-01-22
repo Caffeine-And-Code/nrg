@@ -22,7 +22,7 @@
 </head>
 <body class="fullHeight">
     <x-nav-bar title="Settings" />
-    <main class="container mt-5 main">
+    <main class="container main">
         <x-discount-and-delete-user-panel :user="$user" />
     </main>
     <x-navigation-footer mode="admin" />    

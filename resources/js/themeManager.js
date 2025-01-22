@@ -15,11 +15,11 @@ const Themes = Object.freeze({
     },
     DARK : {
         "dark": "#ffffff",
-        "dark-text": "#E3E3E3",
+        "dark-text": "#ffffff",
         "light-text": "#CFCFCF",
         "stroke": "#939393",
         "darker-bg": "#494949",
-        "bg": "#000000",
+        "bg": "#2B2B2B",
     } 
 });
 

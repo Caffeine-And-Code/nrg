@@ -23,7 +23,7 @@
     <body>
         <x-nav-bar title="Settings" />
 
-        <main class="fullHeight container mt-5 main mb-5">
+        <main class="fullHeight container  main ">
             <x-news-displayer :news="$news" />
         </main>
 

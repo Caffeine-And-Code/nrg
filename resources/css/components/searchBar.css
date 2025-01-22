@@ -4,6 +4,11 @@
     padding-left: 0px !important;
     border-left: none !important;
     color: var(--dark-text) !important;
+    background-color: var(--bg) !important;
+}
+
+.searchBarContainer{
+    border: 1px solid white;
 }
 
 .searchBarContainer > button > i {
