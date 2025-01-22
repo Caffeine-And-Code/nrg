@@ -3,12 +3,12 @@
 @elsemobile
 <li class="d-flex justify-content-flex-start align-items-center singleProduct listItemDesktop">
 @endmobile
-    <figure class="d-flex">
-        <img class="productImage" src="{{ asset('images/products/' . basename($product->image)) }}" alt="Product Image" />
-        <figcaption class="normalTextBold maxLenght">{{ $product->name }}</figcaption>
+    <figure class="d-flex col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 imgPlusTextProduct">
+        <img class="productImage col-6" src="{{ asset('images/products/' . basename($product->image)) }}" alt="Product Image" />
+        <figcaption class="normalTextBold maxLenght col-6">{{ $product->name }}</figcaption>
     </figure>
     @mobile
-    <aside class="actions">
+    <aside class="actions col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
             <div class="btn-group dropup" role="group">
                 <button type="button" class="btn " data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="las la-ellipsis-v icon"></i>
@@ -83,7 +83,7 @@
                 <button type="submit" class="btn "><i class="las la-trash icon Bad"></i></button>
             </form>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="productsLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="productsLabel" id={{ "products".$product->id }}>
                 <div class="offcanvas-header">
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>

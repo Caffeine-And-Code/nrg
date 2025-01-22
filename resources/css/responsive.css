@@ -108,6 +108,18 @@
     .navTitle{
         font-size: 40px;
     }
+
+    .listContainer > li{
+        max-width: 100% !important;
+        width: 100%;
+        flex-wrap: wrap;
+        height: fit-content !important;
+        justify-content: center !important;
+    }
+
+    .listContainer{
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 571px) {
