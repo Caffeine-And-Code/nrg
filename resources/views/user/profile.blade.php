@@ -25,8 +25,9 @@
     </ul>
 
     <p>Fidelity Meter</p>
-    <p>Actual Spent: {{$actualSpent}}</p>
+    <p>Actual Spent: {{$user->getTotalSpent()}}</p>
     <p>Fidelity Meter target: {{$fmTarget}}</p>
+    <p>Your discount portfolio: {{$user->getDiscountPortfolio()}}</p>
 
     <p>Your profile</p>
     <form action="{{route('user.profile_edit')}}" method="post">

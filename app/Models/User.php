@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Cashier\Billable;
 use Laravel\Scout\Searchable;
 
 /**
@@ -22,7 +24,9 @@ use Laravel\Scout\Searchable;
 class User extends Authenticatable
 {
     use HasFactory;
-    use Searchable;
+//    use Searchable;
+    use Notifiable;
+    use Billable;
 
 //    public static function boot(): void
 //    {
@@ -48,11 +52,11 @@ class User extends Authenticatable
         'last_meter' => 'integer',
     ];
 
-    protected $attributes = [
-        'total_spent' => 0,
-        'discount_portfolio' => 0,
-        'last_meter' => 0
-    ];
+//    protected $attributes = [
+//        'total_spent' => 0,
+//        'discount_portfolio' => 0,
+//        'last_meter' => 0
+//    ];
 
     public function orders()
     {
@@ -69,11 +73,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class, 'products_in_carts')
             ->withPivot('quantity')
             ->withTimestamps();
-    }
-
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
     }
 
     public function getId(): int

@@ -43,6 +43,8 @@ body {
 
 html {
     height: 100%;
+.desktopContainer{
+    padding: 30px;
 }
 
 /* for the main element  */
@@ -78,6 +80,17 @@ html {
 }
 
 .customInput {
+    border-radius: 30px !important;
+    border-color: transparent !important;
+    padding: 15px !important;
+    z-index: 10;
+    background-color: var(--bg) !important;
+    color: var(--light-text) !important;
+    font-family: 'Mazzard Soft H Regular' !important;
+    border: 1px solid var(--stroke) !important;
+}
+
+.loginCustomInput {
     border-radius: 30px;
     border-color: transparent !important;
     padding: 15px;
@@ -100,6 +113,22 @@ html {
     color: var(--light-text);
 }
 
+h1 {
+    word-wrap: break-word; /* Per compatibilità storica */
+    overflow-wrap:break-word; /* Per supporto moderno */
+    white-space: normal;
+
+}
+
+.offcanvas {
+    /* thanks boostrap to be the most beautiful and functional css wrapper  */
+    z-index: 9999999 !important;
+}
+
+.dialog {
+    z-index: 1055 !important;
+}
+
 .centerCol {
     display: flex;
     justify-content: center;
@@ -113,7 +142,7 @@ html {
     padding: 1.5vh !important;
     background-color: var(--dark-text) !important;
     color: var(--bg) !important;
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
     font-family: 'Mazzard Soft H Regular' !important;
 }
 
@@ -144,6 +173,7 @@ html {
     color: var(--stroke);
     font-size: 30px;
 }
+
 
 .eye {
     display: none;
@@ -344,14 +374,40 @@ html {
 }
 
 .input-group {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100%;
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
 }
 
-.slideToLeft{
+.inputgroup {
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.inputgroup > .form-control {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    border-color: transparent !important;
+}
+input,
+textarea,
+select {
+    outline: none !important; /* Rimuove il contorno blu */
+    font-size: 22px  !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none !important; /* Assicurati che non appaia nemmeno in focus */
+    box-shadow: none !important; /* Rimuove anche eventuali ombre */
+}
+
+.slideToLeft {
     margin-left: -5px;
     padding-right: 10px;
     width: 45px;
@@ -359,26 +415,32 @@ html {
     padding-left: 10px;
 }
 
-textarea{
-    resize: none;
+textarea {
+    resize: none !important;
 }
 
-.normalTextBold{
+.normalTextBold {
     font-family: 'Mazzard Soft H Bold';
     font-size: 20px;
     font-weight: 700;
     color: var(--dark);
 }
 
-.normalTextRegular{
+.normalTextRegular {
     font-family: 'Mazzard Soft H Regular';
     font-size: 18px;
     color: var(--dark);
 }
 
-.btn:active,.btn:focus{
+.btn:active,
+.btn:focus {
     border-color: transparent !important;
     color: var(--bg) !important;
-    background-color: var(--dark-text) !important;
 }
 
+
+.entriesTable{
+    max-height: 200px;
+    height: 200px;
+    overflow-y: scroll;
+}

@@ -15,7 +15,7 @@
     
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -47,6 +47,6 @@
             @csrf
             <button class="customButton btn mb-2 neutralButton fullWidth" translate="Back"></button>
         </form>
-        <button class="customButton btn mb-2 createButton col-5" id="confirmNews" translate="Confirm"></button>
+        <button  type="button" class="customButton btn mb-2 createButton col-5 confirmNews" id="confirmNews" translate="Confirm"></button>
         
 </section>

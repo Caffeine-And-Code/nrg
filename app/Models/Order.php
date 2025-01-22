@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $number
- * @property string|null $delivery_time
+ * @property Carbon $delivery_time
  * @property float $used_portfolio
  * @property float $delivery_cost
  * @property int $user_id
@@ -21,6 +22,8 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     const STATUS_CREATED = 0;
+    const STATUS_PAID = 1;
+    const STATUS_CANCELED = 2;
 
     use HasFactory;
 
@@ -44,6 +47,10 @@ class Order extends Model
         'status' => 'integer',
         'classroom_id' => 'integer',
         'total' => 'float',
+    ];
+
+    protected $attributes = [
+        'status' => self::STATUS_CREATED
     ];
 
     public function user()
@@ -85,12 +92,12 @@ class Order extends Model
         return $this;
     }
 
-    public function getDeliveryTime(): ?string
+    public function getDeliveryTime(): Carbon
     {
         return $this->delivery_time;
     }
 
-    public function setDeliveryTime(?string $delivery_time): Order
+    public function setDeliveryTime(Carbon $delivery_time): Order
     {
         $this->delivery_time = $delivery_time;
         return $this;

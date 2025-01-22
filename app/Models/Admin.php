@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Admin
@@ -19,6 +20,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable
 {
     use HasFactory;
+    use Notifiable;
+
+    protected $fillable = [
+        'email',
+        'username',
+        'password',
+        'fm_prize',
+        'fm_target',
+        'delivery_cost',
+    ];
 
     protected $casts = [
         'fm_prize' => 'float',
@@ -26,10 +37,6 @@ class Admin extends Authenticatable
         'delivery_cost' => 'float',
     ];
 
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
-    }
 
     public function news()
     {

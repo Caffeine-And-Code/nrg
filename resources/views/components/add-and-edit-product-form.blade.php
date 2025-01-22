@@ -5,18 +5,18 @@
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
 />
 <form action="{{ $product ? route('admin.product.edit', ["id" => $product->id]) : route('admin.product.add') }}" method="post" class="col-12 mb-5" enctype="multipart/form-data">
-    <h1 class="title text mb-5" translate="Add/Edit a Product"></h1>
+    <h1 class="title textShadow text mb-5" translate="Add/Edit a Product"></h1>
     @csrf
     <section class="mb-4 centerRow justify-content-start">
-        <input type="file" id="imageInput" class="d-none" accept="image/*" name="image" />
+        <input type="file" id="imageInput" class="d-none imageInput" accept="image/*" name="image" />
         
         @if ($product)
-            <img src="{{ asset('images/products/'.basename($product->image)) }}" alt="Product Image" class="ImagePreview cover" id="imagePreview" />
+            <img src="{{ asset('images/products/'.basename($product->image)) }}" alt="Product Image" class="ImagePreview cover imagePreview" />
         @else
-            <img id="imagePreview" class="ImagePreview cover"  alt="Product Image"/>
+            <img  class="ImagePreview cover imagePreview"  alt="Product Image"/>
         @endif
-        <button type="button" id="selectImageButton" class="btn"><i class="las la-pen icon Active"></i></button>
-        <button type="button" id="removeImage" class="btn"><i class="las la-trash icon Bad"></i></button>
+        <button type="button" class="btn selectImageButton"><i class="las la-pen icon Active "></i></button>
+        <button type="button" class="removeImage btn"><i class="las la-trash icon Bad"></i></button>
     </section>
 
     <div class="input-group mb-4 inputContainerShadow align-items-center">
@@ -92,7 +92,7 @@
 
     <hr />
     <section class="mb-5 row justify-content-around">
-        <button type="button" class="customButton btn mb-2 neutralButton col-5" translate="Close" id="goBack"></button>    
+        <button type="button" class="customButton btn mb-2 neutralButton col-5 goBack" translate="Close"></button>    
         <button type="submit" class="customButton btn mb-2 createButton col-5"  translate="Confirm"></button>
     </section>
 </form> 

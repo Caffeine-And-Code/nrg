@@ -17,10 +17,22 @@
     @endif
     <ul>
     @foreach($notifications as $notification)
-        <li>
-            <b>{{$notification->getTitle()}}</b><br>
-            <p>{{$notification->getDescription()}}</p>
-        </li>
+        @if (array_key_exists("title", $notification->data) && array_key_exists("message", $notification->data))
+            <li>
+                @if ($notification->unread())
+                    <b>{{$notification->data["title"]}}</b><br>
+                @else
+                    <p>{{$notification->data["title"]}}</p><br>
+                @endif
+
+                <p>{{$notification->data["message"]}}</p>
+                <form action="{{route("user.notification_read")}}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$notification->id}}"/>
+                    <button>read</button>
+                </form>
+            </li>
+            @endif
     @endforeach
 
     </ul>

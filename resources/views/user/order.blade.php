@@ -22,6 +22,13 @@
     </ul>
     <p>Total: {{$order->getTotal()}}</p>
     <p>Class: {{$order->classroom->name}}</p>
+    @if($order->getStatus() === 0)
+        <p>In waiting</p>
+    @elseif($order->getStatus() == 1)
+        <p>paid</p>
+    @else
+        <p>cancelled</p>
+    @endif
 
     <a href="{{route("user.profile")}}">Profile</a>
 </body>

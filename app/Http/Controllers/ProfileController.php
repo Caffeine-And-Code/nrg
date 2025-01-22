@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classroom;
+use App\Models\News;
+use App\Models\Product;
 use App\Models\User;
 use App\Services\AdminService;
+use App\Services\NotificationService;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -15,9 +20,9 @@ class ProfileController extends Controller
         $user = auth()->user();
         $orders = $orderService->getOrders($user);
         $fmTarget = $adminService->getFidelityMeterTarget();
-        $actualSpent = $user->getTotalSpent();
+        $notifications = (new NotificationService())->getNotifications($user);
         $success = session()->get('success');
-        return view('user.profile', compact('orders', 'user', 'success', 'fmTarget', 'actualSpent'));
+        return view('user.profile', compact('orders', 'user', 'success', 'fmTarget', 'user', 'notifications'));
     }
 
     public function editUser(Request $request){
@@ -37,7 +42,6 @@ class ProfileController extends Controller
         return redirect()->route('user.profile')->with('success', 'Profile updated');
     }
 
-    
 
     public function edit(Request $request){
         $request->validate([
@@ -53,6 +57,17 @@ class ProfileController extends Controller
         ]);
         $user = User::query()->find($request->get('id'));
         $user->delete();
+        return route('admin.settings');
+    }
+
+    public function addDiscount(Request $request){
+        $request->validate([
+            'id' => 'required|exists:users,id',
+            'discount' => 'required|numeric|min:0|max:200'
+        ]);
+        $user = User::query()->find($request->get('id'));
+        $user->setDiscountPortfolio($user->getDiscountPortfolio() + $request->get('discount'));
+        $user->save();
         return redirect()->back();
     }
 
@@ -64,8 +79,15 @@ class ProfileController extends Controller
     // }
 
     public function search(Request $request){
-        $query = $request->get('query');
+        $query = $request->get('searchInput');
         $users = User::query()->where('username', 'like', "%$query%")->get();
-        return view('admin.settings', compact('users'));
+        $products = Product::all();
+        $delivery_cost = Auth::guard('admin')->user()->delivery_cost;
+        $fm_prize = Auth::guard('admin')->user()->fm_prize;
+        $fm_target = Auth::guard('admin')->user()->fm_target;
+        $news = News::all();
+        $entries = Auth::guard('admin')->user()->spinWheelEntries()->get();
+        $classes = Classroom::all();
+        return view('admin.settings', compact('classes', 'entries', 'news', 'products', 'users', 'delivery_cost', 'fm_prize', 'fm_target'));
     }
 }

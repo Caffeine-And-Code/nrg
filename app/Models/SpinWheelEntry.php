@@ -17,6 +17,12 @@ class SpinWheelEntry extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'text',
+        'prize',
+        'admin_id',
+    ];
+
     protected $casts = [
         'text' => 'string',
         'prize' => 'float',

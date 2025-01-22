@@ -27,6 +27,8 @@
     @endforeach
     <div>Shipping: €{{$shippingCost}}</div>
     <div>Price: €{{$total}}</div>
+    <div>Discount: €{{$discount}}, Attention: with discounts you can pay just 50% discount for each order</div>
+    <div>Total: €{{$total - $discount}}</div>
     <form action="{{route("user.post_checkout")}}" method="post">
         @csrf
         <select name="classroom_id">

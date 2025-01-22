@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\DailySpinController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
@@ -30,7 +32,12 @@ Route::name("user.")->group(function () {
         Route::post("profile/edit", [\App\Http\Controllers\ProfileController::class, "editUser"])->name('profile_edit');
         Route::get("profile", [\App\Http\Controllers\ProfileController::class, "index"])->name('profile');
         Route::get("profile/order", [\App\Http\Controllers\OrderController::class, "show"])->name('order_details');
+        Route::get("profile/order/json", [\App\Http\Controllers\OrderController::class, "showJson"])->name('order_details_json');
         Route::get("notification", [\App\Http\Controllers\NotificationController::class, "show"])->name('notification');
+        Route::post("notification/read", [\App\Http\Controllers\NotificationController::class, "read"])->name('notification_read');
+
+        Route::get("checkout/success", [\App\Http\Controllers\CheckoutController::class, "checkoutSuccess"])->name('checkout_success');
+        Route::get("checkout/error", [\App\Http\Controllers\CheckoutController::class, "checkoutError"])->name('checkout_error');
     });
 });
 
@@ -41,8 +48,11 @@ Route::prefix("admin")->name("admin.")->group(function () {
     Route::post('/login', [AdminController::class, 'authenticate'])->name('authenticate');
 
     Route::middleware('auth:admin')->group(function () {
+        //admin
         Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::post('/destroyMe', [AdminController::class, 'destroy'])->name('destroyMe');
+        Route::post("/deliveryCostUpdate", [AdminController::class, 'updateDeliveryCost'])->name('deliveryCostUpdate');
+        Route::post("/updateFidelity", [AdminController::class, 'updateFidelity'])->name('updateFidelity');
         //views
         Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get("/settings", [AdminController::class, 'settings'])->name('settings');
@@ -60,7 +70,16 @@ Route::prefix("admin")->name("admin.")->group(function () {
         //users
         Route::get("/users/search",[ProfileController::class, 'search'])->name('users.search');
         Route::get("/user/edit",[ProfileController::class, 'edit'])->name('user.edit');
-        Route::get("/user/delete",[ProfileController::class, 'delete'])->name('user.delete');
+        Route::post("/user/delete",[ProfileController::class, 'delete'])->name('user.delete');
+        Route::post("/user/addDiscount",[ProfileController::class, 'addDiscount'])->name('user.addDiscount');
+        //daily spin
+        Route::get("/dailySpin/edit",[DailySpinController::class, 'editView'])->name('dailySpin.edit');
+        Route::post("/dailySpin/add",[DailySpinController::class, 'add'])->name('dailySpin.add');
+        Route::post("/dailySpin/delete",[DailySpinController::class, 'destroy'])->name('dailySpin.delete');
+        //Classrooms
+        Route::get("/classrooms/edit",[ClassroomController::class, 'editView'])->name('classrooms.edit');
+        Route::post("/classrooms/add",[ClassroomController::class, 'add'])->name('classrooms.add');
+        Route::post("/classrooms/delete",[ClassroomController::class, 'destroy'])->name('classrooms.delete');
     });
 });
 
