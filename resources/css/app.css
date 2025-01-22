@@ -43,6 +43,7 @@ body {
 
 html {
     height: 100%;
+}
 .desktopContainer{
     padding: 30px;
 }
@@ -82,7 +83,7 @@ html {
 .customInput {
     border-radius: 30px !important;
     border-color: transparent !important;
-    padding: 15px !important;
+    padding: 15px;
     z-index: 10;
     background-color: var(--bg) !important;
     color: var(--light-text) !important;
@@ -142,7 +143,7 @@ h1 {
     padding: 1.5vh !important;
     background-color: var(--dark-text) !important;
     color: var(--bg) !important;
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
     font-family: 'Mazzard Soft H Regular' !important;
 }
 
@@ -173,7 +174,6 @@ h1 {
     color: var(--stroke);
     font-size: 30px;
 }
-
 
 .eye {
     display: none;
@@ -438,11 +438,8 @@ textarea {
     color: var(--bg) !important;
 }
 
-
 .entriesTable{
     max-height: 200px;
     height: 200px;
     overflow-y: scroll;
-}
-
 }
