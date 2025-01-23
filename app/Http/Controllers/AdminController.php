@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\User;
+use App\Services\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,7 +43,11 @@ class AdminController extends Controller
     public function dashboard()
     {
         $orders = Order::query()->with(["products", "classroom","User"])->get();
-        return view('admin/home',compact('orders'));
+
+        $admin = Auth::guard('admin')->user();
+        $notifications = (new NotificationService())->getNotificationsAdmin($admin);;
+
+        return view('admin/home',compact('orders','notifications'));
     }
 
     public function logout(Request $request)

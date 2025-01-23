@@ -49,3 +49,14 @@ h1{
     background-color: var(--dark) !important;
     color: var(--darker-bg) !important;
 }
+
+.accordion, .accordion-button, .accordion-collapse, .accordion-item, .accordion-header, .accordion-body, .accordion-flush,.accordion-button:focus,.accordion-button:not(.collapsed){
+    background-color: var(--bg);
+    color: var(--dark);
+}
+
+.accordion-button::after{
+    /* special thanks to boostrap for being the best at his job! thank you for setting the icon
+        of the accordion button to an image, thank you so much! */
+    filter: invert(50%) sepia(0%) saturate(0%) brightness(60%) contrast(100%);
+}

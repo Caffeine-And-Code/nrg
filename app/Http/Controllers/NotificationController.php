@@ -41,4 +41,36 @@ class NotificationController extends Controller
         $notification->markAsRead();
         return redirect()->back();
     }
+
+    public function readAdmin(Request $request){
+        $formData = $request->validate([
+            "id" => "required|exists:notifications,id",
+        ]);
+
+        /** @var Admin $user */
+        $user = auth()->guard('admin')->user();
+        /** @var DatabaseNotification $notification */
+        $notification = $user->notifications()->find($formData["id"]);
+        if($notification === null){{
+            throw new InternalErrorException("no notification found");
+        }}
+        $notification->markAsRead();
+        return redirect()->back();
+    }
+
+    public function destroyAdmin(Request $request){
+        $formData = $request->validate([
+            "id" => "required|exists:notifications,id",
+        ]);
+
+        /** @var Admin $user */
+        $user = auth()->guard('admin')->user();
+        /** @var DatabaseNotification $notification */
+        $notification = $user->notifications()->find($formData["id"]);
+        if($notification === null){{
+            throw new InternalErrorException("no notification found");
+        }}
+        $notification->delete();
+        return redirect()->back();
+    }
 }

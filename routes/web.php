@@ -7,6 +7,7 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Lang;
@@ -92,6 +93,9 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get("/orders", [OrderController::class, "getAllOrders"])->name('orders');
         Route::get("/orders/qrCode", [OrderController::class, "scanQrCode"])->name('orders.qrCode');
         Route::post("/orders/qrCode/checkValidity", [OrderController::class, "checkValidity"])->name('orders.qrCode.checkValidity');
+        //notifications
+        Route::post("/notifications/read", [NotificationController::class, "readAdmin"])->name('notifications.read');
+        Route::post("/notifications/delete", [NotificationController::class, "destroyAdmin"])->name('notifications.delete');
     });
 });
 

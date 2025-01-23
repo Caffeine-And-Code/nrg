@@ -22,7 +22,19 @@
         <x-nav-bar title="Orders" />
         <main class="container main">
             <x-orders-displayer :orders="$orders"/>
+            <button class="btn notificationsAdminButton" data-bs-toggle="offcanvas" data-bs-target="#notifications"><i class="las la-bell icon"></i></button>
         </main>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="notifications" aria-labelledby="notificationsLabel">
+            <div class="offcanvas-header">
+                
+                <h1 class="title smallTitle">Notifications</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="overflow-auto container main ">
+                <x-notifications-displayer :notifications="$notifications" />
+            </div>
+        </div>
 
         <x-navigation-footer mode="admin" />
     </body>

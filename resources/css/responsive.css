@@ -297,6 +297,11 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+
+    .notificationsAdminButton{
+        top: 130px !important;
+        right: 10px !important;
+    }
 }
 
 @media only screen and (max-width: 380px) {
