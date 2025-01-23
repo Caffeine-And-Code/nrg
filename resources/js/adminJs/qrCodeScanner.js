@@ -1,6 +1,22 @@
 
 const html5QrCode = new Html5Qrcode("qr-reader");
 document.addEventListener("DOMContentLoaded", function () {
+    createQRScanner();
+});
+
+window.addEventListener("resize", function () {
+    //remove the scanner and create a new one
+    try {
+        html5QrCode.stop()
+        html5QrCode.clear()
+        createQRScanner();
+    } catch (error) {
+        createQRScanner();
+    }
+});
+
+function createQRScanner(){
+    console.clear();
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         // decodedText: Contiene il contenuto del QR code
         window.axios.post("/admin/orders/qrCode/checkValidity",{
@@ -23,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(err => {
             console.error("Errore nell'avviare lo scanner:", err);
         });
-});
+}
+
 
 function elaborateResponse(response){
     console.log(response.data);

@@ -527,7 +527,7 @@ ul{
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    min-height: 700px !important;
+    min-height: 750px !important;
     max-height: fit-content;
     height: fit-content;
 }
