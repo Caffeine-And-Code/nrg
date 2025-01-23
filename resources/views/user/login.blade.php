@@ -29,7 +29,9 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M144 144l0 48 160 0 0-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192l0-48C80 64.5 144.5 0 224 0s144 64.5 144 144l0 48 16 0c35.3 0 64 28.7 64 64l0 192c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 256c0-35.3 28.7-64 64-64l16 0z"/></svg>
+                        <svg class="icon" viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0C5.243 0 2 2.243 2 5V6.5C0.897 6.5 0 7.397 0 8.5V16.5C0 17.603 0.897 18.5 2 18.5H14C15.103 18.5 16 17.603 16 16.5V8.5C16 7.397 15.103 6.5 14 6.5V5C14 2.243 10.757 0 8 0ZM14 8.5L14.002 16.5H2V8.5H14ZM4 6.5V5C4 3 6 2 8 2C10 2 12 3 12 5V6.5H4Z"/>
+                        </svg>
                     </span>
                     <input class="form-input" type="password" name="password" id="password" placeholder="Password">
                     <button type="button" class="togglePassword" id="togglePassword">
@@ -47,13 +49,11 @@
                         </svg>
                     </button>
                 </div>
-                
                 <div class="errorBox">
                 @if(!$errors->isEmpty())
                     <p>{{ $errors->first() }}</p>
                 @endif
                 </div>
-                
 
                 <button class="btn">Login</button>
                 <hr/>

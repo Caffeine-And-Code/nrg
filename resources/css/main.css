@@ -35,6 +35,13 @@ h1{
     color: var(--dark);
 }
 
+figcaption{
+    font-family: 'Mazzard Soft H Bold', sans-serif;
+    font-size: 32px;
+    margin: unset;
+    color: var(--dark);
+}
+
 .navbar-icon{
     border-radius: 100px;
     font-size: 22px;
