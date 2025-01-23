@@ -21,6 +21,8 @@
     font-style: normal;
 }
 
+
+
 html, body {
     margin: 0;
     padding: 0;
@@ -35,7 +37,7 @@ html, body {
 
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -50,6 +52,22 @@ main {
     width: 90%;
     padding-top: 5vh;
     padding-bottom: 5vh;
+}
+
+.login-zone {
+    display: flex;
+}
+
+.registration-zone {
+    display: none;
+}
+
+.desktop-only {
+    display: none;
+}
+
+.mobile-only {
+    display: block;
 }
 
 .logo {
@@ -175,6 +193,13 @@ hr {
     max-width: 350px;
 }
 
+.divider {
+    border: none;
+    width: 2px;
+    background-color: var(--light-text);
+    height: 70%;
+}
+
 p {
     color: var(--dark-text);
     font-family: 'Mazzard Soft H Regular'
@@ -184,4 +209,12 @@ figure {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.error-msg {
+    display: block;
 }
