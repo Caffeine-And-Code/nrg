@@ -162,6 +162,12 @@ main {
     border-color: var(--dark);
 }
 
+.errorBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 hr {
     border: 1px solid var(--dark-text);
     width: 100%; 

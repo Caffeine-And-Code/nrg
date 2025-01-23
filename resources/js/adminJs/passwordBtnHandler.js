@@ -23,7 +23,7 @@ document.getElementById("togglePassword").addEventListener("click", function () 
 document.getElementById("toggleConfirmPassword").addEventListener("click", function (){
     
 
-    var password = document.getElementById("passwordConf");
+    var password = document.getElementById("password_confirmation");
     if (password.type === "password") {
         password.type = "text";
     } else {

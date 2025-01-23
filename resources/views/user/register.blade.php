@@ -63,7 +63,7 @@
                                 <path d="M8 0C5.243 0 2 2.243 2 5V6.5C0.897 6.5 0 7.397 0 8.5V16.5C0 17.603 0.897 18.5 2 18.5H14C15.103 18.5 16 17.603 16 16.5V8.5C16 7.397 15.103 6.5 14 6.5V5C14 2.243 10.757 0 8 0ZM14 8.5L14.002 16.5H2V8.5H14ZM4 6.5V5C4 3 6 2 8 2C10 2 12 3 12 5V6.5H4Z"/>
                             </svg>
                         </span>
-                        <input class="form-input" type="password" name="password" id="passwordConf" placeholder="Confirm password">
+                        <input class="form-input" type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirm password">
                         <button type="button" class="togglePassword" id="toggleConfirmPassword">
                             <svg class="eye icon" id="eye2" xmlns="http://www.w3.org/2000/svg" height="1em"
                                 viewBox="0 0 576 512">
