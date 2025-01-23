@@ -173,3 +173,9 @@ p {
     color: var(--dark-text);
     font-family: 'Mazzard Soft H Regular'
 }
+
+figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
