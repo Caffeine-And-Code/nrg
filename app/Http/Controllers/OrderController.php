@@ -113,8 +113,11 @@ class OrderController extends Controller
 
 
             $order = Order::query()->find($formData['order_id']);
-            if($order->getUserId() == $formData['user_id'])
+            if($order->getUserId() == $formData['user_id']){
+                $order->setStatus(4);
+                $order->save();
                 return response()->json(["valid" => true]);
+            }
             return response()->json(["valid" => false]);
         } catch (\Throwable $th) {
             return response()->json(["valid" => false]);
