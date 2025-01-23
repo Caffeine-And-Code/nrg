@@ -68,7 +68,10 @@ class OrderController extends Controller
         $order = Order::query()->find($request->input('id'));
         
         $result = new QrCode(
-            data: json_encode($order),
+            data: json_encode([
+                "id" => $order->getId(),
+                "user_id" => $order->getUserId(),
+            ]),
             encoding: new Encoding('UTF-8'),
             errorCorrectionLevel: ErrorCorrectionLevel::Low,
             size: 300,
@@ -91,5 +94,9 @@ class OrderController extends Controller
         $toSave->saveToFile($path."/".$order->getId().'.png');
 
         return view("admin.qrCodeViewer", ["qrCode" => $order->getId()]);
+    }
+
+    public function scanQrCode(Request $request){
+        return view("admin.scanner");
     }
 }

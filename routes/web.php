@@ -43,6 +43,9 @@ Route::name("user.")->group(function () {
 
         Route::get("checkout/success", [\App\Http\Controllers\CheckoutController::class, "checkoutSuccess"])->name('checkout_success');
         Route::get("checkout/error", [\App\Http\Controllers\CheckoutController::class, "checkoutError"])->name('checkout_error');
+
+        
+        Route::post("/orders/qrCode", [OrderController::class, "getOrderQrCode"])->name('orders.qrCode');
     });
 });
 
@@ -87,7 +90,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::post("/classrooms/delete",[ClassroomController::class, 'destroy'])->name('classrooms.delete');
         // Orders
         Route::get("/orders", [OrderController::class, "getAllOrders"])->name('orders');
-        Route::post("/orders/qrCode", [OrderController::class, "getOrderQrCode"])->name('orders.qrCode');
+        Route::get("/orders/qrCode", [OrderController::class, "scanQrCode"])->name('orders.qrCode');
     });
 });
 

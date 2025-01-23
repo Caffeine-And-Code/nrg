@@ -18,9 +18,9 @@
 </section>
 <section class="orders-displayer">
     <h2 class="title">Done</h2>
-    <ul class="to-do-list">
+    <ul class="orderList">
         @foreach($done as $order)
-            <x-to-do-order :order="$order"/>
+            <x-order-done :order="$order"/>
         @endforeach
     </ul>
 </section>

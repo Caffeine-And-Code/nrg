@@ -77,6 +77,10 @@
         width: 100% !important;
     }
 
+    .orderImage{
+        margin-bottom: 20px;
+    }
+
     .navTitleContainer >  h1{
         font-size: 30px !important;
         width: fit-content;
@@ -123,6 +127,10 @@
 }
 
 @media only screen and (max-width: 571px) {
+
+    .orderImage{
+        margin-bottom: 20px;
+    }
 
     .navigationDesktop{
         width: 100% !important;
@@ -223,6 +231,10 @@
 }
 
 @media only screen and (max-width: 470px) {
+
+    .orderList{
+        padding: 0px !important;
+    }
     
     .iconButton{
         width: 42px !important;
