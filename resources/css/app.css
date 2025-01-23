@@ -505,3 +505,7 @@ table,td,th{
 .imgPlusTextProduct{
     min-width: 250px;
 }
+
+ul{
+    list-style: none;
+}

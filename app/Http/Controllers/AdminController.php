@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classroom;
 use App\Models\News;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\User;
@@ -40,7 +41,8 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin/home');
+        $orders = Order::query()->with(["products", "classroom","User"])->get();
+        return view('admin/home',compact('orders'));
     }
 
     public function logout(Request $request)

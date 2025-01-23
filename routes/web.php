@@ -7,6 +7,7 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
@@ -84,6 +85,9 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get("/classrooms/edit",[ClassroomController::class, 'editView'])->name('classrooms.edit');
         Route::post("/classrooms/add",[ClassroomController::class, 'add'])->name('classrooms.add');
         Route::post("/classrooms/delete",[ClassroomController::class, 'destroy'])->name('classrooms.delete');
+        // Orders
+        Route::get("/orders", [OrderController::class, "getAllOrders"])->name('orders');
+        Route::post("/orders/qrCode", [OrderController::class, "getOrderQrCode"])->name('orders.qrCode');
     });
 });
 

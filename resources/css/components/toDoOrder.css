@@ -1,0 +1,47 @@
+.orderImage {
+    font-size: 64px;
+    color: var(--dark-text);
+    fill: var(--dark-text);
+    padding: 10px;
+    border: 1px solid var(--dark-text);
+    border-radius: 30px;
+    margin-right: 20px;
+    width: 86px;
+    height: 86px;
+}
+
+.to-do-order {
+    padding: 10px;
+    max-width: 340px;
+    margin: 10px;
+}
+
+.to-do-order-header {
+    display: flex;
+    max-width: inherit;
+}
+
+.to-do-order-body {
+    padding: 0px;
+    max-height: 150px;
+    min-height: fit-content;
+    overflow-y: auto;
+    max-width: inherit;
+    margin-bottom: 10px;
+}
+
+.to-do-order-footer{
+    align-items: end;
+}
+
+.btnIcon{
+    font-size: 20px;
+}
+
+.orderList {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}

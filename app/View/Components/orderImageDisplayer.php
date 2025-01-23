@@ -6,17 +6,15 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ordersDisplayer extends Component
+class orderImageDisplayer extends Component
 {
-    public array $orders;
-    
-
+    public int $status;
     /**
      * Create a new component instance.
      */
-    public function __construct($orders)
+    public function __construct(int $status)
     {
-        $this->orders = $orders;
+        $this->status = $status;
     }
 
     /**
@@ -24,6 +22,6 @@ class ordersDisplayer extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.orders-displayer');
+        return view('components.order-image-displayer');
     }
 }
