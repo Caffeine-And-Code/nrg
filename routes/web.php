@@ -91,6 +91,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         // Orders
         Route::get("/orders", [OrderController::class, "getAllOrders"])->name('orders');
         Route::get("/orders/qrCode", [OrderController::class, "scanQrCode"])->name('orders.qrCode');
+        Route::post("/orders/qrCode/checkValidity", [OrderController::class, "checkValidity"])->name('orders.qrCode.checkValidity');
     });
 });
 

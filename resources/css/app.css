@@ -509,3 +509,25 @@ table,td,th{
 ul{
     list-style: none;
 }
+
+.qr-reader{
+    width: 100%;
+}
+
+.bigIcon{
+    font-size: 128px !important;
+}
+
+.Success{
+    color: #08ef08 !important;
+}
+
+.qrCodeContainer{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    min-height: 700px !important;
+    max-height: fit-content;
+    height: fit-content;
+}

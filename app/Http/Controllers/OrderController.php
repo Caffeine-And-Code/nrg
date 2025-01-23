@@ -69,7 +69,7 @@ class OrderController extends Controller
         
         $result = new QrCode(
             data: json_encode([
-                "id" => $order->getId(),
+                "order_id" => $order->getId(),
                 "user_id" => $order->getUserId(),
             ]),
             encoding: new Encoding('UTF-8'),
@@ -98,5 +98,26 @@ class OrderController extends Controller
 
     public function scanQrCode(Request $request){
         return view("admin.scanner");
+    }
+
+    public function checkValidity(Request $request){
+        // if the qr code is correct i should get params like this => {"id":1,"user_id":1}
+        $formData = $request->validate([
+            "params" => "required",
+        ]);
+
+        try {
+            $formData = json_decode($formData['params'], true);
+            if(!isset($formData['order_id']) || !isset($formData['user_id']))
+                return response()->json(["valid" => false]);
+
+
+            $order = Order::query()->find($formData['order_id']);
+            if($order->getUserId() == $formData['user_id'])
+                return response()->json(["valid" => true]);
+            return response()->json(["valid" => false]);
+        } catch (\Throwable $th) {
+            return response()->json(["valid" => false]);
+        }
     }
 }
