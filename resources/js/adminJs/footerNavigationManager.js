@@ -1,13 +1,13 @@
-function moveDot() {
-    const dot = document.getElementById("dot");
+function moveDot(id,oldRoute,activeRoute) {
+    const dot = document.getElementById(id);
     dot.style.display = "none";
     // Trova il bottone di partenza (OldRoute) e quello di arrivo (Active)
-    const startButton = document.querySelector(".oldRoute");
-    const endButton = document.querySelector(".active");
+    const startButton = document.querySelector(oldRoute);
+    const endButton = document.querySelector(activeRoute);
 
     if (!startButton || !endButton) {
         // the previous route does not exist so we make the dot visible in the center of the active button
-        const activeButton = document.querySelector(".active");
+        const activeButton = document.querySelector(activeRoute);
         if (!activeButton) {
             return;
         }
@@ -49,13 +49,26 @@ function moveDot() {
 
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
-        moveDot();
+        if(window.innerWidth <= 470){
+            moveDot("dot1",".oldRoute1",".active1");
+        }else{
+            moveDot("dot2",".oldRoute2",".active2");
+        }
+        
     }, 100);
 });
 
 
 window.addEventListener("resize", () => {
     setTimeout(() => {
-        moveDot();
+        if(window.innerWidth <= 470){
+            const dot = document.getElementById("dot2");
+            dot.style.display = "none";
+            moveDot("dot1",".oldRoute1",".active1");
+        }else{
+            const dot = document.getElementById("dot1");
+            dot.style.display = "none";
+            moveDot("dot2",".oldRoute2",".active2");
+        }
     }, 100);
 });

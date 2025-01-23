@@ -5,7 +5,7 @@ function createTableEntry(data){
     let cell1 = row.insertCell(0);
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
-    cell1.appendChild(document.createTextNode(data.text));
+    cell1.appendChild(document.createTextNode(checkLenght(data.text)));
     cell2.innerHTML = data.prize;
     let btn = document.createElement("button");
     btn.classList.add("actionButton");
@@ -20,13 +20,20 @@ function createTableEntry(data){
     cell3.classList.add("d-flex");
     cell3.classList.add("justify-content-end");
     cell3.classList.add("btnNewSpin");
-    console.log(cell3)
     //cell3.innerHTML = <button class="btn"><i class="las la-trash icon Bad"></i></button>;
 
     btn.addEventListener("click", function(){
         row.remove();
         newEntries = newEntries.filter((entry) => entry.id !== data.id);
     });
+}
+
+
+function checkLenght(toCheck){
+    if(toCheck.length > 15 && window.innerWidth < 768){
+        return toCheck.substring(0, 15) + "...";
+    }
+    return toCheck;
 }
 
 let newEntries = []

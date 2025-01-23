@@ -44,10 +44,12 @@ function handleImgs(theme){
 }
 
 function replaceSingleImg(imgId, theme, importedImageLight, importedImageDark) {
-    let img = document.getElementById(imgId);
-    if(img) {
-        let path = theme === 'LIGHT' ? importedImageLight : importedImageDark;
-        img.src = path.replace('/@fs', '');
+    let img = document.querySelectorAll("."+imgId);
+    if(img.length > 0) {
+        img.forEach((element) => {
+            let path = theme === 'LIGHT' ? importedImageLight : importedImageDark;
+            element.src = path.replace('/@fs', '');
+        })
     }
 }
 

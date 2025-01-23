@@ -56,9 +56,42 @@
         width: 250px !important;
         height: 250px !important;
     }
+
+    .navigationDesktop{
+        width: 70% !important;
+    }
+
+    .navTitleContainer >  h1{
+        font-size: 48px !important;
+        width: fit-content;
+    }
+
+    .navTitleContainer{
+        width: 300px;
+        text-align: end;
+    }
 }
 
 @media only screen and (min-width: 571px) and (max-width: 767px) {
+    .navigationDesktop{
+        width: 100% !important;
+    }
+
+    .navTitleContainer >  h1{
+        font-size: 30px !important;
+        width: fit-content;
+    }
+
+    .nav-bar > img{
+        height: 70% !important;
+        margin-top: 53px !important;
+    }
+
+    .navTitleContainer{
+        width: 180px;
+        text-align: end;
+    }
+
     .offcanvas{
         width: 70% !important;
     }
@@ -71,9 +104,39 @@
     .passToggle{
         height: 65px !important;
     }
+
+    .navTitle{
+        font-size: 40px;
+    }
 }
 
 @media only screen and (max-width: 571px) {
+
+    .navigationDesktop{
+        width: 100% !important;
+    }
+
+    .nav-bar{
+        justify-content: normal !important;
+    }
+
+    .navTitleContainer >  h1{
+        font-size: 24px !important;
+        width: fit-content;
+    }
+
+    .nav-bar > img{
+        height: 70% !important;
+        margin-top: 53px !important;
+    }
+
+    .navTitleContainer{
+        width: 150px;
+    }
+
+    .navTitle{
+        font-size: 40px !important;
+    }
     .listItemDesktop{
         display: flex !important;
         flex-direction: column;
@@ -87,6 +150,7 @@
 }
 
 @media only screen and (max-width: 570px) {
+
     .iconButton{
         width: 42px !important;
         height: 42px !important;
@@ -100,12 +164,8 @@
         font-size: 24px;
     }
 
-    .nav-bar{
+    .desktop nav-bar{
         height: 100px !important;
-    }
-
-    .nav-bar > img{
-        margin-top: 21px !important;
     }
 
     .singleNews , .plusIcon{
@@ -134,6 +194,10 @@
         font-size: 32px !important;
     }
 
+    .navTitle{
+        font-size: 32px !important;
+    }
+
     .formIconContainer{
         
         width: 48px !important;
@@ -147,6 +211,7 @@
 }
 
 @media only screen and (max-width: 470px) {
+    
     .iconButton{
         width: 42px !important;
         height: 42px !important;
@@ -164,9 +229,55 @@
         padding: 10px !important;
         font-size: 18px !important;
     }
+
+    .desktop{
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden;
+    }
+
+    .dot2{
+        display: none !important;
+    }
+
+    .dot1{
+        display: block !important;
+    }
+
+    .mobile{
+        width:auto !important;
+        height: auto !important;
+    }
+
+    .mobile > img{
+        max-height: 100px !important;
+        height: 80px !important;
+    }
+
+    .mobile.nav-bar{
+        height: 98px !important;
+    }
+
+    .footerNavigation{
+        height: 80px !important;
+    }
+
+    .main.desktopContainer.desktop{
+        padding: 0px !important;
+    }
+
+    .container.main.mobile{
+        margin: auto !important;
+        padding-bottom: 100px;
+        padding-top: 3rem;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
 @media only screen and (max-width: 380px) {
+
+    
     .iconButton{
         width: 42px !important;
         height: 42px !important;
@@ -207,12 +318,20 @@
         font-size: 28px;
     }
 
+    .mobile.nav-bar {
+        height: 90px !important;
+    }
+
+    .navTitle{
+        font-size: 22px !important;
+    }
+
     .smallTitle{
         font-size: 20px;
     }
 
     .nav-bar{
-        height: 80px !important;
+        height: 80px ;
     }
 
     .nav-bar > img{
