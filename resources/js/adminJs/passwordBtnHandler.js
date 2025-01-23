@@ -20,23 +20,25 @@ document.getElementById("togglePassword").addEventListener("click", function () 
     }
 });
 
-document.getElementById("toggleConfirmPassword").addEventListener("click", function (){
+const confirmPassword = document.getElementById("toggleConfirmPassword");
+if (confirmPassword) {
+    confirmPassword.addEventListener("click", function (){
+
+        var password = document.getElementById("password_confirmation");
+        if (password.type === "password") {
+            password.type = "text";
+        } else {
+            password.type = "password";
+        }
     
-
-    var password = document.getElementById("password_confirmation");
-    if (password.type === "password") {
-        password.type = "text";
-    } else {
-        password.type = "password";
-    }
-
-    if (visibleConfirm) {
-        document.getElementById("eye2").style.display = "none";
-        document.getElementById("eye-slash2").style.display = "block";
-        visibleConfirm = false;
-    } else {
-        document.getElementById("eye2").style.display = "block";
-        document.getElementById("eye-slash2").style.display = "none";
-        visibleConfirm = true;
-    }
-});
+        if (visibleConfirm) {
+            document.getElementById("eye2").style.display = "none";
+            document.getElementById("eye-slash2").style.display = "block";
+            visibleConfirm = false;
+        } else {
+            document.getElementById("eye2").style.display = "block";
+            document.getElementById("eye-slash2").style.display = "none";
+            visibleConfirm = true;
+        }
+    });
+}
