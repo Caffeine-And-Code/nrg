@@ -5,6 +5,7 @@ namespace App\Models;
 use App\QueryBuilder\ProductQueryBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
 
@@ -27,6 +28,7 @@ use Laravel\Scout\Searchable;
 class Product extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     //use Searchable;
 
     protected $fillable = [
@@ -163,6 +165,11 @@ class Product extends Model
     public function getRatings(): ?Collection
     {
         return $this->ratings;
+    }
+
+    public function getDiscountedPrice(): float
+    {
+        return $this->price - ($this->price * ($this->perc_discount / 100));
     }
 
     // uncomment this function to enable the search with meilisearch

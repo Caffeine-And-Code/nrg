@@ -26,9 +26,6 @@ main{
 nav{
     height: 50px;
     border-bottom: 1px solid var(--light-text);
-    position: sticky;
-    top: 0;
-    left: 0;
 }
 
 h1{
@@ -48,4 +45,158 @@ h1{
 .navbar-icon.active{
     background-color: var(--dark) !important;
     color: var(--darker-bg) !important;
+}
+
+img{
+    object-fit: cover;
+}
+
+/*Bootstrap override*/
+.carousel{
+    max-height: 300px;
+    height: 100%;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 5px 4px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.search-input{
+    border-radius: 30px;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 2px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.search-input ~ input[type='search']:focus{
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.5);
+}
+
+input[type='search']{
+    border: unset;
+    box-shadow: unset;
+}
+
+input[type='search']:active,input[type='search']:focus-visible,input[type='search']:focus{
+    border: unset;
+    box-shadow: unset;
+    outline: unset;
+}
+
+/* Product filtering */
+.search-container{
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.search-container > li > form{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    align-content: center;
+    border-bottom: 1px solid var(--light-text);
+}
+
+.search-container > li > form > img{
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.search-container > li > form > div{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 7px;
+}
+
+.search-container > li > form > button{
+    border-radius: 100px;
+}
+
+.search-container > li > form > button > i{
+    font-size: 26px;
+}
+
+
+
+
+
+
+
+
+
+:where(.ui-wheel-of-fortune) {
+    --_items: 12;
+    all: unset;
+    aspect-ratio: 1 / 1;
+    container-type: inline-size;
+    direction: ltr;
+    display: grid;
+    position: relative;
+    width: 100%;
+    &::after {
+        aspect-ratio: 1/cos(30deg);
+        background-color: crimson;
+        clip-path: polygon(50% 100%,100% 0,0 0);
+        content: "";
+        height: 4cqi;
+        position: absolute;
+        place-self: start center;
+        scale: 1.4;
+    }
+
+    & > * { position: absolute; }
+
+    button {
+        aspect-ratio: 1 / 1;
+        background: hsla(0, 0%, 100%, .8);
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 5cqi;
+        place-self: center;
+        width: 20cqi;
+    }
+
+    ul {
+        all: unset;
+        clip-path: inset(0 0 0 0 round 50%);
+        display: grid;
+        inset: 0;
+        place-content: center start;
+
+        li {
+            align-content: center;
+            aspect-ratio: 1 / calc(2 * tan(180deg / var(--_items)));
+            background: hsl(calc(360deg / var(--_items) * calc(var(--_idx))), 100%, 75%);
+            clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+            display: grid;
+            font-size: 5cqi;
+            grid-area: 1 / -1;
+            padding-left: 1ch;
+            rotate: calc(360deg / var(--_items) * calc(var(--_idx) - 1));
+            transform-origin: center right;
+            user-select: none;
+            width: 50cqi;
+
+            &:nth-of-type(1) { --_idx: 1; }
+            &:nth-of-type(2) { --_idx: 2; }
+            &:nth-of-type(3) { --_idx: 3; }
+            &:nth-of-type(4) { --_idx: 4; }
+            &:nth-of-type(5) { --_idx: 5; }
+            &:nth-of-type(6) { --_idx: 6; }
+            &:nth-of-type(7) { --_idx: 7; }
+            &:nth-of-type(8) { --_idx: 8; }
+            &:nth-of-type(9) { --_idx: 9; }
+            &:nth-of-type(10) { --_idx: 10; }
+            &:nth-of-type(11) { --_idx: 11; }
+            &:nth-of-type(12) { --_idx: 12; }
+        }
+    }
 }
