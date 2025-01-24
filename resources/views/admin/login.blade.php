@@ -25,7 +25,7 @@
             <figure class="logo-space">
                 <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="logo"
                     alt="bigLogo" id = "bigLogo" />
-                <figcaption>{{ __("AdminSection") }}</figcaption>
+                <figcaption>{{ __("messages.AdminSection") }}</figcaption>
             </figure>
             <form class="login-form" action="{{ route('admin.authenticate') }}" method="post">
                 @csrf

@@ -29,7 +29,7 @@
 .nav-bar > figure > i {
     font-size: 100px;
     z-index: 1;
-    margin-right: -40px;
+    margin-right: -10px;
     color: var(--stroke);
     overflow-x: hidden;
 }

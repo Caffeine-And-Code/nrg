@@ -74,4 +74,9 @@ return[
     "QROk" => "QR Valido",
     "QRNotOk" => "QR Non Valido",
     "Users" => "Utenti",
+    "Logout" => "Esci",
+    "EorU" => "Email o Username",
+    "Donthaveanaccountyet?" => "Non hai ancora un account?",
+    "CoPassword" => "Conferma Password",
+    "Already have an account?" => "Hai già un account?",
 ];

@@ -12,7 +12,7 @@
     }
 @endphp
 <header class="nav-bar desktop">
-    <img src="" alt="logo" class="logo minimalLogo" id="" />
+    <img src="" alt="logo" class="logo " id="minimalLogo" />
     <aside class="navigationDesktop">
         <ul class="footerIconList">
             
@@ -41,7 +41,7 @@
     <div class="z-99 dot dot2" id="dot2"></div>
 </header>
 <header class="nav-bar mobile">
-    <img src="" alt="logo" class="logo minimalLogo" id="" />
+    <img src="" alt="logo" class="logo " id="minimalLogo" />
     <figure>
         @if($title == "Orders" || $title == "Products")
             <i class="las la-shopping-bag"></i>
