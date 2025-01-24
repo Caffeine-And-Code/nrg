@@ -36,9 +36,12 @@ h1 {
 
 figcaption{
     font-family: 'Mazzard Soft H Bold', sans-serif;
-    font-size: 32px;
+    font-size: clamp(32px, 5vw, 4rem);
     margin: unset;
     color: var(--dark);
+    width: 150%; /* Larghezza relativa all'immagine */
+    text-align: center; /* Per centrare il testo */
+    position: relative;
 }
 
 .navbar-icon{

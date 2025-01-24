@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     @vite('/resources/js/themeManager.js')
+    @vite('/resources/css/colors.css')
     @vite('/resources/css/views/userlogin.css')
     @vite('/resources/css/main.css')
     <!-- @vite('/resources/css/app.css') -->
@@ -21,10 +22,10 @@
 <body>
     <main>
         <section class="login-section">
-            <figure>
+            <figure class="logo-space">
                 <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="logo"
                     alt="bigLogo" id = "bigLogo" />
-                <figcaption translate="AdminSection"></figcaption>
+                <figcaption>{{ __("AdminSection") }}</figcaption>
             </figure>
             <form class="login-form" action="{{ route('admin.authenticate') }}" method="post">
                 @csrf
@@ -57,7 +58,7 @@
                         </svg>
                     </button>
                 </div>
-                <button type="submit" class="btn" translate="Login"></button>
+                <button type="submit" class="btn">{{ __("Login") }}</button>
             </form>
         </section>
     </main>

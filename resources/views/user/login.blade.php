@@ -20,7 +20,7 @@
         <div id="session-message" data-message="{{ session('message') }}"></div>
 
         <section class="login-section login-zone">
-            <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="col-sm-8 col-md-6 col-12 logo" alt="bigLogo" id = "bigLogo" />
+            <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="col-sm-8 col-md-6 col-12 logo logo-space" alt="bigLogo" id = "bigLogo" />
             
             <form class="login-form" action="{{route('user.authenticate')}}" method="post">
                 @csrf
