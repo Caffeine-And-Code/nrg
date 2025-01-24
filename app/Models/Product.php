@@ -29,7 +29,7 @@ class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    //use Searchable;
+    use Searchable;
 
     protected $fillable = [
         'image',
@@ -174,14 +174,14 @@ class Product extends Model
 
     // uncomment this function to enable the search with meilisearch
     // configuration for meilisearch
-    // public function toSearchableArray()
-    // {
-    //     return [
-    //         'id' => $this->id,
-    //         'name' => $this->name,
-    //         'description' => $this->description,
-    //         'price' => $this->price,
-    //         'perc_discount' => $this->perc_discount,
-    //     ];
-    // }
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'perc_discount' => $this->perc_discount,
+        ];
+    }
 }

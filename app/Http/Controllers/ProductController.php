@@ -133,33 +133,36 @@ class ProductController extends Controller
         return redirect()->route("admin.settings")->with('error', 'Product does not exist.');
     }
 
-    // uncomment this function if you want to use Meilisearch for searching products
+    
+    public function search(Request $request)
+    {
+        $query = $request->input('searchInput');
+        // Cerca i prodotti usando Meilisearch
+        $products = Product::search($query)->get();
+        $users = User::all();
+        $admin = Auth::guard('admin')->user();
+        $news = $admin->news()->get();
+        $entries = $admin->spinWheelEntries()->get();
+        $classes = Classroom::all();
+        return view("admin.settings", ["classes" => $classes,"entries" => $entries ,"news"=>$news,"products" => $products,"users" => $users,"fm_prize"=> $admin->fm_prize,"fm_target"=> $admin->fm_target,"delivery_cost"=> $admin->delivery_cost]);
+    }
+
     // public function search(Request $request)
     // {
     //     $query = $request->input('searchInput');
 
-    //     // Cerca i prodotti usando Meilisearch
-    //     $products = Product::search($query)->get();
-    
-    //     return view("admin.settings", ["products" => $products]);
-    // }
-
-    public function search(Request $request)
-    {
-        $query = $request->input('searchInput');
-
-        $products = Product::query()->search($query)->get();
+    //     $products = Product::query()->search($query)->get();
         
-        $users = User::all();
+    //     $users = User::all();
 
-        $admin = Auth::guard('admin')->user();
+    //     $admin = Auth::guard('admin')->user();
 
-        $news = $admin->news()->get();
+    //     $news = $admin->news()->get();
 
-        $entries = $admin->spinWheelEntries()->get();
+    //     $entries = $admin->spinWheelEntries()->get();
 
-        $classes = Classroom::all();
+    //     $classes = Classroom::all();
 
-        return view("admin.settings", ["classes" => $classes,"entries" => $entries ,"news"=>$news,"products" => $products,"users" => $users,"fm_prize"=> $admin->fm_prize,"fm_target"=> $admin->fm_target,"delivery_cost"=> $admin->delivery_cost]);
-    }
+    //     return view("admin.settings", ["classes" => $classes,"entries" => $entries ,"news"=>$news,"products" => $products,"users" => $users,"fm_prize"=> $admin->fm_prize,"fm_target"=> $admin->fm_target,"delivery_cost"=> $admin->delivery_cost]);
+    // }
 }

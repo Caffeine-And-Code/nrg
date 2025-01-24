@@ -44,3 +44,8 @@ exit
 
 ```
 Now if you are on linux/WSL/MacOs you can use the sail command to interact with container.  
+
+If the site says "Index [ModelName] not found.", run the following command:
+```bash
+./vendor/bin/sail artisan scout:import "App\Models\ModelName"
+```

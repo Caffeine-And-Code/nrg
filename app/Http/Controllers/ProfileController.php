@@ -72,15 +72,9 @@ class ProfileController extends Controller
     }
 
     // uncomment this function to enable search functionality with MeiliSearch
-    // public function search(Request $request){
-    //     $query = $request->get('query');
-    //     $users = User::search($query)->get();
-    //     return view('admin.settings', compact('users'));
-    // }
-
     public function search(Request $request){
-        $query = $request->get('searchInput');
-        $users = User::query()->where('username', 'like', "%$query%")->get();
+        $query = $request->get('query');
+        $users = User::search($query)->get();
         $products = Product::all();
         $delivery_cost = Auth::guard('admin')->user()->delivery_cost;
         $fm_prize = Auth::guard('admin')->user()->fm_prize;
@@ -90,4 +84,17 @@ class ProfileController extends Controller
         $classes = Classroom::all();
         return view('admin.settings', compact('classes', 'entries', 'news', 'products', 'users', 'delivery_cost', 'fm_prize', 'fm_target'));
     }
+
+    // public function search(Request $request){
+    //     $query = $request->get('searchInput');
+    //     $users = User::query()->where('username', 'like', "%$query%")->get();
+    //     $products = Product::all();
+    //     $delivery_cost = Auth::guard('admin')->user()->delivery_cost;
+    //     $fm_prize = Auth::guard('admin')->user()->fm_prize;
+    //     $fm_target = Auth::guard('admin')->user()->fm_target;
+    //     $news = News::all();
+    //     $entries = Auth::guard('admin')->user()->spinWheelEntries()->get();
+    //     $classes = Classroom::all();
+    //     return view('admin.settings', compact('classes', 'entries', 'news', 'products', 'users', 'delivery_cost', 'fm_prize', 'fm_target'));
+    // }
 }

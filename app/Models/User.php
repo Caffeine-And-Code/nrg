@@ -24,7 +24,7 @@ use Laravel\Scout\Searchable;
 class User extends Authenticatable
 {
     use HasFactory;
-//    use Searchable;
+    use Searchable;
     use Notifiable;
     use Billable;
 
@@ -164,17 +164,17 @@ class User extends Authenticatable
     }
 
     // uncomment this function to enable search functionality with MeiliSearch
-    // public function toSearchableArray(): array
-    // {
-    //     return [
-    //         'id' => $this->getId(),
-    //         'email' => $this->getEmail(),
-    //         'username' => $this->getUsername(),
-    //         'total_spent' => $this->getTotalSpent(),
-    //         'discount_portfolio' => $this->getDiscountPortfolio(),
-    //         'last_meter' => $this->getLastMeter(),
-    //     ];
-    // }
+    public function toSearchableArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'email' => $this->getEmail(),
+            'username' => $this->getUsername(),
+            'total_spent' => $this->getTotalSpent(),
+            'discount_portfolio' => $this->getDiscountPortfolio(),
+            'last_meter' => $this->getLastMeter(),
+        ];
+    }
 
 
 }
