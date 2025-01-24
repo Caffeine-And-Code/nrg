@@ -88,4 +88,14 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('user.login');
     }
+
+    public function destroy(Request $request): \Illuminate\Foundation\Application|\Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+    {
+        /**
+         * @var User $user
+         */
+        $user = Auth::user();
+        $user->delete();
+        return redirect()->route('user.login');
+    }
 }

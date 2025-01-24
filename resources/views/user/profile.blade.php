@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    @vite('/resources/js/themeManager.js')
+    @vite('/resources/css/app.css') @vite('/resources/css/responsive.css')
+    @vite("/resources/css/main.css")
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    />
 </head>
 <body>
     @if(!$errors->isEmpty())
@@ -40,5 +50,6 @@
     </form>
 
     <a href="{{route('user.home')}}">Dashboard</a>
+    <x-site-setting />
 </body>
 </html>

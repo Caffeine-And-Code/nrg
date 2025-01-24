@@ -29,6 +29,7 @@ Route::name("user.")->group(function () {
     Route::middleware(['auth:user'])->group(function () {
         //ADD HERE LOGGED PROTECTED ROUTES
         Route::post("logout", [\App\Http\Controllers\LoginController::class, "logout"])->name('logout');
+        Route::post("destroyMe", [\App\Http\Controllers\LoginController::class, "destroy"])->name('destroyMe');
         Route::get('/', [DashboardController::class, 'index'])->name('home');
         Route::get("search", [\App\Http\Controllers\DashboardController::class, "search"])->name('search');
         Route::post("checkout/products/add", [\App\Http\Controllers\CheckoutController::class, "editProductCart"])->name('add_product_to_cart');

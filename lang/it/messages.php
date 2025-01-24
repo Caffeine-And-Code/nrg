@@ -79,4 +79,5 @@ return[
     "Donthaveanaccountyet?" => "Non hai ancora un account?",
     "CoPassword" => "Conferma Password",
     "Already have an account?" => "Hai già un account?",
+    "DeleteUser" => "Elimina Account Utente",
 ];

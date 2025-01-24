@@ -37,6 +37,30 @@
                 </div>
             </div>
         </li>
+        {{-- check if the current logged user is an admin --}}
+        @php
+            $isAdmin = Auth::guard('admin')->check();
+        @endphp
+        @if ($isAdmin == 0)
+        <li class="list-group-item pb-4 pt-4">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 smallTitle">{{ __("messages.Logout") }}</h5>
+                <form action="{{ route('user.logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn normalButton">{{ __("messages.Exit") }}</button>
+                </form>
+            </div>
+        </li>
+        <li class="list-group-item pb-4 pt-4">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 smallTitle">{{ __("messages.DeleteUser") }}</h5>
+                <form action="{{ route('user.destroyMe') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn normalButton">{{ __("messages.Delete") }}</button>
+                </form>
+            </div>
+        </li>
+        @else
         <li class="list-group-item pb-4 pt-4">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 smallTitle">{{ __("messages.Logout") }}</h5>
@@ -55,5 +79,6 @@
                 </form>
             </div>
         </li>
+        @endif
     </ul>
 </section>

@@ -170,9 +170,6 @@ class User extends Authenticatable
             'id' => $this->getId(),
             'email' => $this->getEmail(),
             'username' => $this->getUsername(),
-            'total_spent' => $this->getTotalSpent(),
-            'discount_portfolio' => $this->getDiscountPortfolio(),
-            'last_meter' => $this->getLastMeter(),
         ];
     }
 

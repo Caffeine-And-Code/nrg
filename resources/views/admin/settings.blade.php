@@ -206,7 +206,7 @@
                         </section>
                     </section>
                 </section>
-                <x-site-setting />
+                <x-site-setting/>
             </main>
             {{-- OFFCANVAS --}}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="news" aria-labelledby="newsLabel">

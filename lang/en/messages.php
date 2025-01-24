@@ -74,4 +74,5 @@ return[
     "Donthaveanaccountyet?" => "Don't have an account yet?",
     "CoPassword" => "Confirm Password",
     "Already have an account?" => "Already have an account?",
+    "DeleteUser" => "Delete User Account",
 ];
