@@ -22,10 +22,13 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
+        $request->session()->flash('message', 'TryLogin');
+
         $validatedRequest = $request->validate([
             "username" => ['required', 'string'],
             'password' => ['required'],
         ]);
+
         $credentials= [
             'password' => $validatedRequest["password"],
         ];
@@ -50,11 +53,14 @@ class LoginController extends Controller
 
         return back()->withErrors([
             'username' => 'The provided credentials do not match our records.',
-        ])->onlyInput('username');
+        ])
+        ->onlyInput('username');
     }
 
     public function register(Request $request): \Illuminate\Http\RedirectResponse
     {
+        $request->session()->flash('message', 'TryRegister');
+
         $validatedRequest = $request->validate([
             "email" => ['required', 'email', 'unique:users'],
             "username" => ['required', 'string', 'min:3', 'max:30', 'unique:users'],

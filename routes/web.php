@@ -21,7 +21,7 @@ Route::name("user.")->group(function () {
     Route::middleware("guest")->group(function () {
         Route::get("login", [\App\Http\Controllers\LoginController::class, "loginPage"])->name('login');
         Route::post("login", [\App\Http\Controllers\LoginController::class, "authenticate"])->name('authenticate');
-        Route::get("register", [\App\Http\Controllers\LoginController::class, "registerPage"])->name('register');
+        //Route::get("register", [\App\Http\Controllers\LoginController::class, "registerPage"])->name('register');
         Route::post("register", [\App\Http\Controllers\LoginController::class, "register"])->name('create_user');
     });
     Route::middleware(['auth:user'])->group(function () {

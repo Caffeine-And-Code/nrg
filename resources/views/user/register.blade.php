@@ -1,3 +1,6 @@
+
+<!-- This file is deprecated -->
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -87,9 +90,10 @@
                     </div>
 
                     <button class="btn">Register</button>
-                    <hr/>
+                    
                 </form>
                 
+                <hr/>
                 <p>Already have an account?</p>
 
                 <a href="{{route('user.login')}}">
