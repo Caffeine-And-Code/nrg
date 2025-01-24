@@ -5,29 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class LangController extends Controller
 {
-    public function getTranslations()
-    {
-        $locale = session('locale', App::getLocale()); // Get the current locale
-        $path = resource_path("js/translations/{$locale}.json");
-
-
-        if (File::exists($path)) {
-            return response()->json(json_decode(File::get($path), true));
-        }
-
-        return response()->json([]);
-    }
-
     public function setLocale(Request $request)
     {
         $request->validate([
             'locale' => 'required|string|in:en,it'
         ]);
+
+        $before = App::getLocale();
+        
         App::setLocale($request->locale);
-        session(['locale' => $request->locale]);  // Save locale in session
-        return session("locale");
+
+        Cookie::queue(Cookie::forget('locale'));
+
+        // Salva la preferenza linguistica in un cookie (1 anno di durata)
+        Cookie::queue('locale', $request->locale, 60 * 24 * 365);
+        
+        return "before: $before, after: ".App::getLocale();
     }
 }

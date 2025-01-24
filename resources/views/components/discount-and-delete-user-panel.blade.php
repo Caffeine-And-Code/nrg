@@ -13,13 +13,13 @@
 </section>
 <hr />
 <section class="userInfo">
-    <h3 class="normalTextBold" translate="Email"></h3>
+    <h3 class="normalTextBold">Email</h3>
     <p class="normalTextRegular">{{ $user->email }}</p>
-    <h3 class="normalTextBold" translate="LastAccess"></h3>
+    <h3 class="normalTextBold">{{ __("messages.LastAccess") }}</h3>
     <p class="normalTextRegular">{{ $user->last_access }}</p>
-    <h3 class="normalTextBold" translate="TotalSpent"></h3>
+    <h3 class="normalTextBold">{{ __("messages.TotalSpent") }}</h3>
     <p class="normalTextRegular">€ {{ $user->total_spent }}</p>
-    <h3 class="normalTextBold" translate="DiscountPortfolio"></h3>
+    <h3 class="normalTextBold">{{ __("messages.DiscountPortfolio") }}</h3>
     <p class="normalTextRegular">€ {{ $user->discount_portfolio }}</p>
 </section>
 <section>
@@ -39,7 +39,7 @@
                 name="discount"
                 min="1"
                 max="200"
-                placeholder="Discount"
+                placeholder={{ __("messages.Discount") }}
                 required
             />
         </div>
@@ -48,12 +48,10 @@
             <a
             href="{{ route('admin.settings') }}"
                 class="customButton btn mb-2 neutralButton col-5"
-                translate="Back"
-            ></a>
+            >{{ __("messages.Back") }}</a>
             <button
                 class="customButton btn mb-2 createButton col-5"
-                translate="Add"
-            ></button>
+            >{{ __("messages.Add") }}</button>
         </section>
     </form>
 </section>

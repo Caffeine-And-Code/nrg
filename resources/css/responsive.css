@@ -228,6 +228,10 @@
     .fullHeight{
         height: calc(100vh - 200px) !important;
     }
+
+    .bigIconOrders{
+        font-size: 64px !important;
+    }
 }
 
 @media only screen and (max-width: 470px) {

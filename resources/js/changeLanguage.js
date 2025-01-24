@@ -1,45 +1,47 @@
-import { translateEverything } from "../js/translations/translation.js";
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('#IT').forEach((element) => {
+        // change the language to italian
+        element.addEventListener('click', async function () {
+            const csrfToken = document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute('content');
 
-// change the language to italian 
-document.getElementById("IT").addEventListener("click", async function () {
-    const csrfToken = document
-        .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content");
-
-    await fetch("/translations", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-TOKEN": csrfToken,
-        },
-        body: JSON.stringify({
-            locale: "it",
-        }),
-    }).then(() => {
-        translateEverything();
-        document.getElementById("IT").classList.add('selected');
-        document.getElementById("EN").classList.remove('selected');
+            await fetch('/translations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+                body: JSON.stringify({
+                    locale: 'it',
+                }),
+            }).then(() => {
+                document.location.reload();
+            });
+        });
     });
-});
 
-// change the language to english
-document.getElementById("EN").addEventListener("click", async function () {
-    const csrfToken = document
-        .querySelector('meta[name="csrf-token"]')
-        .getAttribute("content");
+    document.querySelectorAll('#EN').forEach((element) => {
+        // change the language to english
+        element
+            .addEventListener('click', async function () {
+                console.log('EN');
+                const csrfToken = document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute('content');
 
-    await fetch("/translations", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-TOKEN": csrfToken,
-        },
-        body: JSON.stringify({
-            locale: "en",
-        }),
-    }).then(() => {
-        translateEverything();
-        document.getElementById("EN").classList.add('selected');
-        document.getElementById("IT").classList.remove('selected');
+                await fetch('/translations', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken,
+                    },
+                    body: JSON.stringify({
+                        locale: 'en',
+                    }),
+                }).then((response) => {
+                    document.location.reload();
+                });
+            });
     });
 });

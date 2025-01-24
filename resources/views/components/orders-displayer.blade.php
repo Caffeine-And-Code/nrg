@@ -9,7 +9,7 @@
 @endphp
 
 <section class="orders-displayer">
-    <h2 class="title">To do</h2>
+    <h2 class="title">{{ __("messages.To_do") }}</h2>
     <ul class="orderList">
         @foreach($todo as $order)
             <x-to-do-order :order="$order"/>
@@ -17,7 +17,7 @@
     </ul>
 </section>
 <section class="orders-displayer">
-    <h2 class="title">Done</h2>
+    <h2 class="title">{{ __("messages.Done") }}</h2>
     <ul class="orderList">
         @foreach($done as $order)
             <x-order-done :order="$order"/>

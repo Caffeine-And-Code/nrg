@@ -4,9 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title translate="admin - Home"></title>
+        <title>{{ __("messages.Admin - Home") }}</title>
         @vite('/resources/js/themeManager.js')
-        @vite('/resources/js/translations/translation.js')
         @vite('/resources/css/app.css') @vite('/resources/css/responsive.css')
         @vite('/resources/css/views/home.css')
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -28,8 +27,8 @@
         <div class="offcanvas offcanvas-end" tabindex="-1" id="notifications" aria-labelledby="notificationsLabel">
             <div class="offcanvas-header">
                 
-                <h1 class="title smallTitle">Notifications</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <h1 class="title smallTitle">{{ __("messages.Notifications") }}</h1>
+                <button type="button" class="btn-close offCanvasButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="overflow-auto container main ">
                 <x-notifications-displayer :notifications="$notifications" />

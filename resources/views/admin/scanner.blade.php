@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>scan QR code</title>
     @vite('/resources/js/themeManager.js')
-    @vite('/resources/js/translations/translation.js')
-    @vite('/resources/css/app.css') @vite('/resources/css/responsive.css')
+    @vite('/resources/css/app.css')
+    @vite('/resources/css/responsive.css')
     @vite('/resources/css/views/home.css')
     @vite(['resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -24,10 +24,17 @@
 <body>
     <x-nav-bar title="Orders" />
         <main class="container main qrCodeContainer">
-            <h1 class="title">Scan QR code</h1>
+            <h1 class="title">{{ __("messages.ScanQr") }}</h1>
             <!-- Scanner dalla webcam -->
             <section id="qr-reader" class="qr-reader"></section>
-            <section id="qr-reader-results"></section>
+            <section id="qrOk" class = "qrResult GoodResult">
+                <i class="la la-check-circle bigIconOrders Success"></i>
+                <h2 class="title">{{ __("messages.QROk") }}</h2>
+            </section>
+            <section id="qrNotOk" class="qrResult BadResult">
+                <i class="la la-exclamation-triangle bigIconOrders Bad"></i>
+                <h2 class="title">{{ __("messages.QRNotOk") }}</h2>
+            </section>
         </main>
 
     <x-navigation-footer mode="admin" />

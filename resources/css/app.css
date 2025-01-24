@@ -390,7 +390,7 @@ h1 {
 .input-group {
     position: relative !important;
     display: flex !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     border:1px solid white;
 }
@@ -398,7 +398,6 @@ h1 {
 .inputgroup {
     position: relative !important;
     display: flex !important;
-    flex-wrap: wrap !important;
     border:1px solid white;
 }
 
@@ -514,7 +513,7 @@ ul{
     width: 100%;
 }
 
-.bigIcon{
+.bigIconOrders{
     font-size: 128px !important;
 }
 
@@ -533,7 +532,7 @@ ul{
 }
 
 .notificationsAdminButton{
-    position: fixed;
+    position: absolute;
     top: 200px;
     right: 50px;
     background-color: var(--dark-text) !important;
@@ -544,4 +543,35 @@ ul{
 
 .mr-1{
     margin-right: 1rem;
+}
+
+.qrResult{
+    width: 80%;
+    display: none;
+    border: 4px dashed;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 50px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.GoodResult{
+    border-color: #08ef08;
+}
+
+.BadResult{
+    border-color: red;
+}
+
+.navigationIcons{
+    font-size: 48px;
+    color: var(--stroke);
+}
+
+.navigationLink{
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    text-decoration: none;
 }

@@ -6,13 +6,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title translate="Admin - Login"></title>
+    <title>{{ __("Admin - Login") }}</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     @vite('/resources/js/themeManager.js')
     @vite('/resources/css/app.css')
     @vite('/resources/js/adminJs/passwordBtnHandler.js')
-    @vite('/resources/js/translations/translation.js')
     @vite('/resources/css/responsive.css')
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
 </head>
@@ -22,7 +21,7 @@
         <figure class="centerCol">
             <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="col-sm-8 col-md-6 col-12"
                 alt="bigLogo" id = "bigLogo" />
-            <figcaption translate="AdminSection" class="title"></figcaption>
+            <figcaption class="title">{{ __("AdminSection") }}</figcaption>
         </figure>
         <form class="form-floating centerCol" action="{{ route('admin.authenticate') }}" method="post">
             @csrf
@@ -53,7 +52,7 @@
                     </svg>
                 </button>
             </div>
-            <button type="submit" class="customButton col-9 btn mb-5" translate="Login"></button>
+            <button type="submit" class="customButton col-9 btn mb-5" >{{ __("Login") }}</button>
         </form>
     </main>
 </body>

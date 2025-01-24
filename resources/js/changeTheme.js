@@ -2,20 +2,29 @@ import {changeTheme} from '../js/themeManager.js';
 
 document.getElementById("LIGHT").addEventListener("click", function() {
     changeTheme("LIGHT");
-    document.getElementById("DARK-label").classList.remove('selected');
-    document.getElementById("LIGHT-label").classList.add('selected');
+    addSelected("LIGHT-label");
+    removeSelected("DARK-label");
 });
 
 document.getElementById("DARK").addEventListener("click", function() {
     changeTheme("DARK");
-    document.getElementById("LIGHT-label").classList.remove('selected');
-    document.getElementById("DARK-label").classList.add('selected');
+    addSelected("DARK-label");
+    removeSelected("LIGHT-label");
 });
 
 document.addEventListener('DOMContentLoaded', function() {
     let currentVal = localStorage.getItem('theme')
-    let btn = document.getElementById(currentVal+"-label");
-    if(btn) {
-        btn.classList.add('selected');
-    }
+    addSelected(currentVal+"-label");
 });
+
+function removeSelected(id){
+    document.querySelectorAll("#"+id).forEach(function(item) {
+        item.classList.remove('selected');
+    });
+}
+
+function addSelected(id){
+    document.querySelectorAll("#"+id).forEach(function(item) {
+        item.classList.add('selected');
+    });
+}

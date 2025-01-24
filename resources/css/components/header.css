@@ -26,10 +26,12 @@
     margin: 0px;
 }
 
-.nav-bar > figure > img {
-    object-fit: cover;
-    height: 85%;
+.nav-bar > figure > i {
+    font-size: 100px;
     z-index: 1;
+    margin-right: -40px;
+    color: var(--stroke);
+    overflow-x: hidden;
 }
 
 .nav-bar > img {

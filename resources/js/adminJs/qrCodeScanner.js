@@ -43,30 +43,12 @@ function createQRScanner(){
 
 
 function elaborateResponse(response){
-    console.log(response.data);
-    let container = document.getElementById('qr-reader-results');
-
-    //clean the container
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-    }
-
     if(response.data.valid){
-        let image = document.createElement('i');
-        image.classList.add('la', 'la-check-circle',"bigIcon","Success");
-        container.appendChild(image);
-        let message = document.createElement('p');
-        message.innerText = "QR valido";
-        message.classList.add("title");
-        container.appendChild(message);
+        document.getElementById("qrOk").style.display = "flex";        
+        document.getElementById("qrNotOk").style.display = "none";
     }else{
-        let image = document.createElement('i');
-        image.classList.add('la', 'la-exclamation-triangle',"bigIcon","Bad");
-        container.appendChild(image);
-        let message = document.createElement('p');
-        message.innerText = "QR code non valido";
-        message.classList.add("title");
-        container.appendChild(message);
+        document.getElementById("qrNotOk").style.display = "flex";     
+        document.getElementById("qrOk").style.display = "none";
     }
 }
 
