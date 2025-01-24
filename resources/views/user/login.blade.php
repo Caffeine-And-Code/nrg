@@ -9,6 +9,7 @@
     @vite('/resources/js/themeManager.js')
     @vite('/resources/css/colors.css')
     @vite('/resources/css/views/userlogin.css')
+    @vite('/resources/css/main.css')
     @vite('/resources/js/adminJs/passwordBtnHandler.js')
     @vite('/resources/js/toggleLoginLayout.js')
     @vite('/resources/js/translations/translation.js')
@@ -74,7 +75,11 @@
         <hr class="divider desktop-only"/>
 
         <section class="registration-zone login-section">
-            <img src="{{ Vite::asset('resources/imgs/LIGHT/minimalLogo.png') }}" class="col-sm-8 col-md-6 col-12 smallLogo" alt="minimalLogo" id = "minimalLogo" />
+            
+            <p class="desktop-only advice">Don't have an account yet?</p>
+            <img src="{{ Vite::asset('resources/imgs/LIGHT/minimalLogo.png') }}" class="col-sm-8 col-md-6 col-12 smallLogo mobile-only" alt="minimalLogo" id = "minimalLogo" />
+            
+            
             
             <form class="login-form" action="{{route('user.create_user')}}" method="post">
                 @csrf

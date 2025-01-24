@@ -158,6 +158,7 @@ main {
     height: 6vh;
     width: 35vw;
     min-height: 35px;
+    max-height: 45px;
     max-width: 200px;
     min-width: 113px;
 }
@@ -207,4 +208,11 @@ figure {
 
 .error-msg {
     display: block;
+}
+
+.advice {
+    color: var(--dark-text);
+    font-size: 25px;
+    font-family: 'Mazzard Soft H Regular';
+    
 }
