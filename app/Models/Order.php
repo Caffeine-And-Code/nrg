@@ -24,6 +24,8 @@ class Order extends Model
     const STATUS_CREATED = 0;
     const STATUS_PAID = 1;
     const STATUS_CANCELED = 2;
+    const STATUS_DELIVERING = 3;
+    const STATUS_DONE = 4;
 
     use HasFactory;
 

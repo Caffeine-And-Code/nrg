@@ -18,25 +18,18 @@
         <li>
             <a
                 href="{{ route('admin.dashboard') }}"
-                class="{{ Route::is('admin.dashboard') ? 'active1' : ('admin.dashboard' == $previousRouteName ? 'oldRoute1' : '') }}"
+                class="{{ Route::is('admin.dashboard') ? 'active1' : ('admin.dashboard' == $previousRouteName ? 'oldRoute1' : '') }} navigationLink"
             >
-                <img
-                    src="{{ Vite::asset('resources/imgs/Take_away.png') }}"
-                    alt="Dashboard"
-                    class="z-3"
-                />
+                
+            <i class="las la-shopping-bag navigationIcons z-3"></i>
             </a>
         </li>
         <li>
             <a
                 href="{{ route('admin.settings') }}"
-                class="{{ Route::is('admin.settings') ? 'active1' : ('admin.settings' == $previousRouteName ? 'oldRoute1' : '') }}"
+                class="{{ Route::is('admin.settings') ? 'active1' : ('admin.settings' == $previousRouteName ? 'oldRoute1' : '') }} navigationLink"
             >
-                <img
-                    src="{{ Vite::asset('resources/imgs/Settings.png') }}"
-                    alt="Settings"
-                    class="z-3"
-                />
+            <i class="las la-cog navigationIcons z-3"></i>
             </a>
         </li>
     </ul>

@@ -77,6 +77,10 @@
         width: 100% !important;
     }
 
+    .orderImage{
+        margin-bottom: 20px;
+    }
+
     .navTitleContainer >  h1{
         font-size: 30px !important;
         width: fit-content;
@@ -108,9 +112,25 @@
     .navTitle{
         font-size: 40px;
     }
+
+    .listContainer > li{
+        max-width: 100% !important;
+        width: 100%;
+        flex-wrap: wrap;
+        height: fit-content !important;
+        justify-content: center !important;
+    }
+
+    .listContainer{
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 571px) {
+
+    .orderImage{
+        margin-bottom: 20px;
+    }
 
     .navigationDesktop{
         width: 100% !important;
@@ -208,9 +228,17 @@
     .fullHeight{
         height: calc(100vh - 200px) !important;
     }
+
+    .bigIconOrders{
+        font-size: 64px !important;
+    }
 }
 
 @media only screen and (max-width: 470px) {
+
+    .orderList{
+        padding: 0px !important;
+    }
     
     .iconButton{
         width: 42px !important;
@@ -272,6 +300,11 @@
         padding-top: 3rem;
         padding-left: 10px;
         padding-right: 10px;
+    }
+
+    .notificationsAdminButton{
+        top: 130px !important;
+        right: 10px !important;
     }
 }
 

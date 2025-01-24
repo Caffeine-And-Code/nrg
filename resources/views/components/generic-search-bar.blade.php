@@ -20,7 +20,7 @@
                 type="text"
                 class="form-control searchBar"
                 name="searchInput"
-                translate="Search"
+                placeholder="{{ __("messages.Search") }}"
             />
         </div>
     </form>

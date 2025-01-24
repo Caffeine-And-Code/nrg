@@ -2,7 +2,7 @@
 @vite(['resources/js/app.js'])
 @vite('resources/css/components/adminSingleNews.css')
 
-<h1 class="title textShadow" translate="News_Editor"></h1>
+<h1 class="title textShadow">{{ __("messages.News_Editor") }}</h1>
 <div class="newsContainer" id="newsContainer">
     @foreach ($news as $newsItem)
         <x-single-news :newsItem="$newsItem" />
@@ -20,20 +20,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel" translate="CreateNews"></h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __("messages.CreateNews") }}</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-footer modal-dialog-scrollable p-3 dialog">
-                    <h1 class="smallTitle mb-4" translate="ImportPhoto"></h1>
+                    <h1 class="smallTitle mb-4">{{ __("messages.ImportPhoto") }}</h1>
                     <div class="input-group mb-3">
                         <input type="file" class="customFileInput" aria-describedby="inputFile"
                             aria-label="Upload" accept="image/*" multiple required name="image" id="newImage">
                     </div>
                     <button type="button" class="customSmallButton btn mb-2 cancelButton"
-                        data-bs-dismiss="modal" translate="Close"></button>
+                        data-bs-dismiss="modal">{{ __("messages.Close") }}</button>
                     <button type="submit" class="customSmallButton btn mb-2 createButton"
-                    data-bs-dismiss="modal" translate="Create" id="newsCreate"></button>
+                    data-bs-dismiss="modal" id="newsCreate">{{ __("messages.Create") }}</button>
 
                 </div>
             </div>
@@ -45,8 +45,8 @@
     <section class="row justify-content-around">
         <form action="{{ route("admin.settings") }}" class="col-5" method="GET">
             @csrf
-            <button class="customButton btn mb-2 neutralButton fullWidth" translate="Back"></button>
+            <button class="customButton btn mb-2 neutralButton fullWidth">{{ __("messages.Back") }}</button>
         </form>
-        <button  type="button" class="customButton btn mb-2 createButton col-5 confirmNews" id="confirmNews" translate="Confirm"></button>
+        <button  type="button" class="customButton btn mb-2 createButton col-5 confirmNews" id="confirmNews">{{ __("messages.Confirm") }}</button>
         
 </section>

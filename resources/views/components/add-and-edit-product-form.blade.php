@@ -24,9 +24,9 @@
             <i class="las la-hamburger icon"></i>
         </span>
         @if ($product)
-            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="text" name="name" value="{{ $product->name }}" placeholder="Product Name" required >
+            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="text" name="name" value="{{ $product->name }}" placeholder={{ __("messages.ProductName") }} required >
         @else
-        <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="text" name="name" placeholder="Product Name" required >
+        <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="text" name="name" placeholder={{ __("messages.ProductName") }} required >
         @endif
     </div>
 
@@ -35,9 +35,9 @@
             <i class="las la-align-left icon"></i>
         </span>
         @if ($product)
-            <textarea placeholder="Product Description" rows="4" cols="50"class="form-control col-sm-10 col-md-11 col-10  customInput tallInput" name="description" required>{{ $product->description }}</textarea>
+            <textarea placeholder={{ __("messages.ProductDescription") }} rows="4" cols="50"class="form-control col-sm-10 col-md-11 col-10  customInput tallInput" name="description" required>{{ $product->description }}</textarea>
         @else
-        <textarea placeholder="Product Description" rows="4" cols="50"class="form-control col-sm-10 col-md-11 col-10  customInput tallInput" name="description" required></textarea>
+        <textarea placeholder={{ __("messages.ProductDescription") }} rows="4" cols="50"class="form-control col-sm-10 col-md-11 col-10  customInput tallInput" name="description" required></textarea>
 
         @endif
     </div>
@@ -48,9 +48,9 @@
                     <i class="las la-euro-sign icon"></i>
                 </span>
                 @if ($product)
-                    <input class="noMarginLeftInput form-control col-sm-10 col-md-11 col-lg-10  customInput" type="number" min="0.1" step="0.1" name="price" value="{{ $product->price }}" placeholder="Price" required>
+                    <input class="noMarginLeftInput form-control col-sm-10 col-md-11 col-lg-10  customInput" type="number" min="0.1" step="0.1" name="price" value="{{ $product->price }}" placeholder={{ __("messages.Price") }} required>
                 @else
-                    <input class="noMarginLeftInput form-control col-sm-10 col-md-11 col-lg-10  customInput" type="number" min="0.1" step="0.1" name="price" placeholder="Price" required>
+                    <input class="noMarginLeftInput form-control col-sm-10 col-md-11 col-lg-10  customInput" type="number" min="0.1" step="0.1" name="price" placeholder={{ __("messages.Price") }} required>
                 @endif
             </div>
             <div class="input-group inputContainerShadow align-items-center col-12 col-sm-5">
@@ -58,7 +58,7 @@
                     <i class="las la-beer icon"></i>
                 </span>
                 @if ($product)
-                <select class="noMarginLeftInput form-control col-sm-10 col-md-11 col-10  customInput" name="type" placeholder="Type" required>
+                <select class="noMarginLeftInput form-control col-sm-10 col-md-11 col-10  customInput" name="type" placeholder={{ __("messages.Type") }} required>
                     @foreach ($types as $type)
                         @if ($type->id == $product->type_id)
                             <option value="{{ $type->id }}" selected>{{ $type->name }}</option>
@@ -66,14 +66,14 @@
                             <option value="{{ $type->id }}">{{ $type->name }}</option>
                         @endif
                     @endforeach
-                    <option value="null" translate="Choose a Type"></option>
+                    <option value="null">{{ __("messages.ChooseaType") }}</option>
                 </select>
                 @else
-                    <select class="noMarginLeftInput form-control col-sm-10 col-md-11 col-10  customInput" name="type" placeholder="Type" required>
+                    <select class="noMarginLeftInput form-control col-sm-10 col-md-11 col-10  customInput" name="type" placeholder={{ __("messages.Type") }} required>
                         @foreach ($types as $type)
                             <option value="{{ $type->id }}">{{ $type->name }}</option>
                         @endforeach
-                        <option value="null" selected translate="Choose a Type"></option>
+                        <option value="null" selected >{{ __("messages.ChooseaType") }}</option>
                     </select>
                 @endif
             </div>
@@ -84,15 +84,15 @@
             <i class="las la-percent icon"></i>
         </span>
         @if ($product)
-            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" max="100" name="perc_discount" value="{{ $product->perc_discount }}" placeholder="Discount" required>
+            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" max="100" name="perc_discount" value="{{ $product->perc_discount }}" placeholder={{ __("messages.Discount") }} required>
         @else
-            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="1" max="100" name="perc_discount" placeholder="Discount" >
+            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="1" max="100" name="perc_discount" placeholder={{ __("messages.Discount") }} >
         @endif    
     </div>
 
     <hr />
     <section class="mb-5 row justify-content-around">
-        <button type="button" class="customButton btn mb-2 neutralButton col-5 goBack" translate="Close"></button>    
-        <button type="submit" class="customButton btn mb-2 createButton col-5"  translate="Confirm"></button>
+        <button type="button" class="customButton btn mb-2 neutralButton col-5 goBack" >{{ __("messages.Close") }}</button>    
+        <button type="submit" class="customButton btn mb-2 createButton col-5" >{{ __("messages.Confirm") }}</button>
     </section>
 </form> 

@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\SpinWheelEntry;
 use App\Models\User;
+use App\Notifications\OrderCreatedUserNofication;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -32,6 +33,8 @@ class DatabaseSeeder extends Seeder
             'fm_target' => 500.00,
             'delivery_cost' => 10.00,
         ]);
+
+        
 
         // Create Product Types
         $productType1 = ProductType::query()->create(['name' => 'Electronics']);
@@ -96,7 +99,7 @@ class DatabaseSeeder extends Seeder
 
         // Create Orders
         foreach ($users as $user) {
-            Order::query()->create([
+            $order = Order::query()->create([
                 'number' => rand(1000, 9999),
                 'delivery_time' => Carbon::now()->addDays(rand(1, 5)),
                 'used_portfolio' => rand(5, 20),
@@ -105,8 +108,13 @@ class DatabaseSeeder extends Seeder
                 'status' => Order::STATUS_CREATED,
                 'classroom_id' => $classroom1->id,
                 'total' => rand(100, 300),
-            ])->products()->attach($products[0], ['bought_price'=>$products[0]->price, 'bought_perc_discount'=>0, 'quantity'=>3]);
+            ]);
+
+            $order->products()->attach($products[0], ['bought_price'=>$products[0]->price, 'bought_perc_discount'=>0, 'quantity'=>3]);
+
+            $admin->notify(new OrderCreatedUserNofication($order,false));
         }
+
 
         // Create News
         News::query()->create([

@@ -17,30 +17,23 @@
         <ul class="footerIconList">
             
         <li class="navTitleContainer">
-            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? "Ordini" : "Impostazioni" }}</h1>
+            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
         </li>
             <li>
                 <a
                     href="{{ route('admin.dashboard') }}"
-                    class="{{ Route::is('admin.dashboard') ? 'active2' : ('admin.dashboard' == $previousRouteName ? 'oldRoute2' : '') }}"
+                    class="{{ Route::is('admin.dashboard') ? 'active2' : ('admin.dashboard' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
                 >
-                    <img
-                        src="{{ Vite::asset('resources/imgs/Take_away.png') }}"
-                        alt="Dashboard"
-                        class="z-3"
-                    />
+                    
+                    <i class="las la-shopping-bag navigationIcons z-3"></i>
                 </a>
             </li>
             <li>
                 <a
                     href="{{ route('admin.settings') }}"
-                    class="{{ Route::is('admin.settings') ? 'active2' : ('admin.settings' == $previousRouteName ? 'oldRoute2' : '') }}"
+                    class="{{ Route::is('admin.settings') ? 'active2' : ('admin.settings' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
                 >
-                    <img
-                        src="{{ Vite::asset('resources/imgs/Settings.png') }}"
-                        alt="Settings"
-                        class="z-3"
-                    />
+                <i class="las la-cog navigationIcons z-3"></i>
                 </a>
             </li>
         </ul>
@@ -50,7 +43,11 @@
 <header class="nav-bar mobile">
     <img src="" alt="logo" class="logo minimalLogo" id="" />
     <figure>
-        <img src="{{Vite::asset($imagePath)}}" alt="pageImage" />
-        <figcaption translate="{{$title}}" class="title navTitle"></figcaption>
+        @if($title == "Orders" || $title == "Products")
+            <i class="las la-shopping-bag"></i>
+        @else
+            <i class="las la-cog"></i>
+        @endif
+        <figcaption class="title navTitle">{{ __("messages.".$title) }}</figcaption>
     </figure>
 </header>

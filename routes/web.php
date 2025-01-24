@@ -7,6 +7,8 @@ use App\Http\Controllers\LangController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
@@ -42,6 +44,9 @@ Route::name("user.")->group(function () {
 
         Route::get("checkout/success", [\App\Http\Controllers\CheckoutController::class, "checkoutSuccess"])->name('checkout_success');
         Route::get("checkout/error", [\App\Http\Controllers\CheckoutController::class, "checkoutError"])->name('checkout_error');
+
+        
+        Route::post("/orders/qrCode", [OrderController::class, "getOrderQrCode"])->name('orders.qrCode');
     });
 });
 
@@ -84,6 +89,13 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get("/classrooms/edit",[ClassroomController::class, 'editView'])->name('classrooms.edit');
         Route::post("/classrooms/add",[ClassroomController::class, 'add'])->name('classrooms.add');
         Route::post("/classrooms/delete",[ClassroomController::class, 'destroy'])->name('classrooms.delete');
+        // Orders
+        Route::get("/orders", [OrderController::class, "getAllOrders"])->name('orders');
+        Route::get("/orders/qrCode", [OrderController::class, "scanQrCode"])->name('orders.qrCode');
+        Route::post("/orders/qrCode/checkValidity", [OrderController::class, "checkValidity"])->name('orders.qrCode.checkValidity');
+        //notifications
+        Route::post("/notifications/read", [NotificationController::class, "readAdmin"])->name('notifications.read');
+        Route::post("/notifications/delete", [NotificationController::class, "destroyAdmin"])->name('notifications.delete');
     });
 });
 

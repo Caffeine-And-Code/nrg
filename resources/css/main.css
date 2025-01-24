@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
 
 @font-face {
     font-family: 'Mazzard Soft H Regular';
@@ -14,21 +14,20 @@
     font-style: normal;
 }
 
-body{
+body {
     background-color: var(--bg);
     height: 100vh;
 }
 
-main{
-
+main {
 }
 
-nav{
+nav {
     height: 50px;
     border-bottom: 1px solid var(--light-text);
 }
 
-h1{
+h1 {
     font-family: 'Mazzard Soft H Bold', sans-serif;
     font-size: 32px;
     margin: unset;
@@ -49,7 +48,7 @@ figcaption{
     color: var(--dark) !important;
 }
 
-.navbar-icon.active{
+.navbar-icon.active {
     background-color: var(--dark) !important;
     color: var(--darker-bg) !important;
 }
@@ -220,4 +219,22 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
 .types-container button.active{
     background-color: var(--dark-text);
     color: var(--bg);
+}
+.accordion,
+.accordion-button,
+.accordion-collapse,
+.accordion-item,
+.accordion-header,
+.accordion-body,
+.accordion-flush,
+.accordion-button:focus,
+.accordion-button:not(.collapsed) {
+    background-color: var(--bg);
+    color: var(--dark);
+}
+
+.accordion-button::after , .btn-close{
+    /* special thanks to boostrap for being the best at his job! thank you for setting the icon
+        of the accordion button to an image, thank you so much! */
+    filter: invert(50%) sepia(0%) saturate(0%) brightness(60%) contrast(100%);
 }

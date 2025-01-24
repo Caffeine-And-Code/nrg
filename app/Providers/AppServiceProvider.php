@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Cashier\Cashier;
@@ -22,10 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Cashier::calculateTaxes();
-
-        if(!session()->has('locale')) {
-            session(['locale' => 'en']);
-        }
-        App::setLocale("it");
+        EncryptCookies::except('locale');
     }
 }
