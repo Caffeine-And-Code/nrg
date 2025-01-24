@@ -22,14 +22,14 @@
 </head>
 <body class="light">
     <x-user-nav-bar currentPage="{{$currentPage}}"></x-user-nav-bar>
-    <main class="h-100 w-100 overflow-x-hidden">
+    <main class="w-100 overflow-x-hidden">
         <section class="row h-100">
             <section class="col-12 col-md-8">
                 <article class="d-flex justify-content-center mt-3">
-                    <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner h-100 m-100">
+                    <div id="newsCarousel" class="carousel slide mx-3" data-bs-ride="carousel">
+                        <div class="carousel-inner">
                             @foreach($news as $singleNews)
-                                <div class="carousel-item active h-100 m-100">
+                                <div class="carousel-item active">
                                     <img src="{{"{$singleNews->getImagePath()}"}}" class="d-block" alt="news">
                                 </div>
                             @endforeach
@@ -51,28 +51,14 @@
                             <label for="search" class="visually-hidden">{{__("main.search_product")}}</label>
                             <div class="search-input flex-grow-1">
                                 <i class="bi bi-search"></i>
-                                <input type="search" class="form-control" placeholder="{{__("main.search")}}">
+                                <input type="search" name="search" class="form-control" placeholder="{{__("main.search")}}">
                             </div>
                             <button class="btn navbar-icon active" aria-label="{{__("main.search_product")}}"><i class="bi bi-magic"></i></button>
                         </form>
                         <ul class="search-container">
                             @foreach($products as $product)
                                 <li>
-                                    <form>
-                                        <img src="{{ asset('images/products/' . basename($product->image)) }}" alt="{{__("main.product_image", ["name" => $product->getName()])}}">
-                                        <div>
-                                            <strong>{{$product->getName()}}</strong>
-                                            @if ($product->getPercDiscount() > 0)
-                                                <p>
-                                                <del>{{Number::currency($product->getPrice())}}</del>
-                                                <span>{{Number::currency($product->getDiscountedPrice())}}</span>
-                                                </p>
-                                            @else
-                                                <span>{{Number::currency($product->getDiscountedPrice())}}</span>
-                                            @endif
-                                        </div>
-                                        <button class="btn"><i class="bi bi-cart"></i></button>
-                                    </form>
+                                    <x-product-search-card :product="$product"/>
                                 </li>
                             @endforeach
                         </ul>
@@ -100,8 +86,8 @@
                     </article>
                 </section>
             </section>
-            <aside class="d-nome d-md-block col-md-4 h-100 bg-black">
-                Aside
+            <aside class="d-none d-md-block col-md-4 mt-3">
+                <x-checkout :checkout="$checkout" />
             </aside>
         </section>
     </main>

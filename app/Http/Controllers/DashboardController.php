@@ -18,13 +18,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $news= News::query()->get();
-        //TODO: Implement best buy logic
-        $products= Product::query()->bestBuy()->get();
         /**
          * @var User $user
          */
         $user = auth()->user();
+        $news= News::query()->get();
+        //TODO: Implement best buy logic
+        $products= Product::query()->bestBuy()->withCartQuantity($user)->get();
         $spinWheel = $user->getLastAccess() < Carbon::now()->setTime(0,0,0);
         $spinValue = $spinWheel ? SpinWheelEntry::query()->inRandomOrder()->first() : null;
         $checkout = (new CheckoutService())->getCheckoutData($user);
@@ -46,7 +46,7 @@ class DashboardController extends Controller
         $productTypes = ProductType::query()->get();
         $success = session()->get('success');
         $products->map(function(Product $product){
-            $product->rating = $product->getRatings()->avg('rating');
+            $product->rating = 4.3;//$product->getRatings()->avg('rating');
             return $product;
         });
         $checkout = (new CheckoutService())->getCheckoutData($user);

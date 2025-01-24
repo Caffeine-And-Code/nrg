@@ -61,12 +61,15 @@ img{
 /*Bootstrap override*/
 .carousel{
     max-height: 300px;
-    height: 100%;
     max-width: 600px;
-    width: 100%;
     box-shadow: 0 5px 4px 1px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    overflow: hidden;
+}
+
+.carousel > div > div > img{
+    max-height: 300px;
+    max-width: 90vw;
+    object-fit: cover;
 }
 
 .search-input{
@@ -102,41 +105,40 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
     margin: 20px 0 0;
 }
 
-.search-container > li > form{
+.search-container > li > div > div{
     display: flex;
     align-items: center;
     gap: 10px;
     align-content: center;
+}
+
+.search-container > li > div {
     border-bottom: 1px solid var(--light-text);
 }
 
-.search-container > li > form > img{
+.search-container > li > div > div > img{
     max-width: 70px;
     max-height: 70px;
 }
 
-.search-container > li > form > div{
+.search-container > li > div > div > div{
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding-top: 7px;
 }
 
-.search-container > li > form > button{
+.search-container > li > div > div > div > form > button{
     border-radius: 100px;
 }
 
-.search-container > li > form > button > i{
-    font-size: 26px;
+.search-container > li > div > div > div > form > button{
+    border-radius: 100px;
 }
 
-
-
-
-
-
-
-
+.search-container > li > div > div > div > form > button > i{
+    font-size: 26px;
+}
 
 :where(.ui-wheel-of-fortune) {
     --_items: 12;
@@ -206,4 +208,16 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
             &:nth-of-type(12) { --_idx: 12; }
         }
     }
+}
+
+.types-container button{
+    border-radius: 100px;
+    border: 1px solid var(--dark-text);
+    color: var(--dark);
+    background-color: var(--bg);
+}
+
+.types-container button.active{
+    background-color: var(--dark-text);
+    color: var(--bg);
 }
