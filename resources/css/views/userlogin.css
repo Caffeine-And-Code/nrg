@@ -1,11 +1,3 @@
-:root {
-    --dark: #0055ff00;
-    --dark-text: #eb450300;
-    --light-text: #0099ff00;
-    --stroke: #00fa0000;
-    --darker-bg: #482d2d00;
-    --bg: #9900ff00;
-}
 
 @font-face {
     font-family: 'Mazzard Soft H Regular';
@@ -20,8 +12,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
-
 
 html, body {
     margin: 0;
@@ -168,6 +158,7 @@ main {
     height: 6vh;
     width: 35vw;
     min-height: 35px;
+    max-height: 45px;
     max-width: 200px;
     min-width: 113px;
 }
@@ -217,4 +208,11 @@ figure {
 
 .error-msg {
     display: block;
+}
+
+.advice {
+    color: var(--dark-text);
+    font-size: 25px;
+    font-family: 'Mazzard Soft H Regular';
+    
 }

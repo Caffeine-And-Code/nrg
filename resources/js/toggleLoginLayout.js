@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleResize() {
 
         loginZone.style.display = "flex";
-        if (window.innerWidth >= 769) {
+        if (window.innerWidth >= 770) {
             mobileOnlyElements.forEach(el => el.style.display = "none");
             desktopOnlyElements.forEach(el => el.style.display = "block");
             loginZone.style.display = "flex";
