@@ -12,6 +12,7 @@ return[
     "Total"=> "Total",
     "AdminSection"=> "Admin Section",
     "Login"=> "Login",
+    "Sign in" => "Register",
     "ThemeChanger"=> "Change The Site Theme",
     "LIGHT"=> "Light",
     "DARK"=> "Dark",
