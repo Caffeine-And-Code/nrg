@@ -227,6 +227,24 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
     background-color: var(--bg);
 }
 
+.user-components {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-orders-displayer {
+    padding: 0;
+}
+
+.user-order-image {
+    margin: 0;
+}
+
+.order_separators {
+    width: 100%;
+}
+
 .types-container button.active{
     background-color: var(--dark-text);
     color: var(--bg);

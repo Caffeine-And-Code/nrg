@@ -75,5 +75,10 @@ return[
     "CoPassword" => "Confirm Password",
     "Already have an account?" => "Already have an account?",
     "DeleteUser" => "Delete User Account",
+    "Account" => "Account",
+    "orders" => "Orders",
+    "orderCompleted" => "Completed",
+    "orderInPrep"=> "In Preparation",
+    "product_s"=> "Product/s",
     "Complete" => "Complete",
 ];

@@ -1,40 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{__("main.account")}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    @vite('/resources/js/themeManager.js')
-    @vite('/resources/css/app.css') @vite('/resources/css/responsive.css')
-    @vite("/resources/css/main.css")
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     />
+    <link
+            rel="stylesheet"
+            href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+        />
+    @vite('/resources/css/colors.css')
+    @vite('/resources/css/main.css')
+    @vite('/resources/css/app.css')
+    @vite('/resources/js/themeManager.js')
+    @vite('/resources/css/responsive.css')
 </head>
 <body>
-    @if(!$errors->isEmpty())
-        @foreach ($errors->all() as $error)
-            <div>{{ $error }}</div>
-        @endforeach
-    @endif
-    @if(isset($success))
-        <div>{{$success}}</div>
-    @endif
+    <x-nav-bar title="Account"/>
+    
+    <x-user-account-mobile :orders="$orders"/>
 
-    <h1>Your profile</h1>
-    <p>Your last orders</p>
-    <ul>
-    @foreach($orders as $order)
-        <li>{{$order->getNumber()}} | € {{$order->getTotal()}} | <a href="{{route('user.order_details', ['order_id' => $order->getId()])}}">View</a>
-        </li>
-    @endforeach
-    </ul>
-
-    <p>Fidelity Meter</p>
+    {{-- <p>Fidelity Meter</p>
     <p>Actual Spent: {{$user->getTotalSpent()}}</p>
     <p>Fidelity Meter target: {{$fmTarget}}</p>
     <p>Your discount portfolio: {{$user->getDiscountPortfolio()}}</p>
@@ -47,9 +39,10 @@
         <input type="password" name="password" placeholder="password">
         <input type="password" name="password_confirmation" placeholder="password confirmation">
         <button>Edit</button>
-    </form>
+    </form> --}}
 
-    <a href="{{route('user.home')}}">Dashboard</a>
+    
     <x-site-setting />
+    <x-navigation-footer mode="client"/>
 </body>
 </html>

@@ -11,9 +11,50 @@
 }
 
 .to-do-order {
-    padding: 10px;
+    width: 100%;
     max-width: 340px;
     margin: 10px;
+}
+
+.user-order-card {
+    display: flex;
+    align-items: center;
+}
+
+.user-order-card figcaption {
+    flex: 1;
+}
+
+.user-order-details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.user-order-details-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-order-image {
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    fill: var(--dark-text);
+}
+
+.user-order-image-container {
+    padding: 0;
+    margin: 0;
+    margin-right: 5%;
+    width: 25%;
+    aspect-ratio: 1 / 1;
+    border: 2px solid var(--stroke);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .to-do-order-header {
