@@ -17,7 +17,7 @@ return [
     "shipping" => "Spedizione",
     "discount" => "Sconto",
     "total" => "Totale",
-    "account" => "Account"
+    "account" => "Account",
     "wheel_win" => "COMPLIMENTI: </br>Hai vinto <strong>:win</strong>",
     "wheel_fail" => "Purtroppo oggi non è il tuo giorno fortunato, riprova domani",
     "min_delivery_time" => "Il primo orario disponibile è tra 15 minuti",
