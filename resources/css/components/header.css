@@ -12,7 +12,9 @@
 }
 
 .navTitle {
-    margin-right: -60px;
+    position: unset;
+    top: 30px;
+    left: -10px;
     z-index: 2;
 }
 
@@ -29,7 +31,7 @@
 .nav-bar > figure > i {
     font-size: 100px;
     z-index: 1;
-    margin-right: -10px;
+    margin-right: -40px;
     color: var(--stroke);
     overflow-x: hidden;
 }
@@ -53,4 +55,8 @@
 
 .dot1{
     display: none;
+}
+
+.searchBarContainerUser{
+
 }

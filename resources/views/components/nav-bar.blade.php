@@ -11,6 +11,7 @@
         $previousRouteName = null;
     }
 @endphp
+@if (Auth::guard("admin")->check())
 <header class="nav-bar desktop">
     <img src="" alt="logo" class="logo " id="minimalLogo" />
     <aside class="navigationDesktop">
@@ -51,3 +52,47 @@
         <figcaption class="title navTitle">{{ __("messages.".$title) }}</figcaption>
     </figure>
 </header>
+@else
+<header class="nav-bar desktop">
+    <img src="" alt="logo" class="logo " id="minimalLogo" />
+    <aside class="navigationDesktop">
+        <ul class="footerIconList">
+            
+        <li class="navTitleContainer">
+            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
+        </li>
+            <li>
+                <a
+                    href="{{ route('user.home') }}"
+                    class="{{ Route::is('user.home') ? 'active2' : ('user.home' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
+                >
+                    
+                    <i class="las la-shopping-bag navigationIcons z-3"></i>
+                </a>
+            </li>
+            <li>
+                <a
+                    href="{{ route('user.profile') }}"
+                    class="{{ Route::is('user.profile') ? 'active2' : ('user.profile' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
+                >
+                <i class="las la-id-card navigationIcons z-3"></i>
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <div class="z-99 dot dot2" id="dot2"></div>
+</header>
+<header class="nav-bar mobile">
+    <img src="" alt="logo" class="logo " id="minimalLogo" />
+    <figure>
+        @if($title == "Orders" || $title == "Products")
+            <i class="las la-shopping-bag"></i>
+        @elseif($title == "Account")
+        <i class="las la-user"></i>
+        @else
+        <i class="las la-id-card"></i>
+        @endif
+        <figcaption class="title navTitle">{{ __("messages.".$title) }}</figcaption>
+    </figure>
+</header>
+@endif

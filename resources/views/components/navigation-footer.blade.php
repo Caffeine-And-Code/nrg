@@ -36,6 +36,36 @@
     <!-- Pallino -->
     <div id="dot1" class="z-2 dot dot1"></div>
 </nav>
-@elseif($mode == 'client') 
-{{-- Code for client mode --}} 
+@else
+<nav class="footerNavigation mobile">
+    <ul class="footerIconList">
+        <li>
+            <a
+                href="{{ route('user.home') }}"
+                class="{{ Route::is('user.home') ? 'active1' : ('user.home' == $previousRouteName ? 'oldRoute1' : '') }} navigationLink"
+            >
+                
+            <i class="las la-shopping-bag navigationIcons z-3"></i>
+            </a>
+        </li>
+        <li>
+            <a
+                href="{{ route('user.checkout') }}"
+                class="{{ Route::is('user.checkout') ? 'active1' : ('user.checkout' == $previousRouteName ? 'oldRoute1' : '') }} navigationLink"
+            >
+            <i class="las la-shopping-cart navigationIcons z-3"></i>
+            </a>
+        </li>
+        <li>
+            <a
+                href="{{ route('user.profile') }}"
+                class="{{ Route::is('user.profile') ? 'active1' : ('user.profile' == $previousRouteName ? 'oldRoute1' : '') }} navigationLink"
+            >
+            <i class="las la-id-card navigationIcons z-3"></i>
+            </a>
+        </li>
+    </ul>
+    <!-- Pallino -->
+    <div id="dot1" class="z-2 dot dot1"></div>
+</nav>
 @endif

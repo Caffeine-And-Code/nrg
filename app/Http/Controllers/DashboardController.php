@@ -13,6 +13,7 @@ use App\Services\CheckoutService;
 use App\Services\ProductService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class DashboardController extends Controller
 {
@@ -34,23 +35,38 @@ class DashboardController extends Controller
 
     public function search(Request $request){
         $formData = $request->validate([
-            'search' => ['required', 'string', 'min:2'],
+            'search' => ['nullable', 'string'],
             'product_type' => 'nullable|exists:product_types,id'
         ]);
 
         /** @var User $user */
         $user = auth()->user();
         $productType = $formData['product_type'] ?? null;
-        $search = $formData['search'];
+        $search = $formData['search'] ?? "";
         $products = Product::query()->search($search, $productType)->withCartQuantity($user)->withRating()->get();
         $productTypes = ProductType::query()->get();
         $success = session()->get('success');
         $products->map(function(Product $product){
-            $product->rating = 4.3;//$product->getRatings()->avg('rating');
+            $product->rating = $product->getRatings()->avg('rating');
             return $product;
         });
         $checkout = (new CheckoutService())->getCheckoutData($user);
         $currentPage = 'main.products';
         return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success', 'currentPage'));
+    }
+
+    public function magicProduct(Request $request) {
+        $products = [Product::query()->inRandomOrder()->first()];
+
+        
+        /** @var User $user */
+        $user = auth()->user();
+        $currentPage = 'main.products';
+        $productType = $formData['product_type'] ?? null;
+        $search = null;
+        $productTypes = ProductType::query()->get();
+        $success = session()->get('success');
+        $checkout = (new CheckoutService())->getCheckoutData($user);
+        return view("user.search", compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success', 'currentPage'));
     }
 }

@@ -17,44 +17,25 @@
     />
     @vite('/resources/css/colors.css')
     @vite('/resources/css/main.css')
+    @vite('/resources/css/app.css')
     @vite('/resources/js/themeManager.js')
+    @vite('/resources/css/responsive.css')
     @vite('/resources/js/lucky_wheel.js')
 </head>
 <body class="light">
-    <x-user-nav-bar currentPage="{{$currentPage}}"></x-user-nav-bar>
-    <main class="w-100 overflow-x-hidden">
+    <x-nav-bar title="Products" />
+    <x-user-dashboard-mobile :products="$products" :news="$news"/>
+    <main class="w-100 overflow-x-hidden desktop">
         <section class="row h-100">
+            <x-news-carosel :news="$news" />
             <section class="col-12 col-md-8">
-                <article class="d-flex justify-content-center mt-3">
-                    <div id="newsCarousel" class="carousel slide mx-3" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            @foreach($news as $singleNews)
-                                <div class="carousel-item active">
-                                    <img src="{{"{$singleNews->getImagePath()}"}}" class="d-block" alt="news">
-                                </div>
-                            @endforeach
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </article>
+                
                 <section class="mt-5 row">
                     <article class="px-5 order-2 order-xl-0 col-12 col-xl-6">
                         <h1>{{__("main.bestseller")}}</h1>
-                        <form class="d-flex justify-content-center gap-2" action="{{route("user.search")}}">
-                            <label for="search" class="visually-hidden">{{__("main.search_product")}}</label>
-                            <div class="search-input flex-grow-1">
-                                <i class="bi bi-search"></i>
-                                <input type="search" name="search" class="form-control" placeholder="{{__("main.search")}}">
-                            </div>
-                            <button class="btn navbar-icon active" aria-label="{{__("main.search_product")}}"><i class="bi bi-magic"></i></button>
-                        </form>
+                        
+                        <x-user-search-bar />
+                        
                         <ul class="search-container">
                             @foreach($products as $product)
                                 <li>
@@ -91,5 +72,6 @@
             </aside>
         </section>
     </main>
+    <x-navigation-footer mode="client"/>
 </body>
 </html>
