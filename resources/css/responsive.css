@@ -73,6 +73,18 @@
 }
 
 @media only screen and (min-width: 571px) and (max-width: 767px) {
+
+    .gallery{
+        grid-template-columns: repeat(100, 200px) !important;
+        height: 200px !important;
+    }
+
+    .carouselItem{
+        width: 200px !important;
+        height: 175px !important;
+    }
+
+
     .navigationDesktop{
         width: 100% !important;
     }
@@ -110,6 +122,7 @@
     }
 
     .navTitle{
+        position: unset !important;
         font-size: 40px;
     }
 
@@ -127,6 +140,16 @@
 }
 
 @media only screen and (max-width: 571px) {
+
+    .gallery{
+        grid-template-columns: repeat(100, 200px) !important;
+        height: 200px !important;
+    }
+
+    .carouselItem{
+        width: 200px !important;
+        height: 175px !important;
+    }
 
     .orderImage{
         margin-bottom: 20px;
@@ -155,6 +178,8 @@
     }
 
     .navTitle{
+        
+        position: unset !important;
         font-size: 40px !important;
     }
     .listItemDesktop{
@@ -197,6 +222,8 @@
     }
 
     .navTitle{
+        
+        position: unset !important;
         margin-right: -40px !important;
     }
 
@@ -215,6 +242,8 @@
     }
 
     .navTitle{
+        
+        position: unset !important;
         font-size: 32px !important;
     }
 
@@ -226,7 +255,7 @@
     }
 
     .fullHeight{
-        height: calc(100vh - 200px) !important;
+        min-height: calc(100vh - 100px) !important;
     }
 
     .bigIconOrders{
@@ -235,6 +264,20 @@
 }
 
 @media only screen and (max-width: 470px) {
+
+    .gallery{
+        grid-template-columns: repeat(60, 160px) !important;
+        height: 200px !important;
+    }
+
+    .carouselItem{
+        width: 160px !important;
+        height: 175px !important;
+    }
+
+    .navTitle{
+        position: absolute !important;
+    }
 
     .orderList{
         padding: 0px !important;
@@ -261,6 +304,7 @@
     .desktop{
         width: 0 !important;
         height: 0 !important;
+        border: none !important;
         overflow: hidden;
     }
 
@@ -280,6 +324,10 @@
     .mobile > img{
         max-height: 100px !important;
         height: 80px !important;
+    }
+
+    .mobile.nav-bar > img{
+        margin-top: 25px !important;
     }
 
     .mobile.nav-bar{
@@ -309,7 +357,9 @@
 }
 
 @media only screen and (max-width: 380px) {
-
+    .normalTextRegular{
+        font-size: 15px !important;
+    }
     
     .iconButton{
         width: 42px !important;

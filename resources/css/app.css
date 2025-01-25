@@ -51,8 +51,9 @@ html {
 
 /* for the main element  */
 .fullHeight {
-    height: calc(100vh - 250px);
-    overflow-y: scroll;
+    min-height: calc(100vh - 250px);
+    overflow-y: hidden;
+    height: fit-content;
 }
 
 .title {
@@ -574,4 +575,10 @@ ul{
     height: fit-content;
     width: fit-content;
     text-decoration: none;
+}
+
+.dividerSearch{
+    box-shadow: 0px 1px 4px 1px var(--dark);
+    border-color: var(--dark);
+    
 }

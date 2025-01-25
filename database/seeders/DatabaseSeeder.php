@@ -69,6 +69,8 @@ class DatabaseSeeder extends Seeder
                 'product_type_id' => $productType2->id,
                 'isVisible' => true,
             ]),
+
+            
         ];
 
         // Create Classrooms
@@ -96,6 +98,13 @@ class DatabaseSeeder extends Seeder
                 'last_meter' => 3,
             ]),
         ];
+
+        //create a rating for the product
+        DB::table('ratings')->insert([
+            'user_id' => $users[0]->id,
+            'product_id' => $products[0]->id,
+            'rating' => 5,
+        ]);
 
         // Create Orders
         foreach ($users as $user) {

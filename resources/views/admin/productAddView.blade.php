@@ -11,6 +11,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"
         />
+        @vite('/resources/css/main.css')
         @vite('/resources/js/themeManager.js') @vite('/resources/css/app.css')
         @vite('/resources/css/responsive.css')
         @vite("/resources/css/views/productForm.css")

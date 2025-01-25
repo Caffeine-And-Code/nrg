@@ -62,16 +62,35 @@ img{
 
 /*Bootstrap override*/
 .carousel{
-    max-height: 300px;
-    max-width: 600px;
     box-shadow: 0 5px 4px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 0px;
+    width: 100%;
+}
+
+
+.carousel-inner{
+    max-height: 300px;
+    max-width: 300px;
+    height: 300px;
+    width: 100%;
     border-radius: 10px;
 }
 
-.carousel > div > div > img{
+.carousel-item{
+    height: 100%;
+    width: 100%;
     max-height: 300px;
-    max-width: 90vw;
-    object-fit: cover;
+    max-width: 300px;
+}
+
+.imgCarouselMobile{
+    max-height: 300px;
+    max-width: 300px;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px !important;
 }
 
 .search-input{
@@ -103,43 +122,60 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
 /* Product filtering */
 .search-container{
     list-style: none;
-    padding: 0;
-    margin: 20px 0 0;
+    padding: 10px;
 }
 
-.search-container > li > div > div{
+.search-container > li  > section{
     display: flex;
     align-items: center;
     gap: 10px;
     align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.search-container > li > div {
+.search-container > li  {
     border-bottom: 1px solid var(--light-text);
+    margin-bottom: 10px;
 }
 
-.search-container > li > div > div > img{
+.search-container > li > section > figure > img{
     max-width: 70px;
     max-height: 70px;
 }
 
-.search-container > li > div > div > div{
+.search-container > li > section{
+    margin-bottom: 10px;
+}
+
+.search-container > li > section > figure{
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding-top: 7px;
+    margin: 0px;
 }
 
-.search-container > li > div > div > div > form > button{
+.userNavBarMobile{
+    height: 100px !important;
+}
+
+.search-container > li > section > div > form > button{
     border-radius: 100px;
 }
 
-.search-container > li > div > div > div > form > button{
-    border-radius: 100px;
+.productText{
+    width: fit-content;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
 }
 
-.search-container > li > div > div > div > form > button > i{
-    font-size: 26px;
+.productCartActions{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 :where(.ui-wheel-of-fortune) {

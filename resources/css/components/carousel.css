@@ -1,0 +1,39 @@
+.gallery {
+	padding: 30px;
+	display: grid;
+	grid-template-columns: repeat(100, 560px);
+	grid-template-rows: 1fr;
+	grid-column-gap: 1rem;
+	grid-row-gap: 1rem;
+	overflow: hidden;
+	height: 400px;
+	scroll-snap-type: both mandatory;
+	scroll-padding: 1rem;
+}
+
+.active {
+	scroll-snap-type: unset;
+}
+
+.carouselItem {
+    width: 100%;
+    max-width: 560px;
+    height: 370px;
+	scroll-snap-align: center;
+	display: inline-block;
+	border-radius: 3px;
+	font-size: 0;
+}
+
+.gallery li.highlight {
+    transform: scale(1.1); /* Ingrandisce l'elemento evidenziato */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Aggiunge ombra */
+    border-radius: 30px;
+}
+
+.imgCarousel{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}

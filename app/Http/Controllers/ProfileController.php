@@ -73,7 +73,7 @@ class ProfileController extends Controller
 
     // uncomment this function to enable search functionality with MeiliSearch
     public function search(Request $request){
-        $query = $request->get('query');
+        $query = $request->input('searchInput');
         $users = User::search($query)->get();
         $products = Product::all();
         $delivery_cost = Auth::guard('admin')->user()->delivery_cost;
