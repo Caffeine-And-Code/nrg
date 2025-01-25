@@ -22,13 +22,13 @@
     @vite('/resources/css/responsive.css')
     @vite('/resources/js/lucky_wheel.js')
     @vite('/resources/css/components/header.css')
-    @vite('resources/js/adminJs/footerNavigationManager.js') 
+    @vite('resources/js/adminJs/footerNavigationManager.js')
 </head>
 <body class="light">
     <x-nav-bar title="Products" />
     <x-user-dashboard-mobile :products="$products" :news="$news"/>
     <main class="w-100 overflow-x-hidden desktop main row">
-        <div class="col-9">
+        <div class="col-9 container">
             <section class="row">
                 <x-news-carosel :news="$news" />
                 <section class="col-12">

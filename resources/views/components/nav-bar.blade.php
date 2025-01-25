@@ -1,4 +1,5 @@
-
+@vite('/resources/css/components/header.css')
+@vite('resources/js/adminJs/footerNavigationManager.js')
 @php
     $previousRouteName = null;
     try {
@@ -12,19 +13,19 @@
 @endphp
 @if (Auth::guard("admin")->check())
 <header class="nav-bar desktop">
-    <img src="" alt="logo" class="logo " id="minimalLogo_" />
+    <img src="" alt="logo" class="logo " id="minimalLogo" />
     <aside class="navigationDesktop">
         <ul class="footerIconList">
-            
+
         <li class="navTitleContainer">
-            <h3 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h3>
+            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
         </li>
             <li>
                 <a
                     href="{{ route('admin.dashboard') }}"
                     class="{{ Route::is('admin.dashboard') ? 'active2' : ('admin.dashboard' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
                 >
-                    
+
                     <i class="las la-shopping-bag navigationIcons z-3"></i>
                 </a>
             </li>
@@ -56,16 +57,16 @@
     <img src="" alt="logo" class="logo " id="minimalLogo" />
     <aside class="navigationDesktop">
         <ul class="footerIconList">
-            
+
         <li class="navTitleContainer">
-            <h3 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h3>
+            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
         </li>
             <li>
                 <a
                     href="{{ route('user.home') }}"
                     class="{{ Route::is('user.home') ? 'active2' : ('user.home' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
                 >
-                    
+
                     <i class="las la-shopping-bag navigationIcons z-3"></i>
                 </a>
             </li>

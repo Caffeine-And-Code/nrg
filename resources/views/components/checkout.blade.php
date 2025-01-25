@@ -17,16 +17,16 @@
     </div>
     <article class="mt-5">
         <h2>{{__("main.cart_detail")}}</h2>
-        <form class="d-flex flex-column gap-2">
+        <form class="d-flex flex-column gap-2" action="{{route("user.post_checkout")}}">
             <span>{{__("main.min_delivery_time")}}</span>
             <input class="customInput small form-control" type="datetime-local" name="delivery_time" min="{{ now()->addMinutes(15)->format('Y-m-d\TH:i') }}" required />
             <select class="noMarginLeftInput form-control customInput small" name="type" required >
-                <option value="" selected>{{ __("messages.choose_classroom") }}</option>
+                <option value="" selected>{{ __("main.choose_classroom") }}</option>
                 @foreach($checkout["classrooms"] as $classroom)
                     <option value="{{$classroom->getId()}}">{{$classroom->getName()}}</option>
                 @endforeach
             </select>
-            <button class="form-control customButton"><i class="bi bi-credit-card-2-back"></i>{{__("main.pay")}}</button>
+            <button class="form-control customButton"><i class="bi bi-credit-card-2-back m-2"></i>{{__("main.pay")}}</button>
         </form>
     </article>
 </section>
