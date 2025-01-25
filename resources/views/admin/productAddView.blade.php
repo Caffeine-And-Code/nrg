@@ -15,6 +15,8 @@
         @vite('/resources/js/themeManager.js') @vite('/resources/css/app.css')
         @vite('/resources/css/responsive.css')
         @vite("/resources/css/views/productForm.css")
+        @vite('/resources/css/components/header.css')
+        @vite('resources/js/adminJs/footerNavigationManager.js') 
     </head>
     <body>
         <x-nav-bar title="Settings" />

@@ -1,4 +1,4 @@
-@vite('/resources/css/components/toDoOrder.css')
+
 @php
     use Carbon\Carbon;
 
@@ -38,25 +38,25 @@
                 </li>
             @endforeach
         </ul>
-        @csrf
-        <form action="{{ route('admin.orders.qrCode', ["id" => $order->id]) }}" method="get">
-            @csrf
-            <section class="to-do-order-footer row">
-                <span class="normalTextRegular col-md-6 col-12">
+        
+            <div class="to-do-order-footer row">
+                <article class="normalTextRegular col-md-6 col-12">
                     <h3 class="normalTextRegular">{{ __("messages.Class") }}: {{ $order->classroom->name }}</h3>
                     <h3 class="normalTextRegular">{{ __("messages.Total") }}: {{ $order->total }} €</h3>
-                </span>
+                </article>
                 @switch($order->status)
-                    @case(0)
-                        <button type="submit" class="btn customButton col-12 col-md-6"><ion-icon name="fast-food-outline" class="btnIcon"></ion-icon> {{ __("messages.Ready") }}</button>
-                        @break
                     @case(1)
-                    <button type="submit" class="btn customButton col-12 col-md-6"><i class="las la-piggy-bank" class="btnIcon"></i> {{ __("messages.Payed") }}</button>
-                        @break
+                    <form action="{{ route('admin.orders.goDelivery', ["id" => $order->id]) }}" method="post">
+                        @csrf
+                    <button type="submit" class="btn customButton col-12 col-md-6"><i class="las la-piggy-bank" class="btnIcon"></i> {{ __("messages.Ready") }}</button>
+                    </form>    
+                    @break
                     @default
-                    <button type="submit" class="btn customButton col-12 col-md-6"><i class="las la-parachute-box" class="btnIcon"></i> {{ __("messages.Delivering") }}</button>
+                    <form action="{{ route('admin.orders.qrCode', ["id" => $order->id]) }}" method="get">
+                        @csrf
+                    <button type="submit" class="btn customButton col-12 col-md-6"><i class="las la-parachute-box" class="btnIcon"></i> {{ __("messages.Complete") }}</button>
+                </form>
                 @endswitch
-            </section>
-        </form>
+            </div>
         <hr class="icon"/>
 </li>

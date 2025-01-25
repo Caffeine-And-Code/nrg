@@ -1,6 +1,6 @@
 @vite('/resources/css/components/userPanel.css')
 <section class="d-flex justify-content-between userInfo">
-    <h1 class="title textShadow">{{ $user->username }}</h1>
+    <h2 class="title textShadow">{{ $user->username }}</h2>
     <form
         action="{{ route('admin.user.delete', ['id' => $user->id]) }}"
         method="post"
@@ -12,8 +12,8 @@
     </form>
 </section>
 <hr />
-<section class="userInfo">
-    <h3 class="normalTextBold">Email</h3>
+<article class="userInfo">
+    <h2 class="normalTextBold">Email</h2>
     <p class="normalTextRegular">{{ $user->email }}</p>
     <h3 class="normalTextBold">{{ __("messages.LastAccess") }}</h3>
     <p class="normalTextRegular">{{ $user->last_access }}</p>
@@ -21,8 +21,8 @@
     <p class="normalTextRegular">€ {{ $user->total_spent }}</p>
     <h3 class="normalTextBold">{{ __("messages.DiscountPortfolio") }}</h3>
     <p class="normalTextRegular">€ {{ $user->discount_portfolio }}</p>
-</section>
-<section>
+</article>
+<div>
     <form
         action="{{ route('admin.user.addDiscount', ['id' => $user->id]) }}"
         method="post"
@@ -44,7 +44,7 @@
             />
         </div>
         <hr />
-        <section class="row justify-content-around">
+        <div class="row justify-content-around">
             <a
             href="{{ route('admin.settings') }}"
                 class="customButton btn mb-2 neutralButton col-5"
@@ -52,6 +52,6 @@
             <button
                 class="customButton btn mb-2 createButton col-5"
             >{{ __("messages.Add") }}</button>
-        </section>
+        </div>
     </form>
-</section>
+</div>

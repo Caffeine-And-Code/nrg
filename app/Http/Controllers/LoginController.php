@@ -45,8 +45,6 @@ class LoginController extends Controller
              * @var User $user
              */
             $user = Auth::user();
-            $user->setLastAccess(Carbon::now())
-                ->save();
             $request->session()->regenerate();
             return redirect()->route('user.home');
         }
@@ -72,8 +70,6 @@ class LoginController extends Controller
          * @var User $user
          */
         $user = User::query()->create($validatedRequest);
-        $user->setLastAccess(Carbon::now())
-            ->save();
 
         //TODO: Valuate if use password confirmation
         Auth::login($user);

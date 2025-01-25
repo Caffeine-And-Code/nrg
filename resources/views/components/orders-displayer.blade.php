@@ -1,10 +1,10 @@
 @php
     // orders are in todo if status is 0,1 or 3, done otherwise
     $todo = $orders->filter(function($order){
-        return in_array($order->status, [0,1,3]);
+        return in_array($order->status, [1,3]);
     });
     $done = $orders->filter(function($order){
-        return !in_array($order->status, [0,1,3]);
+        return in_array($order->status, [4]);
     });
 @endphp
 

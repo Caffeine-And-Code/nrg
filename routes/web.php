@@ -43,11 +43,12 @@ Route::name("user.")->group(function () {
         Route::get("profile/order/json", [\App\Http\Controllers\OrderController::class, "showJson"])->name('order_details_json');
         Route::get("notification", [\App\Http\Controllers\NotificationController::class, "show"])->name('notification');
         Route::post("notification/read", [\App\Http\Controllers\NotificationController::class, "read"])->name('notification_read');
+        Route::get("wheel/collect", [\App\Http\Controllers\DashboardController::class, "collect_wheel_discount"])->name('collect_wheel_discount');
 
         Route::get("checkout/success", [\App\Http\Controllers\CheckoutController::class, "checkoutSuccess"])->name('checkout_success');
         Route::get("checkout/error", [\App\Http\Controllers\CheckoutController::class, "checkoutError"])->name('checkout_error');
 
-        
+
         Route::post("/orders/qrCode", [OrderController::class, "getOrderQrCode"])->name('orders.qrCode');
     });
 });
@@ -95,6 +96,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get("/orders", [OrderController::class, "getAllOrders"])->name('orders');
         Route::get("/orders/qrCode", [OrderController::class, "scanQrCode"])->name('orders.qrCode');
         Route::post("/orders/qrCode/checkValidity", [OrderController::class, "checkValidity"])->name('orders.qrCode.checkValidity');
+        Route::post("/orders/goDelivery", [OrderController::class, "goDelivery"])->name('orders.goDelivery');
         //notifications
         Route::post("/notifications/read", [NotificationController::class, "readAdmin"])->name('notifications.read');
         Route::post("/notifications/delete", [NotificationController::class, "destroyAdmin"])->name('notifications.delete');

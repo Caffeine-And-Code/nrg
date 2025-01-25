@@ -41,6 +41,8 @@ function handleImgs(theme){
     replaceSingleImg('bigLogo', theme, bigLogoLight, bigLogoDark);
     // minimal logo
     replaceSingleImg('minimalLogo', theme, minimalLogoLight, minimalLogoDark);
+    // minimal logo
+    replaceSingleImg('minimalLogo_', theme, minimalLogoLight, minimalLogoDark);
 }
 
 function replaceSingleImg(imgId, theme, importedImageLight, importedImageDark) {

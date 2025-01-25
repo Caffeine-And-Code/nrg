@@ -36,14 +36,7 @@
                 <button type="submit" class="btn "><i class="las la-trash icon Bad"></i></button>
             </form>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="productsLabel" id={{ "products".$product->id }}>
-                <div class="offcanvas-header">
-                    <button type="button" class="btn-close offCanvasButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body container main overflow-auto">
-                    <x-add-and-edit-product-form :product="$product"/>
-                </div>
-            </div>
+            
 </aside>
 </li>
-<hr />
+

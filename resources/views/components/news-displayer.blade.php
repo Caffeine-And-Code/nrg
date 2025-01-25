@@ -2,7 +2,7 @@
 @vite(['resources/js/app.js'])
 @vite('resources/css/components/adminSingleNews.css')
 
-<h1 class="title textShadow">{{ __("messages.News_Editor") }}</h1>
+<h2 class="title textShadow">{{ __("messages.News_Editor") }}</h2>
 <div class="newsContainer" id="newsContainer">
     @foreach ($news as $newsItem)
         <x-single-news :newsItem="$newsItem" />
@@ -27,7 +27,7 @@
                 <div class="modal-footer modal-dialog-scrollable p-3 dialog">
                     <h1 class="smallTitle mb-4">{{ __("messages.ImportPhoto") }}</h1>
                     <div class="input-group mb-3">
-                        <input type="file" class="customFileInput" aria-describedby="inputFile"
+                        <input type="file" class="customFileInput"
                             aria-label="Upload" accept="image/*" multiple required name="image" id="newImage">
                     </div>
                     <button type="button" class="customSmallButton btn mb-2 cancelButton"
@@ -42,11 +42,11 @@
 </div>
 
 <hr />
-    <section class="row justify-content-around">
+    <div class="row justify-content-around">
         <form action="{{ route("admin.settings") }}" class="col-5" method="GET">
             @csrf
             <button class="customButton btn mb-2 neutralButton fullWidth">{{ __("messages.Back") }}</button>
         </form>
         <button  type="button" class="customButton btn mb-2 createButton col-5 confirmNews" id="confirmNews">{{ __("messages.Confirm") }}</button>
         
-</section>
+    </div>

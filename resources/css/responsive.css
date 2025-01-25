@@ -75,13 +75,12 @@
         height: 56px !important;
         width: 56px !important;
     }
+
+
 }
 
 @media only screen and (min-width: 571px) and (max-width: 767px) {
 
-    .checkoutButton{
-        display: flex !important;
-    }
 
     .gallery{
         grid-template-columns: repeat(100, 200px) !important;
@@ -109,7 +108,6 @@
 
     .nav-bar > img{
         height: 70% !important;
-        margin-top: 53px !important;
     }
 
     .navTitleContainer{
@@ -150,9 +148,6 @@
 
 @media only screen and (max-width: 571px) {
 
-    .checkoutButton{
-        display: flex !important;
-    }
 
     .gallery{
         grid-template-columns: repeat(100, 200px) !important;
@@ -191,7 +186,7 @@
     }
 
     .navTitle{
-        
+
         position: unset !important;
         font-size: 40px !important;
     }
@@ -241,7 +236,7 @@
     }
 
     .navTitle{
-        
+
         position: unset !important;
         margin-right: -40px !important;
     }
@@ -255,19 +250,19 @@
         height: 200px !important;
     }
 
-    
+
     .iconButton{
         font-size: 32px !important;
     }
 
     .navTitle{
-        
+
         position: unset !important;
         font-size: 32px !important;
     }
 
     .formIconContainer{
-        
+
         width: 48px !important;
         height: 48px !important;
         margin-left: 5px !important;
@@ -283,10 +278,6 @@
 }
 
 @media only screen and (max-width: 470px) {
-
-    .checkoutButton{
-        display: none !important;
-    }
 
     .gallery{
         grid-template-columns: repeat(60, 160px) !important;
@@ -305,7 +296,7 @@
     .orderList{
         padding: 0px !important;
     }
-    
+
     .iconButton{
         width: 42px !important;
         height: 42px !important;
@@ -388,7 +379,7 @@
     .normalTextRegular{
         font-size: 15px !important;
     }
-    
+
     .iconButton{
         width: 42px !important;
         height: 42px !important;
