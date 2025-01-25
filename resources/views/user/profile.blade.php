@@ -23,26 +23,28 @@
 </head>
 <body>
     <x-nav-bar title="Account"/>
+    <main class="main">
     
-    <x-user-account-mobile :orders="$orders"/>
+        <x-user-account-mobile :orders="$orders"/>
 
-    {{-- <p>Fidelity Meter</p>
-    <p>Actual Spent: {{$user->getTotalSpent()}}</p>
-    <p>Fidelity Meter target: {{$fmTarget}}</p>
-    <p>Your discount portfolio: {{$user->getDiscountPortfolio()}}</p>
+        {{-- <p>Fidelity Meter</p>
+        <p>Actual Spent: {{$user->getTotalSpent()}}</p>
+        <p>Fidelity Meter target: {{$fmTarget}}</p>
+        <p>Your discount portfolio: {{$user->getDiscountPortfolio()}}</p>
 
-    <p>Your profile</p>
-    <form action="{{route('user.profile_edit')}}" method="post">
-        @csrf
-        <input type="text" value="{{$user->getUsername()}}" name="username" placeholder="username">
-        <input type="email" value="{{$user->getEmail()}}" name="email" placeholder="email">
-        <input type="password" name="password" placeholder="password">
-        <input type="password" name="password_confirmation" placeholder="password confirmation">
-        <button>Edit</button>
-    </form> --}}
+        <p>Your profile</p>
+        <form action="{{route('user.profile_edit')}}" method="post">
+            @csrf
+            <input type="text" value="{{$user->getUsername()}}" name="username" placeholder="username">
+            <input type="email" value="{{$user->getEmail()}}" name="email" placeholder="email">
+            <input type="password" name="password" placeholder="password">
+            <input type="password" name="password_confirmation" placeholder="password confirmation">
+            <button>Edit</button>
+        </form> --}}
 
-    
-    <x-site-setting />
+        
+        <x-site-setting />
+    </main>
     <x-navigation-footer mode="client"/>
 </body>
 </html>
