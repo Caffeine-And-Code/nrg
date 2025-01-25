@@ -15,10 +15,10 @@
 <header class="nav-bar desktop">
     <img src="" alt="logo" class="logo " id="minimalLogo" />
     <aside class="navigationDesktop">
-        <ul class="footerIconList">
+        <ul class="d-flex flex-row justify-content-end gap-5 align-items-center h-100 my-0 p-3">
 
         <li class="navTitleContainer">
-            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
+            <h1 class="title navTitle">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
         </li>
             <li>
                 <a
