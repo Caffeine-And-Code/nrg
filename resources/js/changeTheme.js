@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function removeSelected(id){
-    document.querySelectorAll("#"+id).forEach(function(item) {
+    document.querySelectorAll("."+id).forEach(function(item) {
         item.classList.remove('selected');
     });
 }
 
 function addSelected(id){
-    document.querySelectorAll("#"+id).forEach(function(item) {
+    document.querySelectorAll("."+id).forEach(function(item) {
         item.classList.add('selected');
     });
 }

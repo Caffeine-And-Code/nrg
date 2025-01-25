@@ -21,6 +21,8 @@
     @vite('/resources/js/lucky_wheel.js')
     @vite('/resources/css/app.css')
     @vite('/resources/css/responsive.css')
+    @vite('/resources/css/components/header.css')
+    @vite('resources/js/adminJs/footerNavigationManager.js') 
 </head>
 <body class="light">
 <x-nav-bar title="Products" />

@@ -1,5 +1,4 @@
-@vite('/resources/css/components/header.css')
-@vite('resources/js/adminJs/footerNavigationManager.js') 
+
 @php
     $previousRouteName = null;
     try {
@@ -13,12 +12,12 @@
 @endphp
 @if (Auth::guard("admin")->check())
 <header class="nav-bar desktop">
-    <img src="" alt="logo" class="logo " id="minimalLogo" />
+    <img src="" alt="logo" class="logo " id="minimalLogo_" />
     <aside class="navigationDesktop">
         <ul class="footerIconList">
             
         <li class="navTitleContainer">
-            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
+            <h3 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h3>
         </li>
             <li>
                 <a
@@ -59,7 +58,7 @@
         <ul class="footerIconList">
             
         <li class="navTitleContainer">
-            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
+            <h3 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h3>
         </li>
             <li>
                 <a

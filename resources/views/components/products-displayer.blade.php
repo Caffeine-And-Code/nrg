@@ -1,5 +1,5 @@
 @vite("resources/css/components/ProductDisplayer.css")
-<h1 class="title textShadow">{{ __("messages.Products") }}</h1>
+<h3 class="title textShadow">{{ __("messages.Products") }}</h3>
 <x-generic-search-bar searchRoute="admin.product.search" buttonRoute="product/add" mode="admin" />
 <ul class="listContainer">
     @forelse ($products as $product)

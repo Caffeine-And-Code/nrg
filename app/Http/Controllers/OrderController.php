@@ -123,4 +123,14 @@ class OrderController extends Controller
             return response()->json(["valid" => false]);
         }
     }
+
+    public function goDelivery(Request $request){
+        $formData = $request->validate([
+            "id" => "required|exists:orders,id",
+        ]);
+        $order = Order::query()->find($formData['id']);
+        $order->setStatus(3);
+        $order->save();
+        return redirect()->route('admin.dashboard');
+    }
 }

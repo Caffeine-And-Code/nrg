@@ -12,7 +12,7 @@
     </ul>
 </section>
 
-<section class="container col centerCol mb-5">
+<div class="container col centerCol mb-5">
     <div class="input-group mb-4 inputContainerShadow align-items-center">
         <span class="slideToLeft">
             <i class="las la-align-left icon"></i>
@@ -29,9 +29,9 @@
                 class="customButton col-12 btn"
                 id="addClassroomBtn"
             >{{ __("messages.Add") }}</button>
-</section>
+</div>
 
-<section 
+<div 
 class="col-12 mb-5">
     <hr />
     <div class="row justify-content-around">
@@ -44,4 +44,4 @@ class="col-12 mb-5">
             id="confirmClasses"
         >{{ __("messages.Confirm") }}</button>
     </div>
-</section>
+</div>

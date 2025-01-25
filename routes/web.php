@@ -96,6 +96,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get("/orders", [OrderController::class, "getAllOrders"])->name('orders');
         Route::get("/orders/qrCode", [OrderController::class, "scanQrCode"])->name('orders.qrCode');
         Route::post("/orders/qrCode/checkValidity", [OrderController::class, "checkValidity"])->name('orders.qrCode.checkValidity');
+        Route::post("/orders/goDelivery", [OrderController::class, "goDelivery"])->name('orders.goDelivery');
         //notifications
         Route::post("/notifications/read", [NotificationController::class, "readAdmin"])->name('notifications.read');
         Route::post("/notifications/delete", [NotificationController::class, "destroyAdmin"])->name('notifications.delete');

@@ -19,6 +19,9 @@
             rel="stylesheet"
             href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
         />
+        
+        @vite('/resources/css/components/header.css')
+        @vite('resources/js/adminJs/footerNavigationManager.js') 
     </head>
     <body>
         <x-nav-bar title="Settings" />

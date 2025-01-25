@@ -11,7 +11,6 @@
                 data-bs-toggle="collapse"
                 data-bs-target={{ "#flush-collapse".$key }}
                 aria-expanded="false"
-                aria-controls={{ "#flush-collapse".$key }}
                 onclick="readNotification('{{$notification->id}}')"
             >
                 @if($notification->unread())
@@ -28,10 +27,10 @@
             data-bs-parent="#accordionFlush"
         >
             <div class="accordion-body row justify-content-between">
-                <section class="col-8">
-                    <p>{{$notification->created_at}}</p>
+                <article class="col-8">
+                    <h3 class="smallTitle">{{$notification->created_at}}</h3>
                     <p>{{$notification->data["message"]}}</p>
-                </section>
+                </article>
                 <form action="{{route("admin.notifications.delete")}}" method="post" class="col-2">
                     @csrf
                     <input type="hidden" name="id" value="{{$notification->id}}"/>
