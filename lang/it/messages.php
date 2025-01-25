@@ -80,4 +80,9 @@ return[
     "CoPassword" => "Conferma Password",
     "Already have an account?" => "Hai già un account?",
     "DeleteUser" => "Elimina Account Utente",
+    "Account" => "Profilo",
+    "orders" => "Ordini",
+    "orderCompleted" => "Completato",
+    "orderInPrep"=> "In Preparazione",
+    "product_s"=> "Prodotto/i",
 ];

@@ -17,4 +17,5 @@ return [
     "shipping" => "Spedizione",
     "discount" => "Sconto",
     "total" => "Totale",
+    "account" => "Account"
 ];

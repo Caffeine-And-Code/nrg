@@ -19,7 +19,10 @@ class NavBar extends Component
         $this->title = $title;
         if($title == "Orders" || $title == "Products"){
             $this->imagePath = "las la-shopping-bag";
-        }else{
+        }elseif($title == "Account"){
+            $this->imagePath = "las la-user";
+        }
+        else{
             $this->imagePath = "las la-cog";
         }
     }
