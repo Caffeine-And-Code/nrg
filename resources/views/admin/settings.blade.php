@@ -55,14 +55,14 @@
                             <i class="las la-euro-sign icon"></i>
                         </span>
                         <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="price" placeholder={{ __("messages.Price") }} required value="{{ $fm_prize }}" />
-                        
+
                     </div>
                     <div class="inputgroup inputContainerShadow align-items-center col-12 col-sx-5 mb-5">
                         <span class=" slideToLeft">
                             <i class="las la-bullseye icon"></i>
                         </span>
                         <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="target" placeholder={{ __("messages.Target") }} required value="{{ $fm_target }}" />
-                        
+
                     </div>
                     <button
                         class="customButton col-12 btn"
@@ -81,7 +81,7 @@
                     <button
                         class="customButton col-12 btn"
                         type="submit"
-                        
+
                     >{{ __("messages.edit_voices") }}</button>
                 </form>
             </section>
@@ -112,7 +112,7 @@
                             <i class="las la-euro-sign icon"></i>
                         </span>
                         <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="cost" placeholder={{ __("messages.Cost") }} required value="{{ $delivery_cost }}" />
-                        
+
                     </div>
                     <button
                         class="customButton col-sm-5 col-12 btn"
@@ -129,7 +129,7 @@
                         <x-user-displayer :users="$users" />
                     </section>
                     <section class="col-12 col-sm-12 col-md-6 d-flex justify-content-around flex-column">
-                        
+
                         <section class="mb-5">
                             <h1 class="title textShadow">{{ __("messages.News") }}</h1>
                             <button
@@ -137,7 +137,7 @@
                                 type="submit"
                                 data-bs-toggle="offcanvas" data-bs-target="#news"
                             >{{ __("messages.edit_voices") }}</button>
-                            
+
                         </section>
                         <section class="mb-5 centerCol">
                             <h1 class="title textShadow mb-4 d-flex justify-content-start fullWidth">{{ __("messages.FidelityMeter") }}</h1>
@@ -152,14 +152,14 @@
                                     <i class="las la-euro-sign icon"></i>
                                 </span>
                                 <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="price" placeholder={{ __("messages.Price") }} required value="{{ $fm_prize }}" />
-                                
+
                             </div>
                             <div class="inputgroup inputContainerShadow align-items-center col-md-12 col-lg-6 col-12 mb-4">
                                 <span class=" slideToLeft">
                                     <i class="las la-bullseye icon"></i>
                                 </span>
                                 <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="target" placeholder={{ __("messages.Target") }} required value="{{ $fm_target }}" />
-                                
+
                             </div>
                             <button
                                 class="customButton col-12 btn"
@@ -196,7 +196,7 @@
                                         <i class="las la-euro-sign icon"></i>
                                     </span>
                                     <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="cost" placeholder={{ __("messages.Cost") }} required value="{{ $delivery_cost }}" />
-                                    
+
                                 </div>
                                 <button
                                     class="customButton col-md-12 col-lg-6 col-12 btn mb-4"
@@ -235,7 +235,7 @@
                     <x-classrooms-displayer :classes="$classes" />
                 </div>
             </div>
-            
+
         <x-navigation-footer mode="admin" />
     </body>
 </html>

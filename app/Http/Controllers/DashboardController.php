@@ -14,11 +14,15 @@ use App\Services\ProductService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Symfony\Component\CssSelector\Exception\InternalErrorException;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        $wheelProbability = 90;
         /**
          * @var User $user
          */
@@ -27,10 +31,16 @@ class DashboardController extends Controller
         //TODO: Implement best buy logic
         $products= Product::query()->bestBuy()->withCartQuantity($user)->get();
         $spinWheel = $user->getLastAccess() < Carbon::now()->setTime(0,0,0);
-        $spinValue = $spinWheel ? SpinWheelEntry::query()->inRandomOrder()->first() : null;
+        $sessionKey = 'wheel_' . Carbon::now()->format('Y-m-d');
+        if(!session()->has($sessionKey) || session()->get($sessionKey) !== null){
+            session()->put($sessionKey, $spinWheel ? (rand(min: 0, max: 100) < $wheelProbability ? 0 : SpinWheelEntry::query()->inRandomOrder()->first()->getId()) : null);
+        }
+        $spinValue = session()->get($sessionKey, null);
+        $spinValues = $spinWheel ? SpinWheelEntry::query()->get() : null;
+        $wheel_last_win = session()->get("wheel_win", null);
         $checkout = (new CheckoutService())->getCheckoutData($user);
         $currentPage = 'main.products';
-        return view('user.dashboard', compact('news', 'products', 'spinValue', 'spinWheel', 'checkout', 'currentPage'));
+        return view('user.dashboard', compact('news', 'products', 'spinValue', 'spinValues', 'spinWheel', 'checkout', 'currentPage', 'wheel_last_win'));
     }
 
     public function search(Request $request){
@@ -55,10 +65,42 @@ class DashboardController extends Controller
         return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success', 'currentPage'));
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws InternalErrorException
+     * @throws NotFoundExceptionInterface
+     */
+    public function collect_wheel_discount(Request $request){
+        $sessionKey = 'wheel_' . Carbon::now()->format('Y-m-d');
+        if(session()->has($sessionKey)){
+            /** @var User $user */
+            $user = auth()->user();
+            $heelEntryId = session()->get($sessionKey);
+            session()->forget($sessionKey);
+            $wheelText = "";
+            $wheelValue = 0;
+            if($heelEntryId != 0){
+                $entry = SpinWheelEntry::query()->find($heelEntryId);
+                $wheelText = $entry->getText();
+                $wheelValue = intval($entry->getPrize());
+            }
+            else{
+                $wheelText = "null_win_reserved_field_immutable_1237871263";
+                $wheelValue = 0;
+            }
+            session()->put("wheel_win", $wheelText);
+            $user->setLastAccess(Carbon::now()->setTime(0,0,0))
+                ->setDiscountPortfolio($user->getDiscountPortfolio() + $wheelValue)
+                ->save();
+            return redirect()->back();
+        }
+        throw new InternalErrorException();
+    }
+
     public function magicProduct(Request $request) {
         $products = [Product::query()->inRandomOrder()->first()];
 
-        
+
         /** @var User $user */
         $user = auth()->user();
         $currentPage = 'main.products';

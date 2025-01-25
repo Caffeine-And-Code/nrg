@@ -25,54 +25,67 @@
 <body class="light">
     <x-nav-bar title="Products" />
     <x-user-dashboard-mobile :products="$products" :news="$news"/>
-    <main class="w-100 overflow-x-hidden desktop">
-        <section class="row h-100">
-            <x-news-carosel :news="$news" />
-            <section class="col-12 col-md-8">
-                
-                <section class="mt-5 row">
-                    <article class="px-5 order-2 order-xl-0 col-12 col-xl-6">
-                        <h1>{{__("main.bestseller")}}</h1>
-                    <article class="d-flex">
-                        <x-user-search-bar />
-                    </article>
+    <main class="w-100 overflow-x-hidden desktop main row">
+        <div class="col-9">
+            <section class="row">
+                <x-news-carosel :news="$news" />
+                <section class="col-12">
 
-                        
-                        <ul class="search-container">
-                            @foreach($products as $product)
-                                    <x-product-search-card :product="$product"/>
-                            @endforeach
-                        </ul>
-                    </article>
-                    <article class="px-5 container order-0 order-xl-2 col-12 col-xl-6">
-                        <h1>{{__("main.daily_spin")}}</h1>
+                    <section class="mt-5 row">
+                        <article class="px-5 order-2 order-xl-0 col-12 col-xl-6">
+                            <h1>{{__("main.bestseller")}}</h1>
+                        <article class="d-flex">
+                            <x-user-search-bar />
+                        </article>
 
-                        <fieldset class="ui-wheel-of-fortune">
-                            <ul>
-                                <li>$1000</li>
-                                <li>$2000</li>
-                                <li>$3000</li>
-                                <li>$4000</li>
-                                <li>$5000</li>
-                                <li>$6000</li>
-                                <li>$7000</li>
-                                <li>$8000</li>
-                                <li>$9000</li>
-                                <li>$10000</li>
-                                <li>$11000</li>
-                                <li>$12000</li>
+
+                            <ul class="search-container">
+                                @foreach($products as $product)
+                                        <x-product-search-card :product="$product"/>
+                                @endforeach
                             </ul>
-                            <button type="button">SPIN</button>
-                        </fieldset>
-                    </article>
+                        </article>
+                        @if ($spinWheel)
+                        <section class="px-5 container order-0 order-xl-2 col-12 col-xl-6">
+                            <h1>{{__("main.daily_spin")}}</h1>
+
+                            <article class="wheel-article mb-5 d-flex flex-column justify-content-center gap-2">
+                                <fieldset class="ui-wheel-of-fortune h-100">
+                                    <ul>
+                                        <li data-id="0" data-text="nullo">{{__("main.null_win")}}</li>
+                                        @foreach($spinValues as $value)
+                                            <li data-id="{{$value->getId()}}" data-text="{{$value->getText()}}">{{$value->getText()}}</li>
+                                        @endforeach
+                                    </ul>
+                                </fieldset>
+                                <input type="hidden" name="spin-value" id="spin-value" value="{{$spinValue}}">
+                                <button class="customButton" id="spin-btn">{{__("main.run_lucky_wheel")}}</button>
+                                <p class="spin-result" ></p>
+                            </article>
+                        </section>
+                        @elseif($wheel_last_win !== null)
+                            <section class="px-5 container order-0 order-xl-2 col-12 col-xl-6">
+                                <h1>{{__("main.daily_spin")}}</h1>
+                                @if ($wheel_last_win == "null_win_reserved_field_immutable_1237871263")
+                                    <p>{!! __("main.wheel_fail") !!}</p>
+                                @else
+                                    <p>{!! __("main.wheel_win", ["win" => $wheel_last_win]) !!}</p>
+                                @endif
+                            </section>
+                        @endif
+                    </section>
                 </section>
+
+                <div class="d-block d-lg-none">
+                    <x-checkout-offcanvas-button :checkout="$checkout"/>
+                </div>
             </section>
-            
-            <x-checkout-offcanvas-button :checkout="$checkout"/>
-        </section>
-        <aside class="d-none d-md-block col-md-4 mt-3 checkoutAside">
-            <x-checkout :checkout="$checkout" />
-        </aside>
+        </div>
+        <div class="d-none d-lg-block col-lg-3">
+            <aside class="checkoutAside">
+                <x-checkout :checkout="$checkout" />
+            </aside>
+        </div>
     </main>
     <x-navigation-footer mode="client"/>
 </body>

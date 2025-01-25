@@ -26,7 +26,7 @@
 
 hr {
     border: 1px solid var(--dark-text);
-    width: 100%; 
+    width: 100%;
     margin: 10px auto;
 }
 
@@ -58,7 +58,7 @@ html {
 
 .title {
     font-family: 'Mazzard Soft H Bold';
-    font-size: 64px;
+    font-size: 40px;
     color: var(--dark-text);
 }
 
@@ -91,6 +91,11 @@ html {
     color: var(--light-text) !important;
     font-family: 'Mazzard Soft H Regular' !important;
     border: 1px solid var(--stroke) !important;
+}
+
+.customInput.small{
+    font-size: 15px !important;
+    padding: 5px !important;
 }
 
 .loginCustomInput {
@@ -325,6 +330,7 @@ h1 {
 .main {
     padding-bottom: 100px;
     padding-top: 3rem;
+    margin-top: 10px;
 }
 
 .cancelButton {
@@ -477,7 +483,7 @@ table,td,th{
     background-color: var(--bg) !important;
     color: var(--light-text) !important;
 }
- 
+
 
 .mobile{
     width: 0 !important;
@@ -580,11 +586,10 @@ ul{
 .dividerSearch{
     box-shadow: 0px 1px 4px 1px var(--dark);
     border-color: var(--dark);
-    
+
 }
 
 .checkoutButton{
-    display: none !important;
     position: fixed;
     bottom: 10px;
     right: 10px;
@@ -592,12 +597,6 @@ ul{
 
 .checkoutAside{
     padding-top: 10px;
-    position: fixed;
-    top: 123px;
-    right: 0px;
     background-color: var(--bg);
-    height: 100%;
-    border-left: 1px solid var(--dark);
-    border-top: 1px solid var(--dark);
-    overflow-y: auto;
+    margin-left: 20px;
 }
