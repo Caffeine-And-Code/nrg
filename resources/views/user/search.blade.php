@@ -52,10 +52,12 @@
                     </ul>
                 </article>
         </section>
-        <aside class="d-none d-md-block col-md-4 mt-3">
-            <x-checkout :checkout="$checkout" />
-        </aside>
+        <x-checkout-offcanvas-button :checkout="$checkout"/>
+        
     </section>
+    <aside class="d-none d-md-block col-md-4 mt-3 checkoutAside">
+        <x-checkout :checkout="$checkout" />
+    </aside>
 </main>
 <x-navigation-footer mode="user" />
 </body>

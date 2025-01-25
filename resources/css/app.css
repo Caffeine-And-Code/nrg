@@ -582,3 +582,22 @@ ul{
     border-color: var(--dark);
     
 }
+
+.checkoutButton{
+    display: none !important;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.checkoutAside{
+    padding-top: 10px;
+    position: fixed;
+    top: 123px;
+    right: 0px;
+    background-color: var(--bg);
+    height: 100%;
+    border-left: 1px solid var(--dark);
+    border-top: 1px solid var(--dark);
+    overflow-y: auto;
+}

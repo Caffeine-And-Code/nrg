@@ -70,9 +70,18 @@
         width: 300px;
         text-align: end;
     }
+
+    .userMagicButton{
+        height: 56px !important;
+        width: 56px !important;
+    }
 }
 
 @media only screen and (min-width: 571px) and (max-width: 767px) {
+
+    .checkoutButton{
+        display: flex !important;
+    }
 
     .gallery{
         grid-template-columns: repeat(100, 200px) !important;
@@ -141,6 +150,10 @@
 
 @media only screen and (max-width: 571px) {
 
+    .checkoutButton{
+        display: flex !important;
+    }
+
     .gallery{
         grid-template-columns: repeat(100, 200px) !important;
         height: 200px !important;
@@ -201,6 +214,12 @@
         height: 42px !important;
         font-size: 32px !important;
     }
+
+    .checkoutButton{
+        width: 56px !important;
+        height: 56px !important;
+    }
+
     .title{
         font-size: 48px;
     }
@@ -264,6 +283,10 @@
 }
 
 @media only screen and (max-width: 470px) {
+
+    .checkoutButton{
+        display: none !important;
+    }
 
     .gallery{
         grid-template-columns: repeat(60, 160px) !important;
@@ -353,6 +376,11 @@
     .notificationsAdminButton{
         top: 130px !important;
         right: 10px !important;
+    }
+
+    .userMagicButton{
+        height: 50px !important;
+        width: 50px !important;
     }
 }
 

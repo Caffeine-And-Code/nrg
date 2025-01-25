@@ -33,14 +33,14 @@
                 <section class="mt-5 row">
                     <article class="px-5 order-2 order-xl-0 col-12 col-xl-6">
                         <h1>{{__("main.bestseller")}}</h1>
-                        
+                    <article class="d-flex">
                         <x-user-search-bar />
+                    </article>
+
                         
                         <ul class="search-container">
                             @foreach($products as $product)
-                                <li>
                                     <x-product-search-card :product="$product"/>
-                                </li>
                             @endforeach
                         </ul>
                     </article>
@@ -67,10 +67,12 @@
                     </article>
                 </section>
             </section>
-            <aside class="d-none d-md-block col-md-4 mt-3">
-                <x-checkout :checkout="$checkout" />
-            </aside>
+            
+            <x-checkout-offcanvas-button :checkout="$checkout"/>
         </section>
+        <aside class="d-none d-md-block col-md-4 mt-3 checkoutAside">
+            <x-checkout :checkout="$checkout" />
+        </aside>
     </main>
     <x-navigation-footer mode="client"/>
 </body>

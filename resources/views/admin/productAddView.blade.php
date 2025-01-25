@@ -16,9 +16,9 @@
         @vite('/resources/css/responsive.css')
         @vite("/resources/css/views/productForm.css")
     </head>
-    <body class="fullHeight">
+    <body>
         <x-nav-bar title="Settings" />
-        <main class="container main">
+        <main class="container main fullHeight">
             <x-add-and-edit-product-form :product="$product"/>
         </main>
         <x-navigation-footer mode="admin" />
