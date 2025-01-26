@@ -88,7 +88,6 @@ return[
     "Complete" => "Completa",
     "MadeOn" => "Creato il",
     "Status" => "Stato",
-    "MadeOn" => "Creato il",
     "Created" => "Creato",
     "Cancelled" => "Annullato",
     "ScanMe" => "Scansionami con il rider",

@@ -23,6 +23,7 @@
     @vite('resources/css/components/footerNavBar.css')
     @vite('resources/js/adminJs/footerNavigationManager.js')
     @vite('/resources/js/adminJs/passwordBtnHandler.js')
+    @vite('/resources/css/components/toDoOrder.css')
 </head>
 <body>
     <x-nav-bar title="Account"/>
