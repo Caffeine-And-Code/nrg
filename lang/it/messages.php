@@ -75,9 +75,9 @@ return[
     "QRNotOk" => "QR Non Valido",
     "Users" => "Utenti",
     "Logout" => "Esci",
-    "EorU" => "Email o Username",
+    "EorU" => "Email/Username",
     "Donthaveanaccountyet?" => "Non hai ancora un account?",
-    "CoPassword" => "Conferma Password",
+    "CoPassword" => "Conferma",
     "Already have an account?" => "Hai già un account?",
     "DeleteUser" => "Elimina Account Utente",
     "Account" => "Profilo",
@@ -105,4 +105,5 @@ return[
     "radioDark" => "Radio button per selezionare il tema scuro",
     "radioIt" => "Radio button per selezionare la lingua italiana",
     "radioEn" => "Radio button per selezionare la lingua inglese",
+    "EmailAccess" => "inserisci la tua email o username per accedere al tuo account",
 ];

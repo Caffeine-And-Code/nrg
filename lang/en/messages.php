@@ -70,9 +70,9 @@ return[
     "QROk" => "Valid QR Code",
     "QRNotOk" => "Invalid QR Code",
     "Users" => "Users",
-    "EorU" => "Email or Username",
+    "EorU" => "Email/Username",
     "Donthaveanaccountyet?" => "Don't have an account yet?",
-    "CoPassword" => "Confirm Password",
+    "CoPassword" => "Confirm",
     "Already have an account?" => "Already have an account?",
     "DeleteUser" => "Delete User Account",
     "Account" => "Account",
@@ -98,4 +98,5 @@ return[
     "radioDark" => "Radio button to select the dark theme",
     "radioIt" => "Radio button to select the Italian language",
     "radioEn" => "Radio button to select the English language",
+    "EmailAccess" => "please insert your email or username to access your account",
 ];
