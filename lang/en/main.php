@@ -35,6 +35,7 @@ return [
     "payment_error_description" => "Unfortunately, an error occurred during the payment of your last order, but no worries, the items you were interested in have been added back to your cart so you can continue shopping.",
     "continue_shipping" => "Continue shopping",
     "payment_success" => "Payment successfully completed",
+    "no_products" => "No products in cart",
     "write_rating" => "Write a rating",
     "null_win" => "Retry tommorow",
     "run_lucky_wheel" => "Run the lucky wheel",

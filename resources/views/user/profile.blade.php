@@ -29,25 +29,26 @@
     <x-nav-bar title="Account"/>
     <main class="main container">
         <div class="mobile user-components mt-5">
-            <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize"/>
+            <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize" mode="Mobile"/>
         </div>
 
-        <div class="desktop user-components desktop-component mt-5">
-            <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize"/>
+        <div class="desktop user-components mt-5">
+            <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize" mode="Desktop"/>
         </div>
-
+        
         <x-site-setting/>
         <button class="btn notificationsUserButton" data-bs-toggle="offcanvas" data-bs-target="#notifications"><i class="las la-bell icon"></i></button>
     </main>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="notifications">
         <div class="offcanvas-header">
 
-            <h1 class="title smallTitle">{{ __("messages.Notifications") }}</h1>
+            <h3 class="title smallTitle">{{ __("messages.Notifications") }}</h3>
             <button type="button" class="btn-close offCanvasButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="overflow-auto container offcanvas-body">
             <x-notifications-displayer :notifications="$notifications" role="user"/>
         </div>
     </div>
+    <x-navigation-footer mode="client" />
 </body>
 </html>

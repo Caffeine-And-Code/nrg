@@ -18,7 +18,7 @@
     />
     
     <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript">
+    <script src="https://unpkg.com/html5-qrcode" ></script>
     @vite('/resources/js/adminJs/qrCodeScanner.js')
         @vite('/resources/css/components/header.css')
         @vite('resources/js/adminJs/footerNavigationManager.js') 
@@ -28,8 +28,9 @@
     <x-nav-bar title="Orders" />
         <main class="container main qrCodeContainer mt-5">
             <h1 class="title">{{ __("messages.ScanQr") }}</h1>
+            <input type="hidden" id="orderId" value="{{ $order->id}}">
             <!-- Scanner dalla webcam -->
-            <section id="qr-reader" class="qr-reader"></section>
+            <div id="qr-reader" class="qr-reader"></div>
             <section id="qrOk" class = "qrResult GoodResult">
                 <i class="la la-check-circle bigIconOrders Success"></i>
                 <h2 class="title">{{ __("messages.QROk") }}</h2>

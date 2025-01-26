@@ -16,6 +16,9 @@ class ClassroomController extends Controller
     public function destroy(Request $request)
     {
         $class = Classroom::find($request->id);
+        $class->orders()->each(function($order){
+            $order->products()->detach();
+        });
         $class->orders()->delete();
         $class->delete();
         return redirect()->back();

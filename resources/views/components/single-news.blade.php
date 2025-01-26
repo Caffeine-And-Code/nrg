@@ -1,8 +1,6 @@
 
 <div
-    class="singleNews"
-    {{-- TODO: REMOVE THIS LINE AND CHANGE IT WITH SOMEOTHER METHOD TO SET THE IMAGE PATH --}}
-    style="background-image: url('{{ $newsItem->image_path }}');"
+    class="singleNews {{ "News".$newsItem->id }}"
 >
     <form
         class="overlay"

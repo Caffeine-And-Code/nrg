@@ -627,3 +627,12 @@ body{
 .unread > h2{
     text-decoration: underline;
 }
+
+
+.noProductInCart{
+    min-height: 180px;
+}
+
+.orderFigureAdmin{
+    min-height: 116px;
+}

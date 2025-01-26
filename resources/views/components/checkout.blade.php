@@ -1,11 +1,19 @@
-<div class="container">
-<h2>{{__("main.checkout")}}</h2>
+@php
+    $randomNumber = rand(0, 10000);
+@endphp
+
+<div class="container mt-3">
+    <h2>{{__("main.checkout")}}</h2>
     <ul class="search-container">
-        @foreach($checkout["products"] as $product)
+        @forelse($checkout["products"] as $product)
             <li>
                 <x-product-search-card :product="$product" :isCart="true"/>
             </li>
-        @endforeach
+        @empty
+            <li class="noProductInCart">
+                <p>{{__("main.no_products")}}</p>
+            </li>
+        @endforelse
     </ul>
     <div class="row border-bottom">
         <span class="col-6">{{__("main.subtotal")}}</span><span class="col-6">{{Number::currency($checkout["total"] + $checkout["discount"] - $checkout["shippingCost"])}}</span>
@@ -20,10 +28,10 @@
         <form class="d-flex flex-column gap-2" action="{{route("user.post_checkout")}}" method="POST">
             @csrf
             <span>{{__("main.min_delivery_time")}}</span>
-            <label class="d-none" for="delivery_time">{{__("main.delivery_time")}}</label>
-            <input class="customInput small form-control" type="datetime-local" name="delivery_time" id="delivery_time" min="{{ now()->addMinutes(15)->format('Y-m-d\TH:i') }}" required />
-            <label class="d-none" for="classroom_id">{{__("main.classroom_id")}}</label>
-            <select class="noMarginLeftInput form-control customInput small" name="classroom_id" id="classroom_id" required >
+            <label class="d-none" for={{ "delivery_time".$randomNumber }} >{{__("main.delivery_time")}}</label>
+            <input class="customInput small form-control" type="datetime-local" name="delivery_time" id={{ "delivery_time".$randomNumber }} min="{{ now()->addMinutes(15)->format('Y-m-d\TH:i') }}" required />
+            <label class="d-none" for={{ "classroom_id".$randomNumber }} >{{__("main.classroom_id")}}</label>
+            <select class="noMarginLeftInput form-control customInput small" name="classroom_id" id={{ "classroom_id".$randomNumber }} required >
                 <option value="" selected>{{ __("main.choose_classroom") }}</option>
                 @foreach($checkout["classrooms"] as $classroom)
                     <option value="{{$classroom->getId()}}">{{$classroom->getName()}}</option>

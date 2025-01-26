@@ -21,8 +21,8 @@
         : floor($diffInMinutes) . ' '.__("messages.minutes");
 @endphp
 
-<li class="to-do-order">
-        <figure class="to-do-order-header row d-flex justify-content-center">
+<li class="to-do-order container d-flex flex-column">
+        <figure class="to-do-order-header row d-flex justify-content-center orderFigureAdmin mb-0">
             <x-order-image-displayer :status="$order->status" />
             <figcaption class="col-md-6 col-12">
                 <h3 class="normalTextBold">{{ $timeRemaining }}</h3>
@@ -34,7 +34,7 @@
         <ul class="to-do-order-body">
             @foreach($order->products as $product)
                 <li class="to-do-order-product">
-                    <h3 class="normalTextRegular">{{ $product->pivot->quantity }}    {{ $product->name }} </h3>
+                    <h3 class="normalTextRegular mb-0">{{ $product->pivot->quantity }}    {{ $product->name }} </h3>
                 </li>
             @endforeach
         </ul>
@@ -52,7 +52,7 @@
                     </form>    
                     @break
                     @default
-                    <form action="{{ route('admin.orders.qrCode', ["id" => $order->id]) }}" method="get">
+                    <form action="{{ route('admin.orders.qrCode', ["id" => $order->id]) }}" method="post">
                         @csrf
                     <button type="submit" class="btn customButton col-12 col-md-6"><i class="las la-parachute-box" class="btnIcon"></i> {{ __("messages.Complete") }}</button>
                 </form>

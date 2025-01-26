@@ -97,21 +97,25 @@ class OrderController extends Controller
     }
 
     public function scanQrCode(Request $request){
-        return view("admin.scanner");
+        $order = Order::query()->find($request->input('id'));
+        return view("admin.scanner",compact("order"));
     }
 
     public function checkValidity(Request $request){
         // if the qr code is correct i should get params like this => {"id":1,"user_id":1}
         $formData = $request->validate([
             "params" => "required",
+            "cliccked_id" => "required",
         ]);
 
+        
         try {
             $formData = json_decode($formData['params'], true);
             if(!isset($formData['order_id']) || !isset($formData['user_id']))
-                return response()->json(["valid" => false]);
-
-
+            return response()->json(["valid" => false]);
+        
+            if($formData['order_id'] != $request->cliccked_id)
+            return response()->json(["valid" => false]);
             $order = Order::query()->find($formData['order_id']);
             if($order->getUserId() == $formData['user_id']){
                 $order->setStatus(4);
