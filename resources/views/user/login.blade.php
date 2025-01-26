@@ -30,8 +30,8 @@
                     <span class="input-group-text">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M406.5 399.6C387.4 352.9 341.5 320 288 320l-64 0c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3l64 0c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"/></svg>
                     </span>
-                    <label for="email" class="d-none">{{ __("messages.EmailAccess") }}</label>
-                    <input type="text" class="form-input" name="username" placeholder={{ __("messages.EorU") }}>
+                    <label for="emailOrUsername" class="d-none">{{ __("messages.EmailAccess") }}</label>
+                    <input type="text" class="form-input" name="username" id="emailOrUsername" placeholder={{ __("messages.EorU") }}>
                 </div>
 
                 <div class="input-group mb-3">
@@ -41,7 +41,7 @@
                         </svg>
                     </span>
                     
-                    <label for="email" class="d-none">{{ __("messages.PasswordAccess") }}</label>
+                    <label for="password" class="d-none">{{ __("messages.PasswordAccess") }}</label>
                     <input class="form-input" type="password" name="password" id="password" placeholder="Password">
                     <button type="button" class="togglePassword" id="togglePassword">
                         <svg class="eye icon" id="eye" xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -80,7 +80,7 @@
 
         <section class="registration-zone login-section">
             
-            <p class="desktop-only advice">{{ __("messages.Donthaveanaccountyet?") }}</p>
+            <h2 class="desktop-only advice">{{ __("messages.Donthaveanaccountyet?") }}</h2>
             <img src="{{ Vite::asset('resources/imgs/LIGHT/minimalLogo.png') }}" class="col-sm-8 col-md-6 col-12 smallLogo mobile-only" alt="minimalLogo" id = "minimalLogo" />
             
             
@@ -92,15 +92,17 @@
                     <span class="input-group-text">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16l0 22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1l0-22.1c0-8.8-7.2-16-16-16L64 112zM48 212.2L48 384c0 8.8 7.2 16 16 16l384 0c8.8 0 16-7.2 16-16l0-171.8L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64l384 0c35.3 0 64 28.7 64 64l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128z"/></svg>    
                     </span>
-
-                    <input class="form-input" type="email" name="email" placeholder="Email">
+                    
+                    <label for="email" class="d-none">{{ __("messages.OnlyEmailAccess") }}</label>
+                    <input class="form-input" type="email" name="email" placeholder="Email" id="email">
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M406.5 399.6C387.4 352.9 341.5 320 288 320l-64 0c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3l64 0c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"/></svg>
                     </span>
-                    <input type="text" class="form-input" name="username" placeholder="Username">
+                    <label for="username" class="d-none">{{ __("messages.UsernameAccess") }}</label>
+                    <input type="text" class="form-input" name="username" placeholder="Username" id="username">
                 </div>
 
                 <div class="input-group mb-3">
@@ -109,6 +111,7 @@
                             <path d="M8 0C5.243 0 2 2.243 2 5V6.5C0.897 6.5 0 7.397 0 8.5V16.5C0 17.603 0.897 18.5 2 18.5H14C15.103 18.5 16 17.603 16 16.5V8.5C16 7.397 15.103 6.5 14 6.5V5C14 2.243 10.757 0 8 0ZM14 8.5L14.002 16.5H2V8.5H14ZM4 6.5V5C4 3 6 2 8 2C10 2 12 3 12 5V6.5H4Z"/>
                         </svg>
                     </span>
+                    <label for="passwordReg" class="d-none">{{ __("messages.PasswordRegAccess") }}</label>
                     <input class="form-input" type="password" name="password" id="passwordReg" placeholder="Password">
                     <button type="button" class="togglePassword" id="togglePasswordReg">
                         <svg class="eye icon" id="eyeReg" xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -132,6 +135,7 @@
                             <path d="M8 0C5.243 0 2 2.243 2 5V6.5C0.897 6.5 0 7.397 0 8.5V16.5C0 17.603 0.897 18.5 2 18.5H14C15.103 18.5 16 17.603 16 16.5V8.5C16 7.397 15.103 6.5 14 6.5V5C14 2.243 10.757 0 8 0ZM14 8.5L14.002 16.5H2V8.5H14ZM4 6.5V5C4 3 6 2 8 2C10 2 12 3 12 5V6.5H4Z"/>
                         </svg>
                     </span>
+                    <label for="password_confirmation" class="d-none">{{ __("messages.PasswordRegCnfAccess") }}</label>
                     <input class="form-input" type="password" name="password_confirmation" id="password_confirmation" placeholder={{ __("messages.CoPassword") }}>
                     <button type="button" class="togglePassword" id="toggleConfirmPassword">
                         <svg class="eye icon" id="eye2" xmlns="http://www.w3.org/2000/svg" height="1em"

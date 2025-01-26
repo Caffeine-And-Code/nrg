@@ -99,4 +99,9 @@ return[
     "radioIt" => "Radio button to select the Italian language",
     "radioEn" => "Radio button to select the English language",
     "EmailAccess" => "please insert your email or username to access your account",
+    "PasswordAccess" => "please insert your password to access your account",
+    "OnlyEmailAccess" => "please insert your email to create your account",
+    "UsernameAccess" => "please insert your username to create your account",
+    "PasswordRegAccess" => "please insert your password to create your account",
+    "PasswordRegCnfAccess" => "please confirm your password to create your account",
 ];

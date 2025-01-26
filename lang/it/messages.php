@@ -105,4 +105,9 @@ return[
     "radioIt" => "Radio button per selezionare la lingua italiana",
     "radioEn" => "Radio button per selezionare la lingua inglese",
     "EmailAccess" => "inserisci la tua email o username per accedere al tuo account",
+    "PasswordAccess" => "inserisci la tua password per accedere al tuo account",
+    "OnlyEmailAccess" => "inserisci la tua email per creare il tuo account",
+    "UsernameAccess" => "inserisci il tuo username per creare il tuo account",
+    "PasswordRegAccess" => "inserisci la tua password per creare il tuo account",
+    "PasswordRegCnfAccess" => "conferma la tua password per creare il tuo account",
 ];
