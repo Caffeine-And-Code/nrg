@@ -34,6 +34,13 @@ h1 {
     color: var(--dark);
 }
 
+h2 {
+    font-family: 'Mazzard Soft H Regular', sans-serif;
+    font-size: 25px;
+    margin: unset;
+    color: var(--dark);
+}
+
 figcaption{
     font-family: 'Mazzard Soft H Bold', sans-serif;
     font-size: clamp(32px, 5vw, 4rem);
@@ -201,7 +208,7 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
 
     ul {
         all: unset;
-        clip-path: inset(0 0 0 0 round 50%);
+        clip-path: circle(50% at 50% 50%);
         display: grid;
         inset: 0;
         place-content: center start;
@@ -228,7 +235,7 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
 }
 
 .user-components {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     align-items: center;
 }

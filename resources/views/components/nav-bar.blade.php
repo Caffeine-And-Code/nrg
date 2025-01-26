@@ -56,7 +56,7 @@
 <header class="nav-bar desktop">
     <img src="" alt="logo" class="logo " id="minimalLogo_" />
     <aside class="navigationDesktop">
-        <ul class="footerIconList">
+        <ul class="d-flex flex-row justify-content-end gap-5 align-items-center h-100 my-0 p-3">
 
         <li class="navTitleContainer">
             <h2 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h2>
