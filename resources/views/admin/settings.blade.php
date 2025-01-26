@@ -29,7 +29,7 @@
                         class="col-12 mb-5"
                         method="get"
                     >
-                        <h3 class="title textShadow">{{ __("messages.News") }}</h3>
+                        <h2 class="title textShadow">{{ __("messages.News") }}</h2>
                         @csrf
                         <button
                             class="customButton col-12 btn"
@@ -58,14 +58,16 @@
                             <span class=" slideToLeft">
                                 <i class="las la-euro-sign icon"></i>
                             </span>
-                            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="price" placeholder={{ __("messages.Price") }} required value="{{ $fm_prize }}" />
+                            <label for="priceFidelity" class="d-none">{{ __("messages.Price") }}</label>
+                            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="price" id="priceFidelity" placeholder={{ __("messages.Price") }} required value="{{ $fm_prize }}" />
                             
                         </div>
                         <div class="inputgroup inputContainerShadow align-items-center col-12 col-sx-5 mb-5">
                             <span class=" slideToLeft">
                                 <i class="las la-bullseye icon"></i>
                             </span>
-                            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="target" placeholder={{ __("messages.Target") }} required value="{{ $fm_target }}" />
+                            <label for="targetFidelity" class="d-none">{{ __("messages.Target") }}</label>
+                            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="target" id="targetFidelity" placeholder={{ __("messages.Target") }} required value="{{ $fm_target }}" />
                             
                         </div>
                         <button
@@ -115,7 +117,8 @@
                             <span class=" slideToLeft">
                                 <i class="las la-euro-sign icon"></i>
                             </span>
-                            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="cost" placeholder={{ __("messages.Cost") }} required value="{{ $delivery_cost }}" />
+                            <label for="costDelivery" class="d-none">{{ __("messages.Cost") }}</label>
+                            <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="cost" id="costDelivery" placeholder={{ __("messages.Cost") }} required value="{{ $delivery_cost }}" />
                             
                         </div>
                         <button
@@ -154,14 +157,16 @@
                                 <span class=" slideToLeft">
                                     <i class="las la-euro-sign icon"></i>
                                 </span>
-                                <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="price" placeholder={{ __("messages.Price") }} required value="{{ $fm_prize }}" />
+                                <label for="priceFidelityDEsk" class="d-none">{{ __("messages.Price") }}</label>
+                                <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="price" id="priceFidelityDEsk" placeholder={{ __("messages.Price") }} required value="{{ $fm_prize }}" />
 
                             </div>
                             <div class="inputgroup inputContainerShadow align-items-center col-md-12 col-lg-6 col-12 mb-4">
                                 <span class=" slideToLeft">
                                     <i class="las la-bullseye icon"></i>
                                 </span>
-                                <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="target" placeholder={{ __("messages.Target") }} required value="{{ $fm_target }}" />
+                                <label for="targetFidelityDesk" class="d-none">{{ __("messages.Target") }}</label>
+                                <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="target" id="targetFidelityDesk" placeholder={{ __("messages.Target") }} required value="{{ $fm_target }}" />
 
                             </div>
                             <button
@@ -198,7 +203,8 @@
                                     <span class=" slideToLeft">
                                         <i class="las la-euro-sign icon"></i>
                                     </span>
-                                    <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="cost" placeholder={{ __("messages.Cost") }} required value="{{ $delivery_cost }}" />
+                                    <label for="costDeliveryDEsk" class="d-none">{{ __("messages.Cost") }}</label>
+                                    <input class="form-control col-sm-10 col-md-11 col-10  customInput" type="number" min="0" step="0.1" name="cost" id="costDeliveryDEsk" placeholder={{ __("messages.Cost") }} required value="{{ $delivery_cost }}" />
 
                                 </div>
                                 <button
@@ -213,7 +219,6 @@
             
             
         <div class="p-4">
-
             <x-site-setting/>
         </div>
         </main>

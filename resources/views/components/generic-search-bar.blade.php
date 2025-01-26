@@ -1,5 +1,9 @@
 @vite('/resources/css/components/searchBar.css')
 
+@php
+    $randomNumber = rand(0, 100000);
+@endphp
+
 <link
     rel="stylesheet"
     href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
@@ -16,10 +20,14 @@
             <button type="submit" class="input-group-text">
                 <i class="las la-search"></i>
             </button>
+            <label for={{ "searchInput" . $searchRoute. $randomNumber }} class="d-none">
+                {{ __("messages.Search") }}
+            </label>
             <input
                 type="text"
                 class="form-control searchBar"
                 name="searchInput"
+                id={{ "searchInput" . $searchRoute . $randomNumber }}
                 placeholder="{{ __("messages.Search") }}"
             />
         </div>

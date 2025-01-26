@@ -3,11 +3,11 @@
 @vite('/resources/js/changeLanguage.js')
 
 <section class="col-12">
-    <h2 class="title textShadow">{{ __("messages.Settings") }}</h2>
+    <h3 class="title textShadow">{{ __("messages.Settings") }}</h3>
     <ul class="list-group list-group-flush">
         <li class="list-group-item pb-4 pt-4">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 smallTitle">{{ __("messages.ThemeChanger") }}</h5>
+                <h4 class="mb-1 smallTitle">{{ __("messages.ThemeChanger") }}</h4>
                 <div class="btn-group radioGroup" role="group" aria-label="Theme changer">
                     <label for="LIGHT" class="d-none">{{ __("radioLight") }}</label>
                     <input type="radio" class="btn-check" name="btnradio" id="LIGHT" >
@@ -47,7 +47,7 @@
         @if ($isAdmin == 0)
         <li class="list-group-item pb-4 pt-4">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 smallTitle">{{ __("messages.Logout") }}</h5>
+                <h6 class="mb-1 smallTitle">{{ __("messages.Logout") }}</h6>
                 <form action="{{ route('user.logout') }}" method="post">
                     @csrf
                     <button type="submit" class="btn normalButton">{{ __("messages.Exit") }}</button>
@@ -56,7 +56,7 @@
         </li>
         <li class="list-group-item pb-4 pt-4">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 smallTitle">{{ __("messages.DeleteUser") }}</h5>
+                <p class="mb-1 smallTitle">{{ __("messages.DeleteUser") }}</p>
                 <form action="{{ route('user.destroyMe') }}" method="post">
                     @csrf
                     <button type="submit" class="btn normalButton">{{ __("messages.Delete") }}</button>
@@ -66,7 +66,7 @@
         @else
         <li class="list-group-item pb-4 pt-4">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 smallTitle">{{ __("messages.Logout") }}</h5>
+                <h6 class="mb-1 smallTitle">{{ __("messages.Logout") }}</h6>
                 <form action="{{ route('admin.logout') }}" method="get">
                     @csrf
                     <button type="submit" class="btn normalButton">{{ __("messages.Exit") }}</button>
@@ -75,7 +75,7 @@
         </li>
         <li class="list-group-item pb-4 pt-4">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 smallTitle">{{ __("messages.RemoveAdmin") }}</h5>
+                <p class="mb-1 smallTitle">{{ __("messages.RemoveAdmin") }}</p>
                 <form action="{{ route('admin.destroyMe') }}" method="post">
                     @csrf
                     <button type="submit" class="btn normalButton">{{ __("messages.Delete") }}</button>

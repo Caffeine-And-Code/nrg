@@ -2,7 +2,7 @@
 @vite("/resources/js/adminJs/classroomsDisplayerHandler.js")
 
 @vite(['resources/js/app.js'])
-<h1 class="title textShadow ">{{ __("messages.Classrooms") }}</h1>
+<h2 class="title textShadow ">{{ __("messages.Classrooms") }}</h2>
 <hr />
 <section class="entriesTable mb-5"> 
     <ul class="list" id="classList">
@@ -17,6 +17,7 @@
         <span class="slideToLeft">
             <i class="las la-align-left icon"></i>
         </span>
+        <label class="d-none" for="classNumber">{{ __("messages.Classnumber") }}</label>
         <input
             class="form-control col-sm-10 col-md-11 col-10 customInput"
             type="text"
@@ -38,6 +39,7 @@ class="col-12 mb-5">
         <a
         href="{{ route('admin.settings') }}"
             class="customButton btn mb-2 neutralButton col-5"
+            title="{{ __("messages.Back") }}"
         >{{ __("messages.Back") }}</a>
         <button
             class="customButton btn mb-2 createButton col-5"

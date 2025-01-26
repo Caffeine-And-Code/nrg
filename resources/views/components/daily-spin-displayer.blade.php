@@ -10,24 +10,24 @@
 <table class="table entriesTable mb-5">
     <thead>
         <tr>
-            <th scope="col">{{ __("messages.Text") }}</th>
-            <th scope="col">{{ __("messages.DiscountApplied") }}</th>
-            <th scope="col"></th>
+            <th scope="col" id="TEXTHEADER">{{ __("messages.Text") }}</th>
+            <th scope="col" id="DISCOUNTHEADER">{{ __("messages.DiscountApplied") }}</th>
+            <th scope="col" id="EMPTYHEADER"></th>
         </tr>
     </thead>
     <tbody id="entriesTableBody">
         @foreach ($entries as $entry)
         <tr class="entryRow">
             @mobile
-            <th scope="row">
+            <td id={{ "entryText".$entry->id }}>
                 {{ strlen($entry->text) > 15 ? substr($entry->text,0,15)."..." :
                 $entry->text }}
-            </th>
+            </td>
             @elsemobile
-            <th scope="row">{{ $entry->text }}</th>
+            <td id={{ "entryText".$entry->id }}>{{ $entry->text }}</td>
             @endmobile
-            <td>€{{ $entry->prize }}</td>
-            <td>
+            <td id={{ "PREZEL".$entry->id }}>€{{ $entry->prize }}</td>
+            <td id={{ "ActionDAILY".$entry->id }}>
                 <form
                     action="{{ route('admin.dailySpin.delete', ['id' => $entry->id]) }}"
                     method="post"
@@ -49,6 +49,7 @@
         <span class="slideToLeft">
             <i class="las la-euro-sign icon"></i>
         </span>
+        <label for="text" class="d-none">{{ __("messages.Text") }}</label>
         <input class="form-control col-sm-10 col-md-11 col-10 customInput"
         type="text" id="text" placeholder={{ __("messages.Text") }} required />
     </div>
@@ -59,6 +60,7 @@
             <span class="slideToLeft">
                 <i class="las la-euro-sign icon"></i>
             </span>
+            <label for="discount" class="d-none">{{ __("messages.DiscountApplied") }}</label>
             <input class="form-control col-sm-10 col-md-11 col-10 customInput"
             type="number" min="0" step="0.1" id="discount" placeholder={{
             __("messages.DiscountApplied") }} required />
@@ -75,6 +77,7 @@
         <a
             href="{{ route('admin.settings') }}"
             class="customButton btn mb-2 neutralButton col-5"
+            title="{{ __("messages.Back") }}"
         >
             {{ __("messages.Back") }}
         </a>

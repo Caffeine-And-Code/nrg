@@ -27,6 +27,7 @@
                 <div class="modal-footer modal-dialog-scrollable p-3 dialog">
                     <h1 class="smallTitle mb-4">{{ __("messages.ImportPhoto") }}</h1>
                     <div class="input-group mb-3">
+                        <label class="d-none" for="newImage">{{ __("messages.ImportPhoto") }}</label>
                         <input type="file" class="customFileInput"
                             aria-label="Upload" accept="image/*" multiple required name="image" id="newImage">
                     </div>

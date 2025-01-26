@@ -33,12 +33,14 @@
             <span class="slideToLeft">
                 <i class="las la-euro-sign icon"></i>
             </span>
+            <label for={{ "discount".$user->id }} class="d-none">{{ __("messages.Discount") }}</label>
             <input
                 class="form-control col-sm-10 col-md-11 col-10 customInput"
                 type="number"
                 name="discount"
                 min="1"
                 max="200"
+                id={{ "discount".$user->id }}
                 placeholder={{ __("messages.Discount") }}
                 required
             />
@@ -48,6 +50,7 @@
             <a
             href="{{ route('admin.settings') }}"
                 class="customButton btn mb-2 neutralButton col-5"
+                title="{{ __("messages.Back") }}"
             >{{ __("messages.Back") }}</a>
             <button
                 class="customButton btn mb-2 createButton col-5"

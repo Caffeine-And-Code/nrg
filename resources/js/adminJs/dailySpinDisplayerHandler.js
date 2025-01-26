@@ -6,7 +6,7 @@ function createTableEntry(data){
     let cell2 = row.insertCell(1);
     let cell3 = row.insertCell(2);
     cell1.appendChild(document.createTextNode(checkLenght(data.text)));
-    cell2.innerHTML = data.prize;
+    cell2.innerHTML = "€"+data.prize;
     let btn = document.createElement("button");
     btn.classList.add("actionButton");
     let icon = document.createElement("i");

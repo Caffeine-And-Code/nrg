@@ -278,6 +278,9 @@
 }
 
 @media only screen and (max-width: 470px) {
+    .notificationsUserButton{
+        right: 10px !important;
+    }
 
     .gallery{
         grid-template-columns: repeat(60, 160px) !important;
