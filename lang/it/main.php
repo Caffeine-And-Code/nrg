@@ -30,5 +30,9 @@ return [
     "no_products_in_cart" => "Nessun prodotto in carrello",
     "news" => "News",
     "delivery_time" => "data e ora di consegna",
-    "classroom_id" => "la classe a cui effettuare la consegna"
+    "classroom_id" => "la classe a cui effettuare la consegna",
+    "payment_error" => "Errore nel pagamento dell'ordine :order_id",
+    "payment_error_description" => "Purtroppo si è verificato un errore durante il pagamento del tuo ultimo ordine, ma niente paura, gli articoli a cui eri interessati sono stati reinseriti nel tuo carrello in modo da permetterti di continuare con i tuoi acquisti.",
+    "continue_shipping" => "Riprendi gli acquisti",
+    "payment_success" => "Pagamento effettuato con successo",
 ];

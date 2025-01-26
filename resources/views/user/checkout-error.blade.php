@@ -29,9 +29,13 @@
 <body class="light">
 <x-nav-bar title="Products" />
 <main class="overflow-x-hidden desktop main mt-5">
-    <div class="container">
-
-    </div>
+    <section class="container">
+        <h1>{{__("main.payment_error", ["order_id" => $order->getNumber()])}}</h1>
+        <p>{{__("main.payment_error_description")}}</p>
+        <div class="d-flex justify-content-center">
+            <a title="{{__("main.continue_shipping")}}" href="{{route("user.home")}}" class="form-control btn customButton w-auto px-5">{{__("main.continue_shipping")}}</a>
+        </div>
+    </section>
 </main>
 <x-navigation-footer mode="client"/>
 </body>
