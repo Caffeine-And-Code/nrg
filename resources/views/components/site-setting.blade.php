@@ -6,7 +6,7 @@
     <h3 class="title textShadow">{{ __("messages.Settings") }}</h3>
     <ul class="list-group list-group-flush">
         <li class="list-group-item pb-4 pt-4">
-            <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex w-100 justify-content-between flex-wrap">
                 <h4 class="mb-1 smallTitle">{{ __("messages.ThemeChanger") }}</h4>
                 <div class="btn-group radioGroup" role="group" aria-label="Theme changer">
                     <input type="radio" class="btn-check" name="btnradio" id="LIGHT" >
@@ -18,7 +18,7 @@
             </div>
         </li>
         <li class="list-group-item pb-4 pt-4">
-            <div class="d-flex w-100 justify-content-between">
+            <div class="d-flex w-100 justify-content-between flex-wrap">
                 <h5 class="mb-1 smallTitle">{{ __("messages.Translation") }}</h5>
                 <div class="btn-group radioGroup" role="group" aria-label="Language changer">
                     

@@ -325,6 +325,14 @@
         overflow: hidden;
     }
 
+    .desktopContainer{
+        display: none !important;
+    }
+
+    .desktop > div {
+        display: none !important;
+    }
+
     .dot2{
         display: none !important;
     }

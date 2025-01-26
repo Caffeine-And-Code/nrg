@@ -22,7 +22,7 @@
     <body>
         <x-nav-bar title="Settings" />
         <main class="main">
-            <div class="container mobile">
+            <div class="container mobile mt-5">
                 <section class="mb-5 centerCol">
                     <form
                         action="{{ route('admin.news.edit') }}"
@@ -145,7 +145,7 @@
                             >{{ __("messages.edit_voices") }}</button>
 
                         </section>
-                        <section class="mb-5 centerCol">
+                        <section class="centerCol">
                             <h2 class="title textShadow mb-4 d-flex justify-content-start fullWidth">{{ __("messages.FidelityMeter") }}</h2>
                             <form
                             action="{{ route('admin.updateFidelity') }}"
