@@ -54,7 +54,7 @@ class DashboardController extends Controller
         $user = auth()->user();
         $productType = $formData['product_type'] ?? null;
         $search = $formData['search'] ?? "";
-        $products = Product::query()->search($search, $productType)->withCartQuantity($user)->withRating()->get();
+        $products = Product::query()->whereIn("id", Product::Search($search)->get()->pluck("id"))->inType($productType)->withCartQuantity($user)->withRating()->get();
         $productTypes = ProductType::query()->get();
         $success = session()->get('success');
         $products->map(function(Product $product){

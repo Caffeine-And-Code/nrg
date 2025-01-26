@@ -29,7 +29,7 @@ class ProductController extends Controller
             'name' => 'required',
             'price' => 'required|numeric',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:12288',
             "perc_discount" => 'numeric',
             "type" => 'required|integer',
         ]);

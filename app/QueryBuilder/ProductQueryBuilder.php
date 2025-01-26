@@ -31,6 +31,14 @@ class ProductQueryBuilder extends Builder
         return $query;
     }
 
+    public function inType(int|null $productType=null): ProductQueryBuilder
+    {
+        if($productType) {
+            return $this->where('product_type_id', $productType);
+        }
+        return $this;
+    }
+
     public function withCartQuantity(User $user): ProductQueryBuilder
     {
         return $this->with([

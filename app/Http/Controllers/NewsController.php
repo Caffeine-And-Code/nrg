@@ -12,7 +12,7 @@ class NewsController extends Controller
     {
         $request->validate([
             'images' => 'required|array', // Assicurati che sia un array
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Valida ogni immagine nell'array
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:12288', // Valida ogni immagine nell'array
         ]);
 
         foreach ($request->file("images") as $key => $image) {
