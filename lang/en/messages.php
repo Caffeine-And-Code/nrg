@@ -105,4 +105,5 @@ return[
     "PasswordRegAccess" => "please insert your password to create your account",
     "PasswordRegCnfAccess" => "please confirm your password to create your account",
     "adminDashboard"=> "Admin Dashboard",
+    "orderInDeli" => "In Delivery",
 ];

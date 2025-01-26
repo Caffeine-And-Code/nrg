@@ -111,4 +111,5 @@ return[
     "PasswordRegAccess" => "inserisci la tua password per creare il tuo account",
     "PasswordRegCnfAccess" => "conferma la tua password per creare il tuo account",
     "adminDashboard"=> "Admin Dashboard",
+    "orderInDeli"=> "In Consegna",
 ];

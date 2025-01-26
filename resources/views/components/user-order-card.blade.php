@@ -10,13 +10,6 @@
     // Numero di prodotti nell'ordine
     $productCount = $order->products->count();
 
-    // Stato dell'ordine
-    if (in_array($order->status, [1, 3])) {
-        $orderStatus = 'preparazione';
-    } elseif ($order->status == 4) {
-        $orderStatus = 'completato';
-    }
-
 @endphp
 
 <li class="justify-content-center" onclick="window.location.href='{{ route('user.get_order', ["id" => $order->getId()]) }}'">
@@ -29,8 +22,10 @@
                         <h4 class="normalTextRegular">{{ $deliveryTime }}</h4>
                     </div>
                     <h3 class="normalTextRegular"> {{ $productCount }}  {{__("messages.product_s")}}</h3>
-                    @if($order->status == 1 || $order->status == 3)
+                    @if($order->status == 1 )
                         <h4 class="normalTextRegular"> {{ __("messages.orderInPrep") }}</h4>
+                    @elseif($order->status == 3)
+                    <h4 class="normalTextRegular"> {{ __("messages.orderInDeli") }}</h4>
                     @else
                     <h4 class="normalTextRegular"> {{ __("messages.orderCompleted") }}</h4>
                     @endif
