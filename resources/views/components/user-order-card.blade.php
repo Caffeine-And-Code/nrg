@@ -29,7 +29,6 @@
                         <h3 class="normalTextBold">{{ $order->number }}</h3>
                         <h5 class="normalTextRegular">{{ $deliveryTime }}</h5>
                     </div>
-                    <h5 class="normalTextRegular"> {{ $order->user->username }}</h5>
                     <h5 class="normalTextRegular"> {{ $productCount }}  {{__("messages.product_s")}}</h5>
                     @if($order->status == 1 || $order->status == 3)
                         <h5 class="normalTextRegular"> {{ __("messages.orderInPrep") }}</h5>
