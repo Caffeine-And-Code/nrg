@@ -42,3 +42,22 @@ if (confirmPassword) {
         }
     });
 }
+
+document.getElementById("togglePasswordReg").addEventListener("click", function () {
+    var password = document.getElementById("passwordReg");
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+
+    if (visible) {
+        document.getElementById("eyeReg").style.display = "none";
+        document.getElementById("eye-slashReg").style.display = "block";
+        visible = false;
+    } else {
+        document.getElementById("eyeReg").style.display = "block";
+        document.getElementById("eye-slashReg").style.display = "none";
+        visible = true;
+    }
+});
