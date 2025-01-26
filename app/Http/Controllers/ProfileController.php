@@ -57,8 +57,16 @@ class ProfileController extends Controller
             'id' => 'required|exists:users,id'
         ]);
         $user = User::query()->find($request->get('id'));
+        $user->ratings()->delete();
+        $user->notifications()->delete();
+        $user->orders()->each(function($order){
+            $order->products()->detach();
+        });
+        //delete all the entries of the products_in_order table that have the user_id
+        $user->orders()->delete();
+        // delete the user
         $user->delete();
-        return route('admin.settings');
+        return redirect()->back();
     }
 
     public function addDiscount(Request $request){
