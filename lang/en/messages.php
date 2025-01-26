@@ -104,4 +104,5 @@ return[
     "UsernameAccess" => "please insert your username to create your account",
     "PasswordRegAccess" => "please insert your password to create your account",
     "PasswordRegCnfAccess" => "please confirm your password to create your account",
+    "adminDashboard"=> "Admin Dashboard",
 ];
