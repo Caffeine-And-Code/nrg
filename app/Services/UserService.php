@@ -93,10 +93,12 @@ class UserService
                 (new AdminService())->getFidelityMeterTarget(),
                 (new AdminService())->getFidelityMeterPrice())
             );
-            $user->setDiscountPortfolio($user->getDiscountPortfolio() + (new AdminService())->getFidelityMeterPrice())
+            while ($user->getLastMeter() >= (new AdminService())->getFidelityMeterTarget()){
+                $user->setDiscountPortfolio($user->getDiscountPortfolio() + (new AdminService())->getFidelityMeterPrice())
                 ->save();
-            $rest = $user->getLastMeter() - (new AdminService())->getFidelityMeterTarget();
-            $user->setLastMeter($rest)->save();
+                $rest = $user->getLastMeter() - (new AdminService())->getFidelityMeterTarget();
+                $user->setLastMeter($rest)->save();
+            }
             return true;
         }
         return false;
