@@ -294,7 +294,8 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid var(--stroke);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 4px 0.5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
 }
 
 .fdMeter {
@@ -302,4 +303,103 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
     background-color: var(--dark-text);
     border-radius: 20px;
     transition: width 0.3s ease;
+}
+
+.user-settings-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.user-settings-input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 30px;
+    border: 1px solid var(--stroke);
+    box-shadow: 0px 5px 4px 0.5px rgba(0, 0, 0, 0.5);
+}
+
+.user-settings-form-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: 'Mazzard Soft H Regular';
+    background: none;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    width: 80%;
+    color: var(--dark-text);
+}
+
+.user-settings-form-password {
+    width: 72%;
+}
+
+.user-settings-form-input:focus {
+    outline: none;
+}
+
+.user-settings-input-group-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    height: 100%;
+    width: 8%;
+    margin-left: 3%;
+    margin-right: 2%;
+    max-height: 36.4;
+}
+
+.user-settings-icon {
+    fill: var(--light-text);
+    height: 20px;
+    width: auto;
+}
+
+.user-settings-togglePassword{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.user-settings-btn {
+    font-family: 'Mazzard Soft H Regular';
+    font-size: 18px;
+    color: var(--bg);
+    background-color: var(--dark);
+    border-radius: 30px;
+    height: 6vh;
+    width: 35vw;
+    min-height: 35px;
+    max-height: 45px;
+    max-width: 250px;
+    min-width: 113px;
+}
+
+.user-settings-btn:hover,
+.user-settings-btn:focus {
+    color: var(--dark);
+    background-color: var(--bg);
+    border-width: -2px;
+    border-color: var(--dark);
+}
+
+.user-settings-errorBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }

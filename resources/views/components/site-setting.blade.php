@@ -9,9 +9,11 @@
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 smallTitle">{{ __("messages.ThemeChanger") }}</h5>
                 <div class="btn-group radioGroup" role="group" aria-label="Theme changer">
+                    <label for="LIGHT" class="d-none">{{ __("radioLight") }}</label>
                     <input type="radio" class="btn-check" name="btnradio" id="LIGHT" >
                     <label class="btn LIGHT-label" for="LIGHT">{{ __("messages.LIGHT") }}</label>
 
+                    <label for="DARK" class="d-none">{{ __("radioDark") }}</label>
                     <input type="radio" class="btn-check" name="btnradio" id="DARK" >
                     <label class="btn DARK-label" for="DARK">{{ __("messages.DARK") }}</label>
                 </div>
@@ -21,14 +23,15 @@
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 smallTitle">{{ __("messages.Translation") }}</h5>
                 <div class="btn-group radioGroup" role="group" aria-label="Language changer">
-                    <input type="radio" class="btn-check" name="btnradio" >
+                    <label for="radioItalian" class="d-none">{{ __("radioIt") }}</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="radioItalian">
                     @if (App::isLocale('it'))
                         <label class="btn selected IT" id="IT">{{ __("messages.Italian") }}</label>
                     @else
                         <label class="btn IT" id="IT">{{ __("messages.Italian") }}</label>
                     @endif
-
-                    <input type="radio" class="btn-check" name="btnradio" >
+                    <label for="radioEnglish" class="d-none">{{ __("radioEn") }}</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="radioEnglish">
                     @if (App::isLocale('en'))
                         <label class="btn selected EN"  id="EN">{{ __("messages.English") }}</label>
                     @else

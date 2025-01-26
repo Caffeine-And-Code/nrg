@@ -1,4 +1,4 @@
-<link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
+
 @switch($status)
     @case(0)
     <i class="las la-seedling orderImage"></i>

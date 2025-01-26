@@ -3,7 +3,7 @@
     $lasting = $fdmeter - $user->last_meter;
 @endphp
 
-<section>
+<section class="container justify-content-center mb-5">
     <h2 class="title mobile">{{ __("messages.fdMeter") }}</h2>
     <div class="progress fdMeter-container" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar fdMeter" style="width: {{ $advance }}%"></div>

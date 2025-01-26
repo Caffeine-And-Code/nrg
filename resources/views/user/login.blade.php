@@ -77,7 +77,7 @@
 
         <section class="registration-zone login-section">
             
-            <p class="desktop-only advice">Don't have an account yet?</p>
+            <p class="desktop-only advice">{{ __("Donthaveanaccountyet?") }}</p>
             <img src="{{ Vite::asset('resources/imgs/LIGHT/minimalLogo.png') }}" class="col-sm-8 col-md-6 col-12 smallLogo mobile-only" alt="minimalLogo" id = "minimalLogo" />
             
             
