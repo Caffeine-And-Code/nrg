@@ -20,9 +20,10 @@ class ProfileController extends Controller
         $user = auth()->user();
         $orders = $orderService->getOrders($user);
         $fmTarget = $adminService->getFidelityMeterTarget();
+        $fmPrize = $adminService->getFidelityMeterPrice();
         $notifications = (new NotificationService())->getNotifications($user);
         $success = session()->get('success');
-        return view('user.profile', compact('orders', 'user', 'success', 'fmTarget', 'user', 'notifications'));
+        return view('user.profile', compact('orders', 'user', 'success', 'fmTarget', 'user', 'notifications', 'fmPrize'));
     }
 
     public function editUser(Request $request){
