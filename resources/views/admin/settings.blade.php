@@ -16,11 +16,12 @@
         />
         @vite('/resources/css/components/header.css')
         @vite('resources/js/adminJs/footerNavigationManager.js') 
+        @vite('/resources/css/components/footerNavBar.css')
     </head>
 
     <body>
         <x-nav-bar title="Settings" />
-        <main class="main ">
+        <main class="main">
             <div class="container mobile">
                 <section class="mb-5 centerCol">
                     <form
@@ -210,7 +211,11 @@
                 </div>
             </div>
             
+            
+        <div class="p-4">
+
             <x-site-setting/>
+        </div>
         </main>
             {{-- OFFCANVAS --}}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="news">
@@ -262,6 +267,6 @@
             </div>
             @endforeach
             
-        <x-navigation-footer mode="admin" />
+            <x-navigation-footer mode="admin" />
     </body>
 </html>

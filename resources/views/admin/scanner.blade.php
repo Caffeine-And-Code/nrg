@@ -26,7 +26,7 @@
 </head>
 <body>
     <x-nav-bar title="Orders" />
-        <main class="container main qrCodeContainer">
+        <main class="container main qrCodeContainer mt-5">
             <h1 class="title">{{ __("messages.ScanQr") }}</h1>
             <!-- Scanner dalla webcam -->
             <section id="qr-reader" class="qr-reader"></section>

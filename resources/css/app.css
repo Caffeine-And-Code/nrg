@@ -590,6 +590,7 @@ ul{
     height: fit-content;
     width: fit-content;
     text-decoration: none;
+    color: transparent;
 }
 
 .dividerSearch{
@@ -622,4 +623,7 @@ body{
 
 .desktop-descrp {
     font-size: 25px;
+}
+.unread > h2{
+    text-decoration: underline;
 }
