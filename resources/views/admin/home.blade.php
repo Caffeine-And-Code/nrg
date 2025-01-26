@@ -6,7 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{{ __("messages.Admin - Home") }}</title>
         @vite('/resources/js/themeManager.js')
-        @vite('/resources/css/app.css') @vite('/resources/css/responsive.css')
+        @vite('/resources/css/app.css') 
+        @vite('/resources/css/responsive.css')
         @vite('/resources/css/views/home.css')
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -18,6 +19,7 @@
         @vite('/resources/css/components/header.css')
         @vite('resources/js/adminJs/footerNavigationManager.js') 
         @vite('/resources/css/components/toDoOrder.css')
+        @vite('/resources/css/components/footerNavBar.css')
     </head>
 
     <body>

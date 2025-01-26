@@ -580,6 +580,7 @@ ul{
     height: fit-content;
     width: fit-content;
     text-decoration: none;
+    color: transparent;
 }
 
 .dividerSearch{

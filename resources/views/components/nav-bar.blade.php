@@ -24,6 +24,7 @@
                 <a
                     href="{{ route('admin.dashboard') }}"
                     class="{{ Route::is('admin.dashboard') ? 'active2' : ('admin.dashboard' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
+                    title="Dashboard"
                 >
 
                     <i class="las la-shopping-bag navigationIcons z-3"></i>
@@ -33,6 +34,7 @@
                 <a
                     href="{{ route('admin.settings') }}"
                     class="{{ Route::is('admin.settings') ? 'active2' : ('admin.settings' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
+                    title="Settings"
                 >
                 <i class="las la-cog navigationIcons z-3"></i>
                 </a>
@@ -65,7 +67,8 @@
                 <a
                     href="{{ route('user.home') }}"
                     class="{{ Route::is('user.home') ? 'active2' : ('user.home' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
-                >
+                    title="Dashboard"
+                    >
 
                     <i class="las la-shopping-bag navigationIcons z-3"></i>
                 </a>
@@ -74,6 +77,7 @@
                 <a
                     href="{{ route('user.profile') }}"
                     class="{{ Route::is('user.profile') ? 'active2' : ('user.profile' == $previousRouteName ? 'oldRoute2' : '') }} navigationLink"
+                    title="Profile"
                 >
                 <i class="las la-id-card navigationIcons z-3"></i>
                 </a>
