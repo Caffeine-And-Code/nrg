@@ -62,11 +62,11 @@ class OrderController extends Controller
         return $order;
     }
 
-    
+
 
     public function getOrderQrCode(Request $request){
         $order = Order::query()->find($request->input('id'));
-        
+
         $result = new QrCode(
             data: json_encode([
                 "order_id" => $order->getId(),
@@ -132,5 +132,14 @@ class OrderController extends Controller
         $order->setStatus(3);
         $order->save();
         return redirect()->route('admin.dashboard');
+    }
+
+    function getOrderPage(Request $request){
+        $request->validate([
+            "id" => "required|exists:orders,id",
+        ]);
+
+        $order = Order::query()->find($request->input('id'));
+        return view("user.get_order", compact("order"));
     }
 }

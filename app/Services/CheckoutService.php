@@ -10,11 +10,12 @@ class CheckoutService
 {
     public function getCheckoutData(User $user): array{
         $total = (new ProductService())->getCheckoutTotalPrice($user);
+        $discount = (new UserService())->getUsableCredit($user, $total);
         return [
             "products" => (new ProductService())->getProductsInChart($user),
             "shippingCost" => (new AdminService())->getDeliveryCost(),
-            "total" => $total,
-            "discount" => (new UserService())->getUsableCredit($user, $total),
+            "total" => $total - $discount,
+            "discount" => $discount,
             "classrooms" => Classroom::query()->get()
         ];
     }

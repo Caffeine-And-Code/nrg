@@ -28,12 +28,22 @@
 <body>
     <x-nav-bar title="Account"/>
     <main class="main container">
-        <div class="user-components mt-5"> 
+        <div class="user-components mt-5">
             <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize"/>
         </div>
 
         <x-site-setting/>
+        <button class="btn notificationsAdminButton" data-bs-toggle="offcanvas" data-bs-target="#notifications"><i class="las la-bell icon"></i></button>
     </main>
-    <x-navigation-footer mode="client"/>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="notifications">
+        <div class="offcanvas-header">
+
+            <h1 class="title smallTitle">{{ __("messages.Notifications") }}</h1>
+            <button type="button" class="btn-close offCanvasButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="overflow-auto container offcanvas-body">
+            <x-notifications-displayer :notifications="$notifications" :role="user"/>
+        </div>
+    </div>
 </body>
 </html>
