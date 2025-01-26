@@ -81,4 +81,8 @@ return[
     "orderInPrep"=> "In Preparation",
     "product_s"=> "Product/s",
     "Complete" => "Complete",
+    "MadeOn" => "Made on",
+    "Created" => "Created",
+    "Cancelled" => "Cancelled",
+    "ScanMe" => "Show me to the rider",
 ];

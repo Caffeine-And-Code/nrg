@@ -86,4 +86,10 @@ return[
     "orderInPrep"=> "In Preparazione",
     "product_s"=> "Prodotto/i",
     "Complete" => "Completa",
+    "MadeOn" => "Creato il",
+    "Status" => "Stato",
+    "MadeOn" => "Creato il",
+    "Created" => "Creato",
+    "Cancelled" => "Annullato",
+    "ScanMe" => "Scansionami con il rider",
 ];
