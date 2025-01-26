@@ -609,3 +609,7 @@ ul{
 body{
     color: var(--dark-text);
 }
+
+.unread > h2{
+    text-decoration: underline;
+}

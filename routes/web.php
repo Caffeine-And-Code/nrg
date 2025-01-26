@@ -43,6 +43,7 @@ Route::name("user.")->group(function () {
         Route::get("profile/order/json", [\App\Http\Controllers\OrderController::class, "showJson"])->name('order_details_json');
         Route::get("notification", [\App\Http\Controllers\NotificationController::class, "show"])->name('notification');
         Route::post("notification/read", [\App\Http\Controllers\NotificationController::class, "read"])->name('notification_read');
+        Route::post("notification/delete", [\App\Http\Controllers\NotificationController::class, "delete"])->name('notifications.delete');
         Route::get("wheel/collect", [\App\Http\Controllers\DashboardController::class, "collect_wheel_discount"])->name('collect_wheel_discount');
         Route::get("profile/order/get", [\App\Http\Controllers\OrderController::class, "getOrderPage"])->name('get_order');
 

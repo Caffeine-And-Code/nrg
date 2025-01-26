@@ -13,7 +13,13 @@ class ProductQueryBuilder extends Builder
 {
     public function bestBuy(): ProductQueryBuilder
     {
-        return $this->take(5);
+        return $this->with('orders') // Include related orders
+        ->select('products.*')
+            ->withCount(['orders as total_quantity' => function ($query) {
+                $query->selectRaw('SUM(products_in_order.quantity)');
+            }])
+            ->orderByDesc('total_quantity') // Order by total quantity sold
+            ->limit(5);
     }
 
     public function search(string $name, int|null $productType=null): ProductQueryBuilder

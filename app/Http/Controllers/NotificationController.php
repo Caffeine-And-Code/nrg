@@ -42,6 +42,22 @@ class NotificationController extends Controller
         return redirect()->back();
     }
 
+    public function delete(Request $request){
+        $formData = $request->validate([
+            "id" => "required|exists:notifications,id",
+        ]);
+
+        /** @var User $user */
+        $user = auth()->user();
+        /** @var DatabaseNotification $notification */
+        $notification = $user->notifications()->find($formData["id"]);
+        if($notification === null){{
+            throw new InternalErrorException("no notification found");
+        }}
+        $notification->delete();
+        return redirect()->back();
+    }
+
     public function readAdmin(Request $request){
         $formData = $request->validate([
             "id" => "required|exists:notifications,id",

@@ -34,7 +34,7 @@
                 <button type="button" class="btn-close offCanvasButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="overflow-auto container main ">
-                <x-notifications-displayer :notifications="$notifications" />
+                <x-notifications-displayer :notifications="$notifications" role="admin"/>
             </div>
         </div>
 
