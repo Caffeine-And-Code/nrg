@@ -20,7 +20,7 @@
 
 @endphp
 
-<li class="to-do-order justify-content-center">
+<li class="justify-content-center">
         <figure class="td-flex justify-content-center user-order-card">
             <x-order-image-user-displayer :status="$order->status" />
             <figcaption class="col-md-6 col-12">

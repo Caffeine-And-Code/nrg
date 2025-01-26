@@ -23,7 +23,7 @@
 </head>
 <body>
     <x-nav-bar title="Account"/>
-    <main class="main">
+    <main class="main container">
     
         <x-user-account-mobile :orders="$orders"/>
 
@@ -43,7 +43,7 @@
         </form> --}}
 
         
-        <x-site-setting />
+        <x-site-setting/>
     </main>
     <x-navigation-footer mode="client"/>
 </body>
