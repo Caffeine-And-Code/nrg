@@ -85,4 +85,7 @@ return[
     "Created" => "Created",
     "Cancelled" => "Cancelled",
     "ScanMe" => "Show me to the rider",
+    "fdMeter"=> "Fidelity meter",
+    "noOrders" => "You haven't placed an order yet.",
+    "howMuchLasts"=> "Spend another <strong>€ :lastM</strong> to get a <strong>€ :prize</strong> discount.",
 ];
