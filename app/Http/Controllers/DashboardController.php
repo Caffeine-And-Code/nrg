@@ -46,7 +46,8 @@ class DashboardController extends Controller
     public function search(Request $request){
         $formData = $request->validate([
             'search' => ['nullable', 'string'],
-            'product_type' => 'nullable|exists:product_types,id'
+            'product_type' => 'nullable|exists:product_types,id',
+            "magic_product" => "nullable|boolean"
         ]);
 
         /** @var User $user */
@@ -62,6 +63,11 @@ class DashboardController extends Controller
         });
         $checkout = (new CheckoutService())->getCheckoutData($user);
         $currentPage = 'main.products';
+
+        if($request->has('magic_product')){
+            $products = [Product::query()->search($search, $productType)->inRandomOrder()->withCartQuantity($user)->withRating()->first()];
+        }
+
         return view('user.search', compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success', 'currentPage'));
     }
 
@@ -95,18 +101,5 @@ class DashboardController extends Controller
             return redirect()->back();
         }
         throw new InternalErrorException();
-    }
-
-    public function magicProduct(Request $request) {
-        /** @var User $user */
-        $user = auth()->user();
-        $products = [Product::query()->inRandomOrder()->withCartQuantity($user)->withRating()->first()];
-        $currentPage = 'main.products';
-        $productType = $formData['product_type'] ?? null;
-        $search = null;
-        $productTypes = ProductType::query()->get();
-        $success = session()->get('success');
-        $checkout = (new CheckoutService())->getCheckoutData($user);
-        return view("user.search", compact('products', 'productTypes', 'search', 'productType', 'checkout', 'success', 'currentPage'));
     }
 }

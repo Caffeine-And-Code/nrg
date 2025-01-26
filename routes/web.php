@@ -32,7 +32,6 @@ Route::name("user.")->group(function () {
         Route::post("destroyMe", [\App\Http\Controllers\LoginController::class, "destroy"])->name('destroyMe');
         Route::get('/', [DashboardController::class, 'index'])->name('home');
         Route::get("/search", [\App\Http\Controllers\DashboardController::class, "search"])->name('search');
-        Route::get("/magicProduct", [\App\Http\Controllers\DashboardController::class, "magicProduct"])->name('magicProduct');
         Route::post("checkout/products/add", [\App\Http\Controllers\CheckoutController::class, "editProductCart"])->name('add_product_to_cart');
         Route::get("checkout", [\App\Http\Controllers\CheckoutController::class, "index"])->name('checkout');
         Route::post("checkout", [\App\Http\Controllers\CheckoutController::class, "checkout"])->name('post_checkout');
