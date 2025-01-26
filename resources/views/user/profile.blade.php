@@ -25,7 +25,7 @@
     <x-nav-bar title="Account"/>
     <main class="main container">
     
-        <x-user-account-mobile :orders="$orders"/>
+        <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize"/>
 
         {{-- <p>Fidelity Meter</p>
         <p>Actual Spent: {{$user->getTotalSpent()}}</p>

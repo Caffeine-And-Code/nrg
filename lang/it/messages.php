@@ -86,4 +86,7 @@ return[
     "orderInPrep"=> "In Preparazione",
     "product_s"=> "Prodotto/i",
     "Complete" => "Completa",
+    "fdMeter"=> "Metro di fedeltà",
+    "noOrders" => "Non hai ancora effettuato un ordine.",
+    "howMuchLasts"=> "Spendi altri <strong>€ :lastM</strong> per avere <strong>€ :prize</strong> di sconto.",
 ];
