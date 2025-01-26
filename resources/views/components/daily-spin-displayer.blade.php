@@ -1,7 +1,11 @@
 @vite('/resources/css/components/dailySpinDisplayer.css')
 @vite('/resources/js/adminJs/dailySpinDisplayerHandler.js')
 @vite(['resources/js/app.js'])
-<h1 class="title textShadow">{{ __("messages.SpinOptions") }}</h1>
+
+<section class="d-flex flex-row justify-content-between">
+    <h1 class="title textShadow">{{ __("messages.SpinOptions") }}</h1>
+    <p class="smallTitle title">(min:4)</p>
+</section>
 
 <table class="table entriesTable mb-5">
     <thead>
@@ -50,7 +54,7 @@
     </div>
     <div class="mb-5 col-12 row justify-content-between">
         <div
-            class="inputgroup inputContainerShadow align-items-center col-12 col-xs-5 mb-4"
+            class="inputgroup inputContainerShadow align-items-center col-12 col-xs-5 mb-4 p-0"
         >
             <span class="slideToLeft">
                 <i class="las la-euro-sign icon"></i>
