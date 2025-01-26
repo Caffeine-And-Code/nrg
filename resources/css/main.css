@@ -237,12 +237,23 @@ input[type='search']:active,input[type='search']:focus-visible,input[type='searc
     align-items: center;
 }
 
+.desktop-component {
+    width: 70%;
+}
+
 .user-orders-displayer {
     padding: 0;
 }
 
 .user-order-image {
     margin: 0;
+}
+
+.user-order-svg {
+    margin: 0;
+    height: 50%;
+    width: auto;
+    fill: var(--dark-text);
 }
 
 .order_separators {

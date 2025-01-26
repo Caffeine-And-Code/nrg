@@ -1,5 +1,5 @@
 <section class="container justify-content-center mb-5">
-    <h2 class="title mobile">{{ __("messages.profile") }}</h2>
+    <h2 class="title">{{ __("messages.profile") }}</h2>
     <form class="user-settings-form" action="{{route('user.profile_edit')}}" method="post">
         @csrf
         <div class="user-settings-input-group mb-3">

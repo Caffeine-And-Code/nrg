@@ -6,7 +6,7 @@
 @endphp
 
 <section class="container orders-displayer justify-content-center mb-5">
-    <h2 class="title mobile">{{ __("messages.orders") }}</h2>
+    <h2 class="title desktop-title">{{ __("messages.orders") }}</h2>
     <ul class="user-orders-displayer ">
         @if (collect($toDisplay)->isEmpty())
             <p>{{ __("messages.noOrders") }}</p>
