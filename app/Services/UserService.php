@@ -64,7 +64,7 @@ class UserService
         $user->cartProducts()->detach();
         Event::dispatch(new OrderUpdate($order));
         $checkout_url = $user->checkoutCharge(
-            $order->getTotal()*100,
+            round($order->getTotal()*100),
             "Order n.{$order->id}",
             1,
             [
