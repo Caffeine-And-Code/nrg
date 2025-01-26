@@ -19,8 +19,10 @@ function createQRScanner(){
     console.clear();
     const qrCodeSuccessCallback = (decodedText, decodedResult) => {
         // decodedText: Contiene il contenuto del QR code
+        let id = document.getElementById("orderId").value;
         window.axios.post("/admin/orders/qrCode/checkValidity",{
-            params: decodedText
+            params: decodedText,
+            cliccked_id:id
         }).then((response) => {
             elaborateResponse(response);
             //html5QrCode.start().catch(err => console.error("Error starting scanner", err));

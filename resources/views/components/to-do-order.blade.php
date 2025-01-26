@@ -52,7 +52,7 @@
                     </form>    
                     @break
                     @default
-                    <form action="{{ route('admin.orders.qrCode', ["id" => $order->id]) }}" method="get">
+                    <form action="{{ route('admin.orders.qrCode', ["id" => $order->id]) }}" method="post">
                         @csrf
                     <button type="submit" class="btn customButton col-12 col-md-6"><i class="las la-parachute-box" class="btnIcon"></i> {{ __("messages.Complete") }}</button>
                 </form>

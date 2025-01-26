@@ -28,6 +28,7 @@
     <x-nav-bar title="Orders" />
         <main class="container main qrCodeContainer mt-5">
             <h1 class="title">{{ __("messages.ScanQr") }}</h1>
+            <input type="hidden" id="orderId" value="{{ $order->id}}">
             <!-- Scanner dalla webcam -->
             <section id="qr-reader" class="qr-reader"></section>
             <section id="qrOk" class = "qrResult GoodResult">
