@@ -3,7 +3,7 @@
 @vite(['resources/js/app.js'])
 
 <section class="d-flex flex-row justify-content-between">
-    <h1 class="title textShadow">{{ __("messages.SpinOptions") }}</h1>
+    <h2 class="title textShadow">{{ __("messages.SpinOptions") }}</h2>
     <p class="smallTitle title">(min:4)</p>
 </section>
 
