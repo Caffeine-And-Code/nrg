@@ -12,6 +12,7 @@ use App\Models\ProductType;
 use App\Models\SpinWheelEntry;
 use App\Models\User;
 use App\Services\AdminService;
+use App\Services\CheckoutService;
 use App\Services\OrderService;
 use App\Services\ProductService;
 use App\Services\UserService;
@@ -55,7 +56,8 @@ class CheckoutController extends Controller
         $discount = (new UserService())->getUsableCredit($user, $total);
         $classrooms = Classroom::query()->get();
         $success = session()->get('success');
-        return view('user.checkout', compact('products', 'shippingCost', 'total', 'classrooms', 'success', 'discount'));
+        $checkout = (new CheckoutService())->getCheckoutData($user);
+        return view('user.checkout', compact('success', 'checkout'));
     }
 
     public function checkout(Request $request, OrderService $orderService, AdminService $adminService, UserService $userService){

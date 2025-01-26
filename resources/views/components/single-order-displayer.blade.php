@@ -36,12 +36,12 @@
                         @endif
                     </span>
                     @endif
-                    
+
                 </figcaption>
             </figure>
             <hr />
         </li>
-        
+
         @endforeach
     </ul>
 
@@ -77,16 +77,16 @@
         </div>
     </div>
 
-    @php 
+    @php
     $json = json_encode([ 'order_id' => $order->getId(), 'user_id' =>
-    $order->getUserId(), ]); 
+    $order->getUserId(), ]);
     @endphp
     <input type="hidden" id="order-json" value="{{$json}}" />
     <section class="d-flex align-items-center justify-content-evenly flex-column">
         <div id="qrcode" class="pt-5 pb-5"></div>
         <h2 class="title">{{ __("messages.ScanMe") }}</h2>
     </section>
-    <script type="text/javascript">
+    <script >
         document.addEventListener('DOMContentLoaded', function () {
             new QRCode(document.getElementById('qrcode'), {
                 text: JSON.stringify(

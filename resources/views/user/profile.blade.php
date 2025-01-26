@@ -28,9 +28,9 @@
 <body>
     <x-nav-bar title="Account"/>
     <main class="main container">
-
-        <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize"/>
-
+        <div class="user-components mt-5"> 
+            <x-user-account-mobile :orders="$orders" :user="$user" :fmTarget="$fmTarget" :fmPrize="$fmPrize"/>
+        </div>
 
         <x-site-setting/>
     </main>
