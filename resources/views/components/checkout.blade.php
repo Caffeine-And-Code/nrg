@@ -8,7 +8,7 @@
         @endforeach
     </ul>
     <div class="row border-bottom">
-        <span class="col-6">{{__("main.subtotal")}}</span><span class="col-6">{{Number::currency($checkout["total"] - $checkout["shippingCost"])}}</span>
+        <span class="col-6">{{__("main.subtotal")}}</span><span class="col-6">{{Number::currency($checkout["total"] + $checkout["discount"] - $checkout["shippingCost"])}}</span>
         <span class="col-6">{{__("main.shipping")}}</span><span class="col-6">{{Number::currency($checkout["shippingCost"])}}</span>
         <span class="col-6">{{__("main.discount")}}</span><span class="col-6">{{Number::currency($checkout["discount"])}}</span>
     </div>

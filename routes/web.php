@@ -44,6 +44,7 @@ Route::name("user.")->group(function () {
         Route::get("notification", [\App\Http\Controllers\NotificationController::class, "show"])->name('notification');
         Route::post("notification/read", [\App\Http\Controllers\NotificationController::class, "read"])->name('notification_read');
         Route::get("wheel/collect", [\App\Http\Controllers\DashboardController::class, "collect_wheel_discount"])->name('collect_wheel_discount');
+        Route::get("profile/order/get", [\App\Http\Controllers\OrderController::class, "getOrderPage"])->name('get_order');
 
         Route::get("checkout/success", [\App\Http\Controllers\CheckoutController::class, "checkoutSuccess"])->name('checkout_success');
         Route::get("checkout/error", [\App\Http\Controllers\CheckoutController::class, "checkoutError"])->name('checkout_error');
