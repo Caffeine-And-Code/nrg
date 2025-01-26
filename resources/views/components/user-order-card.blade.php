@@ -19,7 +19,7 @@
 
 @endphp
 
-<li class="justify-content-center">
+<li class="justify-content-center" onclick="window.location.href='{{ route('user.order_details') }}'">
         <figure class="td-flex justify-content-center user-order-card">
             <x-order-image-user-displayer :status="$order->status" />
             <figcaption class="col-md-6 col-12">
