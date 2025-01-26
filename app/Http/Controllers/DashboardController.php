@@ -98,11 +98,9 @@ class DashboardController extends Controller
     }
 
     public function magicProduct(Request $request) {
-        $products = [Product::query()->inRandomOrder()->first()];
-
-
         /** @var User $user */
         $user = auth()->user();
+        $products = [Product::query()->inRandomOrder()->withCartQuantity($user)->withRating()->first()];
         $currentPage = 'main.products';
         $productType = $formData['product_type'] ?? null;
         $search = null;

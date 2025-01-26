@@ -29,14 +29,14 @@ nav {
 
 h1 {
     font-family: 'Mazzard Soft H Bold', sans-serif;
-    font-size: 32px;
+    font-size: 40px;
     margin: unset;
     color: var(--dark);
 }
 
 h2 {
-    font-family: 'Mazzard Soft H Regular', sans-serif;
-    font-size: 25px;
+    font-family: 'Mazzard Soft H Bold', sans-serif;
+    font-size: 32px;
     margin: unset;
     color: var(--dark);
 }

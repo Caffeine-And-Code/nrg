@@ -11,10 +11,11 @@ class NavBar extends Component
 
     public $title;
     public $imagePath;
+    public $force;
     /**
      * Create a new component instance.
      */
-    public function __construct($title)
+    public function __construct($title, $force=null)
     {
         $this->title = $title;
         if($title == "Orders" || $title == "Products"){
@@ -25,6 +26,7 @@ class NavBar extends Component
         else{
             $this->imagePath = "las la-cog";
         }
+        $this->force = $force;
     }
 
     /**

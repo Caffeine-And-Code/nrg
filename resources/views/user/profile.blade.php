@@ -20,11 +20,13 @@
     @vite('/resources/css/app.css')
     @vite('/resources/js/themeManager.js')
     @vite('/resources/css/responsive.css')
+    @vite('resources/css/components/footerNavBar.css')
+    @vite('resources/js/adminJs/footerNavigationManager.js')
 </head>
 <body>
     <x-nav-bar title="Account"/>
     <main class="main container">
-    
+
         <x-user-account-mobile :orders="$orders"/>
 
         {{-- <p>Fidelity Meter</p>
@@ -42,7 +44,7 @@
             <button>Edit</button>
         </form> --}}
 
-        
+
         <x-site-setting/>
     </main>
     <x-navigation-footer mode="client"/>

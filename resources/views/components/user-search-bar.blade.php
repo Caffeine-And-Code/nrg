@@ -1,19 +1,13 @@
-
-@vite('/resources/css/components/searchBar.css')
-@vite('/resources/css/components/userSearchBar.css')
-<link
-    rel="stylesheet"
-    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
-/>
-<section class="flex-nowrap justify-content-start form-floating col-10 col-xs-10">
-    <form class="input-group searchBarContainer inputContainerShadow h-100" action="{{route("user.search")}}">
+<div class="flex-nowrap justify-content-start form-floating col-10 col-xs-10">
+    <form class="input-group searchBarContainer inputContainerShadow h-100 d-flex justify-content-center" action="{{route("user.search")}}">
         <button type="submit" class="input-group-text">
             <i class="las la-search"></i>
         </button>
-        <input type="text" name="search" class="form-control searchBar" placeholder="{{__("main.search")}}" value="{{ request("search") }}" />    
+        <label class="d-none" for="search-product-{{$id}}">Email address</label>
+        <input id="search-product-{{$id}}" type="text" name="search" class="form-control searchBar" placeholder="{{__("main.search")}}" value="{{ request("search") }}" />
     </form>
-</section>
-<form action="{{route("user.magicProduct")}}" method="get" class="formIconContainer col-1 col-xs-1 ">
+</div>
+<form action="{{route("user.magicProduct")}}" method="get" class="formIconContainer col-1 col-xs-1 d-flex justify-content-center align-items-center">
     <button type="submit" class="iconButton userMagicButton" aria-label="{{__("main.search_product")}}">
         <i class="las la-hat-wizard magicIcon"></i>
     </button>

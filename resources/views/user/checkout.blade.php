@@ -36,7 +36,7 @@
                 <option value="{{$classroom->id}}">{{$classroom->name}}</option>
             @endforeach
         </select>
-        <input type="datetime-local" name="delivery_time">
+        <input type="datetime-local" name="delivery_time" id="delivery_time">
         <button>Pay</button>
     </form>
     <a href="{{route("user.home")}}">Dashboard</a>

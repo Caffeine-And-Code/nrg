@@ -3,7 +3,7 @@
 @endphp
 
     <!DOCTYPE html>
-<html lang="en">
+<html lang="{{app()->getLocale()}}" xml:lang="{{app()->getLocale()}}">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,50 +17,64 @@
     />
     @vite('/resources/css/colors.css')
     @vite('/resources/css/main.css')
-    @vite('/resources/js/themeManager.js')
-    @vite('/resources/js/lucky_wheel.js')
     @vite('/resources/css/app.css')
+    @vite('/resources/js/themeManager.js')
     @vite('/resources/css/responsive.css')
+    @vite('/resources/js/lucky_wheel.js')
     @vite('/resources/css/components/header.css')
-    @vite('resources/js/adminJs/footerNavigationManager.js') 
+    @vite('resources/js/adminJs/footerNavigationManager.js')
+    @vite('/resources/css/components/searchBar.css')
+    @vite('/resources/css/components/userSearchBar.css')
+    @vite("/resources/css/components/ProductDisplayer.css")
+    @vite('resources/css/components/footerNavBar.css')
+    @vite('resources/js/adminJs/footerNavigationManager.js')
+    <link
+        rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"
+    />
 </head>
 <body class="light">
 <x-nav-bar title="Products" />
-<main class="w-100 overflow-x-hidden">
-    <section class="row h-100">
-        <section class="col-12 col-md-8">
-                <article class="container mt-3 d-flex" >
-                    <x-user-search-bar />
-                </article>
-                <article class="m-3 d-flex flex-row gap-2 types-container">
-                    <form >
+<main class="w-100 overflow-x-hidden main row min-vh-100 mt-5">
+    <div class="col-lg-9 col-12 container">
+        <section class="row">
+            <div class="container mt-3 d-flex flex-column" >
+                <h2>{{__("main.search")}}</h2>
+                <div class="d-flex"><x-user-search-bar :id="1"/></div>
+            </div>
+            <div class="m-3 d-flex flex-row gap-2 types-container">
+                <form >
+                    <input type="hidden" name="search" value="{{$search}}">
+                    <button class="btn @if ($productType === null) active @endif">{{__("main.all")}}</button>
+                </form>
+                @foreach ($productTypes as $type)
+                    <form>
                         <input type="hidden" name="search" value="{{$search}}">
-                        <button class="btn @if ($productType === null) active @endif">{{__("main.all")}}</button>
+                        <input type="hidden" name="product_type" value="{{$type->getId()}}">
+                        <button class="btn @if (intval($productType) === $type->getId()) active @endif">{{$type->getName()}}</button>
                     </form>
-                    @foreach ($productTypes as $type)
-                        <form>
-                            <input type="hidden" name="search" value="{{$search}}">
-                            <input type="hidden" name="product_type" value="{{$type->getId()}}">
-                            <button class="btn @if (intval($productType) === $type->getId()) active @endif">{{$type->getName()}}</button>
-                        </form>
+                @endforeach
+            </div>
+            <hr class="dividerSearch" />
+            <div class="m-3">
+                <ul class="search-container fullHeight">
+                    @foreach($products as $product)
+                        <x-product-search-card :product="$product" hasScore="true"/>
                     @endforeach
-                </article>
-                <hr class="dividerSearch" />
-                <article class="m-3">
-                    <ul class="search-container fullHeight">
-                        @foreach($products as $product)
-                                <x-product-search-card :product="$product" hasScore="true"/>
-                        @endforeach
-                    </ul>
-                </article>
+                </ul>
+            </div>
+
+            <div class="d-block d-lg-none">
+                <x-checkout-offcanvas-button :checkout="$checkout"/>
+            </div>
         </section>
-        <x-checkout-offcanvas-button :checkout="$checkout"/>
-        
-    </section>
-    <aside class="d-none d-md-block col-md-4 mt-3 checkoutAside">
-        <x-checkout :checkout="$checkout" />
-    </aside>
+    </div>
+    <div class="d-none d-lg-block col-lg-3">
+        <aside class="checkoutAside">
+            <x-checkout :checkout="$checkout" />
+        </aside>
+    </div>
 </main>
-<x-navigation-footer mode="user" />
+<x-navigation-footer mode="client"/>
 </body>
 </html>

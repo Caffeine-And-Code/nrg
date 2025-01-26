@@ -28,4 +28,7 @@ return [
     "delivery_weekdays_error" => "Il servizio è disponibile dal Lunedì al Venerdì",
     "cart_detail" => "Dettaglio",
     "no_products_in_cart" => "Nessun prodotto in carrello",
+    "news" => "News",
+    "delivery_time" => "data e ora di consegna",
+    "classroom_id" => "la classe a cui effettuare la consegna"
 ];

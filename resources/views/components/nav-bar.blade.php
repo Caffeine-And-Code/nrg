@@ -59,7 +59,7 @@
         <ul class="d-flex flex-row justify-content-end gap-5 align-items-center h-100 my-0 p-3">
 
         <li class="navTitleContainer">
-            <h2 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h2>
+            <h1 class="title navTitle fullWidth">{{ Route::is('user.home') || Route::is('user.search') ? __("messages.Products") : __("messages.Settings") }}</h1>
         </li>
             <li>
                 <a

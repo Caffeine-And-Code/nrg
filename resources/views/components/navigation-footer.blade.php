@@ -1,5 +1,3 @@
-@vite('resources/css/components/footerNavBar.css')
-@vite('resources/js/adminJs/footerNavigationManager.js') 
 @php
     $previousRouteName = null;
     try {
@@ -20,7 +18,7 @@
                 href="{{ route('admin.dashboard') }}"
                 class="{{ Route::is('admin.dashboard') ? 'active1' : ('admin.dashboard' == $previousRouteName ? 'oldRoute1' : '') }} navigationLink"
             >
-                
+
             <i class="las la-shopping-bag navigationIcons z-3"></i>
             </a>
         </li>
@@ -44,7 +42,7 @@
                 href="{{ route('user.home') }}"
                 class="{{ Route::is('user.home') ? 'active1' : ('user.home' == $previousRouteName ? 'oldRoute1' : '') }} navigationLink"
             >
-                
+
             <i class="las la-shopping-bag navigationIcons z-3"></i>
             </a>
         </li>
