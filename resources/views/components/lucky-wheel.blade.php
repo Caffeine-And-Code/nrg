@@ -1,4 +1,4 @@
-<section class="px-5 order-2 order-xl-0 col-12 col-xl-6">
+<section class="order-2 order-xl-0 col-12 col-xl-6">
     <h2>{{__("main.bestseller")}}</h2>
     <div class="d-flex">
         <x-user-search-bar :id="1"/>
