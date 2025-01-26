@@ -35,4 +35,5 @@ return [
     "payment_error_description" => "Purtroppo si è verificato un errore durante il pagamento del tuo ultimo ordine, ma niente paura, gli articoli a cui eri interessati sono stati reinseriti nel tuo carrello in modo da permetterti di continuare con i tuoi acquisti.",
     "continue_shipping" => "Riprendi gli acquisti",
     "payment_success" => "Pagamento effettuato con successo",
+    "no_products" => "Nessun prodotto nel carrello",
 ];

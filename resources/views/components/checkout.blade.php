@@ -2,14 +2,18 @@
     $randomNumber = rand(0, 10000);
 @endphp
 
-<div class="container">
-<h2>{{__("main.checkout")}}</h2>
+<div class="container mt-3">
+    <h2>{{__("main.checkout")}}</h2>
     <ul class="search-container">
-        @foreach($checkout["products"] as $product)
+        @forelse($checkout["products"] as $product)
             <li>
                 <x-product-search-card :product="$product" :isCart="true"/>
             </li>
-        @endforeach
+        @empty
+            <li class="noProductInCart">
+                <p>{{__("main.no_products")}}</p>
+            </li>
+        @endforelse
     </ul>
     <div class="row border-bottom">
         <span class="col-6">{{__("main.subtotal")}}</span><span class="col-6">{{Number::currency($checkout["total"] + $checkout["discount"] - $checkout["shippingCost"])}}</span>
