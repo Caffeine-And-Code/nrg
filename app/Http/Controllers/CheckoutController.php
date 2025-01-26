@@ -60,23 +60,30 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request, OrderService $orderService, AdminService $adminService, UserService $userService){
         $formData = $request->validate([
-            "delivery_time" => [
-                "required",
-                "date",
-                function ($attribute, $value, $fail) {
-                    // Ensure delivery_time is at least 15 minutes from now
-                    if (Carbon::parse($value)->lt(Carbon::now()->addMinutes(15))) {
-                        $fail("The $attribute must be at least 15 minutes from now.");
-                    }
-                },
-            ],
+            'delivery_time' => ['required', 'date', function ($attribute, $value, $fail) {
+                $deliveryTime = Carbon::parse($value);
+                $now = Carbon::now();
+                if ($deliveryTime->lt($now->addMinutes(15))) {
+                    $fail('main.delivery_future_error');
+                }
+                if (!$deliveryTime->isWeekday()) {
+                    $fail('main.delivery_weekdays_error');
+                }
+
+                $start = Carbon::parse($deliveryTime->format('Y-m-d') . ' 08:00:00');
+                $end = Carbon::parse($deliveryTime->format('Y-m-d') . ' 19:00:00');
+
+                if ($deliveryTime->lt($start) || $deliveryTime->gt($end)) {
+                    $fail('main.delivery_times_error');
+                }
+            }],
             'classroom_id' => 'required|exists:classrooms,id'
         ]);
 
         /** @var User $user */
         $user = auth()->user();
         if(!$userService->canCreateOrder($user)){
-            return back()->withErrors(["error" => "You can't create an order at the moment."]);
+            return back()->withErrors(["error" => "main.no_products_in_cart"]);
         }
         else{
             $checkout_url = $userService->createOrder($user, Carbon::parse($formData['delivery_time']), intval($formData['classroom_id']));

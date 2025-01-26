@@ -125,7 +125,6 @@ h1 {
     word-wrap: break-word; /* Per compatibilità storica */
     overflow-wrap:break-word; /* Per supporto moderno */
     white-space: normal;
-
 }
 
 .offcanvas {

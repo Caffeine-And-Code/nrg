@@ -52,7 +52,6 @@ class UserService
             "total" => $total,
         ]);
         $user->setDiscountPortfolio(max($user->getDiscountPortfolio() - $discountUsable, 0));
-        $user->setTotalSpent($user->getTotalSpent() + $total);
         $user->save();
         /** @var Collection<Product> $productsInCart */
         $productsInCart = (new ProductService())->getProductsInChart($user);
@@ -88,15 +87,16 @@ class UserService
     public function updateFidelity(User $user, Order $order): bool
     {
         $user->setTotalSpent($user->getTotalSpent() + $order->getTotal())->save();
-        if($user->getTotalSpent() >= (new AdminService())->getFidelityMeterTarget()){
+        $user->setLastMeter($user->getLastMeter() + $order->getTotal())->save();
+        if($user->getLastMeter() >= (new AdminService())->getFidelityMeterTarget()){
             $user->notify(new UserUnlockFidelity(
                 (new AdminService())->getFidelityMeterTarget(),
                 (new AdminService())->getFidelityMeterPrice())
             );
             $user->setDiscountPortfolio($user->getDiscountPortfolio() + (new AdminService())->getFidelityMeterPrice())
                 ->save();
-            $rest = $user->getTotalSpent() - (new AdminService())->getFidelityMeterTarget();
-            $user->setTotalSpent($rest)->save();
+            $rest = $user->getLastMeter() - (new AdminService())->getFidelityMeterTarget();
+            $user->setLastMeter($rest)->save();
             return true;
         }
         return false;

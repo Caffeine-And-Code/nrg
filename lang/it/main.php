@@ -20,7 +20,12 @@ return [
     "account" => "Account",
     "wheel_win" => "COMPLIMENTI: </br>Hai vinto <strong>:win</strong>",
     "wheel_fail" => "Purtroppo oggi non è il tuo giorno fortunato, riprova domani",
-    "min_delivery_time" => "Il primo orario disponibile è tra 15 minuti",
+    "min_delivery_time" => "Il primo orario disponibile è tra 15 minuti, il servizio è disponibile solo dal lunedì al venerdì dalle 8:00 alle 19:00",
     "choose_classroom" => "Scegli classe",
     "pay" => "Procedi al pagamento",
+    "delivery_future_error" => "Il primo orario disponibile è tra 15 minuti",
+    "delivery_times_error" => "Il servizio è disponibile solo dalle 9:00 alle 19:00",
+    "delivery_weekdays_error" => "Il servizio è disponibile dal Lunedì al Venerdì",
+    "cart_detail" => "Dettaglio",
+    "no_products_in_cart" => "Nessun prodotto in carrello",
 ];
