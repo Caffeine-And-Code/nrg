@@ -5,9 +5,12 @@
     });
 @endphp
 
-<section class="orders-displayer justify-content-center">
+<section class="container orders-displayer justify-content-center mb-5">
     <h2 class="title mobile">{{ __("messages.orders") }}</h2>
     <ul class="user-orders-displayer ">
+        @if (collect($toDisplay)->isEmpty())
+            <p>{{ __("messages.noOrders") }}</p>
+        @endif
         @foreach($toDisplay as $order)
             <x-user-order-card :order="$order"/>
         @endforeach

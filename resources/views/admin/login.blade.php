@@ -20,8 +20,7 @@
 </head>
 
 <body>
-    <main>
-        <section class="login-section">
+    <main class="login-section">
             <figure class="logo-space">
                 <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="logo"
                     alt="bigLogo" id = "bigLogo" />
@@ -58,9 +57,8 @@
                         </svg>
                     </button>
                 </div>
-                <button type="submit" class="btn">{{ __("Login") }}</button>
+                <button type="submit" class="btn">{{ __("messages.Login") }}</button>
             </form>
-        </section>
     </main>
 </body>
 
