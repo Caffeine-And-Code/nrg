@@ -26,8 +26,8 @@
             <x-order-image-displayer :status="$order->status" />
             <figcaption class="col-md-6 col-12">
                 <h3 class="normalTextBold">{{ $timeRemaining }}</h3>
-                <h5 class="normalTextRegular">{{ __("messages.Order") }} n° {{ $order->number }}</h5>
-                <h5 class="normalTextRegular">{{ __("messages.Client") }} {{ $order->user->username }}</h5>
+                <h4 class="normalTextRegular">{{ __("messages.Order") }} n° {{ $order->number }}</h4>
+                <h4 class="normalTextRegular">{{ __("messages.Client") }} {{ $order->user->username }}</h4>
             </figcaption>
         </figure>
         <hr class="icon"/>
@@ -42,7 +42,7 @@
             <div class="to-do-order-footer row">
                 <article class="normalTextRegular col-md-6 col-12">
                     <h3 class="normalTextRegular">{{ __("messages.Class") }}: {{ $order->classroom->name }}</h3>
-                    <h3 class="normalTextRegular">{{ __("messages.Total") }}: {{ $order->total }} €</h3>
+                    <h4 class="normalTextRegular">{{ __("messages.Total") }}: {{ $order->total }} €</h4>
                 </article>
                 @switch($order->status)
                     @case(1)
