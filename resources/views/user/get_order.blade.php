@@ -39,6 +39,7 @@
 <body class="light">
 <x-nav-bar title="Products" />
 <main class="container mt-5 main">
+
     <x-single-order-displayer :order="$order" />
 </main>
 <x-navigation-footer mode="client"/>

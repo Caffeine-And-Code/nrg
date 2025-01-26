@@ -133,7 +133,7 @@ class ProductController extends Controller
         return redirect()->route("admin.settings")->with('error', 'Product does not exist.');
     }
 
-    
+
     public function search(Request $request)
     {
         $query = $request->input('searchInput');
@@ -147,12 +147,31 @@ class ProductController extends Controller
         return view("admin.settings", ["classes" => $classes,"entries" => $entries ,"news"=>$news,"products" => $products,"users" => $users,"fm_prize"=> $admin->fm_prize,"fm_target"=> $admin->fm_target,"delivery_cost"=> $admin->delivery_cost]);
     }
 
+    public function writeRating(Request $request){
+        $formData = $request->validate([
+            "product_id" => [
+                "required",
+                "exists:products,id"
+            ],
+            "rating" => "required|integer|min:1|max:5"
+        ]);
+
+        /** @var User $user */
+        $user = Auth::user();
+        $user->ratings()->where("product_id", $formData["product_id"])->delete();
+        $user->ratings()->create([
+            "product_id" => $formData["product_id"],
+            "rating" => $formData["rating"]
+        ]);
+        return redirect()->back();
+    }
+
     // public function search(Request $request)
     // {
     //     $query = $request->input('searchInput');
 
     //     $products = Product::query()->search($query)->get();
-        
+
     //     $users = User::all();
 
     //     $admin = Auth::guard('admin')->user();

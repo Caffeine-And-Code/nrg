@@ -23,6 +23,12 @@ class Rating extends Model
         'rating' => 'integer',
     ];
 
+    protected $fillable = [
+        "user_id",
+        "product_id",
+        "rating",
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

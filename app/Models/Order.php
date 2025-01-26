@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\QueryBuilder\OrderQueryBuilder;
+use App\QueryBuilder\ProductQueryBuilder;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status
  * @property int $total
  * @property int|null $classroom_id
+ * @method static OrderQueryBuilder query()
  */
 class Order extends Model
 {
@@ -50,6 +53,11 @@ class Order extends Model
         'classroom_id' => 'integer',
         'total' => 'float',
     ];
+
+    public function newEloquentBuilder($query): OrderQueryBuilder
+    {
+        return new OrderQueryBuilder($query);
+    }
 
     protected $attributes = [
         'status' => self::STATUS_CREATED

@@ -7,21 +7,22 @@
     <ul>
         @foreach($order->products as $product)
         <li>
+            <article class="d-flex flex-column">
             <figure class="d-flex">
                 <img class="productImage" src="{{ asset('images/products/' .
                 basename($product->image)) }}" alt="{{__("main.product_image",
                 ["name" => $product->getName()])}}">
 
                 <figcaption class="productText d-flex">
-                    <strong class="normalTextRegular">
+                    <h3><strong class="normalTextRegular">
                         {{$product->getName()}}
-                    </strong>
+                    </strong></h3>
                     @if ($product->getPercDiscount() > 0)
                     <p class="normalTextRegular">
                         <del>{{Number::currency($product->getPrice())}}</del>
                         <span>
                             @if ($product->pivot->quantity > 1)
-                            {{Number::currency($product->getDiscountedPrice())}} x {{$product->pivot->quantity}} = {{Number::currency($product->getDiscountedPrice() * $product->pivot->quantity)}} €
+                            {{Number::currency($product->getDiscountedPrice())}} x {{$product->pivot->quantity}} = {{Number::currency($product->getDiscountedPrice() * $product->pivot->quantity)}}
                             @else
                             {{Number::currency($product->getDiscountedPrice())}}
                             @endif
@@ -39,9 +40,40 @@
 
                 </figcaption>
             </figure>
+                @if ($order->getStatus() == \App\Models\Order::STATUS_DONE)
+                    @if($product->ratings->count() <= 0)
+                    <article>
+                        <h4>{{__("main.write_rating")}}</h4>
+                        <div class="d-flex rating-bar">
+                            @for ($i = 0; $i < 5; $i++)
+                                <form class="pe-auto" action="{{route("user.write_rating")}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    <input type="hidden" name="rating" value="{{$i+1}}">
+                                    <button class="btn"><i class="bi bi-star"></i></button>
+                                </form>
+                            @endfor
+                        </div>
+                    </article>
+                    @else
+                    <article>
+                        <h4>{{__("main.write_rating")}}</h4>
+                        <div class="d-flex gap-2 rating-bar">
+                            @for ($i = 0; $i < 5; $i++)
+                                <form class="pe-auto" action="{{route("user.write_rating")}}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    <input type="hidden" name="rating" value="{{$i+1}}">
+                                    <button class="btn"><i class="bi @if ($product->ratings->first()->rating >= ($i+1)) bi-star-fill @else bi-star @endif"></i></button>
+                                </form>
+                            @endfor
+                        </div>
+                    </article>
+                    @endif
+                @endif
+            </article>
             <hr />
         </li>
-
         @endforeach
     </ul>
 
@@ -82,10 +114,13 @@
     $order->getUserId(), ]);
     @endphp
     <input type="hidden" id="order-json" value="{{$json}}" />
+    @if ($order->getStatus() == \App\Models\Order::STATUS_DELIVERING)
     <section class="d-flex align-items-center justify-content-evenly flex-column">
         <div id="qrcode" class="pt-5 pb-5"></div>
         <h2 class="title">{{ __("messages.ScanMe") }}</h2>
     </section>
+    @endif
+    @if ($order->getStatus() == \App\Models\Order::STATUS_DELIVERING)
     <script >
         document.addEventListener('DOMContentLoaded', function () {
             new QRCode(document.getElementById('qrcode'), {
@@ -95,4 +130,5 @@
             });
         });
     </script>
+        @endif
 </div>

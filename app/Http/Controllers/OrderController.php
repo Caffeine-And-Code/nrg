@@ -139,7 +139,9 @@ class OrderController extends Controller
             "id" => "required|exists:orders,id",
         ]);
 
-        $order = Order::query()->find($request->input('id'));
+        /** @var User $user */
+        $user = auth()->user();
+        $order = Order::query()->withProductRating($user->id)->find($request->input('id'));
         return view("user.get_order", compact("order"));
     }
 }
