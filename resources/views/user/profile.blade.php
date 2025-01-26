@@ -42,7 +42,7 @@
             <button type="button" class="btn-close offCanvasButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="overflow-auto container offcanvas-body">
-            <x-notifications-displayer :notifications="$notifications" :role="user"/>
+            <x-notifications-displayer :notifications="$notifications" role="user"/>
         </div>
     </div>
 </body>
