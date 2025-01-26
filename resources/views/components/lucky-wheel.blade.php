@@ -27,7 +27,7 @@
             <p class="spin-result" ></p>
         </div>
     </section>
-@elseif($wheel_last_win !== null)
+@elseif(isset($wheel_last_win) && $wheel_last_win !== null)
     <section class="px-5 container order-0 order-xl-2 col-12 col-xl-6">
         <h2>{{__("main.daily_spin")}}</h2>
         @if ($wheel_last_win == "null_win_reserved_field_immutable_1237871263")
