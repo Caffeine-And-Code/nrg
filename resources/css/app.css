@@ -605,3 +605,7 @@ ul{
     width: 0px;
     height: 0px;
 }
+
+body{
+    color: var(--dark-text);
+}
