@@ -35,10 +35,10 @@
 </head>
 <body class="light">
 <x-nav-bar title="Products" />
-<main class="w-100 overflow-x-hidden main row min-vh-100 mt-5 container">
+<main class="w-100 overflow-x-hidden main row min-vh-100 mt-5">
     <div class="col-lg-9 col-12 container">
         <section class="row">
-            <div class="container mt-3 d-flex flex-column" >
+            <div class="container mt-3 d-flex flex-column p-5" >
                 <h2>{{__("main.search")}}</h2>
                 <div class="d-flex"><x-user-search-bar :id="1"/></div>
             </div>
