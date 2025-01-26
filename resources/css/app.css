@@ -632,3 +632,7 @@ body{
 .noProductInCart{
     min-height: 180px;
 }
+
+.orderFigureAdmin{
+    min-height: 116px;
+}
