@@ -104,7 +104,7 @@ function drawWheel(selector){
     document.querySelectorAll(`${selector} > ul > li`).forEach((item, index) => {
         item.style.aspectRatio = `1 / calc(2 * tan(180deg / ${itemCount}))`
         item.style.background = `hsl(${360/itemCount * index}, 100%, 75%)`;
-        item.style.rotate = `${(360/itemCount * (index))}deg`;
+        item.style.transform = `rotate(${(360/itemCount * (index))}deg)`;
     })
 }
 
