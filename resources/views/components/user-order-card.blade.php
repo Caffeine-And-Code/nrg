@@ -1,4 +1,3 @@
-@vite('/resources/css/components/toDoOrder.css')
 @php
     use Carbon\Carbon;
 
