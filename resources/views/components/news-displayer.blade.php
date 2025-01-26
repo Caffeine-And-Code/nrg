@@ -8,6 +8,14 @@
         <x-single-news :newsItem="$newsItem" />
     @endforeach
 
+    <script>
+        const news = @json($news);
+        news.forEach(singleNew => {
+            const newElement = document.querySelector(".News" + singleNew.id);
+            newElement.style.backgroundImage = `url('${singleNew.image_path}')`;
+        });
+    </script>
+
     <div class="plusIcon" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         <i class="las la-plus-circle"></i>
     </div>
