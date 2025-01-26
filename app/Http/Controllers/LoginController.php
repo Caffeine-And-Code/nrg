@@ -91,6 +91,14 @@ class LoginController extends Controller
          * @var User $user
          */
         $user = Auth::user();
+        $user->ratings()->delete();
+        $user->notifications()->delete();
+        $user->cartProducts()->detach();
+        $user->orders()->each(function ($order){
+            $order->products()->detach();
+        });
+        $user->orders()->delete();
+        Auth::logout();
         $user->delete();
         return redirect()->route('user.login');
     }

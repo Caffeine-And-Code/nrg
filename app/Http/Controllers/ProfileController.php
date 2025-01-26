@@ -59,6 +59,7 @@ class ProfileController extends Controller
         $user = User::query()->find($request->get('id'));
         $user->ratings()->delete();
         $user->notifications()->delete();
+        $user->cartProducts()->detach();
         $user->orders()->each(function($order){
             $order->products()->detach();
         });
