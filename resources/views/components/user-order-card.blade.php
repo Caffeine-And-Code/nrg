@@ -26,13 +26,13 @@
                 <div class="user-order-details">
                     <div class="user-order-details-title">
                         <h3 class="normalTextBold">{{ $order->number }}</h3>
-                        <h5 class="normalTextRegular">{{ $deliveryTime }}</h5>
+                        <h4 class="normalTextRegular">{{ $deliveryTime }}</h4>
                     </div>
-                    <h5 class="normalTextRegular"> {{ $productCount }}  {{__("messages.product_s")}}</h5>
+                    <h3 class="normalTextRegular"> {{ $productCount }}  {{__("messages.product_s")}}</h3>
                     @if($order->status == 1 || $order->status == 3)
-                        <h5 class="normalTextRegular"> {{ __("messages.orderInPrep") }}</h5>
+                        <h4 class="normalTextRegular"> {{ __("messages.orderInPrep") }}</h4>
                     @else
-                    <h5 class="normalTextRegular"> {{ __("messages.orderCompleted") }}</h5>
+                    <h4 class="normalTextRegular"> {{ __("messages.orderCompleted") }}</h4>
                     @endif
                 </div>
 
