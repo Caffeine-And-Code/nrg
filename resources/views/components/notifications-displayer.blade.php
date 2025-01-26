@@ -47,7 +47,10 @@
         window.axios.post("admin/notifications/read", {
             id: id,
         });
-        document.getElementById(`notification-${id}`).classList.add("read")
+        document.getElementById(`notification-${id}`).classList.remove("unread")
+        let elCl = document.querySelector(`#notification-${id} > h2 > button > i`).classList
+        elCl.remove("la-envelope");
+        elCl.add("la-envelope-open")
     }
 </script>
 @else
