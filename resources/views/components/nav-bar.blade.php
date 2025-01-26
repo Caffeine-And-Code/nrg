@@ -18,7 +18,7 @@
         <ul class="d-flex flex-row justify-content-end gap-5 align-items-center h-100 my-0 p-3">
 
         <li class="navTitleContainer">
-            <h1 class="title navTitle">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
+            <h2 class="title navTitle">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h2>
         </li>
             <li>
                 <a
@@ -42,7 +42,7 @@
     <div class="z-99 dot dot2" id="dot2"></div>
 </header>
 <header class="nav-bar mobile">
-    <img src="" alt="logo" class="logo " id="minimalLogo" />
+    <img src="" alt="logo" class="logo " id="minimalLogo_" />
     <figure>
         @if($title == "Orders" || $title == "Products")
             <i class="las la-shopping-bag"></i>
@@ -54,12 +54,12 @@
 </header>
 @else
 <header class="nav-bar desktop">
-    <img src="" alt="logo" class="logo " id="minimalLogo" />
+    <img src="" alt="logo" class="logo " id="minimalLogo_" />
     <aside class="navigationDesktop">
         <ul class="d-flex flex-row justify-content-end gap-5 align-items-center h-100 my-0 p-3">
 
         <li class="navTitleContainer">
-            <h1 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h1>
+            <h2 class="title navTitle fullWidth">{{ Route::is('admin.dashboard') ? __("messages.Orders") : __("messages.Settings") }}</h2>
         </li>
             <li>
                 <a

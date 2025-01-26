@@ -599,3 +599,9 @@ ul{
     background-color: var(--bg);
     margin-left: 20px;
 }
+
+.mobile{
+    border: 0px !important;
+    width: 0px;
+    height: 0px;
+}

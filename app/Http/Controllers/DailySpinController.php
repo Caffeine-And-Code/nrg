@@ -17,7 +17,7 @@ class DailySpinController extends Controller
 
     public function add(Request $request){
         $request->validate([
-            "entries" => "required|array",
+            "entries" => "required|array|min:4",
             "entries.*.text"=> "required|string",
             "entries.*.prize"=> "required|numeric|min:0"
         ]);

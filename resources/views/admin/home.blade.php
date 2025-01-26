@@ -22,7 +22,7 @@
 
     <body>
         <x-nav-bar title="Orders" />
-        <main class="container main fullHeight">
+        <main class="container main mt-5">
             <x-orders-displayer :orders="$orders"/>
             <button class="btn notificationsAdminButton" data-bs-toggle="offcanvas" data-bs-target="#notifications"><i class="las la-bell icon"></i></button>
         </main>

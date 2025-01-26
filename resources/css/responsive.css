@@ -330,6 +330,8 @@
         display: block !important;
     }
 
+
+
     .mobile{
         width:auto !important;
         height: auto !important;
@@ -346,6 +348,7 @@
 
     .mobile.nav-bar{
         height: 98px !important;
+        border-bottom: 3px solid var(--dark) !important;
     }
 
     .footerNavigation{
