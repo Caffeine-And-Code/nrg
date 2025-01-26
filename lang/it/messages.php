@@ -105,4 +105,5 @@ return[
     "radioIt" => "Radio button per selezionare la lingua italiana",
     "radioEn" => "Radio button per selezionare la lingua inglese",
     "EmailAccess" => "inserisci la tua email o username per accedere al tuo account",
+    "adminDashboard"=> "Admin Dashboard",
 ];
