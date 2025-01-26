@@ -20,7 +20,7 @@
     <main>
         <div id="session-message" data-message="{{ session('message') }}"></div>
 
-        <section class="login-section login-zone">
+        <div class="login-section login-zone">
             <img src="{{ Vite::asset('resources/imgs/LIGHT/bigLogo.png') }}" class="col-sm-8 col-md-6 col-12 logo logo-space" alt="bigLogo" id = "bigLogo" />
             
             <form class="login-form" action="{{route('user.authenticate')}}" method="post">
@@ -28,8 +28,9 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M406.5 399.6C387.4 352.9 341.5 320 288 320l-64 0c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3l64 0c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"/></svg>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M406.5 399.6C387.4 352.9 341.5 320 288 320l-64 0c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3l64 0c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"/></svg>
                     </span>
+                    <label for="email" class="d-none">{{ __("messages.EmailAccess") }}</label>
                     <input type="text" class="form-input" name="username" placeholder={{ __("messages.EorU") }}>
                 </div>
 
@@ -39,6 +40,8 @@
                             <path d="M8 0C5.243 0 2 2.243 2 5V6.5C0.897 6.5 0 7.397 0 8.5V16.5C0 17.603 0.897 18.5 2 18.5H14C15.103 18.5 16 17.603 16 16.5V8.5C16 7.397 15.103 6.5 14 6.5V5C14 2.243 10.757 0 8 0ZM14 8.5L14.002 16.5H2V8.5H14ZM4 6.5V5C4 3 6 2 8 2C10 2 12 3 12 5V6.5H4Z"/>
                         </svg>
                     </span>
+                    
+                    <label for="email" class="d-none">{{ __("messages.PasswordAccess") }}</label>
                     <input class="form-input" type="password" name="password" id="password" placeholder="Password">
                     <button type="button" class="togglePassword" id="togglePassword">
                         <svg class="eye icon" id="eye" xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -71,13 +74,13 @@
 
             
             <button class="btn mobile-only" id="switchRegister">{{ __("messages.Sign in") }}</button>
-        </section>
+        </div>
 
         <hr class="divider desktop-only"/>
 
         <section class="registration-zone login-section">
             
-            <p class="desktop-only advice">{{ __("Donthaveanaccountyet?") }}</p>
+            <p class="desktop-only advice">{{ __("messages.Donthaveanaccountyet?") }}</p>
             <img src="{{ Vite::asset('resources/imgs/LIGHT/minimalLogo.png') }}" class="col-sm-8 col-md-6 col-12 smallLogo mobile-only" alt="minimalLogo" id = "minimalLogo" />
             
             
