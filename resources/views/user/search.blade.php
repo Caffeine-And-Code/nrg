@@ -35,7 +35,7 @@
 </head>
 <body class="light">
 <x-nav-bar title="Products" />
-<main class="w-100 overflow-x-hidden main row min-vh-100 mt-5">
+<main class="w-100 overflow-x-hidden main row min-vh-100 mt-5 container">
     <div class="col-lg-9 col-12 container">
         <section class="row">
             <div class="container mt-3 d-flex flex-column" >
